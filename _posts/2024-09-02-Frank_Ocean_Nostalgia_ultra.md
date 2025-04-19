@@ -128,7 +128,9 @@ image:
 
 ![Image description](assets/lib/img/00-img-01.jpg){: w="300" h="150" }{: .left }
 
-![Image description](assets/lib/img/00-img-02.png){: w="300" h="150" }{: .normal }
+![Image description](assets/lib/img/00-img-02.jpg){: w="300" h="150" }{: .normal }
+
+![Image description](assets/lib/img/00-img-03.jpg){: w="300" h="150" }{: .right }
 
 <a href="/assets/music/frank_ocean/frank_ocean_nostalgiaultra.zip" download>
   <button style="background-color: #ffa500;
