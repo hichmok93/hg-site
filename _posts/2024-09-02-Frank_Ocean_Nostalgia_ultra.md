@@ -11,7 +11,7 @@ image:
     alt: "Nostalgia Ultra - Album by Frank Ocean"
 ---
 
-<a href="/assets/music/frank_ocean/frank_ocean_nostalgiaultra.zip" download>
+<a href="https://www.dropbox.com/scl/fo/nxj93wkvpuo9r0727ihpb/AGZIrCi658Aj6vq_whiZ-uY?rlkey=arr7sc92kkfuyxkch5talwf6u&st=ky47d0il&dl=0" download>
   <button style="background-color: #ffa500;
                  border: none;
                  color: white;
@@ -47,92 +47,55 @@ image:
       width: 100%;
     }
   }
-</style>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1.</td>
-      <td>Street Fighter</td>
-      <td><audio controls src="/assets/music/frank_ocean/01_street_fighter.mp3" title="Street Fighter"></audio></td>
-    </tr>
-    <tr>
-      <td>2.</td>
-      <td>Strawberry Swing</td>
-      <td><audio controls src="/assets/music/frank_ocean/02 strawberry swing.mp3" title="Strawberry Swing"></audio></td>
-    </tr>
-    <tr>
-      <td>3.</td>
-      <td>Novacane</td>
-      <td><audio controls src="/assets/music/frank_ocean/03 novacane.mp3" title="Novacane"></audio></td>
-    </tr>
-    <tr>
-      <td>4.</td>
-      <td>Bitches Talkin'</td>
-      <td><audio controls src="/assets/music/frank_ocean/05_bitches_talkin'.mp3" title="Bitches Talkin'"></audio></td>
-    </tr>
-    <tr>
-      <td>5.</td>
-      <td>Songs for Women</td>
-      <td><audio controls src="/assets/music/frank_ocean/06 songs for women.mp3" title="Songs for Women"></audio></td>
-    </tr>
-    <tr>
-      <td>6.</td>
-      <td>Lovecrimes</td>
-      <td><audio controls src="/assets/music/frank_ocean/07 lovecrimes.mp3" title="Lovecrimes"></audio></td>
-    </tr>
-    <tr>
-      <td>7.</td>
-      <td>Goldeneye</td>
-      <td><audio controls src="/assets/music/frank_ocean/08 goldeneye.mp3" title="Goldeneye"></audio></td>
-    </tr>
-    <tr>
-      <td>8.</td>
-      <td>There Will Be Tears</td>
-      <td><audio controls src="/assets/music/frank_ocean/09 there will be tears.mp3" title="There Will Be Tears"></audio></td>
-    </tr>
-    <tr>
-      <td>9.</td>
-      <td>Swim Good</td>
-      <td><audio controls src="/assets/music/frank_ocean/10 swim good.mp3" title="Swim Good"></audio></td>
-    </tr>
-    <tr>
-      <td>10.</td>
-      <td>Dust</td>
-      <td><audio controls src="/assets/music/frank_ocean/11 dust.mp3" title="Dust"></audio></td>
-    </tr>
-    <tr>
-      <td>11.</td>
-      <td>American Wedding</td>
-      <td><audio controls src="/assets/music/frank_ocean/12 american wedding.mp3" title="American Wedding"></audio></td>
-    </tr>
-    <tr>
-      <td>12.</td>
-      <td>Soul Calibur</td>
-      <td><audio controls src="/assets/music/frank_ocean/13 soul calibur.mp3" title="Soul Calibur"></audio></td>
-    </tr>
-    <tr>
-      <td>13.</td>
-      <td>Nature Feels</td>
-      <td><audio controls src="/assets/music/frank_ocean/14 nature feels.mp3" title="Nature Feels"></audio></td>
-    </tr>
-  </tbody>
-</table>
+</style>
+### 1. Street Fighter  
+{% include embed/audio.html src='/assets/music/frank_ocean/01_street_fighter.mp3' title='Street Fighter' %}
+
+### 2. Strawberry Swing  
+{% include embed/audio.html src='/assets/music/frank_ocean/02 strawberry swing.mp3' title='Strawberry Swing' %}
+
+### 3. Novacane  
+{% include embed/audio.html src='/assets/music/frank_ocean/03 novacane.mp3' title='Novacane' %}
+
+### 4. Bitches Talkin'  
+{% include embed/audio.html src="/assets/music/frank_ocean/05_bitches_talkin'.mp3" title="Bitches Talkin'" %}
+
+### 5. Songs for Women  
+{% include embed/audio.html src='/assets/music/frank_ocean/06 songs for women.mp3' title='Songs for Women' %}
+
+### 6. Lovecrimes  
+{% include embed/audio.html src='/assets/music/frank_ocean/07 lovecrimes.mp3' title='Lovecrimes' %}
+
+### 7. Goldeneye  
+{% include embed/audio.html src='/assets/music/frank_ocean/08 goldeneye.mp3' title='Goldeneye' %}
+
+### 8. There Will Be Tears  
+{% include embed/audio.html src='/assets/music/frank_ocean/09 there will be tears.mp3' title='There Will Be Tears' %}
+
+### 9. Swim Good  
+{% include embed/audio.html src='/assets/music/frank_ocean/10 swim good.mp3' title='Swim Good' %}
+
+### 10. Dust  
+{% include embed/audio.html src='/assets/music/frank_ocean/11 dust.mp3' title='Dust' %}
+
+### 11. American Wedding  
+{% include embed/audio.html src='/assets/music/frank_ocean/12 american wedding.mp3' title='American Wedding' %}
+
+### 12. Soul Calibur  
+{% include embed/audio.html src='/assets/music/frank_ocean/13 soul calibur.mp3' title='Soul Calibur' %}
+
+### 13. Nature Feels  
+{% include embed/audio.html src='/assets/music/frank_ocean/14 nature feels.mp3' title='Nature Feels' %}
+
 
 ![Image description](assets/lib/img/00-img-01.jpg){: w="300" h="150" }{: .left }
 
 ![Image description](assets/lib/img/00-img-02.jpg){: w="300" h="150" }{: .normal }
 
-![Image description](assets/lib/img/00-img-03.jpg){: w="300" h="150" }{: .right }
+![Image description](assets/lib/img/00-img-0.jpg){: w="300" h="150" }{: .right }
 
-<a href="/assets/music/frank_ocean/frank_ocean_nostalgiaultra.zip" download>
+<a href="https://www.dropbox.com/scl/fo/nxj93wkvpuo9r0727ihpb/AGZIrCi658Aj6vq_whiZ-uY?rlkey=arr7sc92kkfuyxkch5talwf6u&st=ky47d0il&dl=0" download>
   <button style="background-color: #ffa500;
                  border: none;
                  color: white;
