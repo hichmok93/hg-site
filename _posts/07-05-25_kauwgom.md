@@ -8,7 +8,7 @@ tags: [vegan, suikervrij, kauwgom, ingrediënten, allergenen]
 **Suikervrije kauwgom met zoetstoffen**  
 Netto gewicht: 16,8 g / 12 kauwgoms (1,4 g per stuk)
 
-### Ingrediëntenf
+### Ingrediëntenh
 Zoetstof (E420, E965, 4,1% xylitol (E967), E950, E955), gom, stabilisator (E414), natuurlijk groenaroma, glansmiddel (E903).  
 **Waarvan toegevoegde suikers: 0 g per 100 g**  
 **Toegevoegd zout: 0 g per 100 g**
