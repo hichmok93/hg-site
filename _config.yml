@@ -224,3 +224,17 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+title: HG Audio Translator
+email: jouw@email.com
+description: "Upload audio, ontvang transcript en vertaling automatisch."
+baseurl: ""
+url: "https://hichmok93.github.io"
+theme: minima
+
+collections:
+  transcripts:
+    output: true
+    permalink: /transcripts/:title/
+
+plugins:
+  - jekyll-feed
