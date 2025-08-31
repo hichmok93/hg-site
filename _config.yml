@@ -224,7 +224,7 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
-title: Hicham Gardeslen - the world & intrests
+title: Hicham Gardeslen
 email: jouw@email.com
 description: "Upload audio, ontvang transcript en vertaling automatisch."
 baseurl: ""
