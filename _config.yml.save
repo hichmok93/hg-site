@@ -224,12 +224,12 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
-title: Hicham Gardeslen - the world & intrests
+title: HG Audio Translator
 email: jouw@email.com
 description: "Upload audio, ontvang transcript en vertaling automatisch."
 baseurl: ""
 url: "https://hichmok93.github.io"
-theme: jekyll-theme-chirpy
+theme: minima
 
 collections:
   transcripts:
