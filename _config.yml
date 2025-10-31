@@ -238,3 +238,31 @@ collections:
 
 plugins:
   - jekyll-feed
+
+
+menu:
+  main:
+    - name: "Politics"
+      url: "/categories/politics/"
+      weight: 20
+      params:
+        icon: "politics-icon"
+        description: "Political news and analysis"
+    - name: "Travel"
+      url: "/categories/travel/"
+      weight: 30
+      params:
+        icon: "travel-icon"
+        description: "Travel guides and experiences"
+    - name: "Food & Recipes"
+      url: "/categories/recipes/"
+      weight: 40
+      params:
+        icon: "food-icon"
+        description: "Delicious recipes and cooking tips"
+    - name: "Arts & Culture"
+      url: "/categories/arts/"
+      weight: 50
+      params:
+        icon: "arts-icon"
+        description: "Music, film, and artistic content"
