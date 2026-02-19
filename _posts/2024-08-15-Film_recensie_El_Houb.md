@@ -1,6 +1,6 @@
 ---
 title: Film recensie - El Houb
-archived: true
+Hidden: true
 date: 2022-11-22 00:34:00 +0800
 categories: [Cultuur, Film]
 tags: [politiek, Film, Art-house]    # TAG names should always be lowercase
