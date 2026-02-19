@@ -39,7 +39,7 @@ De makers hebben een verhaal op film vastgelegd dat binnen de eigen cultuur niet
 
 Een uiterst ingrijpend verhaal dat de pijn van migratie, integratie, sociale klassen, vrouwenemancipatie, homoseksualiteit en uiteindelijk de liefde in zijn meest pure vorm bespreekbaar maakt en toont aan ieder publiek toont, dapper genoeg om te aanschouwen wat (homo)seksualiteit in essentie is: een liefdesverhaal.
 
-### Trailer: EL Houb (2022) ♥️ 
+### Trailer: EL Houb (2022) ♥️ 💜 💚 
 
 {% include embed/youtube.html id='6PjmeqJasMs' %}
 
