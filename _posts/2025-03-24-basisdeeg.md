@@ -6,7 +6,7 @@ tags: [recept, pasta, deeg, italiaans]
 description: Klassiek zelfgemaakt pastadeeg met slechts twee ingrediënten, perfect als basis voor platte pasta of gevulde pastagerechten.
 media_subpath: 
 image:
-  path: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136"
+  path: "https://cdn.heelhollandbakt.nl/2023/05/Zelf-pasta-maken.jpg"
   alt: "Basispastadeeg - Zelfgemaakte verse pasta"
 ---
 
@@ -41,6 +41,10 @@ Met het volgende recept krijgt u genoeg deeg voor vier porties als u platte past
 ### Voor gevulde pasta
 - Verhoog naar 300 g meel en 3 grote eieren
 - Gebruik voor ravioli, tortellini of cannelloni
+
+![Desktop View](https://cdn.culinaireambiance.com/storage/articles/7852/verse-pasta_1697984096_resize_1400.jpg){: w="410" h="200" }{: .right }{: .shadow }
+
+
 
 ### Keukenmachine gebruiken
 - Doe het meel in de kom van de machine
