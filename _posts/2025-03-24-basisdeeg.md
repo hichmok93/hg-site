@@ -36,15 +36,13 @@ Met het volgende recept krijgt u genoeg deeg voor vier porties als u platte past
 | Meel type 00       | 200 g, plus extra om er zo nodig door te kneden |
 | Grote eieren       | 2                                    |
 
+![Desktop View](https://cdn.culinaireambiance.com/storage/articles/7852/verse-pasta_1697984096_resize_1400.jpg){: w="210" h="100" }{: .right }{: .shadow } 
+
 # Variaties
 
 ### Voor gevulde pasta
 - Verhoog naar 300 g meel en 3 grote eieren
-- Gebruik voor ravioli, tortellini of cannelloni
-
-![Desktop View](https://cdn.culinaireambiance.com/storage/articles/7852/verse-pasta_1697984096_resize_1400.jpg){: w="410" h="200" }{: .right }{: .shadow }
-
-
+- Gebruik voor ravioli, tortellini of lasagna. 
 
 ### Keukenmachine gebruiken
 - Doe het meel in de kom van de machine
@@ -64,8 +62,9 @@ Met het volgende recept krijgt u genoeg deeg voor vier porties als u platte past
 
 Een eenvoudige maar verfijnde basis voor talloze pastagerechten 🍝✨
 
-❤️ Eet smakelijk ❤️
-
 Inspiratie voor dit recept komt uit het boek: <a href="https://www.deslegte.com/chef-school-360982/" target="_blank">Chef School</a> door Joanna Farrow.
 
 Made with the help of AI🧑🏾‍💻 
+
+❤️ Eet smakelijk ❤️
+ 
