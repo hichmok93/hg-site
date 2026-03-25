@@ -5,7 +5,3 @@ icon: fas fa-plane
 permalink: /Travel/
 order: 1
 ---
-
-{% for post in site.categories.Travel %}
-- [{{ post.title }}]({{ post.url }})
-{% endfor %}
