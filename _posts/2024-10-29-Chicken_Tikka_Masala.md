@@ -1,7 +1,7 @@
 ---
-title: Recept - Chicken Tikka Masala1
+title: Chicken Tikka Masala
 date: 2024-10-29 20:50:00 +0800
-categories: [koken, gerechten]
+categories: [Koken, kip]
 tags: [recept, indiaans, food]    # TAG names should always be lowercase
 description: Een klassiek Indiaans gerecht Chicken Tikka Masala. Snel en gemakkelijk te bereiden. Ook heerlijk als vegetarische gerecht met halloumi en rijst. 
 media_subpath: assets/lib/img

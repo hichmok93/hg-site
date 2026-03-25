@@ -1,8 +1,8 @@
 ---
 title: Nostalgia Ultra - Album by Frank Ocean
 date: 2024-09-02 11:34:00 +0800
-categories: [Art, Mixtape]
-tags: [music, Pop culture, LGBTQI+]     # TAG names should always be lowercase
+categories: [Muziek, Rap]
+tags: [music, LGBTQI+]     # TAG names should always be lowercase
 description: A mixtape made and produced by Frank Ocean (2011). Nostalgia Ultra is considered by critics to have brought a lasting change in the hip-hop music scene during the early 10s of this century, influencing and inspiring many artists in the decade after. 
 toc: true
 media_subpath: 

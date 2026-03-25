@@ -2,7 +2,8 @@
 layout: post 
 title: "Risotto allo Zafferano" 
 date: 2025-08-31 
-categories: [risotto, Italiaans, hoofdgerecht] 
+categories: [Koken, Rijst]
+tags: [rijst, hoofdgerecht] 
 image: https://media3.neff-international.com/Images/600x/15745130_saffron-risotto_step3_1800x1011_jpg.jpg
 ---
 
@@ -48,6 +49,6 @@ De kwaliteit van de **bouillon** is cruciaal voor een goede risotto. Gebruik bij
 
 ---
 
-## Foto
+## Risotto allo Zafferano
 
 ![Risotto allo Zafferano][(https://example.com/risotto-zafferano-placeholder.jpg)](https://media3.neff-international.com/Images/600x/15745130_saffron-risotto_step3_1800x1011_jpg.jpg)

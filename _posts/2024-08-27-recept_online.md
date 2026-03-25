@@ -1,8 +1,8 @@
 ---
 title: Bao-Buns recept - Asian glazed Chicken
 date: 2024-08-27 11:34:00 +0800
-categories: [Food, Fotografie]
-tags: [aziatisch keuken]     # TAG names should always be lowercase
+categories: [koken, kip]
+tags: [kip]     # TAG names should always be lowercase
 description: Een heerlijk recept voor authentieke Bao Buns gevonden op Reddit! - A discription on how to make an authentic Bao buns dish. Follow the recipie as described in a step to by process and Enjoy! 
 toc: true
 media_subpath:

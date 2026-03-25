@@ -1,8 +1,8 @@
 ---
 title: "Recept - Rundvlees met Oestersaus"
 date: 2025-02-26
-categories: [koken, gerechten]
-tags: [recept, Aziatisch, rundvlees, oestersaus]
+categories: [Koken, Sauzen]
+tags: [recept, aziatisch, rundvlees, oestersaus]
 description: Een smaakvol Aziatisch rundvleesgerecht met oestersaus.
 media_subpath: assets/lib/img
 image:
@@ -19,23 +19,23 @@ Een heerlijk Aziatisch rundvleesgerecht met een rijke oestersaus.
 
 ## _Ingrediënten_
 
-| Hoeveelheid  | Ingrediënt                  |
-|-------------|-----------------------------|
-| 250 g       | Runderbiefstuk               |
-| 1 stukje    | Gemberwortel                 |
-| 1 eetl.     | Bruine basterdsuiker         |
-| 1 eetl.     | Sojasaus                     |
-| 1 eetl.     | Gehakte knoflook             |
-| 1 eetl.     | Aardappelmeel                |
-| 150 g       | Maïskolfjes uit blik         |
-| 1           | Groene paprika               |
-| 2           | Rode Spaanse pepers          |
-| 100 g       | Champignons                  |
-| 1           | Ui                           |
-| 3 eetl.     | Maïsolie                     |
-| 1 dl        | Bouillon                      |
-| 1 eetl.     | Vissaus (Naam Pblaa)         |
-| 2 eetl.     | Oestersaus                   |
+| Hoeveelheid | Ingrediënt           |
+| ----------- | -------------------- |
+| 250 g       | Runderbiefstuk       |
+| 1 stukje    | Gemberwortel         |
+| 1 eetl.     | Bruine basterdsuiker |
+| 1 eetl.     | Sojasaus             |
+| 1 eetl.     | Gehakte knoflook     |
+| 1 eetl.     | Aardappelmeel        |
+| 150 g       | Maïskolfjes uit blik |
+| 1           | Groene paprika       |
+| 2           | Rode Spaanse pepers  |
+| 100 g       | Champignons          |
+| 1           | Ui                   |
+| 3 eetl.     | Maïsolie             |
+| 1 dl        | Bouillon             |
+| 1 eetl.     | Vissaus (Naam Pblaa) |
+| 2 eetl.     | Oestersaus           |
 
 ## _Bereidingswijze_
 

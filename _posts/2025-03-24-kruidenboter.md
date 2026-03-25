@@ -1,8 +1,8 @@
 ---
 title: Kruidenboter (Met verse kruiden)
 date: 2026-03-24 18:30:00 +0000
-categories: [koken, sauzen]
-tags: [recept, boter, kruidenboter]    # TAG names should always be lowercase
+categories: [Koken, Sauzen]
+tags: [boter, kruidenboter]    # TAG names should always be lowercase
 description: Heerlijke zelfgemaakte kruidenboter met verse kruiden, perfect bij vlees, vis, groenten of brood.
 media_subpath: 
 image:
@@ -39,13 +39,13 @@ Kruidenboter kan van tevoren worden bereid, ingevroren en snel worden ontdooid. 
 ### Kruidenboter
 
 | Ingrediënt              | Hoeveelheid |
-|------------------------|------------|
-| Ongezouten boter       | 100 g      |
-| Zout                   | 1/4 tl     |
-| Peterselie (fijngehakt)| 2 el       |
-| Bieslook (fijngehakt)  | 2 el       |
-| Citroensap             | 2 tl       |
-| Peper                  | naar smaak |
+| ----------------------- | ----------- |
+| Ongezouten boter        | 100 g       |
+| Zout                    | 1/4 tl      |
+| Peterselie (fijngehakt) | 2 el        |
+| Bieslook (fijngehakt)   | 2 el        |
+| Citroensap              | 2 tl        |
+| Peper                   | naar smaak  |
 
 # Variaties
 

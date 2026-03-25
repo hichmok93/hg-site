@@ -1,8 +1,8 @@
 ---
 title: Basispastadeeg
 date: 2026-03-24 19:00:00 +0000
-categories: [koken, pasta]
-tags: [recept, pasta, deeg, italiaans]
+categories: [Koken, Pastadeeg]
+tags: [recept, pasta, deeg]
 description: Klassiek zelfgemaakt pastadeeg met slechts twee ingrediënten, perfect als basis voor platte pasta of gevulde pastagerechten.
 media_subpath: 
 image:
@@ -31,10 +31,10 @@ Met het volgende recept krijgt u genoeg deeg voor vier porties als u platte past
 
 ### Pastadeeg
 
-| Ingrediënt         | Hoeveelheid                          |
-|--------------------|--------------------------------------|
-| Meel type 00       | 200 g, plus extra om er zo nodig door te kneden |
-| Grote eieren       | 2                                    |
+| Ingrediënt   | Hoeveelheid                                     |
+| ------------ | ----------------------------------------------- |
+| Meel type 00 | 200 g, plus extra om er zo nodig door te kneden |
+| Grote eieren | 2                                               |
 
 ![Desktop View](https://cdn.culinaireambiance.com/storage/articles/7852/verse-pasta_1697984096_resize_1400.jpg){: w="210" h="100" }{: .right }{: .shadow } 
 

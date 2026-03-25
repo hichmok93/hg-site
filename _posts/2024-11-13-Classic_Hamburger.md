@@ -1,7 +1,7 @@
 ---
 title: Krankzinnige Burger
 date: 2024-11-13 17:00:00 +0000
-categories: [koken, gerechten]
+categories: [Koken, Rund]
 tags: [recept, burger, food]    # TAG names should always be lowercase
 description: Een waanzinnig lekkere burger met een unieke smaak door een mosterd-Tabasco-chipotlesaus.
 media_subpath: 

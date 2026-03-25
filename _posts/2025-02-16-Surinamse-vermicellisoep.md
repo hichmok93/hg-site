@@ -1,7 +1,7 @@
 ---
 title: Recept - Vermicellisoep
 date: 2025-02-16 12:00:00 +0100
-categories: [koken, soepen]
+categories: [Koken, Soep]
 tags: [recept, soep, food]    # TAG names should always be lowercase
 description: Een heerlijke vermicellisoep, perfect voor koude dagen. Makkelijk te bereiden met gehaktballetjes en verse kruiden.
 media_subpath: assets/lib/img
@@ -20,20 +20,20 @@ Een smaakvolle en eenvoudige vermicellisoep, ideaal als voorgerecht of lichte ma
 
 ## _Ingrediënten voor de soep:_
 
-| Hoeveelheid | Ingrediënt |
-|------------|------------|
-| 250 g | Rundersoepvlees |
-| 200 g | Kip |
-| 1 1/4 l | Water |
-| 3 | Lontai (peperkorrels) |
-| 1 | Tomaat |
-| 1 takje | Selderij |
-| 1/2 | Ui |
-| 40 g | Vermicelli |
-| 50 g | Gehakt |
-| Naar smaak | Zout, gemalen zwarte peper, nootmuskaat |
-| 1 | Laurierblad |
-| 1/2 | Ei |
+| Hoeveelheid | Ingrediënt                              |
+| ----------- | --------------------------------------- |
+| 250 g       | Rundersoepvlees                         |
+| 200 g       | Kip                                     |
+| 1 1/4 l     | Water                                   |
+| 3           | Lontai (peperkorrels)                   |
+| 1           | Tomaat                                  |
+| 1 takje     | Selderij                                |
+| 1/2         | Ui                                      |
+| 40 g        | Vermicelli                              |
+| 50 g        | Gehakt                                  |
+| Naar smaak  | Zout, gemalen zwarte peper, nootmuskaat |
+| 1           | Laurierblad                             |
+| 1/2         | Ei                                      |
 
 
 1. **Voorbereiding**: Snijd het vlees klein, was het en zet het op met kokend water, zout, laurierblad, peperkorrels, gesneden ui en tomaat.
@@ -49,20 +49,20 @@ Een variant met extra vulling dankzij aardappelen en een smaakvolle binding met 
 
 ### _Ingrediënten:_
 
-| Hoeveelheid | Ingrediënt |
-|------------|------------|
-| 100 g | Gehakt |
-| 1 1/4 l | Water |
-| 3 | Pimentkorrels (lontai) |
-| 1 | Tomaat |
-| 1 takje | Selderij |
-| 1/2 | Ui |
-| 25 g | Vermicelli |
-| 500 g | Aardappelen |
-| 3 | Bouillonblokjes |
-| Naar smaak | Gemalen zwarte peper, nootmuskaat, laurierblad |
-| 1 sneetje | Brood |
-| 25 g | Boter of margarine |
+| Hoeveelheid | Ingrediënt                                     |
+| ----------- | ---------------------------------------------- |
+| 100 g       | Gehakt                                         |
+| 1 1/4 l     | Water                                          |
+| 3           | Pimentkorrels (lontai)                         |
+| 1           | Tomaat                                         |
+| 1 takje     | Selderij                                       |
+| 1/2         | Ui                                             |
+| 25 g        | Vermicelli                                     |
+| 500 g       | Aardappelen                                    |
+| 3           | Bouillonblokjes                                |
+| Naar smaak  | Gemalen zwarte peper, nootmuskaat, laurierblad |
+| 1 sneetje   | Brood                                          |
+| 25 g        | Boter of margarine                             |
 
 
 1. **Ui en tomaat smoren**: Snijd de ui en tomaat fijn en smoor deze in de margarine.

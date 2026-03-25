@@ -1,7 +1,7 @@
 ---
 title: Ghanese Pindastoof
 date: 2024-10-30 16:50:00 +0000
-categories: [koken, gerechten]
+categories: [Koken, kip]
 tags: [recept, ghana, food]    # TAG names should always be lowercase
 description: Ghanees Pindastoof een Autentiek & Orgineel Gerecht.  
 media_subpath: assets/lib/img

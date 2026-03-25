@@ -1,7 +1,7 @@
 ---
 title: Recept - Superschnitzel
 date: 2024-12-22 20:50:00 +0800
-categories: [koken, gerechten]
+categories: [Koken, Kip]
 tags: [recept, schnitzel, food]    # TAG names should always be lowercase
 description: Een klassiek gerecht voor een heerlijke superschnitzel met aardappel- en appelsalade. Perfect voor een uitgebreide maaltijd.
 media_subpath: assets/lib/img

@@ -1,7 +1,7 @@
 ---
 title: Recept - Saoto Ajam
 date: 2024-10-29 20:50:00 +0800
-categories: [koken, gerechten]
+categories: [Koken, Soep]
 tags: [recept, javaans, soepen]    # TAG names should always be lowercase
 description: Een traditionele Javaanse kippensoep, rijk gevuld en vol smaak.
 media_subpath: assets/lib/img
@@ -19,30 +19,30 @@ Een rijke en hartverwarmende Javaanse soep met kip, kruiden en heerlijke topping
 
 ## _Ingrediënten_
 
-| Hoeveelheid          | Ingrediënt                   |
-| -------------------- | -------------------------- |
-| 5 l                 | Water                        |
-| 4                    | Kippenbouten                |
-| 6                    | Pimentkorrels               |
-| 6                    | Kippenbouillonblokjes       |
-| 1                    | Laurierblad                 |
-| 1 stengel            | Verse sereh                 |
-| 1                    | Gedroogd salamblad         |
-| 3 stukjes (1 cm elk) | Verse laos                 |
-| 1 stuk (1 cm)        | Elk van koenier en gember  |
-| ½ tl                 | Ve-tsin                     |
-| 1 grote              | Ui                          |
-| 3 tenen              | Knoflook                    |
-| 100 g                | Taugé                       |
-| 4                    | Hardgekookte eieren        |
-| 150 g                | Gekookte witte rijst       |
-|                      | Mihoen                      |
-| 2 takken             | Bladselderij               |
-| 100 g                | Frietchips                 |
-| 1 potje              | Gebakken uitjes            |
+| Hoeveelheid          | Ingrediënt                    |
+| -------------------- | ----------------------------- |
+| 5 l                  | Water                         |
+| 4                    | Kippenbouten                  |
+| 6                    | Pimentkorrels                 |
+| 6                    | Kippenbouillonblokjes         |
+| 1                    | Laurierblad                   |
+| 1 stengel            | Verse sereh                   |
+| 1                    | Gedroogd salamblad            |
+| 3 stukjes (1 cm elk) | Verse laos                    |
+| 1 stuk (1 cm)        | Elk van koenier en gember     |
+| ½ tl                 | Ve-tsin                       |
+| 1 grote              | Ui                            |
+| 3 tenen              | Knoflook                      |
+| 100 g                | Taugé                         |
+| 4                    | Hardgekookte eieren           |
+| 150 g                | Gekookte witte rijst          |
+|                      | Mihoen                        |
+| 2 takken             | Bladselderij                  |
+| 100 g                | Frietchips                    |
+| 1 potje              | Gebakken uitjes               |
 |                      | Witte en zwarte gemalen peper |
-| 1 el                 | Bakolie + margarine        |
-|                      | Gekookte rijst voor serveren |
+| 1 el                 | Bakolie + margarine           |
+|                      | Gekookte rijst voor serveren  |
 
 ## _Bereidingswijze_
 
