@@ -2,7 +2,7 @@
 layout: page
 title: Travel
 icon: fas fa-plane
-permalink: /travel/
+permalink: /Travel/
 order: 1
 ---
 
