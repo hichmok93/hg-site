@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Travel
-icon: fas fa-plane
+title: menu
+icon: fas fa-utensils
 permalink: /Travel/
 order: 1
 ---
@@ -249,44 +249,37 @@ order: 1
   <span class="corner-br">✦</span>
 
   <header class="menu-header">
-    <span class="overline">Menu van de Avond</span>
-    <h1>Dîner d'Exception</h1>
-    <p class="subtitle">Bereid met zorg &amp; passie, uit eigen keuken</p>
+    <span class="overline">hichmoki's TikTok Foody Dinner</span>
+    <h1>Menu van de Avond</h1>
+    <p class="subtitle">Huisgemaakt · Eerlijk · Met liefde bereid</p>
     <div class="header-rule"><span>❧</span></div>
   </header>
 
-  <!-- Starter I -->
+  <!-- Amuse -->
   <div class="course">
     <div class="course-label">Amuse</div>
     <div class="dish-name">Vers Gebakken Brood</div>
-    <div class="dish-desc">Uit eigen oven, knapperig van korst en zacht van binnen</div>
-    <div class="dish-sub">Geserveerd met huisgemaakte kruidenboter, Spaanse peper en een scheut olijfolie</div>
+    <div class="dish-desc">Knapperig brood uit eigen oven, geserveerd met huisgemaakte kruidenboter, Spaanse peper en olijfolie.</div>
   </div>
 
-  <!-- Starter II -->
+  <!-- Voorgerecht -->
   <div class="course">
     <div class="course-label">Voorgerecht</div>
     <div class="dish-name">Groentesoep</div>
-    <div class="dish-desc">Rijke, langzaam getrokken basis van lamsstock — vol en diep van smaak</div>
+    <div class="dish-desc">Heldere soep op basis van zelfgemaakte lamsstock, vol van smaak en warm van karakter.</div>
   </div>
 
   <div class="ornament-divider">· · ✦ · ·</div>
 
-  <!-- Main -->
+  <!-- Hoofdgerecht -->
   <div class="course">
     <div class="course-label">Hoofdgerecht</div>
     <div class="dish-name">Risotto met Ossobuco</div>
-    <div class="dish-desc">Romige risotto, zacht gestoofd ossobuco, afgemaakt met een klassieke dressing</div>
-  </div>
-
-  <!-- Drinks -->
-  <div class="course">
-    <div class="course-label">Dranken</div>
-    <div class="dish-name">Wijn &amp; Bier naar Keuze</div>
-    <ul class="dish-options">
-      <li>Wit — fris en licht, verfijnd bij de risotto</li>
-      <li>Rood — klassiek en vol, voor de kenner</li>
-    </ul>
+    <div class="dish-desc">Romige risotto met langzaam gestoofde kalfssschenkel, afgemaakt met een klassieke gremolata.</div>
+    <div class="dish-sub" style="margin-top:14px; font-size:13.5px; letter-spacing:0.04em;">
+      <em>Bij het gerecht — optioneel</em><br>
+      <span style="display:inline-block; margin-top:6px;">Wit &nbsp;·&nbsp; fris en licht &nbsp;&nbsp;|&nbsp;&nbsp; Rood &nbsp;·&nbsp; klassiek en vol</span>
+    </div>
   </div>
 
   <div class="ornament-divider">· · ✦ · ·</div>
@@ -294,19 +287,15 @@ order: 1
   <!-- Dessert -->
   <div class="course">
     <div class="course-label">Dessert</div>
-    <div class="dish-name">Huisgemaakt Roomijs &amp; Pannenkoek</div>
-    <div class="dish-desc">Zacht roomijs op een warme pannenkoek</div>
-    <ul class="dish-options">
-      <li>Chocoladedip</li>
-      <li>Homemade karamel</li>
-    </ul>
+    <div class="dish-name">Pannenkoek met Huisgemaakt Roomijs</div>
+    <div class="dish-desc">Goudbruin gebakken pannenkoek met een bolletje zacht roomijs — naar keuze met chocoladedip of homemade karamel.</div>
   </div>
 
-  <!-- Coffee -->
+  <!-- Afsluiting -->
   <div class="course">
     <div class="course-label">Afsluiting</div>
-    <div class="dish-name">Koffie &amp; Thee</div>
-    <div class="dish-desc">Koffie &nbsp;·&nbsp; Espresso &nbsp;·&nbsp; Thee naar keuze</div>
+    <div class="dish-name">Warme Dranken</div>
+    <div class="dish-desc">Koffie &nbsp;·&nbsp; Espresso &nbsp;·&nbsp; Thee</div>
   </div>
 
   <footer class="menu-footer">
