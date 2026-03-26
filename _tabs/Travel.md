@@ -255,12 +255,6 @@ order: 1
 
   <header class="menu-header">
     <span class="overline">hichmoki TikTok Foodie Dinner</span>
-    <h1>2026</h1>
-    <div class="header-rule"><span>❧</span></div>
-  </header>
-
-  <header class="menu-header">
-    <span class="overline">hichmoki TikTok Foodie Dinner</span>
     <h1>Menu Classico</h1>
     <div class="header-rule"><span>❧</span></div>
   </header>
@@ -315,6 +309,12 @@ order: 1
     <p>Buon appetito &nbsp;✦&nbsp; Bitch x</p>
   </footer>
 </div>
+
+<header class="menu-header">
+    <span class="overline">hichmoki TikTok Foodie Dinner</span>
+    <h1>2026</h1>
+    <div class="header-rule"><span>❧</span></div>
+  </header>
 
 </body>
 </html>
