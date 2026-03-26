@@ -2,11 +2,10 @@
 layout: page
 title: menu
 icon: fas fa-utensils
-permalink: /Travel/
+permalink: /menu/
 order: 1
 ---
 
-<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
@@ -305,16 +304,18 @@ order: 1
     <div class="dish-desc">Of een selectie van verfijnde theeën.</div>
   </div>
 
-  <footer class="menu-footer">
-    <p>Buon appetito &nbsp;✦&nbsp; Bitch x</p>
-  </footer>
-</div>
-
 <header class="menu-header">
     <span class="overline">hichmoki TikTok Foodie Dinner</span>
     <h1>2026</h1>
     <div class="header-rule"><span>❧</span></div>
   </header>
+
+  <footer class="menu-footer">
+    <p>Buon appetito &nbsp;✦&nbsp; Bitch x</p>
+  </footer>
+</div>
+
+
 
 </body>
 </html>
