@@ -19,6 +19,7 @@ Een website gericht op Foodtruck content voor een mkb bedrijf, met aandacht voor
 ### [Hichmoki Gallery](https://hichmok93.github.io/hugo.github.io/)
 Een statische website gebouwd met Hugo, met focus op backpacken & fotografie.
  ---
+
  ## Vaardigheden
 
 - Webdevelopment (HTML, CSS, JavaScript)
