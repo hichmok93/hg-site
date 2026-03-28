@@ -285,7 +285,7 @@ order: 1
   <div class="course">
     <div class="course-label">Abbinamento Vini</div>
     <div class="dish-name">Rood of Wit</div>
-    <div class="dish-desc">Keuze uit een elegante rode of frisse witte wijn, zorgvuldig geselecteerd ter begeleiding van het gerecht.</div>
+    <div class="dish-desc">Keuze uit een elegante rode [Pinot Noir] of frisse witte wijn [Pinot Grigio] , zorgvuldig geselecteerd ter begeleiding van het gerecht.</div>
   </div>
 
   <div class="ornament-divider">· · ✦ · ·</div>
@@ -294,7 +294,7 @@ order: 1
   <div class="course">
     <div class="course-label">Dolce</div>
     <div class="dish-name">Gelato alla Vaniglia fatto in casa</div>
-    <div class="dish-desc">Ambachtelijk bereid vanille-ijs, geserveerd met warme fondente chocoladesaus of zachte karamelsaus.</div>
+    <div class="dish-desc">Ambachtelijk bereid vanille-ijs, geserveerd met homemade warme Confiture de lait of zachte sinaasappel karamelsaus. Both prepared and [Made by Leon] .</div>
   </div>
 
   <!-- Caffè -->
