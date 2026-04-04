@@ -2,14 +2,14 @@
 title: Kruidenboter (Met verse kruiden)
 date: 2026-03-24 18:30:00 +0000
 categories: [Koken, Sauzen]
-tags: [boter, kruidenboter]# TAG names should always be lowercase
+tags: [boter, kruidenboter] # TAG names should always be lowercase
 description: Heerlijke zelfgemaakte kruidenboter met verse kruiden, perfect bij vlees, vis, groenten of brood.
 media_subpath: 
 image: 
-  path:
-"https://static.ah.nl/static/recepten/img_RAM_PRD150411_1224x900_JPG.jpg"
-alt: "Kruidenboter - Romige smaakmaker"
+  path: "https://static.ah.nl/static/recepten/img_RAM_PRD150411_1224x900_JPG.jpg"
+  alt: "Kruidenboter - Romige smaakmaker"
 ---
+
 
 `servings:`  4 personen
 
