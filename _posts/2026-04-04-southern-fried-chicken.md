@@ -7,28 +7,24 @@ tags: [kip, frituur, comfort food, Amerikaans, zomer]
 image: https://www.butterbeready.com/wp-content/uploads/2024/11/fried-chicken-5-1365x2048.jpg
 ---
 
-*Dit is een waanzinnig recept voor gefrituurde kip, waarvoor ik gedeeltelijk schatplichtig ben aan de ongekroonde koningen van het comfort food uit het zuiden van de Verenigde Staten. De kip wordt in de oven afgebakken — zo heb je geen enorme frituurpan nodig en blijft de temperatuur makkelijk onder controle. Voor thuis is dit gewoon veel handiger.*
+`servings:`  4 personen
 
----
+`preparation_time:`  2 uur 15 minuten (+ 20 uur pekelen
 
-Bereidingstijd: "2 uur 15 minuten (+ 20 uur pekelen)"
-Calorieën: 523
-Personen: 4 
+`calories:`  523
 
 
-## Ingrediënten
+Dit is een waanzinnig recept voor gefrituurde kip, waarvoor ik gedeeltelijk schatplichtig ben aan de ongekroonde koningen van het comfort food uit het zuiden van de Verenigde Staten. De kip wordt in de oven afgebakken — zo heb je geen enorme frituurpan nodig en blijft de temperatuur makkelijk onder controle. Voor thuis is dit gewoon veel handiger. 
 
-### Kip & beslag
+## Bereidingswijze
 
-| Hoeveelheid | Eenheid | Ingrediënt |
-|------------:|---------|------------|
-| 4 | stuks | kippendijen, met vel en bot |
-| 4 | stuks | kippenpoten |
-| 200 | ml | karnemelk |
-| 4 | stuks | zoete aardappels |
-| 200 | g | bloem |
-| 1 | el (van elk) | bakpoeder, cayennepeper, gerookt paprikapoeder, uienpoeder en knoflookpoeder |
-| 2 | liter | arachideolie |
+### Stap 1 — Pekelvocht (dag ervoor)
+
+Rooster de peperkorrels 1 minuut in een grote pan op hoog vuur en voeg de overige pekelingrediënten toe met 400 ml koud water. Breng aan de kook, laat afkoelen en voeg nog 400 ml koud water bij.
+
+Snijd de kippendijen een paar keer in tot op het bot — laat het vel zitten. Leg de kip in het afgekoelde pekelvocht, dek af met plasticfolie en zet **minstens 12 uur** in de koelkast.
+
+Leg daarna de gepekelde kip in een kom, giet de karnemelk erover, dek af en zet nog **8 uur** in de koelkast tot het vlees supermals is.
 
 ### Pekelvocht
 
@@ -41,26 +37,6 @@ Personen: 4
 | 4 | stuks | verse laurierblaadjes |
 | 4 | tenen | knoflook |
 
-### Pickle
-
-| Hoeveelheid | Eenheid | Ingrediënt |
-|------------:|---------|------------|
-| 1 | tl | venkelzaad |
-| 100 | ml | rodewijnazijn |
-| 1 | volle el | rietsuiker |
-| ½ | kool (500 g) | rodekool |
-
----
-
-## Bereidingswijze
-
-### Stap 1 — Pekelvocht (dag ervoor)
-
-Rooster de peperkorrels 1 minuut in een grote pan op hoog vuur en voeg de overige pekelingrediënten toe met 400 ml koud water. Breng aan de kook, laat afkoelen en voeg nog 400 ml koud water bij.
-
-Snijd de kippendijen een paar keer in tot op het bot — laat het vel zitten. Leg de kip in het afgekoelde pekelvocht, dek af met plasticfolie en zet **minstens 12 uur** in de koelkast.
-
-Leg daarna de gepekelde kip in een kom, giet de karnemelk erover, dek af en zet nog **8 uur** in de koelkast tot het vlees supermals is.
 
 ---
 
@@ -69,6 +45,30 @@ Leg daarna de gepekelde kip in een kom, giet de karnemelk erover, dek af en zet 
 Verhit de oven tot **190 °C / Gasovenstand 5**. Was de zoete aardappels, rol ze door zeezout en zet ze 30 minuten in de oven.
 
 Rooster intussen het venkelzaad 1 minuut droog in een pan. Voeg de azijn, suiker en een flinke snuf zeezout toe. Snijd de rodekool in smalle reepjes en schep alles door elkaar. Zet de pan in de koelkast en roer regelmatig.
+
+## Ingrediënten
+
+### Kip & beslag
+
+| Hoeveelheid | Eenheid | Ingrediënt |
+|------------:|---------|------------|
+| 4 | stuks | kippendijen, met vel en bot |
+| 4 | stuks | kippenpoten |
+| 200 | ml | karnemelk |
+| 4 | stuks | zoete aardappels |
+| 200 | g | bloem |
+| 1 | tl (van elk) | bakpoeder, cayennepeper, gerookt paprikapoeder, uienpoeder en knoflookpoeder |
+| 2 | liter | arachideolie |
+
+
+### Pickle
+
+| Hoeveelheid | Eenheid | Ingrediënt |
+|------------:|---------|------------|
+| 1 | tl | venkelzaad |
+| 100 | ml | rodewijnazijn |
+| 1 | volle el | rietsuiker |
+| ½ | kool (500 g) | rodekool | 
 
 ---
 
@@ -102,4 +102,4 @@ Serveer de kip met de gebakken zoete aardappels, de rodekoolpickle en een paar b
 
 ---
 
-*Recept gebaseerd op Chef School – Joanna Farrow, bewerkt en vertaald met AI-assistentie.*
+*Recept gebaseerd op Jamie's comfort food - Jamie Oliver, bewerkt en vertaald met AI-assistentie.*
