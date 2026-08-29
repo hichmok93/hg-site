@@ -1,6 +1,10 @@
 ---
-layout: redirect
+layout: page
 icon: fas fa-mask
 order: 3
-redirect_to: /posts/2026-08-28-bday/
+permalink: /party/
 ---
+
+<script>
+  window.location.href = '{{ site.baseurl }}/posts/2026-08-28-bday/';
+</script>
