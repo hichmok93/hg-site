@@ -443,6 +443,7 @@ order: 1
       <div class="detail-cell">
         <div class="label mono">Dress Code</div>
         <div class="value chrome-text" id="js-dress">CHROME / BLACK</div>
+        <div class="sub" id="js-plusone" style="margin-top:0.6rem; color:var(--chrome-3); font-size:0.8rem;">+1 welcome — just let us know</div>
       </div>
     </div>
   </section>
@@ -455,7 +456,7 @@ order: 1
       <a class="rsvp-btn" id="js-calendar-link" href="#" target="_blank">Add to Calendar</a>
     </div>
     <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
-      <a href="https://wa.me/31681348625?text=Sorry%2C%20I%20can%27t%20make%20it%20%E2%80%94%20but%20happy%20birthday!" target="_blank" style="color:var(--chrome-3); font-size:0.8rem; text-decoration:none; border:none; background:none; cursor:pointer; transition:color 0.3s ease; font-family:'Space Mono', monospace; letter-spacing:0.1em; border-bottom:1px solid var(--chrome-3); padding-bottom:0.3em;">Can't make it? Let us know</a>
+      <a href="https://wa.me/31681348625" target="_blank" style="color:var(--chrome-3); font-size:0.8rem; text-decoration:none; border:none; background:none; cursor:pointer; transition:color 0.3s ease; font-family:'Space Mono', monospace; letter-spacing:0.1em; border-bottom:1px solid var(--chrome-3); padding-bottom:0.3em;">Can't make it? Let us know</a>
     </div>
   </section>
 
@@ -484,12 +485,14 @@ const CONFIG = {
   name: "The Ceremony",
   age: "33",
   eventTag: "An Evening Unfolds",
-  tagline: "Join the party. Good food, warm people, a night that moves.",
+  tagline: "Join the party. Good food, warm people, a night that moves. ",
   date: "18.09.2026",
   time: "20:00 — till late",
   location: "STRAATWEG 60B",
   address: "",
   dress: "QUEER FRIENDLY",
+  plusOne: "+1 welcome — just let us know who's coming",
+
 };
 
 document.getElementById('js-eyebrow').textContent = CONFIG.eventTag;
