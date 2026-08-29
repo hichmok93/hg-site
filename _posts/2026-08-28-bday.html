@@ -1,9 +1,15 @@
+---
+layout: raw
+title: The Ceremony
+date: 2026-08-28
+categories: [party]
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EUSEXUA // Birthday Transmission</title>
+<title>Hichmoki Party</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -35,7 +41,7 @@
     font-weight:300;
     overflow-x:hidden;
     min-height:100vh;
-    cursor:default;
+    cursor:crosshair;
   }
 
   ::selection{ background:var(--ice); color:var(--void); }
@@ -65,14 +71,46 @@
     position:absolute; top:0; left:0;
     border-radius:50%;
     background:
-      radial-gradient(circle at 34% 26%, #7a7d82 0%, #2c2e32 20%, #131417 42%, #050506 68%, #000 100%);
+      radial-gradient(circle at 40% 30%, #8fd3ff 0%, #7fc0ff 6%, #6ab3ff 12%, #9a9da3 18%, #7a7d82 24%, #6a7077 30%, #5a6066 38%, #4a5056 48%, #3a4046 60%, #2a3036 75%, #1a2026 88%, #000 100%);
     will-change:transform;
     transform:translate3d(-50%,-50%,0);
+    animation:ferroColorShift 10s ease-in-out infinite;
+    box-shadow:
+      inset -20px -20px 40px rgba(0,0,0,0.3),
+      inset 15px 15px 30px rgba(120,180,255,0.25),
+      0 0 80px rgba(100,160,255,0.5),
+      0 0 150px rgba(74,144,226,0.3);
   }
-  #ferro-1{ width:min(46vw,340px); height:min(46vw,340px); }
-  #ferro-2{ width:min(30vw,220px); height:min(30vw,220px); }
-  #ferro-3{ width:min(22vw,160px); height:min(22vw,160px); }
-  #ferro-4{ width:min(16vw,120px); height:min(16vw,120px); }
+  @keyframes ferroColorShift{
+    0%{
+      background:radial-gradient(circle at 40% 30%, #8fd3ff 0%, #7fc0ff 6%, #6ab3ff 12%, #9a9da3 18%, #7a7d82 24%, #6a7077 30%, #5a6066 38%, #4a5056 48%, #3a4046 60%, #2a3036 75%, #1a2026 88%, #000 100%);
+      box-shadow:
+        inset -20px -20px 40px rgba(0,0,0,0.3),
+        inset 15px 15px 30px rgba(120,180,255,0.25),
+        0 0 80px rgba(100,160,255,0.5),
+        0 0 150px rgba(74,144,226,0.3);
+    }
+    50%{
+      background:radial-gradient(circle at 40% 30%, #c488ff 0%, #b366d9 6%, #9d4eca 12%, #9a9da3 18%, #7a7d82 24%, #6a7077 30%, #5a6066 38%, #4a5056 48%, #3a4046 60%, #2a3036 75%, #1a2026 88%, #000 100%);
+      box-shadow:
+        inset -20px -20px 40px rgba(0,0,0,0.3),
+        inset 15px 15px 30px rgba(200,140,255,0.3),
+        0 0 100px rgba(196,136,255,0.6),
+        0 0 180px rgba(179,102,217,0.4);
+    }
+    100%{
+      background:radial-gradient(circle at 40% 30%, #8fd3ff 0%, #7fc0ff 6%, #6ab3ff 12%, #9a9da3 18%, #7a7d82 24%, #6a7077 30%, #5a6066 38%, #4a5056 48%, #3a4046 60%, #2a3036 75%, #1a2026 88%, #000 100%);
+      box-shadow:
+        inset -20px -20px 40px rgba(0,0,0,0.3),
+        inset 15px 15px 30px rgba(120,180,255,0.25),
+        0 0 80px rgba(100,160,255,0.5),
+        0 0 150px rgba(74,144,226,0.3);
+    }
+  }
+  #ferro-1{ width:min(28vw,200px); height:min(28vw,200px); }
+  #ferro-2{ width:min(18vw,140px); height:min(18vw,140px); }
+  #ferro-3{ width:min(13vw,100px); height:min(13vw,100px); }
+  #ferro-4{ width:min(9vw,70px); height:min(9vw,70px); }
 
   .ferro-oil{ position:absolute; inset:0; filter:url(#liquidFilter); mix-blend-mode:normal; }
 
@@ -146,7 +184,19 @@
     box-shadow:0 0 0 rgba(159,232,255,0);
   }
   .enter-btn:hover{ transform:scale(1.06); box-shadow:0 0 42px var(--ice-dim); }
-  .enter-btn:active{ transform:scale(0.97); }
+  .enter-btn:active{
+    transform:scale(0.97);
+    box-shadow:0 0 0 0 rgba(168, 85, 247, 0.9);
+    animation:purpleMetallicGlow 0.8s ease-out;
+  }
+  @keyframes purpleMetallicGlow{
+    0%{
+      box-shadow:0 0 20px 0 rgba(168, 85, 247, 1), inset 0 0 20px rgba(200, 150, 255, 0.6);
+      text-shadow:0 0 10px rgba(168, 85, 247, 0.8);
+    }
+    50%{ box-shadow:0 0 40px 10px rgba(168, 85, 247, 0.6), inset 0 0 10px rgba(200, 150, 255, 0.3); }
+    100%{ box-shadow:0 0 0 20px rgba(168, 85, 247, 0), inset 0 0 0 rgba(200, 150, 255, 0); }
+  }
 
   .gate-hint{ color:var(--chrome-3); font-size:0.72rem; }
 
@@ -175,6 +225,7 @@
     line-height:0.92;
     letter-spacing:-0.01em;
     text-transform:uppercase;
+    filter:url(#liquidFilterSoft);
   }
   h1.name .turns{
     display:block;
@@ -307,6 +358,24 @@
   #backBtn.show{ opacity:1; visibility:visible; }
   #backBtn:hover{ border-color:var(--ice); color:var(--ice); }
 
+  #menuBtn{
+    position:fixed; top:1.4rem; right:1.4rem; z-index:55;
+    padding:0.7em 1.1em;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:rgba(13,15,18,0.7);
+    backdrop-filter:blur(6px);
+    font-family:'Space Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--chrome-2);
+    transition:border-color 0.3s ease, color 0.3s ease;
+    text-decoration:none;
+  }
+
+  #menuBtn:hover{ border-color:var(--ice); color:var(--ice); }
+
   @media (prefers-reduced-motion: reduce){
     .chrome-text, .enter-btn, .scroll-cue{ animation:none !important; }
     .blob{ transition:none; }
@@ -334,10 +403,8 @@
     <feComposite in="oiled" in2="oiled" operator="atop" />
   </filter>
   <filter id="liquidFilterSoft" x="-30%" y="-30%" width="160%" height="160%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="4" result="n2">
-      <animate attributeName="baseFrequency" dur="16s" values="0.012 0.02;0.02 0.03;0.012 0.02" repeatCount="indefinite" />
-    </feTurbulence>
-    <feDisplacementMap in="SourceGraphic" in2="n2" scale="10" xChannelSelector="R" yChannelSelector="G" />
+    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="4" result="n2" />
+    <feDisplacementMap in="SourceGraphic" in2="n2" scale="8" xChannelSelector="R" yChannelSelector="G" />
   </filter>
 </svg>
 
@@ -357,9 +424,10 @@
 
 <!-- ============== GATE ============== -->
 <div id="gate">
-  <div class="gate-mark chrome-text">EUSEXUA</div>
+  <div class="gate-mark chrome-text">Join the Party</div>
   <button class="enter-btn" id="enterBtn">Enter</button>
   <div class="gate-hint mono">Sound on · tap to begin</div>
+  <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1rem, 3vw, 1.6rem); text-transform:uppercase; letter-spacing:0.08em; -webkit-text-stroke:1px var(--chrome-2); color:transparent; margin-top:2rem;">Hichmoki Bday 2026</div>
 </div>
 
 <!-- ============== STAGE ============== -->
@@ -380,6 +448,7 @@
       <div class="detail-cell">
         <div class="label mono">Date</div>
         <div class="value chrome-text" id="js-date">DATE</div>
+        <a id="js-calendar-link-detail" style="margin-top:0.8rem; font-family:'Space Mono', monospace; letter-spacing:0.18em; font-size:0.75rem; text-transform:uppercase; color:var(--ice); text-decoration:none; transition:opacity 0.3s ease;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'" href="#" target="_blank">Add to Calendar</a>
       </div>
       <div class="detail-cell">
         <div class="label mono">Time</div>
@@ -389,6 +458,7 @@
         <div class="label mono">Location</div>
         <div class="value chrome-text" id="js-location">LOCATION</div>
         <div class="sub" id="js-address"></div>
+        <a href="https://maps.google.com/?q=Straatweg+60B,+3051+BH+Rotterdam" target="_blank" style="margin-top:0.8rem; font-family:'Space Mono', monospace; letter-spacing:0.18em; font-size:0.75rem; text-transform:uppercase; color:var(--ice); text-decoration:none; transition:opacity 0.3s ease;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Open Location</a>
       </div>
       <div class="detail-cell">
         <div class="label mono">Dress Code</div>
@@ -398,19 +468,28 @@
   </section>
 
   <section class="rsvp wrap">
-    <h2 class="chrome-text">Confirm your presence</h2>
-    <p id="js-rsvp-note">One life, one liquid night. Let us know you're in.</p>
-    <a class="rsvp-btn" id="js-rsvp-link" href="#">RSVP</a>
+    <h2 class="chrome-text">You're In</h2>
+    <p id="js-rsvp-note">If you are attending, join the WhatsApp group.</p>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem;">
+      <a class="rsvp-btn" id="js-rsvp-link" href="https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX" target="_blank">Join WhatsApp</a>
+      <a class="rsvp-btn" id="js-calendar-link" href="#" target="_blank">Add to Calendar</a>
+    </div>
   </section>
 
   <footer>
     <span id="js-footer-name">NAME</span> &nbsp;·&nbsp; <span id="js-footer-year"></span>
   </footer>
+
+  <section style="padding:6rem 0 4rem; text-align:center;">
+    <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1.2rem, 3vw, 1.8rem); text-transform:uppercase; letter-spacing:0.05em; color:#c488ff;">Bday 2026</div>
+  </section>
 </div>
 
-<audio id="bgAudio" src="eusexua-track.mp3" loop preload="auto"></audio>
+<audio id="bgAudio" preload="auto"></audio>
 
 <div id="backBtn">← Back</div>
+
+<a id="menuBtn" href="/">Menu</a>
 
 <div id="audioToggle">
   <div class="dot"></div>
@@ -423,17 +502,17 @@
    EDIT EVERYTHING FOR THE INVITE HERE — this is the only block you need.
 ===================================================================== */
 const CONFIG = {
-  name: "HICHAM",             // birthday person's name
-  age: "[AGE]",               // turning this age — fill in
-  eventTag: "Hichmoki Birthday Party",
-  tagline: "A night dissolves into dance. Come lose your shape with us.",
+  name: "The Ceremony",       // event title
+  age: "33",                  // turning this age
+  eventTag: "An Evening Unfolds",
+  tagline: "Join the dance. Some food and a chill social vibe.",
   date: "18.09.2026",
   time: "20:00 — till late",
   location: "STRAATWEG 60B",
   address: "",
   dress: "QUEER FRIENDLY",
-  rsvpEmail: "[YOUR EMAIL]",         // fill in
-  rsvpSubject: "I'm in — EUSEXUA night"
+  rsvpEmail: "[YOUR EMAIL]",  // deprecated
+  rsvpSubject: "I'm in"
 };
 /* ===================================================================== */
 
@@ -449,8 +528,18 @@ document.getElementById('js-address').textContent = CONFIG.address;
 document.getElementById('js-dress').textContent = CONFIG.dress;
 document.getElementById('js-footer-name').textContent = CONFIG.name;
 document.getElementById('js-footer-year').textContent = new Date().getFullYear();
-document.getElementById('js-rsvp-link').href =
-  `mailto:${CONFIG.rsvpEmail}?subject=${encodeURIComponent(CONFIG.rsvpSubject)}&body=${encodeURIComponent("I'll be there.")}`;
+
+// Calendar link for Google Calendar / iOS / Android
+const calendarDate = '20260918T200000';
+const calendarEndDate = '20260919T000000';
+const calendarTitle = encodeURIComponent('Hichmoki\'s Party - The Ceremony');
+const calendarLocation = encodeURIComponent('Straatweg 60B, 3051 BH Rotterdam');
+const calendarDesc = encodeURIComponent('Join the dance. Some food and a nice social vibe. WhatsApp: https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX');
+const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${calendarTitle}&dates=${calendarDate}/${calendarEndDate}&location=${calendarLocation}&details=${calendarDesc}`;
+document.getElementById('js-calendar-link').href = calendarUrl;
+if (document.getElementById('js-calendar-link-detail')) {
+  document.getElementById('js-calendar-link-detail').href = calendarUrl;
+}
 
 /* ---------------- ferrofluid cursor cluster (heavy, magnetic-liquid feel) ---------------- */
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -499,123 +588,58 @@ stepFerro();
 
 // magnetic "spike" burst on tap/click, like a ferrofluid reacting to a magnet
 function triggerSpike() {
-  spike = 26;
-  ferroState.forEach(s => { s.vx += (Math.random() - 0.5) * 8; s.vy += (Math.random() - 0.5) * 8; });
+  spike = 40;
+  ferroState.forEach(s => { s.vx += (Math.random() - 0.5) * 12; s.vy += (Math.random() - 0.5) * 12; });
 }
 window.addEventListener('pointerdown', triggerSpike);
+document.addEventListener('click', triggerSpike);
 
-/* ---------------- background audio: track first, generative fallback ---------------- */
+/* background audio: FKA TWIGS track */
 const bgAudio = document.getElementById('bgAudio');
-let started = false;
-let trackFailed = false;
-let audioMode = 'track'; // 'track' | 'synth'
-let ctx, master;
-
-bgAudio.addEventListener('error', () => {
-  trackFailed = true;
-  if (started && audioMode === 'track') switchToSynth();
-});
+const audioSrc = '/assets/music/FKA_TWIGS/3_FKA_twigs_EUSEXUA_The_Eleven_Perfect_Stranger.mp3';
+bgAudio.src = audioSrc;
+bgAudio.loop = true;
+bgAudio.volume = 0;
+let audioStarted = false;
+const targetVolume = 0.55;
+const fadeDuration = 2500;
 
 function startAudio() {
-  if (started) return;
-  started = true;
-  if (trackFailed) { switchToSynth(); return; }
+  if (audioStarted) return;
+  audioStarted = true;
 
+  bgAudio.currentTime = 0;
   bgAudio.volume = 0;
-  const p = bgAudio.play();
-  if (p && p.catch) p.catch(() => switchToSynth());
+  bgAudio.play().catch(err => console.log('Autoplay prevented:', err));
 
   const fadeStart = performance.now();
-  const fadeMs = 2500, targetVol = 0.55;
   function fade(t) {
-    if (audioMode !== 'track') return;
-    const pct = Math.min(1, Math.max(0, (t - fadeStart) / fadeMs));
-    bgAudio.volume = pct * targetVol;
+    const elapsed = t - fadeStart;
+    const pct = Math.min(1, elapsed / fadeDuration);
+    bgAudio.volume = pct * targetVolume;
     if (pct < 1) requestAnimationFrame(fade);
   }
   requestAnimationFrame(fade);
-}
-
-function switchToSynth() {
-  if (audioMode === 'synth') return;
-  audioMode = 'synth';
-  bgAudio.pause();
-  startSynthAudio();
   document.getElementById('audioToggle').classList.add('on');
-}
-
-/* generative dark-techno ambience — used only if the track can't load */
-function startSynthAudio() {
-  ctx = new (window.AudioContext || window.webkitAudioContext)();
-  master = ctx.createGain();
-  master.gain.value = 0;
-  master.connect(ctx.destination);
-  master.gain.linearRampToValueAtTime(0.32, ctx.currentTime + 3.5);
-
-  const o1 = ctx.createOscillator(); o1.type = 'sine'; o1.frequency.value = 55;
-  const o2 = ctx.createOscillator(); o2.type = 'sawtooth'; o2.frequency.value = 55.4;
-  const droneFilter = ctx.createBiquadFilter();
-  droneFilter.type = 'lowpass'; droneFilter.frequency.value = 380; droneFilter.Q.value = 6;
-  const droneGain = ctx.createGain(); droneGain.gain.value = 0.5;
-  o1.connect(droneFilter); o2.connect(droneFilter);
-  droneFilter.connect(droneGain); droneGain.connect(master);
-
-  const lfo = ctx.createOscillator(); lfo.frequency.value = 0.045;
-  const lfoGain = ctx.createGain(); lfoGain.gain.value = 180;
-  lfo.connect(lfoGain); lfoGain.connect(droneFilter.frequency);
-  o1.start(); o2.start(); lfo.start();
-
-  const bufferSize = 2 * ctx.sampleRate;
-  const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-  const data = noiseBuffer.getChannelData(0);
-  for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * 0.5;
-  const noise = ctx.createBufferSource();
-  noise.buffer = noiseBuffer; noise.loop = true;
-  const noiseFilter = ctx.createBiquadFilter();
-  noiseFilter.type = 'bandpass'; noiseFilter.frequency.value = 900; noiseFilter.Q.value = 0.7;
-  const noiseGain = ctx.createGain(); noiseGain.gain.value = 0.04;
-  noise.connect(noiseFilter); noiseFilter.connect(noiseGain); noiseGain.connect(master);
-  noise.start();
-
-  scheduleMetallicPing();
-}
-
-function metallicPing() {
-  if (!ctx) return;
-  const now = ctx.currentTime;
-  const freqs = [1200, 1800, 2600];
-  const f = freqs[Math.floor(Math.random() * freqs.length)] * (0.9 + Math.random() * 0.2);
-  const carrier = ctx.createOscillator(); carrier.type = 'triangle'; carrier.frequency.value = f;
-  const overtone = ctx.createOscillator(); overtone.type = 'square'; overtone.frequency.value = f * 1.503;
-  const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = f; bp.Q.value = 14;
-  const g = ctx.createGain(); g.gain.value = 0;
-  carrier.connect(bp); overtone.connect(bp); bp.connect(g); g.connect(master);
-  g.gain.setValueAtTime(0, now);
-  g.gain.linearRampToValueAtTime(0.09, now + 0.02);
-  g.gain.exponentialRampToValueAtTime(0.0001, now + 1.8);
-  carrier.start(now); overtone.start(now);
-  carrier.stop(now + 2); overtone.stop(now + 2);
-}
-
-function scheduleMetallicPing() {
-  metallicPing();
-  setTimeout(scheduleMetallicPing, 3000 + Math.random() * 5000);
 }
 
 function toggleAudio() {
   const el = document.getElementById('audioToggle');
-  if (audioMode === 'track') {
-    if (bgAudio.paused) { bgAudio.play().catch(() => switchToSynth()); el.classList.add('on'); }
-    else { bgAudio.pause(); el.classList.remove('on'); }
-  } else if (ctx) {
-    if (ctx.state === 'running') { ctx.suspend(); el.classList.remove('on'); }
-    else { ctx.resume(); el.classList.add('on'); }
+  if (!audioStarted) {
+    startAudio();
+  } else if (bgAudio.paused) {
+    bgAudio.play();
+    el.classList.add('on');
+  } else {
+    bgAudio.pause();
+    el.classList.remove('on');
   }
 }
 
 /* ---------------- gate interaction ---------------- */
 document.getElementById('enterBtn').addEventListener('click', () => {
-  startAudio();
+  if (!audioStarted) startAudio();
+  else bgAudio.play();
   document.getElementById('gate').classList.add('hidden');
   document.getElementById('stage').classList.add('show');
   document.getElementById('audioToggle').classList.add('show', 'on');
@@ -630,7 +654,6 @@ document.getElementById('backBtn').addEventListener('click', () => {
   document.getElementById('audioToggle').classList.remove('show', 'on');
   document.getElementById('backBtn').classList.remove('show');
   bgAudio.pause();
-  if (ctx && ctx.state === 'running') ctx.suspend();
 });
 </script>
 </body>
