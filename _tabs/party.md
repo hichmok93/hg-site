@@ -437,7 +437,7 @@ const CONFIG = {
   name: "The Ceremony",
   age: "33",
   eventTag: "An Evening Unfolds",
-  tagline: "Join the dance. Some food and a chill social vibe.",
+  tagline: "Join for a dance. Have some food & enjoy a chill social vibe.",
   date: "18.09.2026",
   time: "20:00 — till late",
   location: "STRAATWEG 60B",
@@ -515,7 +515,7 @@ window.addEventListener('pointerdown', triggerSpike);
 document.addEventListener('click', triggerSpike);
 
 const bgAudio = document.getElementById('bgAudio');
-const audioSrc = '{{ site.baseurl }}/assets/music/FKA_TWIGS/3_FKA_twigs_EUSEXUA_The_Eleven_Perfect_Stranger.mp3';
+const audioSrc = '{{ site.baseurl }}/assets/music/FKA_TWIGS/2_FKA_twigs_EUSEXUA_the_eleven_Girl_Feels_Good.mp3';
 bgAudio.src = audioSrc;
 bgAudio.loop = true;
 bgAudio.volume = 0;
