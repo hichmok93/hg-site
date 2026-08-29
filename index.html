@@ -51,11 +51,22 @@ title: Home
   .category-image {
     width: 100%;
     height: 200px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 4rem;
+    position: relative;
+  }
+
+  .category-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(102, 126, 234, 0.4);
+    z-index: -1;
   }
 
   .category-content {
@@ -82,32 +93,32 @@ title: Home
 <h2>Explore</h2>
 
 <div class="categories">
-  <a href="/hg-site/categories/travel/" class="category-card">
-    <div class="category-image">✈️</div>
+  <a href="/hg-site/posts/categories/travel/" class="category-card">
+    <div class="category-image" style="background-image: url('/hg-site/assets/images/travel.jpg');">✈️</div>
     <div class="category-content">
       <h3>Travel</h3>
       <p>Adventures, destinations, and stories from around the world</p>
     </div>
   </a>
 
-  <a href="/hg-site/categories/recipes/" class="category-card">
-    <div class="category-image">🍳</div>
+  <a href="/hg-site/posts/categories/recipes/" class="category-card">
+    <div class="category-image" style="background-image: url('/hg-site/assets/images/recipes.jpg');">🍳</div>
     <div class="category-content">
       <h3>Recipes</h3>
       <p>Culinary experiments, techniques, and food stories</p>
     </div>
   </a>
 
-  <a href="/hg-site/categories/music/" class="category-card">
-    <div class="category-image">🎵</div>
+  <a href="/hg-site/posts/categories/music/" class="category-card">
+    <div class="category-image" style="background-image: url('/hg-site/assets/images/music.jpg');">🎵</div>
     <div class="category-content">
       <h3>Music</h3>
       <p>Playlists, artists, and sonic explorations</p>
     </div>
   </a>
 
-  <a href="/hg-site/categories/film/" class="category-card">
-    <div class="category-image">🎬</div>
+  <a href="/hg-site/posts/categories/film/" class="category-card">
+    <div class="category-image" style="background-image: url('/hg-site/assets/images/film.jpg');">🎬</div>
     <div class="category-content">
       <h3>Film</h3>
       <p>Cinema reviews, recommendations, and visual analysis</p>
