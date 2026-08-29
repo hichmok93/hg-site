@@ -519,13 +519,22 @@ function stepFerro(){
 stepFerro();
 
 const bgAudio = document.getElementById('bgAudio');
-const audioSrc = '{{ site.baseurl }}/assets/music/FKA_TWIGS/2_FKA_twigs_EUSEXUA_The_Eleven_Girl_Feels_Good.mp3';
-bgAudio.src = audioSrc;
-bgAudio.loop = true;
+const playlist = [
+  '{{ site.baseurl }}/assets/music/FKA_TWIGS/2_FKA_twigs_EUSEXUA_The_Eleven_Girl_Feels_Good.mp3',
+  '{{ site.baseurl }}/assets/music/FKA_TWIGS/3_FKA_twigs_EUSEXUA_The_Eleven_Perfect_Stranger.mp3'
+];
+let currentTrack = 0;
+bgAudio.src = playlist[currentTrack];
 bgAudio.volume = 0;
 let audioStarted = false;
 const targetVolume = 0.55;
 const fadeDuration = 2500;
+
+bgAudio.addEventListener('ended', () => {
+  currentTrack = (currentTrack + 1) % playlist.length;
+  bgAudio.src = playlist[currentTrack];
+  bgAudio.play().catch(err => console.log('Autoplay prevented:', err));
+});
 
 function startAudio() {
   if (audioStarted) return;
