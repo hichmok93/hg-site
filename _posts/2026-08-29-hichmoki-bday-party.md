@@ -348,7 +348,7 @@ published: false
 
 <div id="backBtn">← Back</div>
 
-<a id="menuBtn" href="https://hichmok93.github.io/hg-site/">Menu</a>
+<a id="menuBtn" href="{{ site.baseurl }}/posts/2026-08-28-bday/">Menu</a>
 
 <script>
 /* ferrofluid cursor cluster */
