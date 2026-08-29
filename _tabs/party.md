@@ -68,34 +68,34 @@ order: 1
   .ferro-blob{
     position:absolute; top:0; left:0;
     border-radius:50%;
-    background: radial-gradient(circle at 40% 30%, #8fd3ff 0%, #7fc0ff 6%, #6ab3ff 12%, #9a9da3 18%, #7a7d82 24%, #6a7077 30%, #5a6066 38%, #4a5056 48%, #3a4046 60%, #2a3036 75%, #1a2026 88%, #000 100%);
+    background: radial-gradient(circle at 40% 30%, #d0d4d8 0%, #b8bcc1 8%, #a0a5ab 16%, #9a9da3 24%, #7a7d82 32%, #6a7077 40%, #5a6066 50%, #4a5056 62%, #3a4046 75%, #2a3036 88%, #1a2026 95%, #000 100%);
     will-change:transform;
     transform:translate3d(-50%,-50%,0);
     animation:ferroColorShift 10s ease-in-out infinite;
-    box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(120,180,255,0.25), 0 0 80px rgba(100,160,255,0.5), 0 0 150px rgba(74,144,226,0.3);
+    box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(180,180,180,0.2), 0 0 60px rgba(120,120,120,0.3), 0 0 120px rgba(100,100,100,0.15);
     backface-visibility:hidden;
     -webkit-backface-visibility:hidden;
   }
 
   @keyframes ferroColorShift{
     0%{
-      background:radial-gradient(circle at 40% 30%, #8fd3ff 0%, #7fc0ff 6%, #6ab3ff 12%, #9a9da3 18%, #7a7d82 24%, #6a7077 30%, #5a6066 38%, #4a5056 48%, #3a4046 60%, #2a3036 75%, #1a2026 88%, #000 100%);
-      box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(120,180,255,0.25), 0 0 80px rgba(100,160,255,0.5), 0 0 150px rgba(74,144,226,0.3);
+      background:radial-gradient(circle at 40% 30%, #d0d4d8 0%, #b8bcc1 8%, #a0a5ab 16%, #9a9da3 24%, #7a7d82 32%, #6a7077 40%, #5a6066 50%, #4a5056 62%, #3a4046 75%, #2a3036 88%, #1a2026 95%, #000 100%);
+      box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(180,180,180,0.2), 0 0 60px rgba(120,120,120,0.3), 0 0 120px rgba(100,100,100,0.15);
     }
     50%{
-      background:radial-gradient(circle at 40% 30%, #c488ff 0%, #b366d9 6%, #9d4eca 12%, #9a9da3 18%, #7a7d82 24%, #6a7077 30%, #5a6066 38%, #4a5056 48%, #3a4046 60%, #2a3036 75%, #1a2026 88%, #000 100%);
-      box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(200,140,255,0.3), 0 0 100px rgba(196,136,255,0.6), 0 0 180px rgba(179,102,217,0.4);
+      background:radial-gradient(circle at 40% 30%, #e0e4e8 0%, #c8ccd1 8%, #b0b5bb 16%, #9a9da3 24%, #7a7d82 32%, #6a7077 40%, #5a6066 50%, #4a5056 62%, #3a4046 75%, #2a3036 88%, #1a2026 95%, #000 100%);
+      box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(200,200,200,0.25), 0 0 70px rgba(140,140,140,0.35), 0 0 140px rgba(120,120,120,0.2);
     }
     100%{
-      background:radial-gradient(circle at 40% 30%, #8fd3ff 0%, #7fc0ff 6%, #6ab3ff 12%, #9a9da3 18%, #7a7d82 24%, #6a7077 30%, #5a6066 38%, #4a5056 48%, #3a4046 60%, #2a3036 75%, #1a2026 88%, #000 100%);
-      box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(120,180,255,0.25), 0 0 80px rgba(100,160,255,0.5), 0 0 150px rgba(74,144,226,0.3);
+      background:radial-gradient(circle at 40% 30%, #d0d4d8 0%, #b8bcc1 8%, #a0a5ab 16%, #9a9da3 24%, #7a7d82 32%, #6a7077 40%, #5a6066 50%, #4a5056 62%, #3a4046 75%, #2a3036 88%, #1a2026 95%, #000 100%);
+      box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(180,180,180,0.2), 0 0 60px rgba(120,120,120,0.3), 0 0 120px rgba(100,100,100,0.15);
     }
   }
 
-  #ferro-1{ width:min(28vw,200px); height:min(28vw,200px); }
-  #ferro-2{ width:min(18vw,140px); height:min(18vw,140px); }
-  #ferro-3{ width:min(13vw,100px); height:min(13vw,100px); }
-  #ferro-4{ width:min(9vw,70px); height:min(9vw,70px); }
+  #ferro-1{ width:min(28vw,180px); height:min(28vw,180px); }
+  #ferro-2{ width:min(18vw,120px); height:min(18vw,120px); }
+  #ferro-3{ width:min(13vw,85px); height:min(13vw,85px); }
+  #ferro-4{ width:min(9vw,60px); height:min(9vw,60px); }
 
   .ferro-oil{ position:absolute; inset:0; filter:url(#liquidFilter); mix-blend-mode:normal; }
 
@@ -339,6 +339,34 @@ order: 1
 
   #menuBtn:hover{ border-color:var(--ice); color:var(--ice); }
 
+  @media (max-width:768px){
+    :root{
+      --fs-display:clamp(2.2rem, 10vw, 4rem);
+      --fs-h2:clamp(1.1rem, 3vw, 1.4rem);
+      --fs-body:clamp(0.9rem, 1.8vw, 1rem);
+      --fs-mono:clamp(0.6rem, 1.4vw, 0.7rem);
+    }
+    
+    body{ cursor:auto; }
+    .wrap{ padding:0 4vw; }
+    
+    header.hero{ gap:1.2rem; }
+    h1.name .turns{ font-size:0.3em; margin-top:0.4em; }
+    
+    .details-grid{ gap:2rem 3rem; }
+    .detail-cell{ flex:1 1 180px; max-width:250px; }
+    
+    section.rsvp{ padding:3rem 0 6rem; gap:1.2rem; }
+    
+    .rsvp-btn{ padding:0.9em 2.2em; font-size:0.7rem; letter-spacing:0.25em; }
+    .rsvp-btn:hover{ letter-spacing:0.32em; }
+    
+    #audioToggle{ bottom:1rem; right:1rem; padding:0.6em 0.9em; font-size:0.6rem; }
+    #menuBtn{ top:1rem; right:1rem; padding:0.6em 0.9em; font-size:0.6rem; }
+    
+    .enter-btn{ padding:0.95em 2.2em; font-size:0.72rem; }
+  }
+
   @media (prefers-reduced-motion: reduce){
     .chrome-text, .enter-btn, .scroll-cue{ animation:none !important; }
   }
@@ -492,9 +520,12 @@ if (document.getElementById('js-calendar-link-detail')) {
 }
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile = window.matchMedia('(max-width:768px)').matches;
 let mx = window.innerWidth / 2, my = window.innerHeight / 2;
 
-window.addEventListener('pointermove', (e) => { mx = e.clientX; my = e.clientY; });
+if (!isMobile) {
+  window.addEventListener('pointermove', (e) => { mx = e.clientX; my = e.clientY; });
+}
 window.addEventListener('touchmove', (e) => {
   if (e.touches[0]) { mx = e.touches[0].clientX; my = e.touches[0].clientY; }
 }, { passive: true });
@@ -510,8 +541,12 @@ const ferroState = [
 let spike = 0;
 const highlight = document.getElementById('ferroHighlight');
 
-function stepFerro() {
-  if (!document.hidden) {
+let lastUpdateTime = 0;
+const updateInterval = isMobile ? 50 : 16;
+
+function stepFerro(t) {
+  if (!document.hidden && t - lastUpdateTime > updateInterval) {
+    lastUpdateTime = t;
     ferroState.forEach((s, i) => {
       const tx = mx + s.ox * (1 + spike * 0.02);
       const ty = my + s.oy * (1 + spike * 0.02);
