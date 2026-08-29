@@ -73,6 +73,8 @@ order: 1
     transform:translate3d(-50%,-50%,0);
     animation:ferroColorShift 10s ease-in-out infinite;
     box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(120,180,255,0.25), 0 0 80px rgba(100,160,255,0.5), 0 0 150px rgba(74,144,226,0.3);
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
   }
 
   @keyframes ferroColorShift{
@@ -107,6 +109,8 @@ order: 1
     opacity:0.55;
     will-change:transform;
     transform:translate3d(-50%,-50%,0);
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
   }
 
   .chrome-text{
@@ -488,21 +492,23 @@ let spike = 0;
 const highlight = document.getElementById('ferroHighlight');
 
 function stepFerro() {
-  ferroState.forEach((s, i) => {
-    const tx = mx + s.ox * (1 + spike * 0.02);
-    const ty = my + s.oy * (1 + spike * 0.02);
-    const ax = (tx - s.x) * s.k;
-    const ay = (ty - s.y) * s.k;
-    s.vx = (s.vx + ax) * s.d;
-    s.vy = (s.vy + ay) * s.d;
-    s.x += s.vx;
-    s.y += s.vy;
-    if (!reduceMotion) ferroEls[i].style.transform = `translate3d(${s.x}px, ${s.y}px, 0) translate3d(-50%, -50%, 0)`;
-  });
-  if (!reduceMotion) {
-    highlight.style.transform = `translate3d(${ferroState[0].x - 26}px, ${ferroState[0].y - 34}px, 0) translate3d(-50%, -50%, 0)`;
+  if (!document.hidden) {
+    ferroState.forEach((s, i) => {
+      const tx = mx + s.ox * (1 + spike * 0.02);
+      const ty = my + s.oy * (1 + spike * 0.02);
+      const ax = (tx - s.x) * s.k;
+      const ay = (ty - s.y) * s.k;
+      s.vx = (s.vx + ax) * s.d;
+      s.vy = (s.vy + ay) * s.d;
+      s.x += s.vx;
+      s.y += s.vy;
+      if (!reduceMotion) ferroEls[i].style.transform = `translate3d(${s.x}px, ${s.y}px, 0) translate3d(-50%, -50%, 0)`;
+    });
+    if (!reduceMotion) {
+      highlight.style.transform = `translate3d(${ferroState[0].x - 26}px, ${ferroState[0].y - 34}px, 0) translate3d(-50%, -50%, 0)`;
+    }
+    if (spike > 0) spike *= 0.9;
   }
-  if (spike > 0) spike *= 0.9;
   requestAnimationFrame(stepFerro);
 }
 stepFerro();
