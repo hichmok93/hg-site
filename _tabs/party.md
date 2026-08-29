@@ -454,6 +454,9 @@ order: 1
       <a class="rsvp-btn" id="js-rsvp-link" href="https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX" target="_blank">Join WhatsApp</a>
       <a class="rsvp-btn" id="js-calendar-link" href="#" target="_blank">Add to Calendar</a>
     </div>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
+      <a href="https://wa.me/31681348625?text=Sorry%2C%20I%20can%27t%20make%20it%20%E2%80%94%20but%20happy%20birthday!" target="_blank" style="color:var(--chrome-3); font-size:0.8rem; text-decoration:none; border:none; background:none; cursor:pointer; transition:color 0.3s ease; font-family:'Space Mono', monospace; letter-spacing:0.1em; border-bottom:1px solid var(--chrome-3); padding-bottom:0.3em;">Can't make it? Let us know</a>
+    </div>
   </section>
 
   <footer>
@@ -481,7 +484,7 @@ const CONFIG = {
   name: "The Ceremony",
   age: "33",
   eventTag: "An Evening Unfolds",
-  tagline: "Join the dance. Good food, warm people, a night that moves.",
+  tagline: "Join the party. Good food, warm people, a night that moves.",
   date: "18.09.2026",
   time: "20:00 — till late",
   location: "STRAATWEG 60B",
@@ -505,7 +508,7 @@ const calendarDate = '20260918T200000';
 const calendarEndDate = '20260919T000000';
 const calendarTitle = encodeURIComponent('Hichmoki\'s Party - The Ceremony 33');
 const calendarLocation = encodeURIComponent('Straatweg 60B, 3051 BH Rotterdam');
-const calendarDesc = encodeURIComponent('Join the dance. Good food, warm people, a night that moves. WhatsApp: https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX');
+const calendarDesc = encodeURIComponent('Join the party. Good food, warm people, a night that moves. WhatsApp: https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX');
 const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${calendarTitle}&dates=${calendarDate}/${calendarEndDate}&location=${calendarLocation}&details=${calendarDesc}`;
 document.getElementById('js-calendar-link').href = calendarUrl;
 if (document.getElementById('js-calendar-link-detail')) {
@@ -513,16 +516,18 @@ if (document.getElementById('js-calendar-link-detail')) {
 }
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-window.addEventListener('pointermove', (e) => { mx = e.clientX; my = e.clientY; });
-window.addEventListener('touchmove', (e) => { if (e.touches[0]) { mx = e.touches[0].clientX; my = e.touches[0].clientY; } }, { passive: true });
+const centerX = window.innerWidth / 2, centerY = window.innerHeight / 2;
+let mx = centerX, my = centerY;
+let ferroActive = false;
+window.addEventListener('pointermove', (e) => { if (ferroActive) { mx = e.clientX; my = e.clientY; } });
+window.addEventListener('touchmove', (e) => { if (ferroActive && e.touches[0]) { mx = e.touches[0].clientX; my = e.touches[0].clientY; } }, { passive: true });
 
 const ferroEls = ['ferro-1','ferro-2','ferro-3','ferro-4'].map(id => document.getElementById(id));
 const ferroState = [
-  { x: mx, y: my, vx: 0, vy: 0, k: 0.05,  d: 0.86, ox: 0,   oy: 0 },
-  { x: mx, y: my, vx: 0, vy: 0, k: 0.032, d: 0.82, ox: 60,  oy: -30 },
-  { x: mx, y: my, vx: 0, vy: 0, k: 0.024, d: 0.80, ox: -70, oy: 40 },
-  { x: mx, y: my, vx: 0, vy: 0, k: 0.02,  d: 0.78, ox: 20,  oy: 70 }
+  { x: centerX, y: centerY, vx: 0, vy: 0, k: 0.05,  d: 0.86, ox: 0,   oy: 0 },
+  { x: centerX, y: centerY, vx: 0, vy: 0, k: 0.032, d: 0.82, ox: 60,  oy: -30 },
+  { x: centerX, y: centerY, vx: 0, vy: 0, k: 0.024, d: 0.80, ox: -70, oy: 40 },
+  { x: centerX, y: centerY, vx: 0, vy: 0, k: 0.02,  d: 0.78, ox: 20,  oy: 70 }
 ];
 const highlight = document.getElementById('ferroHighlight');
 
@@ -639,7 +644,7 @@ function smoothScrollToStage() {
   const start = window.scrollY || window.pageYOffset;
   const target = stage.offsetTop;
   const distance = target - start;
-  const duration = 1500;
+  const duration = 3500;
   const startTime = performance.now();
   
   function scroll(t) {
@@ -655,6 +660,7 @@ function smoothScrollToStage() {
 document.getElementById('enterBtn').addEventListener('click', () => {
   if (!audioStarted) startAudio();
   else bgAudio.play();
+  ferroActive = true;
   triggerFerroSpike();
   setTimeout(smoothScrollToStage, 500);
 });
