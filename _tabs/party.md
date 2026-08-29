@@ -661,8 +661,12 @@ function smoothScrollToStage() {
 }
 
 document.getElementById('enterBtn').addEventListener('click', () => {
-  if (!audioStarted) startAudio();
-  else bgAudio.play();
+  if (!audioStarted) {
+    startAudio();
+  } else if (bgAudio.paused) {
+    bgAudio.play().catch(err => console.log('Autoplay prevented:', err));
+  }
+  document.getElementById('audioToggle').classList.add('on');
   ferroActive = true;
   triggerFerroSpike();
   setTimeout(smoothScrollToStage, 500);
