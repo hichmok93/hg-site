@@ -3,6 +3,8 @@ layout: raw
 title: Hichmoki Party - Welkom
 date: 2026-08-29
 categories: [party]
+sitemap: false
+published: false
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -42,6 +44,9 @@ categories: [party]
     overflow-x:hidden;
     min-height:100vh;
     cursor:crosshair;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    transform:translate3d(0,0,0);
   }
 
   a, button{ cursor:pointer; }
@@ -343,7 +348,7 @@ categories: [party]
 
 <div id="backBtn">← Back</div>
 
-<a id="menuBtn" href="/">Menu</a>
+<a id="menuBtn" href="https://hichmok93.github.io/hg-site/">Menu</a>
 
 <script>
 /* ferrofluid cursor cluster */
@@ -402,7 +407,7 @@ document.getElementById('backBtn').addEventListener('click', () => {
 /* Audio playback */
 const bgAudio = document.getElementById('bgAudio');
 const audioToggle = document.getElementById('audioToggle');
-const audioSrc = '/assets/music/FKA_TWIGS/3_FKA_twigs_EUSEXUA_The_Eleven_Perfect_Stranger.mp3';
+const audioSrc = '{{ site.baseurl }}/assets/music/FKA_TWIGS/3_FKA_twigs_EUSEXUA_The_Eleven_Perfect_Stranger.mp3';
 bgAudio.src = audioSrc;
 bgAudio.loop = true;
 bgAudio.volume = 0;
