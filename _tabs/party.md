@@ -428,7 +428,7 @@ order: 1
       <div class="detail-cell">
         <div class="label mono">Date</div>
         <div class="value chrome-text" id="js-date">DATE</div>
-        <a id="js-calendar-link-detail" style="margin-top:0.8rem; font-family:'Space Mono', monospace; letter-spacing:0.18em; font-size:0.75rem; text-transform:uppercase; color:var(--ice); text-decoration:none; transition:opacity 0.3s ease;" href="#" target="_blank">Add to Calendar</a>
+        <a id="js-calendar-link-detail" style="margin-top:0.8rem; font-family:'Space Mono', monospace; letter-spacing:0.18em; font-size:0.75rem; text-transform:uppercase; color:var(--ice); text-decoration:none; transition:opacity 0.3s ease;" href="#" target="_blank">[Add to Calendar]</a>
       </div>
       <div class="detail-cell">
         <div class="label mono">Time</div>
@@ -438,7 +438,7 @@ order: 1
         <div class="label mono">Location</div>
         <div class="value chrome-text" id="js-location">LOCATION</div>
         <div class="sub" id="js-address"></div>
-        <a href="https://maps.google.com/?q=Straatweg+60B,+3051+BH+Rotterdam" target="_blank" style="margin-top:0.8rem; font-family:'Space Mono', monospace; letter-spacing:0.18em; font-size:0.75rem; text-transform:uppercase; color:var(--ice); text-decoration:none; transition:opacity 0.3s ease;">Open Location</a>
+        <a href="https://maps.google.com/?q=Straatweg+60B,+3051+BH+Rotterdam" target="_blank" style="margin-top:0.8rem; font-family:'Space Mono', monospace; letter-spacing:0.18em; font-size:0.75rem; text-transform:uppercase; color:var(--ice); text-decoration:none; transition:opacity 0.3s ease;">[Open Location]</a>
       </div>
       <div class="detail-cell">
         <div class="label mono">Dress Code</div>
@@ -448,7 +448,7 @@ order: 1
   </section>
 
   <section class="rsvp wrap">
-    <h2 class="chrome-text">You're In</h2>
+    <h2 class="chrome-text">Are you in?</h2>
     <p id="js-rsvp-note">If you are attending, join the WhatsApp group.</p>
     <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem;">
       <a class="rsvp-btn" id="js-rsvp-link" href="https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX" target="_blank">Join WhatsApp</a>
@@ -461,7 +461,7 @@ order: 1
   </footer>
 
   <section style="padding:6rem 0 4rem; text-align:center;">
-    <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1.2rem, 3vw, 1.8rem); text-transform:uppercase; letter-spacing:0.05em; color:#c488ff;">Bday 2026</div>
+    <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1.2rem, 3vw, 1.8rem); text-transform:uppercase; letter-spacing:0.05em; background:linear-gradient(112deg, #71787f 0%, #f2f4f6 14%, #b9c0c7 26%, #ffffff 38%, #26292d 50%, #b9c0c7 64%, #f2f4f6 78%, #71787f 100%); background-size:280% 280%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:chromeShift 6s ease-in-out infinite; filter:url(#liquidFilterSoft);">Bday 2026</div>
   </section>
 </div>
 
@@ -481,7 +481,7 @@ const CONFIG = {
   name: "The Ceremony",
   age: "33",
   eventTag: "An Evening Unfolds",
-  tagline: "Join for a dance. Have some food & enjoy a chill social vibe.",
+  tagline: "Join the dance. Good food, warm people, a night that moves.",
   date: "18.09.2026",
   time: "20:00 — till late",
   location: "STRAATWEG 60B",
@@ -503,9 +503,9 @@ document.getElementById('js-footer-year').textContent = new Date().getFullYear()
 
 const calendarDate = '20260918T200000';
 const calendarEndDate = '20260919T000000';
-const calendarTitle = encodeURIComponent('Hichmoki\'s Party - The Ceremony');
+const calendarTitle = encodeURIComponent('Hichmoki\'s Party - The Ceremony 33');
 const calendarLocation = encodeURIComponent('Straatweg 60B, 3051 BH Rotterdam');
-const calendarDesc = encodeURIComponent('Join the dance. Some food and a nice social vibe. WhatsApp: https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX');
+const calendarDesc = encodeURIComponent('Join the dance. Good food, warm people, a night that moves. WhatsApp: https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX');
 const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${calendarTitle}&dates=${calendarDate}/${calendarEndDate}&location=${calendarLocation}&details=${calendarDesc}`;
 document.getElementById('js-calendar-link').href = calendarUrl;
 if (document.getElementById('js-calendar-link-detail')) {
