@@ -1,4 +1,136 @@
 ---
-layout: home
-# Index page
+layout: page
+title: Home
 ---
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 4rem;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .hero p {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .category-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+
+  .category-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+  }
+
+  .category-content {
+    padding: 1.5rem;
+  }
+
+  .category-content h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+  }
+
+  .category-content p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+  }
+</style>
+
+<div class="hero">
+  <h1>Hicham Gardeslen</h1>
+  <p>A blog about my world — exploring travel, recipes, music, and film through digital storytelling and creative projects.</p>
+</div>
+
+<h2>Explore</h2>
+
+<div class="categories">
+  <a href="/hg-site/categories/travel/" class="category-card">
+    <div class="category-image">✈️</div>
+    <div class="category-content">
+      <h3>Travel</h3>
+      <p>Adventures, destinations, and stories from around the world</p>
+    </div>
+  </a>
+
+  <a href="/hg-site/categories/recipes/" class="category-card">
+    <div class="category-image">🍳</div>
+    <div class="category-content">
+      <h3>Recipes</h3>
+      <p>Culinary experiments, techniques, and food stories</p>
+    </div>
+  </a>
+
+  <a href="/hg-site/categories/music/" class="category-card">
+    <div class="category-image">🎵</div>
+    <div class="category-content">
+      <h3>Music</h3>
+      <p>Playlists, artists, and sonic explorations</p>
+    </div>
+  </a>
+
+  <a href="/hg-site/categories/film/" class="category-card">
+    <div class="category-image">🎬</div>
+    <div class="category-content">
+      <h3>Film</h3>
+      <p>Cinema reviews, recommendations, and visual analysis</p>
+    </div>
+  </a>
+</div>
+
+<div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #e0e0e0;">
+  <h2>Latest Posts</h2>
+  <div style="display: grid; gap: 1.5rem; margin-top: 1.5rem;">
+    {% for post in site.posts limit:6 %}
+      <div style="padding: 1rem; border-left: 4px solid #667eea;">
+        <h3 style="margin: 0 0 0.5rem 0;">
+          <a href="{{ post.url }}" style="color: inherit; text-decoration: none;">{{ post.title }}</a>
+        </h3>
+        <small style="color: #999;">
+          {{ post.date | date: "%d %B %Y" }}
+          {% if post.categories %}
+            • {{ post.categories | join: ", " }}
+          {% endif %}
+        </small>
+        <p style="margin: 0.5rem 0 0 0; color: #666;">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>

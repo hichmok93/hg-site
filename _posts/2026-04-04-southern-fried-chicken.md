@@ -5,6 +5,7 @@ date: 2026-04-04
 categorie: gevogelte
 description: Dit is een waanzinnig recept voor gefrituurde kip, waarvoor ik gedeeltelijk schatplichtig ben aan de ongekroonde koningen van het comfort food uit het zuiden van de Verenigde Staten. De kip wordt in de oven afgebakken — zo heb je geen enorme frituurpan nodig en blijft de temperatuur makkelijk onder controle. Voor thuis is dit gewoon veel handiger. 
 tags: [kip, frituur, comfort food, Amerikaans, zomer]
+categories: [recipes]
 image: https://www.butterbeready.com/wp-content/uploads/2024/11/fried-chicken-5-1365x2048.jpg
 ---
 

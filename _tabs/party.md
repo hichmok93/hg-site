@@ -1,7 +1,7 @@
 ---
 layout: html-only
 title: Party
-icon: fas fa-mask
+icon: fa-solid fa-cake-candles
 permalink: /party/
 order: 1
 ---
