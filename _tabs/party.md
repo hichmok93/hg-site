@@ -1,7 +1,7 @@
 ---
 layout: html-only
 title: Party
-icon: fas fa-hat-party
+icon: fas fa-mask
 permalink: /party/
 order: 1
 ---
@@ -42,9 +42,6 @@ order: 1
     overflow-x:hidden;
     min-height:100vh;
     cursor:crosshair;
-    backface-visibility:hidden;
-    -webkit-backface-visibility:hidden;
-    transform:translate3d(0,0,0);
   }
 
   ::selection{ background:var(--ice); color:var(--void); }
@@ -63,7 +60,7 @@ order: 1
     background:repeating-linear-gradient(0deg, #fff 0px, transparent 1px, transparent 3px);
   }
 
-  .blob-wrap{ position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+  .blob-wrap{ position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden; }
   .ferro-goo{ position:absolute; inset:0; filter:url(#gooMerge); }
   .ferro-blob{
     position:absolute; top:0; left:0; border-radius:50%;
@@ -108,6 +105,8 @@ order: 1
   }
 
   #gate{
+    position:relative;
+    z-index:1;
     min-height:100vh;
     display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.2rem;
     background:var(--void);
@@ -155,7 +154,7 @@ order: 1
 
   .gate-hint{ color:var(--chrome-3); font-size:0.72rem; }
 
-  #stage{ position:relative; z-index:1; }
+  #stage{ position:relative; z-index:1; padding-top:2rem; }
   .wrap{ max-width:960px; margin:0 auto; padding:0 6vw; }
 
   header.hero{
