@@ -321,6 +321,23 @@ order: 1
 
   @keyframes barBounce{ 0%,100%{ height:3px; } 50%{ height:10px; } }
 
+  #menuBtn{
+    position:fixed; top:1.4rem; right:1.4rem; z-index:55;
+    padding:0.7em 1.1em;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:rgba(13,15,18,0.7);
+    backdrop-filter:blur(6px);
+    font-family:'Space Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--chrome-2);
+    transition:border-color 0.3s ease, color 0.3s ease;
+    text-decoration:none;
+  }
+
+  #menuBtn:hover{ border-color:var(--ice); color:var(--ice); }
 
   @media (prefers-reduced-motion: reduce){
     .chrome-text, .enter-btn, .scroll-cue{ animation:none !important; }
@@ -430,6 +447,8 @@ order: 1
 
 <audio id="bgAudio" preload="auto"></audio>
 
+<a id="menuBtn" href="https://hichmok93.github.io/hg-site/">Menu</a>
+
 <div id="audioToggle">
   <div class="dot"></div>
   <div class="bars"><i></i><i></i><i></i></div>
@@ -521,7 +540,7 @@ window.addEventListener('pointerdown', triggerSpike);
 document.addEventListener('click', triggerSpike);
 
 const bgAudio = document.getElementById('bgAudio');
-const audioSrc = '{{ site.baseurl }}/assets/music/FKA_TWIGS/2_FKA_twigs_EUSEXUA_the_eleven_Girl_Feels_Good.mp3';
+const audioSrc = '{{ site.baseurl }}/assets/music/FKA_TWIGS/2_FKA_twigs_EUSEXUA_The_Eleven_Girl_Feels_Good.mp3';
 bgAudio.src = audioSrc;
 bgAudio.loop = true;
 bgAudio.volume = 0;
