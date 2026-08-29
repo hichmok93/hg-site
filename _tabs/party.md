@@ -66,36 +66,19 @@ order: 1
   .blob-wrap{ position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
   .ferro-goo{ position:absolute; inset:0; filter:url(#gooMerge); }
   .ferro-blob{
-    position:absolute; top:0; left:0;
-    border-radius:50%;
-    background: radial-gradient(circle at 40% 30%, #d0d4d8 0%, #b8bcc1 8%, #a0a5ab 16%, #9a9da3 24%, #7a7d82 32%, #6a7077 40%, #5a6066 50%, #4a5056 62%, #3a4046 75%, #2a3036 88%, #1a2026 95%, #000 100%);
+    position:absolute; top:0; left:0; border-radius:50%;
+    background:radial-gradient(circle at 34% 26%, #7a7d82 0%, #2c2e32 20%, #131417 42%, #050506 68%, #000 100%);
     will-change:transform;
     transform:translate3d(-50%,-50%,0);
-    animation:ferroColorShift 10s ease-in-out infinite;
-    box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(180,180,180,0.2), 0 0 60px rgba(120,120,120,0.3), 0 0 120px rgba(100,100,100,0.15);
     backface-visibility:hidden;
     -webkit-backface-visibility:hidden;
   }
 
-  @keyframes ferroColorShift{
-    0%{
-      background:radial-gradient(circle at 40% 30%, #d0d4d8 0%, #b8bcc1 8%, #a0a5ab 16%, #9a9da3 24%, #7a7d82 32%, #6a7077 40%, #5a6066 50%, #4a5056 62%, #3a4046 75%, #2a3036 88%, #1a2026 95%, #000 100%);
-      box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(180,180,180,0.2), 0 0 60px rgba(120,120,120,0.3), 0 0 120px rgba(100,100,100,0.15);
-    }
-    50%{
-      background:radial-gradient(circle at 40% 30%, #e0e4e8 0%, #c8ccd1 8%, #b0b5bb 16%, #9a9da3 24%, #7a7d82 32%, #6a7077 40%, #5a6066 50%, #4a5056 62%, #3a4046 75%, #2a3036 88%, #1a2026 95%, #000 100%);
-      box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(200,200,200,0.25), 0 0 70px rgba(140,140,140,0.35), 0 0 140px rgba(120,120,120,0.2);
-    }
-    100%{
-      background:radial-gradient(circle at 40% 30%, #d0d4d8 0%, #b8bcc1 8%, #a0a5ab 16%, #9a9da3 24%, #7a7d82 32%, #6a7077 40%, #5a6066 50%, #4a5056 62%, #3a4046 75%, #2a3036 88%, #1a2026 95%, #000 100%);
-      box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(180,180,180,0.2), 0 0 60px rgba(120,120,120,0.3), 0 0 120px rgba(100,100,100,0.15);
-    }
-  }
 
-  #ferro-1{ width:min(28vw,180px); height:min(28vw,180px); }
-  #ferro-2{ width:min(18vw,120px); height:min(18vw,120px); }
-  #ferro-3{ width:min(13vw,85px); height:min(13vw,85px); }
-  #ferro-4{ width:min(9vw,60px); height:min(9vw,60px); }
+  #ferro-1{ width:min(46vw,340px); height:min(46vw,340px); }
+  #ferro-2{ width:min(30vw,220px); height:min(30vw,220px); }
+  #ferro-3{ width:min(22vw,160px); height:min(22vw,160px); }
+  #ferro-4{ width:min(16vw,120px); height:min(16vw,120px); }
 
   .ferro-oil{ position:absolute; inset:0; filter:url(#liquidFilter); mix-blend-mode:normal; }
 
@@ -542,7 +525,7 @@ let spike = 0;
 const highlight = document.getElementById('ferroHighlight');
 
 let lastUpdateTime = 0;
-const updateInterval = isMobile ? 50 : 16;
+const updateInterval = isMobile ? 100 : 16;
 
 function stepFerro(t) {
   if (!document.hidden && t - lastUpdateTime > updateInterval) {
