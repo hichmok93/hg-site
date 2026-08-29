@@ -4,15 +4,14 @@ icon: fas fa-mask
 order: 3
 redirect_to: /posts/2026-08-28-bday/
 ---
-
 ---
 layout: html-only
-title: Hichmoki Party - Welkom
-date: 2026-08-29
+title: The Ceremony
+date: 2026-08-28
 categories: [party]
 sitemap: false
 published: false
-permalink: /posts/2026-08-29-hichmoki-bday-party/
+permalink: /posts/2026-08-28-bday/
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -34,8 +33,8 @@ permalink: /posts/2026-08-29-hichmoki-bday-party/
     --ice:#9fe8ff;
     --ice-dim:rgba(159,232,255,0.35);
     --line:rgba(255,255,255,0.14);
-    --fs-display:clamp(2.4rem, 10vw, 7rem);
-    --fs-h2:clamp(1.2rem, 3vw, 1.8rem);
+    --fs-display:clamp(3.2rem, 13vw, 9.5rem);
+    --fs-h2:clamp(1.4rem, 4vw, 2rem);
     --fs-body:clamp(0.95rem, 2vw, 1.05rem);
     --fs-mono:clamp(0.68rem, 1.6vw, 0.78rem);
   }
@@ -49,19 +48,18 @@ permalink: /posts/2026-08-29-hichmoki-bday-party/
     color:var(--chrome-1);
     font-family:'Manrope', sans-serif;
     font-weight:300;
-    overflow:hidden;
-    height:100vh;
+    overflow-y:auto;
+    overflow-x:hidden;
+    min-height:100vh;
     cursor:crosshair;
     backface-visibility:hidden;
     -webkit-backface-visibility:hidden;
     transform:translate3d(0,0,0);
   }
 
-  a, button{ cursor:pointer; }
-
   ::selection{ background:var(--ice); color:var(--void); }
 
-  a{ color:inherit; text-decoration:none; }
+  a{ color:inherit; }
 
   button{ font-family:inherit; border:none; background:none; color:inherit; cursor:pointer; }
 
@@ -165,65 +163,198 @@ permalink: /posts/2026-08-29-hichmoki-bday-party/
     color:var(--chrome-2);
   }
 
-  #stage{
-    position:relative;
-    z-index:1;
-    min-height:100svh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    gap:2.4rem;
-    padding:2rem 6vw;
+  /* ---------- gate ---------- */
+  #gate{
+    position:fixed; inset:0; z-index:50;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.2rem;
+    background:var(--void);
+    transition:opacity 1.1s ease, visibility 1.1s ease;
   }
+  #gate.hidden{ opacity:0; visibility:hidden; pointer-events:none; }
 
-  h1{
+  .gate-mark{
     font-family:'Unbounded', sans-serif;
     font-weight:900;
-    font-size:var(--fs-display);
-    line-height:1.1;
-    letter-spacing:-0.01em;
-    text-transform:uppercase;
-    margin:0;
+    font-size:clamp(2.2rem, 9vw, 4.2rem);
+    letter-spacing:0.02em;
     filter:url(#liquidFilterSoft);
   }
 
-  .age-text{
-    font-size:var(--fs-h2);
-    color:var(--ice);
-    font-weight:600;
-    margin:0.6rem 0 0;
+  .enter-btn{
+    position:relative;
+    padding:1.05em 2.6em;
+    border:1px solid var(--line);
+    border-radius:999px;
+    font-family:'Space Mono', monospace;
+    letter-spacing:0.3em;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    color:var(--void);
+    background:linear-gradient(120deg,var(--chrome-2),var(--chrome-1) 40%,var(--chrome-3) 70%,var(--chrome-1));
+    background-size:220% 220%;
+    animation:chromeShift 6s ease-in-out infinite;
+    transition:transform 0.35s ease, box-shadow 0.35s ease;
+    box-shadow:0 0 0 rgba(159,232,255,0);
+  }
+  .enter-btn:hover{ transform:scale(1.06); box-shadow:0 0 42px var(--ice-dim); }
+  .enter-btn:active{
+    transform:scale(0.97);
+    box-shadow:0 0 0 0 rgba(168, 85, 247, 0.9);
+    animation:purpleMetallicGlow 0.8s ease-out;
+  }
+  @keyframes purpleMetallicGlow{
+    0%{
+      box-shadow:0 0 20px 0 rgba(168, 85, 247, 1), inset 0 0 20px rgba(200, 150, 255, 0.6);
+      text-shadow:0 0 10px rgba(168, 85, 247, 0.8);
+    }
+    50%{ box-shadow:0 0 40px 10px rgba(168, 85, 247, 0.6), inset 0 0 10px rgba(200, 150, 255, 0.3); }
+    100%{ box-shadow:0 0 0 20px rgba(168, 85, 247, 0), inset 0 0 0 rgba(200, 150, 255, 0); }
   }
 
-  .message{
-    max-width:45ch;
+  .gate-hint{ color:var(--chrome-3); font-size:0.72rem; }
+
+  /* ---------- stage ---------- */
+  #stage{ position:relative; z-index:1; opacity:0; transition:opacity 1.2s ease 0.2s; }
+  #stage.show{ opacity:1; }
+
+  .wrap{ max-width:960px; margin:0 auto; padding:0 6vw; }
+
+  header.hero{
+    min-height:100svh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; gap:1.6rem;
+    position:relative;
+  }
+
+  .eyebrow{ display:flex; align-items:center; gap:0.8em; color:var(--ice); }
+  .eyebrow::before, .eyebrow::after{
+    content:""; width:2.4em; height:1px; background:var(--ice-dim);
+  }
+
+  h1.name{
+    font-family:'Unbounded', sans-serif;
+    font-weight:900;
+    font-size:var(--fs-display);
+    line-height:0.92;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+    filter:url(#liquidFilterSoft);
+  }
+  h1.name .turns{
+    display:block;
+    font-size:0.34em;
+    font-weight:700;
+    letter-spacing:0.08em;
+    margin-top:0.5em;
+    -webkit-text-stroke:1px var(--chrome-2);
+    color:transparent;
+  }
+
+  .tagline{
+    max-width:34ch;
     font-size:var(--fs-body);
     color:var(--chrome-2);
-    line-height:1.7;
-    margin:1.2rem 0;
+    font-weight:300;
+    line-height:1.6;
   }
 
-  .whatsapp-link{
-    display:inline-block;
-    margin-top:2rem;
+  .scroll-cue{
+    position:absolute; bottom:2.4rem; left:50%; transform:translateX(-50%);
+    width:1px; height:52px;
+    background:linear-gradient(var(--ice), transparent);
+    animation:scrollPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes scrollPulse{ 0%,100%{ opacity:0.15; } 50%{ opacity:0.85; } }
+
+  /* details — floating, unboxed, metallic */
+  section.details{ padding:8rem 0 7rem; }
+
+  .divider{
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--line) 20%, var(--line) 80%, transparent);
+    margin-bottom:5rem;
+  }
+
+  .details-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:3.4rem 5rem;
+    text-align:center;
+  }
+
+  .detail-cell{
+    display:flex; flex-direction:column; gap:1rem;
+    align-items:center;
+    flex:1 1 240px;
+    max-width:320px;
+  }
+
+  .detail-cell .label{ color:var(--ice); }
+  .detail-cell .value{
+    font-family:'Unbounded', sans-serif;
+    font-weight:700;
+    font-size:clamp(1.3rem, 3.6vw, 1.9rem);
+    text-transform:uppercase;
+    line-height:1.15;
+    filter:url(#liquidFilterSoft);
+  }
+  .detail-cell .sub{ color:var(--chrome-3); font-size:0.85rem; font-weight:300; }
+
+  /* rsvp */
+  section.rsvp{
+    padding:4rem 0 9rem;
+    text-align:center;
+    display:flex; flex-direction:column; align-items:center; gap:1.8rem;
+  }
+  .rsvp h2{
+    font-family:'Unbounded', sans-serif; font-weight:700;
+    font-size:var(--fs-h2); text-transform:uppercase; letter-spacing:0.01em;
+  }
+  .rsvp p{ color:var(--chrome-2); max-width:38ch; font-size:var(--fs-body); line-height:1.6; }
+
+  .rsvp-btn{
+    margin-top:0.6rem;
     padding:1.1em 2.8em;
     border-radius:999px;
     border:1px solid var(--chrome-2);
     font-family:'Space Mono', monospace;
-    letter-spacing:0.28em;
-    font-size:0.78rem;
-    text-transform:uppercase;
-    position:relative;
-    overflow:hidden;
+    letter-spacing:0.28em; font-size:0.78rem; text-transform:uppercase;
+    position:relative; overflow:hidden;
     transition:letter-spacing 0.4s ease, border-color 0.4s ease, color 0.4s ease;
   }
+  .rsvp-btn:hover{ letter-spacing:0.38em; border-color:var(--ice); color:var(--ice); }
 
-  .whatsapp-link:hover{
-    letter-spacing:0.38em;
-    border-color:var(--ice);
-    color:var(--ice);
+  footer{
+    padding:3rem 0 4rem; text-align:center;
+    color:var(--chrome-4); font-family:'Space Mono', monospace;
+    font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase;
   }
+  footer span{ color:var(--chrome-3); }
+
+  /* audio toggle */
+  #audioToggle{
+    position:fixed; bottom:1.4rem; right:1.4rem; z-index:55;
+    display:flex; align-items:center; gap:0.6em;
+    padding:0.7em 1.1em;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:rgba(13,15,18,0.7);
+    backdrop-filter:blur(6px);
+    font-family:'Space Mono', monospace;
+    font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--chrome-2);
+    opacity:0; visibility:hidden; transition:opacity 0.6s ease, visibility 0.6s ease;
+  }
+  #audioToggle.show{ opacity:1; visibility:visible; }
+  #audioToggle .dot{ width:7px; height:7px; border-radius:50%; background:var(--chrome-4); transition:background 0.3s ease, box-shadow 0.3s ease; }
+  #audioToggle.on .dot{ background:var(--ice); box-shadow:0 0 8px var(--ice); }
+  .bars{ display:flex; align-items:flex-end; gap:2px; height:10px; }
+  .bars i{ width:2px; background:var(--chrome-3); display:block; height:3px; transition:height 0.15s ease; }
+  #audioToggle.on .bars i{ background:var(--ice); animation:barBounce 0.9s ease-in-out infinite; }
+  #audioToggle.on .bars i:nth-child(2){ animation-delay:0.15s; }
+  #audioToggle.on .bars i:nth-child(3){ animation-delay:0.3s; }
+  @keyframes barBounce{ 0%,100%{ height:3px; } 50%{ height:10px; } }
 
   #backBtn{
     position:fixed; bottom:1.4rem; left:1.4rem; z-index:55;
@@ -233,13 +364,11 @@ permalink: /posts/2026-08-29-hichmoki-bday-party/
     background:rgba(13,15,18,0.7);
     backdrop-filter:blur(6px);
     font-family:'Space Mono', monospace;
-    font-size:0.66rem;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
+    font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase;
     color:var(--chrome-2);
-    transition:border-color 0.3s ease, color 0.3s ease;
+    opacity:0; visibility:hidden; transition:opacity 0.6s ease, visibility 0.6s ease, border-color 0.3s ease, color 0.3s ease;
   }
-
+  #backBtn.show{ opacity:1; visibility:visible; }
   #backBtn:hover{ border-color:var(--ice); color:var(--ice); }
 
   #menuBtn{
@@ -260,31 +389,9 @@ permalink: /posts/2026-08-29-hichmoki-bday-party/
 
   #menuBtn:hover{ border-color:var(--ice); color:var(--ice); }
 
-  /* audio toggle */
-  #audioToggle{
-    position:fixed; bottom:1.4rem; right:1.4rem; z-index:55;
-    display:flex; align-items:center; gap:0.6em;
-    padding:0.7em 1.1em;
-    border:1px solid var(--line);
-    border-radius:999px;
-    background:rgba(13,15,18,0.7);
-    backdrop-filter:blur(6px);
-    font-family:'Space Mono', monospace;
-    font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase;
-    color:var(--chrome-2);
-    cursor:pointer;
-  }
-  #audioToggle .dot{ width:7px; height:7px; border-radius:50%; background:var(--chrome-4); transition:background 0.3s ease, box-shadow 0.3s ease; }
-  #audioToggle.on .dot{ background:var(--ice); box-shadow:0 0 8px var(--ice); }
-  .bars{ display:flex; align-items:flex-end; gap:2px; height:10px; }
-  .bars i{ width:2px; background:var(--chrome-3); display:block; height:3px; transition:height 0.15s ease; }
-  #audioToggle.on .bars i{ background:var(--ice); animation:barBounce 0.9s ease-in-out infinite; }
-  #audioToggle.on .bars i:nth-child(2){ animation-delay:0.15s; }
-  #audioToggle.on .bars i:nth-child(3){ animation-delay:0.3s; }
-  @keyframes barBounce{ 0%,100%{ height:3px; } 50%{ height:10px; } }
-
   @media (prefers-reduced-motion: reduce){
-    .chrome-text, h1{ animation:none !important; }
+    .chrome-text, .enter-btn, .scroll-cue{ animation:none !important; }
+    .blob{ transition:none; }
   }
 </style>
 </head>
@@ -309,10 +416,8 @@ permalink: /posts/2026-08-29-hichmoki-bday-party/
     <feComposite in="oiled" in2="oiled" operator="atop" />
   </filter>
   <filter id="liquidFilterSoft" x="-30%" y="-30%" width="160%" height="160%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="4" result="n2">
-      <animate attributeName="baseFrequency" dur="16s" values="0.012 0.02;0.02 0.03;0.012 0.02" repeatCount="indefinite" />
-    </feTurbulence>
-    <feDisplacementMap in="SourceGraphic" in2="n2" scale="10" xChannelSelector="R" yChannelSelector="G" />
+    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="4" result="n2" />
+    <feDisplacementMap in="SourceGraphic" in2="n2" scale="8" xChannelSelector="R" yChannelSelector="G" />
   </filter>
 </svg>
 
@@ -330,23 +435,74 @@ permalink: /posts/2026-08-29-hichmoki-bday-party/
   <div class="ferro-highlight" id="ferroHighlight"></div>
 </div>
 
-<!-- ============== PARTY PAGE ============== -->
-<div id="stage">
-  <div>
-    <h1 class="chrome-text">Hichmoki<br>Party</h1>
-    <div class="age-text">33 Years Celebrated</div>
-  </div>
-
-  <p class="message">
-    An evening where boundaries dissolve and we move as one. Yours to join.
-  </p>
-
-  <a href="https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX" target="_blank" class="whatsapp-link">
-    Join WhatsApp Group
-  </a>
+<!-- ============== GATE ============== -->
+<div id="gate">
+  <div class="gate-mark chrome-text">Join the Party</div>
+  <button class="enter-btn" id="enterBtn">Enter</button>
+  <div class="gate-hint mono">Sound on · tap to begin</div>
+  <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1rem, 3vw, 1.6rem); text-transform:uppercase; letter-spacing:0.08em; -webkit-text-stroke:1px var(--chrome-2); color:transparent; margin-top:2rem;">Hichmoki Bday 2026</div>
 </div>
 
-<audio id="bgAudio" src="/assets/music/FKA_TWIGS/2_FKA_twigs_EUSEXUA_The_Eleven_Girl_Feels_Good.mp3" preload="auto"></audio>
+<!-- ============== STAGE ============== -->
+<div id="stage">
+  <header class="hero wrap">
+    <div class="eyebrow mono" id="js-eyebrow">Hichmoki Birthday Party</div>
+    <h1 class="name chrome-text">
+      <span id="js-name">NAME</span>
+      <span class="turns" id="js-turns">TURNS AGE</span>
+    </h1>
+    <p class="tagline" id="js-tagline">A night dissolves into dance. Come lose your shape with us.</p>
+    <div class="scroll-cue"></div>
+  </header>
+
+  <section class="details wrap">
+    <div class="divider"></div>
+    <div class="details-grid">
+      <div class="detail-cell">
+        <div class="label mono">Date</div>
+        <div class="value chrome-text" id="js-date">DATE</div>
+        <a id="js-calendar-link-detail" style="margin-top:0.8rem; font-family:'Space Mono', monospace; letter-spacing:0.18em; font-size:0.75rem; text-transform:uppercase; color:var(--ice); text-decoration:none; transition:opacity 0.3s ease;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'" href="#" target="_blank">Add to Calendar</a>
+      </div>
+      <div class="detail-cell">
+        <div class="label mono">Time</div>
+        <div class="value chrome-text" id="js-time">TIME</div>
+      </div>
+      <div class="detail-cell">
+        <div class="label mono">Location</div>
+        <div class="value chrome-text" id="js-location">LOCATION</div>
+        <div class="sub" id="js-address"></div>
+        <a href="https://maps.google.com/?q=Straatweg+60B,+3051+BH+Rotterdam" target="_blank" style="margin-top:0.8rem; font-family:'Space Mono', monospace; letter-spacing:0.18em; font-size:0.75rem; text-transform:uppercase; color:var(--ice); text-decoration:none; transition:opacity 0.3s ease;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Open Location</a>
+      </div>
+      <div class="detail-cell">
+        <div class="label mono">Dress Code</div>
+        <div class="value chrome-text" id="js-dress">CHROME / BLACK</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rsvp wrap">
+    <h2 class="chrome-text">You're In</h2>
+    <p id="js-rsvp-note">If you are attending, join the WhatsApp group.</p>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem;">
+      <a class="rsvp-btn" id="js-rsvp-link" href="https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX" target="_blank">Join WhatsApp</a>
+      <a class="rsvp-btn" id="js-calendar-link" href="#" target="_blank">Add to Calendar</a>
+    </div>
+  </section>
+
+  <footer>
+    <span id="js-footer-name">NAME</span> &nbsp;·&nbsp; <span id="js-footer-year"></span>
+  </footer>
+
+  <section style="padding:6rem 0 4rem; text-align:center;">
+    <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1.2rem, 3vw, 1.8rem); text-transform:uppercase; letter-spacing:0.05em; color:#c488ff;">Bday 2026</div>
+  </section>
+</div>
+
+<audio id="bgAudio" preload="auto"></audio>
+
+<div id="backBtn">← Back</div>
+
+<a id="menuBtn" href="{{ site.baseurl }}/posts/2026-08-29-hichmoki-bday-party/">Menu</a>
 
 <div id="audioToggle">
   <div class="dot"></div>
@@ -354,12 +510,51 @@ permalink: /posts/2026-08-29-hichmoki-bday-party/
   <span id="audioLabel">Sound</span>
 </div>
 
-<div id="backBtn">← Back</div>
-
-<a id="menuBtn" href="{{ site.baseurl }}/posts/2026-08-28-bday/">Menu</a>
-
 <script>
-/* ferrofluid cursor cluster */
+/* =====================================================================
+   EDIT EVERYTHING FOR THE INVITE HERE — this is the only block you need.
+===================================================================== */
+const CONFIG = {
+  name: "The Ceremony",       // event title
+  age: "33",                  // turning this age
+  eventTag: "An Evening Unfolds",
+  tagline: "Join the dance. Some food and a chill social vibe.",
+  date: "18.09.2026",
+  time: "20:00 — till late",
+  location: "STRAATWEG 60B",
+  address: "",
+  dress: "QUEER FRIENDLY",
+  rsvpEmail: "[YOUR EMAIL]",  // deprecated
+  rsvpSubject: "I'm in"
+};
+/* ===================================================================== */
+
+document.getElementById('js-eyebrow').textContent = CONFIG.eventTag;
+
+document.getElementById('js-name').textContent = CONFIG.name;
+document.getElementById('js-turns').textContent = `TURNS ${CONFIG.age}`;
+document.getElementById('js-tagline').textContent = CONFIG.tagline;
+document.getElementById('js-date').textContent = CONFIG.date;
+document.getElementById('js-time').textContent = CONFIG.time;
+document.getElementById('js-location').textContent = CONFIG.location;
+document.getElementById('js-address').textContent = CONFIG.address;
+document.getElementById('js-dress').textContent = CONFIG.dress;
+document.getElementById('js-footer-name').textContent = CONFIG.name;
+document.getElementById('js-footer-year').textContent = new Date().getFullYear();
+
+// Calendar link for Google Calendar / iOS / Android
+const calendarDate = '20260918T200000';
+const calendarEndDate = '20260919T000000';
+const calendarTitle = encodeURIComponent('Hichmoki\'s Party - The Ceremony');
+const calendarLocation = encodeURIComponent('Straatweg 60B, 3051 BH Rotterdam');
+const calendarDesc = encodeURIComponent('Join the dance. Some food and a nice social vibe. WhatsApp: https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX');
+const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${calendarTitle}&dates=${calendarDate}/${calendarEndDate}&location=${calendarLocation}&details=${calendarDesc}`;
+document.getElementById('js-calendar-link').href = calendarUrl;
+if (document.getElementById('js-calendar-link-detail')) {
+  document.getElementById('js-calendar-link-detail').href = calendarUrl;
+}
+
+/* ---------------- ferrofluid cursor cluster (heavy, magnetic-liquid feel) ---------------- */
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let mx = window.innerWidth / 2, my = window.innerHeight / 2;
 
@@ -368,6 +563,8 @@ window.addEventListener('touchmove', (e) => {
   if (e.touches[0]) { mx = e.touches[0].clientX; my = e.touches[0].clientY; }
 }, { passive: true });
 
+// each blob has its own mass (stiffness) and drag (damping) so the cluster
+// trails the cursor unevenly, like a viscous magnetic fluid being pulled along
 const ferroEls = ['ferro-1', 'ferro-2', 'ferro-3', 'ferro-4'].map(id => document.getElementById(id));
 const ferroState = [
   { x: mx, y: my, vx: 0, vy: 0, k: 0.05, d: 0.86, ox: 0, oy: 0 },
@@ -376,7 +573,7 @@ const ferroState = [
   { x: mx, y: my, vx: 0, vy: 0, k: 0.02, d: 0.78, ox: 20, oy: 70 }
 ];
 
-let spike = 0;
+let spike = 0; // temporary burst added to displacement on click/tap
 const highlight = document.getElementById('ferroHighlight');
 
 function stepFerro() {
@@ -392,6 +589,7 @@ function stepFerro() {
     if (!reduceMotion) ferroEls[i].style.transform = `translate3d(${s.x}px, ${s.y}px, 0) translate3d(-50%, -50%, 0)`;
   });
 
+  // highlight trails the primary (heaviest) blob for a glossy specular feel
   if (!reduceMotion) {
     highlight.style.transform = `translate3d(${ferroState[0].x - 26}px, ${ferroState[0].y - 34}px, 0) translate3d(-50%, -50%, 0)`;
   }
@@ -401,6 +599,7 @@ function stepFerro() {
 }
 stepFerro();
 
+// magnetic "spike" burst on tap/click, like a ferrofluid reacting to a magnet
 function triggerSpike() {
   spike = 40;
   ferroState.forEach(s => { s.vx += (Math.random() - 0.5) * 12; s.vy += (Math.random() - 0.5) * 12; });
@@ -408,13 +607,8 @@ function triggerSpike() {
 window.addEventListener('pointerdown', triggerSpike);
 document.addEventListener('click', triggerSpike);
 
-document.getElementById('backBtn').addEventListener('click', () => {
-  window.history.back();
-});
-
-/* Audio playback */
+/* background audio: FKA TWIGS track */
 const bgAudio = document.getElementById('bgAudio');
-const audioToggle = document.getElementById('audioToggle');
 const audioSrc = '{{ site.baseurl }}/assets/music/FKA_TWIGS/3_FKA_twigs_EUSEXUA_The_Eleven_Perfect_Stranger.mp3';
 bgAudio.src = audioSrc;
 bgAudio.loop = true;
@@ -439,28 +633,41 @@ function startAudio() {
     if (pct < 1) requestAnimationFrame(fade);
   }
   requestAnimationFrame(fade);
-  audioToggle.classList.add('on');
+  document.getElementById('audioToggle').classList.add('on');
 }
 
 function toggleAudio() {
+  const el = document.getElementById('audioToggle');
   if (!audioStarted) {
     startAudio();
   } else if (bgAudio.paused) {
     bgAudio.play();
-    audioToggle.classList.add('on');
+    el.classList.add('on');
   } else {
     bgAudio.pause();
-    audioToggle.classList.remove('on');
+    el.classList.remove('on');
   }
 }
 
-audioToggle.addEventListener('click', toggleAudio);
+/* ---------------- gate interaction ---------------- */
+document.getElementById('enterBtn').addEventListener('click', () => {
+  if (!audioStarted) startAudio();
+  else bgAudio.play();
+  document.getElementById('gate').classList.add('hidden');
+  document.getElementById('stage').classList.add('show');
+  document.getElementById('audioToggle').classList.add('show', 'on');
+  document.getElementById('backBtn').classList.add('show');
+});
 
-// Auto-start on page load
-window.addEventListener('load', () => {
-  setTimeout(startAudio, 500);
+document.getElementById('audioToggle').addEventListener('click', toggleAudio);
+
+document.getElementById('backBtn').addEventListener('click', () => {
+  document.getElementById('stage').classList.remove('show');
+  document.getElementById('gate').classList.remove('hidden');
+  document.getElementById('audioToggle').classList.remove('show', 'on');
+  document.getElementById('backBtn').classList.remove('show');
+  bgAudio.pause();
 });
 </script>
-
 </body>
 </html>
