@@ -42,8 +42,9 @@ permalink: /posts/2026-08-29-hichmoki-bday-party/
     color:var(--chrome-1);
     font-family:'Manrope', sans-serif;
     font-weight:300;
-    overflow:hidden;
-    height:100vh;
+    overflow-y:auto;
+    overflow-x:hidden;
+    min-height:100vh;
     cursor:crosshair;
     backface-visibility:hidden;
     -webkit-backface-visibility:hidden;
