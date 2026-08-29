@@ -1,11 +1,11 @@
 ---
 layout: html-only
-title: The Ceremony
+title: Party Celebration
 date: 2026-08-28
 categories: [party]
 sitemap: false
 published: false
-permalink: /posts/2026-08-28-bday/
+permalink: /party/
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -34,9 +34,7 @@ permalink: /posts/2026-08-28-bday/
   }
 
   *{box-sizing:border-box; margin:0; padding:0;}
-
   html{background:var(--void);}
-
   body{
     background:var(--void);
     color:var(--chrome-1);
@@ -52,14 +50,10 @@ permalink: /posts/2026-08-28-bday/
   }
 
   ::selection{ background:var(--ice); color:var(--void); }
-
   a{ color:inherit; }
-
   button{ font-family:inherit; border:none; background:none; color:inherit; cursor:pointer; }
-
   :focus-visible{ outline:2px solid var(--ice); outline-offset:4px; }
 
-  /* film grain overlay */
   .grain{
     position:fixed; inset:0; z-index:60; pointer-events:none;
     opacity:0.05; mix-blend-mode:overlay;
@@ -71,49 +65,33 @@ permalink: /posts/2026-08-28-bday/
     background:repeating-linear-gradient(0deg, #fff 0px, transparent 1px, transparent 3px);
   }
 
-  /* ferrofluid / magnetic-liquid blob cluster */
   .blob-wrap{ position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
   .ferro-goo{ position:absolute; inset:0; filter:url(#gooMerge); }
   .ferro-blob{
     position:absolute; top:0; left:0;
     border-radius:50%;
-    background:
-      radial-gradient(circle at 40% 30%, #8fd3ff 0%, #7fc0ff 6%, #6ab3ff 12%, #9a9da3 18%, #7a7d82 24%, #6a7077 30%, #5a6066 38%, #4a5056 48%, #3a4046 60%, #2a3036 75%, #1a2026 88%, #000 100%);
+    background: radial-gradient(circle at 40% 30%, #8fd3ff 0%, #7fc0ff 6%, #6ab3ff 12%, #9a9da3 18%, #7a7d82 24%, #6a7077 30%, #5a6066 38%, #4a5056 48%, #3a4046 60%, #2a3036 75%, #1a2026 88%, #000 100%);
     will-change:transform;
     transform:translate3d(-50%,-50%,0);
     animation:ferroColorShift 10s ease-in-out infinite;
-    box-shadow:
-      inset -20px -20px 40px rgba(0,0,0,0.3),
-      inset 15px 15px 30px rgba(120,180,255,0.25),
-      0 0 80px rgba(100,160,255,0.5),
-      0 0 150px rgba(74,144,226,0.3);
+    box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(120,180,255,0.25), 0 0 80px rgba(100,160,255,0.5), 0 0 150px rgba(74,144,226,0.3);
   }
+
   @keyframes ferroColorShift{
     0%{
       background:radial-gradient(circle at 40% 30%, #8fd3ff 0%, #7fc0ff 6%, #6ab3ff 12%, #9a9da3 18%, #7a7d82 24%, #6a7077 30%, #5a6066 38%, #4a5056 48%, #3a4046 60%, #2a3036 75%, #1a2026 88%, #000 100%);
-      box-shadow:
-        inset -20px -20px 40px rgba(0,0,0,0.3),
-        inset 15px 15px 30px rgba(120,180,255,0.25),
-        0 0 80px rgba(100,160,255,0.5),
-        0 0 150px rgba(74,144,226,0.3);
+      box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(120,180,255,0.25), 0 0 80px rgba(100,160,255,0.5), 0 0 150px rgba(74,144,226,0.3);
     }
     50%{
       background:radial-gradient(circle at 40% 30%, #c488ff 0%, #b366d9 6%, #9d4eca 12%, #9a9da3 18%, #7a7d82 24%, #6a7077 30%, #5a6066 38%, #4a5056 48%, #3a4046 60%, #2a3036 75%, #1a2026 88%, #000 100%);
-      box-shadow:
-        inset -20px -20px 40px rgba(0,0,0,0.3),
-        inset 15px 15px 30px rgba(200,140,255,0.3),
-        0 0 100px rgba(196,136,255,0.6),
-        0 0 180px rgba(179,102,217,0.4);
+      box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(200,140,255,0.3), 0 0 100px rgba(196,136,255,0.6), 0 0 180px rgba(179,102,217,0.4);
     }
     100%{
       background:radial-gradient(circle at 40% 30%, #8fd3ff 0%, #7fc0ff 6%, #6ab3ff 12%, #9a9da3 18%, #7a7d82 24%, #6a7077 30%, #5a6066 38%, #4a5056 48%, #3a4046 60%, #2a3036 75%, #1a2026 88%, #000 100%);
-      box-shadow:
-        inset -20px -20px 40px rgba(0,0,0,0.3),
-        inset 15px 15px 30px rgba(120,180,255,0.25),
-        0 0 80px rgba(100,160,255,0.5),
-        0 0 150px rgba(74,144,226,0.3);
+      box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), inset 15px 15px 30px rgba(120,180,255,0.25), 0 0 80px rgba(100,160,255,0.5), 0 0 150px rgba(74,144,226,0.3);
     }
   }
+
   #ferro-1{ width:min(28vw,200px); height:min(28vw,200px); }
   #ferro-2{ width:min(18vw,140px); height:min(18vw,140px); }
   #ferro-3{ width:min(13vw,100px); height:min(13vw,100px); }
@@ -133,16 +111,13 @@ permalink: /posts/2026-08-28-bday/
     transform:translate3d(-50%,-50%,0);
   }
 
-  /* chrome text */
   .chrome-text{
-    background:linear-gradient(112deg,
-      var(--chrome-3) 0%, var(--chrome-1) 14%, var(--chrome-2) 26%,
-      #ffffff 38%, var(--chrome-4) 50%, var(--chrome-2) 64%,
-      var(--chrome-1) 78%, var(--chrome-3) 100%);
+    background:linear-gradient(112deg, var(--chrome-3) 0%, var(--chrome-1) 14%, var(--chrome-2) 26%, #ffffff 38%, var(--chrome-4) 50%, var(--chrome-2) 64%, var(--chrome-1) 78%, var(--chrome-3) 100%);
     background-size:280% 280%;
     -webkit-background-clip:text; background-clip:text; color:transparent;
     animation:chromeShift 9s ease-in-out infinite;
   }
+
   @keyframes chromeShift{
     0%{ background-position:0% 50%; }
     50%{ background-position:100% 50%; }
@@ -157,7 +132,6 @@ permalink: /posts/2026-08-28-bday/
     color:var(--chrome-2);
   }
 
-  /* ---------- gate ---------- */
   #gate{
     min-height:100vh;
     display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.2rem;
@@ -188,27 +162,25 @@ permalink: /posts/2026-08-28-bday/
     animation:chromeShift 6s ease-in-out infinite;
     transition:transform 0.35s ease, box-shadow 0.35s ease;
     box-shadow:0 0 0 rgba(159,232,255,0);
+    cursor:pointer;
   }
+
   .enter-btn:hover{ transform:scale(1.06); box-shadow:0 0 42px var(--ice-dim); }
   .enter-btn:active{
     transform:scale(0.97);
     box-shadow:0 0 0 0 rgba(168, 85, 247, 0.9);
     animation:purpleMetallicGlow 0.8s ease-out;
   }
+
   @keyframes purpleMetallicGlow{
-    0%{
-      box-shadow:0 0 20px 0 rgba(168, 85, 247, 1), inset 0 0 20px rgba(200, 150, 255, 0.6);
-      text-shadow:0 0 10px rgba(168, 85, 247, 0.8);
-    }
+    0%{ box-shadow:0 0 20px 0 rgba(168, 85, 247, 1), inset 0 0 20px rgba(200, 150, 255, 0.6); text-shadow:0 0 10px rgba(168, 85, 247, 0.8); }
     50%{ box-shadow:0 0 40px 10px rgba(168, 85, 247, 0.6), inset 0 0 10px rgba(200, 150, 255, 0.3); }
     100%{ box-shadow:0 0 0 20px rgba(168, 85, 247, 0), inset 0 0 0 rgba(200, 150, 255, 0); }
   }
 
   .gate-hint{ color:var(--chrome-3); font-size:0.72rem; }
 
-  /* ---------- stage ---------- */
   #stage{ position:relative; z-index:1; }
-
   .wrap{ max-width:960px; margin:0 auto; padding:0 6vw; }
 
   header.hero{
@@ -219,9 +191,7 @@ permalink: /posts/2026-08-28-bday/
   }
 
   .eyebrow{ display:flex; align-items:center; gap:0.8em; color:var(--ice); }
-  .eyebrow::before, .eyebrow::after{
-    content:""; width:2.4em; height:1px; background:var(--ice-dim);
-  }
+  .eyebrow::before, .eyebrow::after{ content:""; width:2.4em; height:1px; background:var(--ice-dim); }
 
   h1.name{
     font-family:'Unbounded', sans-serif;
@@ -232,6 +202,7 @@ permalink: /posts/2026-08-28-bday/
     text-transform:uppercase;
     filter:url(#liquidFilterSoft);
   }
+
   h1.name .turns{
     display:block;
     font-size:0.34em;
@@ -256,16 +227,11 @@ permalink: /posts/2026-08-28-bday/
     background:linear-gradient(var(--ice), transparent);
     animation:scrollPulse 2.4s ease-in-out infinite;
   }
+
   @keyframes scrollPulse{ 0%,100%{ opacity:0.15; } 50%{ opacity:0.85; } }
 
-  /* details — floating, unboxed, metallic */
   section.details{ padding:8rem 0 7rem; }
-
-  .divider{
-    height:1px;
-    background:linear-gradient(90deg, transparent, var(--line) 20%, var(--line) 80%, transparent);
-    margin-bottom:5rem;
-  }
+  .divider{ height:1px; background:linear-gradient(90deg, transparent, var(--line) 20%, var(--line) 80%, transparent); margin-bottom:5rem; }
 
   .details-grid{
     display:flex;
@@ -291,18 +257,20 @@ permalink: /posts/2026-08-28-bday/
     line-height:1.15;
     filter:url(#liquidFilterSoft);
   }
+
   .detail-cell .sub{ color:var(--chrome-3); font-size:0.85rem; font-weight:300; }
 
-  /* rsvp */
   section.rsvp{
     padding:4rem 0 9rem;
     text-align:center;
     display:flex; flex-direction:column; align-items:center; gap:1.8rem;
   }
+
   .rsvp h2{
     font-family:'Unbounded', sans-serif; font-weight:700;
     font-size:var(--fs-h2); text-transform:uppercase; letter-spacing:0.01em;
   }
+
   .rsvp p{ color:var(--chrome-2); max-width:38ch; font-size:var(--fs-body); line-height:1.6; }
 
   .rsvp-btn{
@@ -314,7 +282,9 @@ permalink: /posts/2026-08-28-bday/
     letter-spacing:0.28em; font-size:0.78rem; text-transform:uppercase;
     position:relative; overflow:hidden;
     transition:letter-spacing 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+    cursor:pointer;
   }
+
   .rsvp-btn:hover{ letter-spacing:0.38em; border-color:var(--ice); color:var(--ice); }
 
   footer{
@@ -322,9 +292,9 @@ permalink: /posts/2026-08-28-bday/
     color:var(--chrome-4); font-family:'Space Mono', monospace;
     font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase;
   }
+
   footer span{ color:var(--chrome-3); }
 
-  /* audio toggle */
   #audioToggle{
     position:fixed; bottom:1.4rem; right:1.4rem; z-index:55;
     display:flex; align-items:center; gap:0.6em;
@@ -336,7 +306,9 @@ permalink: /posts/2026-08-28-bday/
     font-family:'Space Mono', monospace;
     font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase;
     color:var(--chrome-2);
+    cursor:pointer;
   }
+
   #audioToggle .dot{ width:7px; height:7px; border-radius:50%; background:var(--chrome-4); transition:background 0.3s ease, box-shadow 0.3s ease; }
   #audioToggle.on .dot{ background:var(--ice); box-shadow:0 0 8px var(--ice); }
   .bars{ display:flex; align-items:flex-end; gap:2px; height:10px; }
@@ -344,50 +316,17 @@ permalink: /posts/2026-08-28-bday/
   #audioToggle.on .bars i{ background:var(--ice); animation:barBounce 0.9s ease-in-out infinite; }
   #audioToggle.on .bars i:nth-child(2){ animation-delay:0.15s; }
   #audioToggle.on .bars i:nth-child(3){ animation-delay:0.3s; }
+
   @keyframes barBounce{ 0%,100%{ height:3px; } 50%{ height:10px; } }
 
-  #backBtn{
-    position:fixed; bottom:1.4rem; left:1.4rem; z-index:55;
-    padding:0.7em 1.1em;
-    border:1px solid var(--line);
-    border-radius:999px;
-    background:rgba(13,15,18,0.7);
-    backdrop-filter:blur(6px);
-    font-family:'Space Mono', monospace;
-    font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase;
-    color:var(--chrome-2);
-    transition:border-color 0.3s ease, color 0.3s ease;
-    cursor:pointer;
-  }
-  #backBtn:hover{ border-color:var(--ice); color:var(--ice); }
-
-  #menuBtn{
-    position:fixed; top:1.4rem; right:1.4rem; z-index:55;
-    padding:0.7em 1.1em;
-    border:1px solid var(--line);
-    border-radius:999px;
-    background:rgba(13,15,18,0.7);
-    backdrop-filter:blur(6px);
-    font-family:'Space Mono', monospace;
-    font-size:0.66rem;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    color:var(--chrome-2);
-    transition:border-color 0.3s ease, color 0.3s ease;
-    text-decoration:none;
-  }
-
-  #menuBtn:hover{ border-color:var(--ice); color:var(--ice); }
 
   @media (prefers-reduced-motion: reduce){
     .chrome-text, .enter-btn, .scroll-cue{ animation:none !important; }
-    .blob{ transition:none; }
   }
 </style>
 </head>
 <body>
 
-<!-- SVG filters powering the liquid-metal look -->
 <svg width="0" height="0" style="position:absolute">
   <filter id="liquidFilter" x="-40%" y="-40%" width="180%" height="180%">
     <feTurbulence type="fractalNoise" baseFrequency="0.010 0.018" numOctaves="2" seed="11" result="noise">
@@ -397,8 +336,7 @@ permalink: /posts/2026-08-28-bday/
   </filter>
   <filter id="gooMerge" x="-60%" y="-60%" width="220%" height="220%">
     <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="blur" />
-    <feColorMatrix in="blur" type="matrix"
-      values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 26 -11" result="goo" />
+    <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 26 -11" result="goo" />
     <feTurbulence type="fractalNoise" baseFrequency="0.006 0.012" numOctaves="2" seed="9" result="oilNoise">
       <animate attributeName="baseFrequency" dur="30s" values="0.006 0.012;0.011 0.02;0.006 0.012" repeatCount="indefinite" />
     </feTurbulence>
@@ -425,7 +363,7 @@ permalink: /posts/2026-08-28-bday/
   <div class="ferro-highlight" id="ferroHighlight"></div>
 </div>
 
-<!-- ============== GATE ============== -->
+<!-- GATE SECTION -->
 <div id="gate">
   <div class="gate-mark chrome-text">Join the Party</div>
   <button class="enter-btn" id="enterBtn">Enter</button>
@@ -433,7 +371,7 @@ permalink: /posts/2026-08-28-bday/
   <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1rem, 3vw, 1.6rem); text-transform:uppercase; letter-spacing:0.08em; -webkit-text-stroke:1px var(--chrome-2); color:transparent; margin-top:2rem;">Hichmoki Bday 2026</div>
 </div>
 
-<!-- ============== STAGE ============== -->
+<!-- STAGE SECTION -->
 <div id="stage">
   <header class="hero wrap">
     <div class="eyebrow mono" id="js-eyebrow">Hichmoki Birthday Party</div>
@@ -451,7 +389,7 @@ permalink: /posts/2026-08-28-bday/
       <div class="detail-cell">
         <div class="label mono">Date</div>
         <div class="value chrome-text" id="js-date">DATE</div>
-        <a id="js-calendar-link-detail" style="margin-top:0.8rem; font-family:'Space Mono', monospace; letter-spacing:0.18em; font-size:0.75rem; text-transform:uppercase; color:var(--ice); text-decoration:none; transition:opacity 0.3s ease;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'" href="#" target="_blank">Add to Calendar</a>
+        <a id="js-calendar-link-detail" style="margin-top:0.8rem; font-family:'Space Mono', monospace; letter-spacing:0.18em; font-size:0.75rem; text-transform:uppercase; color:var(--ice); text-decoration:none; transition:opacity 0.3s ease;" href="#" target="_blank">Add to Calendar</a>
       </div>
       <div class="detail-cell">
         <div class="label mono">Time</div>
@@ -461,7 +399,7 @@ permalink: /posts/2026-08-28-bday/
         <div class="label mono">Location</div>
         <div class="value chrome-text" id="js-location">LOCATION</div>
         <div class="sub" id="js-address"></div>
-        <a href="https://maps.google.com/?q=Straatweg+60B,+3051+BH+Rotterdam" target="_blank" style="margin-top:0.8rem; font-family:'Space Mono', monospace; letter-spacing:0.18em; font-size:0.75rem; text-transform:uppercase; color:var(--ice); text-decoration:none; transition:opacity 0.3s ease;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Open Location</a>
+        <a href="https://maps.google.com/?q=Straatweg+60B,+3051+BH+Rotterdam" target="_blank" style="margin-top:0.8rem; font-family:'Space Mono', monospace; letter-spacing:0.18em; font-size:0.75rem; text-transform:uppercase; color:var(--ice); text-decoration:none; transition:opacity 0.3s ease;">Open Location</a>
       </div>
       <div class="detail-cell">
         <div class="label mono">Dress Code</div>
@@ -490,10 +428,6 @@ permalink: /posts/2026-08-28-bday/
 
 <audio id="bgAudio" preload="auto"></audio>
 
-<div id="backBtn">← Back</div>
-
-<a id="menuBtn" href="{{ site.baseurl }}/posts/2026-08-29-hichmoki-bday-party/">Menu</a>
-
 <div id="audioToggle">
   <div class="dot"></div>
   <div class="bars"><i></i><i></i><i></i></div>
@@ -501,12 +435,9 @@ permalink: /posts/2026-08-28-bday/
 </div>
 
 <script>
-/* =====================================================================
-   EDIT EVERYTHING FOR THE INVITE HERE — this is the only block you need.
-===================================================================== */
 const CONFIG = {
-  name: "The Ceremony",       // event title
-  age: "33",                  // turning this age
+  name: "The Ceremony",
+  age: "33",
   eventTag: "An Evening Unfolds",
   tagline: "Join the dance. Some food and a chill social vibe.",
   date: "18.09.2026",
@@ -514,13 +445,9 @@ const CONFIG = {
   location: "STRAATWEG 60B",
   address: "",
   dress: "QUEER FRIENDLY",
-  rsvpEmail: "[YOUR EMAIL]",  // deprecated
-  rsvpSubject: "I'm in"
 };
-/* ===================================================================== */
 
 document.getElementById('js-eyebrow').textContent = CONFIG.eventTag;
-
 document.getElementById('js-name').textContent = CONFIG.name;
 document.getElementById('js-turns').textContent = `TURNS ${CONFIG.age}`;
 document.getElementById('js-tagline').textContent = CONFIG.tagline;
@@ -532,7 +459,6 @@ document.getElementById('js-dress').textContent = CONFIG.dress;
 document.getElementById('js-footer-name').textContent = CONFIG.name;
 document.getElementById('js-footer-year').textContent = new Date().getFullYear();
 
-// Calendar link for Google Calendar / iOS / Android
 const calendarDate = '20260918T200000';
 const calendarEndDate = '20260919T000000';
 const calendarTitle = encodeURIComponent('Hichmoki\'s Party - The Ceremony');
@@ -544,7 +470,6 @@ if (document.getElementById('js-calendar-link-detail')) {
   document.getElementById('js-calendar-link-detail').href = calendarUrl;
 }
 
-/* ---------------- ferrofluid cursor cluster (heavy, magnetic-liquid feel) ---------------- */
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let mx = window.innerWidth / 2, my = window.innerHeight / 2;
 
@@ -553,8 +478,6 @@ window.addEventListener('touchmove', (e) => {
   if (e.touches[0]) { mx = e.touches[0].clientX; my = e.touches[0].clientY; }
 }, { passive: true });
 
-// each blob has its own mass (stiffness) and drag (damping) so the cluster
-// trails the cursor unevenly, like a viscous magnetic fluid being pulled along
 const ferroEls = ['ferro-1', 'ferro-2', 'ferro-3', 'ferro-4'].map(id => document.getElementById(id));
 const ferroState = [
   { x: mx, y: my, vx: 0, vy: 0, k: 0.05, d: 0.86, ox: 0, oy: 0 },
@@ -563,7 +486,7 @@ const ferroState = [
   { x: mx, y: my, vx: 0, vy: 0, k: 0.02, d: 0.78, ox: 20, oy: 70 }
 ];
 
-let spike = 0; // temporary burst added to displacement on click/tap
+let spike = 0;
 const highlight = document.getElementById('ferroHighlight');
 
 function stepFerro() {
@@ -578,18 +501,14 @@ function stepFerro() {
     s.y += s.vy;
     if (!reduceMotion) ferroEls[i].style.transform = `translate3d(${s.x}px, ${s.y}px, 0) translate3d(-50%, -50%, 0)`;
   });
-
-  // highlight trails the primary (heaviest) blob for a glossy specular feel
   if (!reduceMotion) {
     highlight.style.transform = `translate3d(${ferroState[0].x - 26}px, ${ferroState[0].y - 34}px, 0) translate3d(-50%, -50%, 0)`;
   }
-
   if (spike > 0) spike *= 0.9;
   requestAnimationFrame(stepFerro);
 }
 stepFerro();
 
-// magnetic "spike" burst on tap/click, like a ferrofluid reacting to a magnet
 function triggerSpike() {
   spike = 40;
   ferroState.forEach(s => { s.vx += (Math.random() - 0.5) * 12; s.vy += (Math.random() - 0.5) * 12; });
@@ -597,7 +516,6 @@ function triggerSpike() {
 window.addEventListener('pointerdown', triggerSpike);
 document.addEventListener('click', triggerSpike);
 
-/* background audio: FKA TWIGS track */
 const bgAudio = document.getElementById('bgAudio');
 const audioSrc = '{{ site.baseurl }}/assets/music/FKA_TWIGS/3_FKA_twigs_EUSEXUA_The_Eleven_Perfect_Stranger.mp3';
 bgAudio.src = audioSrc;
@@ -610,11 +528,9 @@ const fadeDuration = 2500;
 function startAudio() {
   if (audioStarted) return;
   audioStarted = true;
-
   bgAudio.currentTime = 0;
   bgAudio.volume = 0;
   bgAudio.play().catch(err => console.log('Autoplay prevented:', err));
-
   const fadeStart = performance.now();
   function fade(t) {
     const elapsed = t - fadeStart;
@@ -639,7 +555,6 @@ function toggleAudio() {
   }
 }
 
-/* ---------------- gate interaction ---------------- */
 document.getElementById('enterBtn').addEventListener('click', () => {
   if (!audioStarted) startAudio();
   else bgAudio.play();
@@ -648,13 +563,7 @@ document.getElementById('enterBtn').addEventListener('click', () => {
 });
 
 document.getElementById('audioToggle').addEventListener('click', toggleAudio);
-
-document.getElementById('backBtn').addEventListener('click', () => {
-  const gate = document.getElementById('gate');
-  gate.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  bgAudio.pause();
-  document.getElementById('audioToggle').classList.remove('on');
-});
 </script>
+
 </body>
 </html>
