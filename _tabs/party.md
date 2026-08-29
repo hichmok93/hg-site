@@ -1,7 +1,7 @@
 ---
 layout: html-only
 title: Party
-icon: fas fa-utensils
+icon: fas fa-hat-party
 permalink: /party/
 order: 1
 ---
@@ -68,10 +68,7 @@ order: 1
   .ferro-blob{
     position:absolute; top:0; left:0; border-radius:50%;
     background:radial-gradient(circle at 34% 26%, #7a7d82 0%, #2c2e32 20%, #131417 42%, #050506 68%, #000 100%);
-    will-change:transform;
-    transform:translate3d(-50%,-50%,0);
-    backface-visibility:hidden;
-    -webkit-backface-visibility:hidden;
+    will-change:transform; transform:translate3d(-50%,-50%,0);
   }
 
 
@@ -80,20 +77,13 @@ order: 1
   #ferro-3{ width:min(22vw,160px); height:min(22vw,160px); }
   #ferro-4{ width:min(16vw,120px); height:min(16vw,120px); }
 
-  .ferro-oil{ position:absolute; inset:0; filter:url(#liquidFilter); mix-blend-mode:normal; }
-
+  .ferro-oil{ position:absolute; inset:0; filter:url(#liquidFilter); }
   .ferro-highlight{
     position:absolute; top:0; left:0;
-    width:min(14vw,110px); height:min(14vw,110px);
-    border-radius:50%;
+    width:min(14vw,110px); height:min(14vw,110px); border-radius:50%;
     background:radial-gradient(circle, rgba(255,255,255,0.9) 0%, var(--ice) 30%, transparent 72%);
-    filter:blur(10px);
-    mix-blend-mode:screen;
-    opacity:0.55;
-    will-change:transform;
-    transform:translate3d(-50%,-50%,0);
-    backface-visibility:hidden;
-    -webkit-backface-visibility:hidden;
+    filter:blur(10px); mix-blend-mode:screen; opacity:0.55;
+    will-change:transform; transform:translate3d(-50%,-50%,0);
   }
 
   .chrome-text{
@@ -503,59 +493,31 @@ if (document.getElementById('js-calendar-link-detail')) {
 }
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const isMobile = window.matchMedia('(max-width:768px)').matches;
 let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+window.addEventListener('pointermove', (e) => { mx = e.clientX; my = e.clientY; });
+window.addEventListener('touchmove', (e) => { if (e.touches[0]) { mx = e.touches[0].clientX; my = e.touches[0].clientY; } }, { passive: true });
 
-if (!isMobile) {
-  window.addEventListener('pointermove', (e) => { mx = e.clientX; my = e.clientY; });
-}
-window.addEventListener('touchmove', (e) => {
-  if (e.touches[0]) { mx = e.touches[0].clientX; my = e.touches[0].clientY; }
-}, { passive: true });
-
-const ferroEls = ['ferro-1', 'ferro-2', 'ferro-3', 'ferro-4'].map(id => document.getElementById(id));
+const ferroEls = ['ferro-1','ferro-2','ferro-3','ferro-4'].map(id => document.getElementById(id));
 const ferroState = [
-  { x: mx, y: my, vx: 0, vy: 0, k: 0.05, d: 0.86, ox: 0, oy: 0 },
-  { x: mx, y: my, vx: 0, vy: 0, k: 0.032, d: 0.82, ox: 60, oy: -30 },
+  { x: mx, y: my, vx: 0, vy: 0, k: 0.05,  d: 0.86, ox: 0,   oy: 0 },
+  { x: mx, y: my, vx: 0, vy: 0, k: 0.032, d: 0.82, ox: 60,  oy: -30 },
   { x: mx, y: my, vx: 0, vy: 0, k: 0.024, d: 0.80, ox: -70, oy: 40 },
-  { x: mx, y: my, vx: 0, vy: 0, k: 0.02, d: 0.78, ox: 20, oy: 70 }
+  { x: mx, y: my, vx: 0, vy: 0, k: 0.02,  d: 0.78, ox: 20,  oy: 70 }
 ];
-
-let spike = 0;
 const highlight = document.getElementById('ferroHighlight');
 
-let lastUpdateTime = 0;
-const updateInterval = isMobile ? 100 : 16;
-
-function stepFerro(t) {
-  if (!document.hidden && t - lastUpdateTime > updateInterval) {
-    lastUpdateTime = t;
-    ferroState.forEach((s, i) => {
-      const tx = mx + s.ox * (1 + spike * 0.02);
-      const ty = my + s.oy * (1 + spike * 0.02);
-      const ax = (tx - s.x) * s.k;
-      const ay = (ty - s.y) * s.k;
-      s.vx = (s.vx + ax) * s.d;
-      s.vy = (s.vy + ay) * s.d;
-      s.x += s.vx;
-      s.y += s.vy;
-      if (!reduceMotion) ferroEls[i].style.transform = `translate3d(${s.x}px, ${s.y}px, 0) translate3d(-50%, -50%, 0)`;
-    });
-    if (!reduceMotion) {
-      highlight.style.transform = `translate3d(${ferroState[0].x - 26}px, ${ferroState[0].y - 34}px, 0) translate3d(-50%, -50%, 0)`;
-    }
-    if (spike > 0) spike *= 0.9;
-  }
+function stepFerro(){
+  ferroState.forEach((s,i) => {
+    const ax = (mx + s.ox - s.x) * s.k;
+    const ay = (my + s.oy - s.y) * s.k;
+    s.vx = (s.vx + ax) * s.d; s.vy = (s.vy + ay) * s.d;
+    s.x += s.vx; s.y += s.vy;
+    if (!reduceMotion) ferroEls[i].style.transform = `translate3d(${s.x}px, ${s.y}px, 0) translate3d(-50%, -50%, 0)`;
+  });
+  if (!reduceMotion) highlight.style.transform = `translate3d(${ferroState[0].x - 26}px, ${ferroState[0].y - 34}px, 0) translate3d(-50%, -50%, 0)`;
   requestAnimationFrame(stepFerro);
 }
 stepFerro();
-
-function triggerSpike() {
-  spike = 40;
-  ferroState.forEach(s => { s.vx += (Math.random() - 0.5) * 12; s.vy += (Math.random() - 0.5) * 12; });
-}
-window.addEventListener('pointerdown', triggerSpike);
-document.addEventListener('click', triggerSpike);
 
 const bgAudio = document.getElementById('bgAudio');
 const audioSrc = '{{ site.baseurl }}/assets/music/FKA_TWIGS/2_FKA_twigs_EUSEXUA_The_Eleven_Girl_Feels_Good.mp3';
