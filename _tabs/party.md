@@ -311,48 +311,24 @@ order: 1
 
   #menuBtn:hover{ border-color:var(--ice); color:var(--ice); }
 
-  .mini-player {
-    position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
-    z-index:100;
-    background:rgba(13,15,18,0.95);
-    backdrop-filter:blur(12px);
-    border:1px solid var(--line);
-    border-radius:50%;
-    width:80px;
-    height:80px;
+  #audioToggle {
+    display:flex;
+    align-items:center;
+    gap:0.8em;
+  }
+
+  .audio-control {
+    width:24px;
+    height:24px;
     display:flex;
     align-items:center;
     justify-content:center;
     cursor:pointer;
-    transition:all 0.3s ease;
-    box-shadow:0 0 40px rgba(159,232,255,0.2);
+    transition:transform 0.2s ease;
   }
 
-  .mini-player:hover {
-    box-shadow:0 0 60px rgba(159,232,255,0.4);
-    transform:translate(-50%, -50%) scale(1.1);
-  }
-
-  .mini-player::before {
-    content:'▶';
-    font-size:2rem;
-    color:var(--ice);
-    position:absolute;
-  }
-
-  .mini-player.playing::before {
-    content:'⏸';
-  }
-
-  .track-info {
-    position:fixed; top:50%; left:50%; transform:translate(-50%, calc(-50% + 60px));
-    z-index:100;
-    text-align:center;
-    color:var(--chrome-2);
-    font-family:'Space Mono', monospace;
-    font-size:0.7rem;
-    letter-spacing:0.15em;
-    text-transform:uppercase;
+  .audio-control:hover {
+    transform:scale(1.2);
   }
 
   @media (max-width:768px){
@@ -491,15 +467,13 @@ order: 1
 
 <audio id="bgAudio" preload="auto"></audio>
 
-<div class="mini-player" id="miniPlayer"></div>
-<div class="track-info" id="trackInfo"></div>
-
 <a id="menuBtn" href="https://hichmok93.github.io/hg-site/">Menu</a>
 
 <div id="audioToggle">
   <div class="dot"></div>
   <div class="bars"><i></i><i></i><i></i></div>
   <span id="audioLabel">Sound</span>
+  <div class="audio-control" id="skipBtn" title="Skip to next track">⏭</div>
 </div>
 
 <script>
@@ -578,35 +552,31 @@ const playlist = [
 ];
 let currentTrack = 0;
 bgAudio.src = playlist[currentTrack];
-const miniPlayer = document.getElementById('miniPlayer');
-const trackInfo = document.getElementById('trackInfo');
-trackInfo.textContent = trackNames[currentTrack];
 bgAudio.volume = 0;
 let audioStarted = false;
 const targetVolume = 0.55;
 const fadeDuration = 2500;
 
+const skipBtn = document.getElementById('skipBtn');
+
 bgAudio.addEventListener('ended', () => {
   currentTrack = (currentTrack + 1) % playlist.length;
   bgAudio.src = playlist[currentTrack];
-  trackInfo.textContent = trackNames[currentTrack];
   bgAudio.play().catch(err => console.log('Autoplay prevented:', err));
 });
 
-bgAudio.addEventListener('play', () => {
-  miniPlayer.classList.add('playing');
-});
-
-bgAudio.addEventListener('pause', () => {
-  miniPlayer.classList.remove('playing');
-});
-
-miniPlayer.addEventListener('click', () => {
-  if (bgAudio.paused) {
-    bgAudio.play();
-  } else {
-    bgAudio.pause();
+skipBtn.addEventListener('click', () => {
+  const wasPlaying = !bgAudio.paused;
+  const currentVolume = bgAudio.volume > 0 ? bgAudio.volume : targetVolume;
+  currentTrack = (currentTrack + 1) % playlist.length;
+  bgAudio.src = playlist[currentTrack];
+  bgAudio.volume = currentVolume;
+  bgAudio.currentTime = 0;
+  bgAudio.play().catch(err => console.log('Autoplay prevented:', err));
+  if (!audioStarted) {
+    audioStarted = true;
   }
+  document.getElementById('audioToggle').classList.add('on');
 });
 
 function startAudio() {
