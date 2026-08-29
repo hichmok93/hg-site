@@ -311,6 +311,50 @@ order: 1
 
   #menuBtn:hover{ border-color:var(--ice); color:var(--ice); }
 
+  .mini-player {
+    position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
+    z-index:100;
+    background:rgba(13,15,18,0.95);
+    backdrop-filter:blur(12px);
+    border:1px solid var(--line);
+    border-radius:50%;
+    width:80px;
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:all 0.3s ease;
+    box-shadow:0 0 40px rgba(159,232,255,0.2);
+  }
+
+  .mini-player:hover {
+    box-shadow:0 0 60px rgba(159,232,255,0.4);
+    transform:translate(-50%, -50%) scale(1.1);
+  }
+
+  .mini-player::before {
+    content:'▶';
+    font-size:2rem;
+    color:var(--ice);
+    position:absolute;
+  }
+
+  .mini-player.playing::before {
+    content:'⏸';
+  }
+
+  .track-info {
+    position:fixed; top:50%; left:50%; transform:translate(-50%, calc(-50% + 60px));
+    z-index:100;
+    text-align:center;
+    color:var(--chrome-2);
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+  }
+
   @media (max-width:768px){
     :root{
       --fs-display:clamp(2.2rem, 10vw, 4rem);
@@ -447,6 +491,9 @@ order: 1
 
 <audio id="bgAudio" preload="auto"></audio>
 
+<div class="mini-player" id="miniPlayer"></div>
+<div class="track-info" id="trackInfo"></div>
+
 <a id="menuBtn" href="https://hichmok93.github.io/hg-site/">Menu</a>
 
 <div id="audioToggle">
@@ -519,12 +566,21 @@ function stepFerro(){
 stepFerro();
 
 const bgAudio = document.getElementById('bgAudio');
+const trackNames = [
+  'Girl Feels Good',
+  'The Eleven Perfect Stranger',
+  'The Eleven Sticky PA'
+];
 const playlist = [
   '{{ site.baseurl }}/assets/music/FKA_TWIGS/2_FKA_twigs_EUSEXUA_The_Eleven_Girl_Feels_Good.mp3',
-  '{{ site.baseurl }}/assets/music/FKA_TWIGS/3_FKA_twigs_EUSEXUA_The_Eleven_Perfect_Stranger.mp3'
+  '{{ site.baseurl }}/assets/music/FKA_TWIGS/3_FKA_twigs_EUSEXUA_The_Eleven_Perfect_Stranger.mp3',
+  '{{ site.baseurl }}/assets/music/FKA_TWIGS/6_FKA_twigs_EUSEXUA_The_Eleven_Sticky_PA.mp3'
 ];
 let currentTrack = 0;
 bgAudio.src = playlist[currentTrack];
+const miniPlayer = document.getElementById('miniPlayer');
+const trackInfo = document.getElementById('trackInfo');
+trackInfo.textContent = trackNames[currentTrack];
 bgAudio.volume = 0;
 let audioStarted = false;
 const targetVolume = 0.55;
@@ -533,7 +589,24 @@ const fadeDuration = 2500;
 bgAudio.addEventListener('ended', () => {
   currentTrack = (currentTrack + 1) % playlist.length;
   bgAudio.src = playlist[currentTrack];
+  trackInfo.textContent = trackNames[currentTrack];
   bgAudio.play().catch(err => console.log('Autoplay prevented:', err));
+});
+
+bgAudio.addEventListener('play', () => {
+  miniPlayer.classList.add('playing');
+});
+
+bgAudio.addEventListener('pause', () => {
+  miniPlayer.classList.remove('playing');
+});
+
+miniPlayer.addEventListener('click', () => {
+  if (bgAudio.paused) {
+    bgAudio.play();
+  } else {
+    bgAudio.pause();
+  }
 });
 
 function startAudio() {
