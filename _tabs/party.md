@@ -609,11 +609,54 @@ function toggleAudio() {
   }
 }
 
+function triggerFerroSpike() {
+  const originalK = ferroState.map(s => s.k);
+  const spikeStart = performance.now();
+  const spikeDuration = 2500;
+  
+  function spikeFrame(t) {
+    const elapsed = t - spikeStart;
+    const pct = Math.min(1, elapsed / spikeDuration);
+    const intensity = Math.cos(pct * Math.PI) * 1.2;
+    
+    ferroState.forEach((s, i) => {
+      s.k = originalK[i] * (1 + intensity * 6);
+    });
+    
+    if (pct < 1) {
+      requestAnimationFrame(spikeFrame);
+    } else {
+      ferroState.forEach((s, i) => {
+        s.k = originalK[i];
+      });
+    }
+  }
+  requestAnimationFrame(spikeFrame);
+}
+
+function smoothScrollToStage() {
+  const stage = document.getElementById('stage');
+  const start = window.scrollY || window.pageYOffset;
+  const target = stage.offsetTop;
+  const distance = target - start;
+  const duration = 1500;
+  const startTime = performance.now();
+  
+  function scroll(t) {
+    const elapsed = t - startTime;
+    const pct = Math.min(1, elapsed / duration);
+    const easeOut = 1 - Math.pow(1 - pct, 3);
+    window.scrollTo(0, start + distance * easeOut);
+    if (pct < 1) requestAnimationFrame(scroll);
+  }
+  requestAnimationFrame(scroll);
+}
+
 document.getElementById('enterBtn').addEventListener('click', () => {
   if (!audioStarted) startAudio();
   else bgAudio.play();
-  const stage = document.getElementById('stage');
-  stage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  triggerFerroSpike();
+  setTimeout(smoothScrollToStage, 500);
 });
 
 document.getElementById('audioToggle').addEventListener('click', toggleAudio);
