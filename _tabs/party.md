@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: html-only
 title: Party
 icon: fas fa-utensils
 permalink: /party/
