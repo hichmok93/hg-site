@@ -396,7 +396,7 @@ order: 1
     <div class="eyebrow mono" id="js-eyebrow">Hichmoki Birthday Party</div>
     <h1 class="name chrome-text">
       <span id="js-name">NAME</span>
-      <span class="turns" id="js-turns">TURNS AGE</span>
+      <span class="turns" id="js-turns"> AGE</span>
     </h1>
     <p class="tagline" id="js-tagline">A night dissolves into dance. Come lose your shape with us.</p>
     <div class="scroll-cue"></div>
@@ -470,7 +470,7 @@ const CONFIG = {
 
 document.getElementById('js-eyebrow').textContent = CONFIG.eventTag;
 document.getElementById('js-name').textContent = CONFIG.name;
-document.getElementById('js-turns').textContent = `TURNS ${CONFIG.age}`;
+document.getElementById('js-turns').textContent = CONFIG.age;
 document.getElementById('js-tagline').textContent = CONFIG.tagline;
 document.getElementById('js-date').textContent = CONFIG.date;
 document.getElementById('js-time').textContent = CONFIG.time;
