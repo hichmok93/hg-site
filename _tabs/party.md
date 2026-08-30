@@ -298,6 +298,34 @@ order: 1
     100%{ transform:translateY(-50px); opacity:0; }
   }
 
+  .countdown-row{
+    display:flex;
+    gap:clamp(1.2rem, 4vw, 2.6rem);
+    justify-content:center;
+    margin-top:0.6rem;
+  }
+
+  .countdown-cell{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.5rem;
+  }
+
+  .countdown-cell .num{
+    font-weight:700;
+    font-size:clamp(1.5rem, 4.4vw, 2.3rem);
+    font-variant-numeric:tabular-nums;
+    letter-spacing:0.02em;
+  }
+
+  .countdown-cell .lbl{
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    font-size:0.62rem;
+    opacity:0.6;
+  }
+
   #menuBtn{
     position:fixed; top:1.4rem; right:1.4rem; z-index:55;
     padding:0.7em 1.1em;
@@ -409,6 +437,7 @@ order: 1
 
 <!-- GATE SECTION -->
 <div id="gate">
+  
   <div class="gate-mark chrome-text">Join the Party</div>
   <button class="enter-btn" id="enterBtn">Enter</button>
   <div class="gate-hint mono">Sound on · tap to begin</div>
@@ -424,6 +453,26 @@ order: 1
       <span class="turns" id="js-turns"> AGE</span>
     </h1>
     <p class="tagline" id="js-tagline">A night dissolves into dance. Come lose your shape with us.</p>
+    
+    <div class="countdown-row" id="js-countdown" style="margin-top:2.4rem; gap:2rem;">
+      <div class="countdown-cell">
+        <div class="num chrome-text" id="cd-days">00</div>
+        <div class="lbl mono">Days</div>
+      </div>
+      <div class="countdown-cell">
+        <div class="num chrome-text" id="cd-hours">00</div>
+        <div class="lbl mono">Hrs</div>
+      </div>
+      <div class="countdown-cell">
+        <div class="num chrome-text" id="cd-mins">00</div>
+        <div class="lbl mono">Min</div>
+      </div>
+      <div class="countdown-cell">
+        <div class="num chrome-text" id="cd-secs">00</div>
+        <div class="lbl mono">Sec</div>
+      </div>
+    </div>
+    
     <div class="scroll-cue"></div>
   </header>
 
@@ -459,7 +508,7 @@ order: 1
     <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem;">
       <a class="rsvp-btn" id="js-rsvp-link" href="https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX" target="_blank">Join WhatsApp</a>
       <a class="rsvp-btn" id="js-calendar-link" href="#" target="_blank">Add to Calendar</a>
-      <a class="rsvp-btn" href="https://open.spotify.com/playlist/6ptthqzOyKUF7rwsvEL8kp?si=5cdccd3d0d774a73" target="_blank"> Join Spotify Session</a>
+      <a class="rsvp-btn" href="https://open.spotify.com/playlist/6ptthqzOyKUF7rwsvEL8kp?si=5cdccd3d0d774a73" target="_blank"> Join Spotify</a>
     </div>
     <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
       <a href="https://wa.me/31681348625" target="_blank" style="color:var(--chrome-3); font-size:0.8rem; text-decoration:none; border:none; background:none; cursor:pointer; transition:color 0.3s ease; font-family:'Space Mono', monospace; letter-spacing:0.1em; border-bottom:1px solid var(--chrome-3); padding-bottom:0.3em;">Can't make it? Let us know</a>
@@ -469,10 +518,6 @@ order: 1
   <footer>
     <span id="js-footer-name">NAME</span> &nbsp;·&nbsp; <span id="js-footer-year"></span>
   </footer>
-
-  <section style="padding:6rem 0 4rem; text-align:center;">
-    <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1.2rem, 3vw, 1.8rem); text-transform:uppercase; letter-spacing:0.05em; background:linear-gradient(112deg, #71787f 0%, #f2f4f6 14%, #b9c0c7 26%, #ffffff 38%, #26292d 50%, #b9c0c7 64%, #f2f4f6 78%, #71787f 100%); background-size:280% 280%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:chromeShift 6s ease-in-out infinite; filter:url(#liquidFilterSoft);">Hichmoki Bday 2026</div>
-  </section>
 </div>
 
 <audio id="bgAudio" preload="auto"></audio>
@@ -493,7 +538,7 @@ const CONFIG = {
   name: "The Ceremony",
   age: "33",
   eventTag: "An Evening Unfolds",
-  tagline: "Join the party. Good food, warm people, a night that moves. ",
+  tagline: "Join the party - Good food, warm people, a night that moves. ",
   date: "18.09.2026",
   time: "20:00 — till late",
   location: "STRAATWEG 60B",
@@ -693,6 +738,36 @@ document.getElementById('enterBtn').addEventListener('click', () => {
 });
 
 document.getElementById('audioToggle').addEventListener('click', toggleAudio);
+
+(function initCountdown(){
+  const TARGET_DATE = '2026-09-18T20:00:00';
+
+  const partyDate = new Date(TARGET_DATE);
+
+  // Gate countdown
+  const elDays = document.getElementById('cd-days');
+  const elHours = document.getElementById('cd-hours');
+  const elMins = document.getElementById('cd-mins');
+  const elSecs = document.getElementById('cd-secs');
+
+  function tick(){
+    const now = new Date();
+    const diff = Math.max(0, partyDate - now);
+
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff / 3600000) % 24);
+    const mins = Math.floor((diff / 60000) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+
+    // Update gate countdown
+    elDays.textContent = String(days).padStart(2, '0');
+    elHours.textContent = String(hours).padStart(2, '0');
+    elMins.textContent = String(mins).padStart(2, '0');
+    elSecs.textContent = String(secs).padStart(2, '0');
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
 </script>
 
 </body>
