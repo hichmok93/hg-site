@@ -511,8 +511,12 @@ order: 1
       <a class="rsvp-btn" href="https://open.spotify.com/playlist/6ptthqzOyKUF7rwsvEL8kp?si=5cdccd3d0d774a73" target="_blank"> Join Spotify</a>
     </div>
     <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
-      <a href="https://wa.me/31681348625" target="_blank" style="color:var(--chrome-3); font-size:0.8rem; text-decoration:none; border:none; background:none; cursor:pointer; transition:color 0.3s ease; font-family:'Space Mono', monospace; letter-spacing:0.1em; border-bottom:1px solid var(--chrome-3); padding-bottom:0.3em;">Can't make it? Let us know</a>
+      <a href="https://wa.me/31681348625" target="_blank" style="color:var(--chrome-3); font-size:0.8rem; text-decoration:none; border:none; background:none; cursor:pointer; transition:color 0.3s ease; font-family:'Space Mono', monospace; letter-spacing:0.1em; border-bottom:1px solid var(--chrome-3); padding-bottom:0.3em;">[Can't make it? Let us know]</a>
     </div>
+  </section>
+
+  <section style="padding:6rem 0 4rem; text-align:center;">
+    <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1.2rem, 3vw, 1.8rem); text-transform:uppercase; letter-spacing:0.05em; background:linear-gradient(112deg, #71787f 0%, #f2f4f6 14%, #b9c0c7 26%, #ffffff 38%, #26292d 50%, #b9c0c7 64%, #f2f4f6 78%, #71787f 100%); background-size:280% 280%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:chromeShift 6s ease-in-out infinite; filter:url(#liquidFilterSoft);">Hichmoki Bday 2026</div>
   </section>
 
   <footer>
