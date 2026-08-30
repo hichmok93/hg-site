@@ -293,6 +293,11 @@ order: 1
 
   @keyframes barBounce{ 0%,100%{ height:3px; } 50%{ height:10px; } }
 
+  @keyframes floatUp{
+    0%{ transform:translateY(0); opacity:1; }
+    100%{ transform:translateY(-50px); opacity:0; }
+  }
+
   #menuBtn{
     position:fixed; top:1.4rem; right:1.4rem; z-index:55;
     padding:0.7em 1.1em;
@@ -454,6 +459,7 @@ order: 1
     <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem;">
       <a class="rsvp-btn" id="js-rsvp-link" href="https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX" target="_blank">Join WhatsApp</a>
       <a class="rsvp-btn" id="js-calendar-link" href="#" target="_blank">Add to Calendar</a>
+      <a class="rsvp-btn" href="https://open.spotify.com/playlist/6ptthqzOyKUF7rwsvEL8kp?si=5cdccd3d0d774a73" target="_blank"> Join Spotify Session</a>
     </div>
     <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
       <a href="https://wa.me/31681348625" target="_blank" style="color:var(--chrome-3); font-size:0.8rem; text-decoration:none; border:none; background:none; cursor:pointer; transition:color 0.3s ease; font-family:'Space Mono', monospace; letter-spacing:0.1em; border-bottom:1px solid var(--chrome-3); padding-bottom:0.3em;">Can't make it? Let us know</a>
@@ -465,13 +471,15 @@ order: 1
   </footer>
 
   <section style="padding:6rem 0 4rem; text-align:center;">
-    <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1.2rem, 3vw, 1.8rem); text-transform:uppercase; letter-spacing:0.05em; background:linear-gradient(112deg, #71787f 0%, #f2f4f6 14%, #b9c0c7 26%, #ffffff 38%, #26292d 50%, #b9c0c7 64%, #f2f4f6 78%, #71787f 100%); background-size:280% 280%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:chromeShift 6s ease-in-out infinite; filter:url(#liquidFilterSoft);">Bday 2026</div>
+    <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1.2rem, 3vw, 1.8rem); text-transform:uppercase; letter-spacing:0.05em; background:linear-gradient(112deg, #71787f 0%, #f2f4f6 14%, #b9c0c7 26%, #ffffff 38%, #26292d 50%, #b9c0c7 64%, #f2f4f6 78%, #71787f 100%); background-size:280% 280%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:chromeShift 6s ease-in-out infinite; filter:url(#liquidFilterSoft);">Hichmoki Bday 2026</div>
   </section>
 </div>
 
 <audio id="bgAudio" preload="auto"></audio>
 
 <a id="menuBtn" href="https://hichmok93.github.io/hg-site/">Menu</a>
+
+<div id="floatingTrackName" style="position:fixed; bottom:6.5rem; right:1.4rem; z-index:54; opacity:0; pointer-events:none; font-family:'Space Mono', monospace; font-size:0.65rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--chrome-3);"></div>
 
 <div id="audioToggle">
   <div class="dot"></div>
@@ -581,11 +589,22 @@ skipBtn.addEventListener('click', () => {
   bgAudio.volume = currentVolume;
   bgAudio.currentTime = 0;
   bgAudio.play().catch(err => console.log('Autoplay prevented:', err));
+  showFloatingTrackName();
   if (!audioStarted) {
     audioStarted = true;
   }
   document.getElementById('audioToggle').classList.add('on');
 });
+
+function showFloatingTrackName() {
+  const floatingEl = document.getElementById('floatingTrackName');
+  floatingEl.textContent = trackNames[currentTrack];
+  floatingEl.style.opacity = '1';
+  floatingEl.style.animation = 'none';
+  setTimeout(() => {
+    floatingEl.style.animation = 'floatUp 2s ease-out forwards';
+  }, 10);
+}
 
 function startAudio() {
   if (audioStarted) return;
@@ -593,6 +612,7 @@ function startAudio() {
   bgAudio.currentTime = 0;
   bgAudio.volume = 0;
   bgAudio.play().catch(err => console.log('Autoplay prevented:', err));
+  showFloatingTrackName();
   const fadeStart = performance.now();
   function fade(t) {
     const elapsed = t - fadeStart;
