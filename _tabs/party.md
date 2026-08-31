@@ -154,6 +154,29 @@ order: 1
 
   .gate-hint{ color:var(--chrome-3); font-size:0.72rem; }
 
+  .boot-bar-track{
+    width:min(70vw, 220px); height:2px;
+    border-radius:2px; overflow:hidden;
+    background:rgba(255,255,255,0.08);
+    margin-top:1.5rem;
+  }
+  .boot-bar-fill{
+    height:100%; width:0%;
+    background:linear-gradient(90deg, var(--chrome-3), var(--ice), var(--chrome-1));
+    transition:width 15.4s linear;
+  }
+  .boot-bar-fill.active{
+    width:100%;
+  }
+
+  @keyframes fadeOutBlue{
+    0%{ opacity:1; color:var(--ice); }
+    100%{ opacity:0; color:var(--ice); }
+  }
+  #bootText.fade-out{
+    animation:fadeOutBlue 1s ease-out forwards;
+  }
+
   #stage{ position:relative; z-index:10; padding-top:2rem; }
   .wrap{ max-width:960px; margin:0 auto; padding:0 6vw; }
 
@@ -441,6 +464,14 @@ order: 1
   <div class="gate-mark chrome-text">Join the Party</div>
   <button class="enter-btn" id="enterBtn">Enter</button>
   <div class="gate-hint mono">Sound on · tap to begin</div>
+  
+  <div style="margin-top:2rem; text-align:center;">
+    <div class="boot-bar-track">
+      <div class="boot-bar-fill" id="bootBarFill"></div>
+    </div>
+    <div id="bootText" class="mono" style="margin-top:0.8rem; font-size:0.7rem; color:var(--chrome-3); letter-spacing:0.15em;">press enter to activate</div>
+  </div>
+  
   <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1rem, 3vw, 1.6rem); text-transform:uppercase; letter-spacing:0.08em; -webkit-text-stroke:1px var(--chrome-2); color:transparent; margin-top:2rem;">Hichmoki Bday 2026</div>
 </div>
 
@@ -528,6 +559,8 @@ order: 1
 
 <a id="menuBtn" href="https://hichmok93.github.io/hg-site/">Menu</a>
 
+<button id="backBtn" style="position:fixed; bottom:1.4rem; left:1.4rem; z-index:55; padding:0.7em 1.1em; border:1px solid rgba(255,255,255,0.14); border-radius:999px; background:rgba(13,15,18,0.7); backdrop-filter:blur(6px); font-family:'Space Mono', monospace; font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--chrome-2); cursor:pointer; transition:border-color 0.3s ease, color 0.3s ease;">← Back</button>
+
 <div id="floatingTrackName" style="position:fixed; bottom:6.5rem; right:1.4rem; z-index:54; opacity:0; pointer-events:none; font-family:'Space Mono', monospace; font-size:0.65rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--chrome-3);"></div>
 
 <div id="audioToggle">
@@ -538,6 +571,108 @@ order: 1
 </div>
 
 <script>
+let bootActivated = false;
+
+function preventScroll(e) {
+  e.preventDefault();
+}
+
+function playPS1Sound() {
+  const ps1Audio = new Audio('{{ site.baseurl }}/assets/music/FKA_TWIGS/PS1 Startup (Remastered) MP3.mp3');
+  ps1Audio.play().catch(err => console.log('PS1 playback prevented:', err));
+}
+
+function activateBoot() {
+  if (bootActivated) return;
+  bootActivated = true;
+  
+  playPS1Sound();
+  
+  const bootBar = document.getElementById('bootBarFill');
+  const bootText = document.getElementById('bootText');
+  const enterBtn = document.getElementById('enterBtn');
+  
+  // Disable enter button
+  enterBtn.disabled = true;
+  enterBtn.style.opacity = '0.5';
+  enterBtn.style.cursor = 'not-allowed';
+  
+  // Disable scrolling
+  document.body.style.overflow = 'hidden';
+  document.addEventListener('wheel', preventScroll, { passive: false });
+  document.addEventListener('touchmove', preventScroll, { passive: false });
+  
+  bootBar.classList.add('active');
+  
+  // Re-enable after 16 seconds
+  setTimeout(() => {
+    bootText.textContent = 'join';
+    bootText.style.color = 'var(--ice)';
+    enterBtn.disabled = false;
+    enterBtn.style.opacity = '1';
+    enterBtn.style.cursor = 'pointer';
+    
+    // Change button text to "join"
+    enterBtn.textContent = 'join';
+    enterBtn.style.color = 'var(--ice)';
+    
+    // Fade out the boot text after 1 second
+    setTimeout(() => {
+      bootText.classList.add('fade-out');
+    }, 1000);
+  }, 16000);
+}
+
+// Back button: reset everything and go to top
+document.getElementById('backBtn').addEventListener('click', () => {
+  bgAudio.pause();
+  audioStarted = false;
+  bootActivated = false;
+  
+  const bootBar = document.getElementById('bootBarFill');
+  const bootText = document.getElementById('bootText');
+  const enterBtn = document.getElementById('enterBtn');
+  
+  // Reset boot bar
+  bootBar.classList.remove('active');
+  bootBar.style.width = '0%';
+  
+  // Reset boot text
+  bootText.textContent = 'press enter to activate';
+  bootText.style.color = 'var(--chrome-3)';
+  bootText.classList.remove('fade-out');
+  
+  // Reset enter button
+  enterBtn.textContent = 'Enter';
+  enterBtn.style.color = 'var(--void)';
+  enterBtn.disabled = true;
+  enterBtn.style.opacity = '0.5';
+  enterBtn.style.cursor = 'not-allowed';
+  enterBtn.classList.remove('fade-out');
+  
+  // Remove scroll prevention
+  document.body.style.overflow = 'auto';
+  document.removeEventListener('wheel', preventScroll);
+  document.removeEventListener('touchmove', preventScroll);
+  
+  // Remove audio toggle 'on' state
+  document.getElementById('audioToggle').classList.remove('on');
+  
+  // Disable ferrofluid
+  ferroActive = false;
+  
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  
+  // Re-enable boot sequence for next tap
+  document.addEventListener('click', activateBoot, { once: true });
+  document.addEventListener('touchstart', activateBoot, { once: true });
+});
+
+// Activate boot on first tap/click anywhere
+document.addEventListener('click', activateBoot, { once: true });
+document.addEventListener('touchstart', activateBoot, { once: true });
+
 const CONFIG = {
   name: "The Ceremony",
   age: "33",
@@ -730,6 +865,9 @@ function smoothScrollToStage() {
 }
 
 document.getElementById('enterBtn').addEventListener('click', () => {
+  // Only allow interaction after boot is complete
+  if (!bootActivated || document.getElementById('enterBtn').disabled) return;
+  
   if (!audioStarted) {
     startAudio();
   } else if (bgAudio.paused) {
@@ -738,6 +876,12 @@ document.getElementById('enterBtn').addEventListener('click', () => {
   document.getElementById('audioToggle').classList.add('on');
   ferroActive = true;
   triggerFerroSpike();
+  
+  // Enable scrolling
+  document.body.style.overflow = 'auto';
+  document.removeEventListener('wheel', preventScroll);
+  document.removeEventListener('touchmove', preventScroll);
+  
   setTimeout(smoothScrollToStage, 500);
 });
 
