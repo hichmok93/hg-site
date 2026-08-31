@@ -2,7 +2,7 @@
 layout: html-only
 title: Party
 icon: fa-solid fa-cake-candles
-permalink: /party/
+permalink: /party2/
 order: 1
 ---
 
