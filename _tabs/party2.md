@@ -5,17 +5,18 @@ icon: fa-solid fa-cake-candles
 permalink: /party2/
 order: 1
 ---
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title></title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+
   :root{
     --void:#07080a;
     --void-2:#0d0f12;
@@ -26,6 +27,7 @@ order: 1
     --ice:#9fe8ff;
     --ice-dim:rgba(159,232,255,0.35);
     --line:rgba(255,255,255,0.14);
+
     --fs-display:clamp(3.2rem, 13vw, 9.5rem);
     --fs-h2:clamp(1.4rem, 4vw, 2rem);
     --fs-body:clamp(0.95rem, 2vw, 1.05rem);
@@ -91,7 +93,12 @@ order: 1
     z-index:59;
     pointer-events:none;
     opacity:0.06;
-    background:repeating-linear-gradient(0deg,#fff 0px,transparent 1px,transparent 3px);
+    background:repeating-linear-gradient(
+      0deg,
+      #fff 0px,
+      transparent 1px,
+      transparent 3px
+    );
   }
 
   .blob-wrap{
@@ -113,14 +120,15 @@ order: 1
     top:0;
     left:0;
     border-radius:50%;
-    background:radial-gradient(
-      circle at 34% 26%,
-      #7a7d82 0%,
-      #2c2e32 20%,
-      #131417 42%,
-      #050506 68%,
-      #000 100%
-    );
+    background:
+      radial-gradient(
+        circle at 34% 26%,
+        #7a7d82 0%,
+        #2c2e32 20%,
+        #131417 42%,
+        #050506 68%,
+        #000 100%
+      );
     will-change:transform;
     transform:translate3d(-50%,-50%,0);
   }
@@ -158,12 +166,13 @@ order: 1
     width:min(14vw,110px);
     height:min(14vw,110px);
     border-radius:50%;
-    background:radial-gradient(
-      circle,
-      rgba(255,255,255,0.9) 0%,
-      var(--ice) 30%,
-      transparent 72%
-    );
+    background:
+      radial-gradient(
+        circle,
+        rgba(255,255,255,0.9) 0%,
+        var(--ice) 30%,
+        transparent 72%
+      );
     filter:blur(10px);
     mix-blend-mode:screen;
     opacity:0.55;
@@ -172,17 +181,18 @@ order: 1
   }
 
   .chrome-text{
-    background:linear-gradient(
-      112deg,
-      var(--chrome-3) 0%,
-      var(--chrome-1) 14%,
-      var(--chrome-2) 26%,
-      #ffffff 38%,
-      var(--chrome-4) 50%,
-      var(--chrome-2) 64%,
-      var(--chrome-1) 78%,
-      var(--chrome-3) 100%
-    );
+    background:
+      linear-gradient(
+        112deg,
+        var(--chrome-3) 0%,
+        var(--chrome-1) 14%,
+        var(--chrome-2) 26%,
+        #ffffff 38%,
+        var(--chrome-4) 50%,
+        var(--chrome-2) 64%,
+        var(--chrome-1) 78%,
+        var(--chrome-3) 100%
+      );
     background-size:280% 280%;
     -webkit-background-clip:text;
     background-clip:text;
@@ -191,13 +201,21 @@ order: 1
   }
 
   @keyframes chromeShift{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+    0%{
+      background-position:0% 50%;
+    }
+
+    50%{
+      background-position:100% 50%;
+    }
+
+    100%{
+      background-position:0% 50%;
+    }
   }
 
   .mono{
-    font-family:'Space Mono',monospace;
+    font-family:'Space Mono', monospace;
     letter-spacing:0.22em;
     text-transform:uppercase;
     font-size:var(--fs-mono);
@@ -218,9 +236,9 @@ order: 1
   }
 
   .gate-mark{
-    font-family:'Unbounded',sans-serif;
+    font-family:'Unbounded', sans-serif;
     font-weight:900;
-    font-size:clamp(2.2rem,9vw,4.2rem);
+    font-size:clamp(2.2rem, 9vw, 4.2rem);
     letter-spacing:0.02em;
     filter:url(#liquidFilterSoft);
   }
@@ -230,21 +248,24 @@ order: 1
     padding:1.05em 2.6em;
     border:1px solid var(--line);
     border-radius:999px;
-    font-family:'Space Mono',monospace;
+    font-family:'Space Mono', monospace;
     letter-spacing:0.3em;
     font-size:0.78rem;
     text-transform:uppercase;
     color:var(--void);
-    background:linear-gradient(
-      120deg,
-      var(--chrome-2),
-      var(--chrome-1) 40%,
-      var(--chrome-3) 70%,
-      var(--chrome-1)
-    );
+    background:
+      linear-gradient(
+        120deg,
+        var(--chrome-2),
+        var(--chrome-1) 40%,
+        var(--chrome-3) 70%,
+        var(--chrome-1)
+      );
     background-size:220% 220%;
     animation:chromeShift 6s ease-in-out infinite;
-    transition:transform 0.35s ease,box-shadow 0.35s ease;
+    transition:
+      transform 0.35s ease,
+      box-shadow 0.35s ease;
     box-shadow:0 0 0 rgba(159,232,255,0);
     cursor:pointer;
   }
@@ -261,11 +282,13 @@ order: 1
   }
 
   @keyframes purpleMetallicGlow{
+
     0%{
       box-shadow:
         0 0 20px 0 rgba(168,85,247,1),
         inset 0 0 20px rgba(200,150,255,0.6);
-      text-shadow:0 0 10px rgba(168,85,247,0.8);
+      text-shadow:
+        0 0 10px rgba(168,85,247,0.8);
     }
 
     50%{
@@ -279,6 +302,7 @@ order: 1
         0 0 0 20px rgba(168,85,247,0),
         inset 0 0 0 rgba(200,150,255,0);
     }
+
   }
 
   .gate-hint{
@@ -298,16 +322,22 @@ order: 1
   .boot-bar-fill{
     height:100%;
     width:0%;
-    background:linear-gradient(
-      90deg,
-      var(--chrome-3),
-      var(--ice),
-      var(--chrome-1)
-    );
+    background:
+      linear-gradient(
+        90deg,
+        var(--chrome-3),
+        var(--ice),
+        var(--chrome-1)
+      );
     transition:width 14.4s linear;
   }
 
+  .boot-bar-fill.active{
+    width:100%;
+  }
+
   @keyframes fadeOutBlue{
+
     0%{
       opacity:1;
       color:var(--ice);
@@ -317,6 +347,7 @@ order: 1
       opacity:0;
       color:var(--ice);
     }
+
   }
 
   #bootText.fade-out{
@@ -362,7 +393,7 @@ order: 1
   }
 
   h1.name{
-    font-family:'Unbounded',sans-serif;
+    font-family:'Unbounded', sans-serif;
     font-weight:900;
     font-size:var(--fs-display);
     line-height:0.92;
@@ -396,13 +427,24 @@ order: 1
     transform:translateX(-50%);
     width:1px;
     height:52px;
-    background:linear-gradient(var(--ice),transparent);
+    background:
+      linear-gradient(
+        var(--ice),
+        transparent
+      );
     animation:scrollPulse 2.4s ease-in-out infinite;
   }
 
   @keyframes scrollPulse{
-    0%,100%{opacity:0.15;}
-    50%{opacity:0.85;}
+
+    0%,100%{
+      opacity:0.15;
+    }
+
+    50%{
+      opacity:0.85;
+    }
+
   }
 
   section.details{
@@ -411,13 +453,14 @@ order: 1
 
   .divider{
     height:1px;
-    background:linear-gradient(
-      90deg,
-      transparent,
-      var(--line) 20%,
-      var(--line) 80%,
-      transparent
-    );
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        var(--line) 20%,
+        var(--line) 80%,
+        transparent
+      );
     margin-bottom:5rem;
   }
 
@@ -443,7 +486,7 @@ order: 1
   }
 
   .detail-cell .value{
-    font-family:'Unbounded',sans-serif;
+    font-family:'Unbounded', sans-serif;
     font-weight:700;
     font-size:clamp(1.3rem,3.6vw,1.9rem);
     text-transform:uppercase;
@@ -467,7 +510,7 @@ order: 1
   }
 
   .rsvp h2{
-    font-family:'Unbounded',sans-serif;
+    font-family:'Unbounded', sans-serif;
     font-weight:700;
     font-size:var(--fs-h2);
     text-transform:uppercase;
@@ -486,7 +529,7 @@ order: 1
     padding:1.1em 2.8em;
     border-radius:999px;
     border:1px solid var(--chrome-2);
-    font-family:'Space Mono',monospace;
+    font-family:'Space Mono', monospace;
     letter-spacing:0.28em;
     font-size:0.78rem;
     text-transform:uppercase;
@@ -509,7 +552,7 @@ order: 1
     padding:3rem 0 4rem;
     text-align:center;
     color:var(--chrome-4);
-    font-family:'Space Mono',monospace;
+    font-family:'Space Mono', monospace;
     font-size:0.7rem;
     letter-spacing:0.18em;
     text-transform:uppercase;
@@ -532,7 +575,7 @@ order: 1
     border-radius:999px;
     background:rgba(13,15,18,0.7);
     backdrop-filter:blur(6px);
-    font-family:'Space Mono',monospace;
+    font-family:'Space Mono', monospace;
     font-size:0.66rem;
     letter-spacing:0.18em;
     text-transform:uppercase;
@@ -584,8 +627,15 @@ order: 1
   }
 
   @keyframes barBounce{
-    0%,100%{height:3px;}
-    50%{height:10px;}
+
+    0%,100%{
+      height:3px;
+    }
+
+    50%{
+      height:10px;
+    }
+
   }
 
   .audio-control{
@@ -603,6 +653,7 @@ order: 1
   }
 
   @keyframes floatUp{
+
     0%{
       transform:translateY(0);
       opacity:1;
@@ -612,6 +663,7 @@ order: 1
       transform:translateY(-50px);
       opacity:0;
     }
+
   }
 
   .countdown-row{
@@ -652,7 +704,7 @@ order: 1
     border-radius:999px;
     background:rgba(13,15,18,0.7);
     backdrop-filter:blur(6px);
-    font-family:'Space Mono',monospace;
+    font-family:'Space Mono', monospace;
     font-size:0.66rem;
     letter-spacing:0.18em;
     text-transform:uppercase;
@@ -736,6 +788,7 @@ order: 1
       padding:0.95em 2.2em;
       font-size:0.72rem;
     }
+
   }
 
   @media (prefers-reduced-motion:reduce){
@@ -745,11 +798,17 @@ order: 1
     .scroll-cue{
       animation:none !important;
     }
+
   }
+
 </style>
 </head>
 
 <body>
+
+<!-- ======================================================
+     SVG FILTERS
+====================================================== -->
 
 <svg width="0" height="0" style="position:absolute">
 
@@ -760,6 +819,7 @@ order: 1
     width="180%"
     height="180%"
   >
+
     <feTurbulence
       type="fractalNoise"
       baseFrequency="0.010 0.018"
@@ -767,12 +827,14 @@ order: 1
       seed="11"
       result="noise"
     >
+
       <animate
         attributeName="baseFrequency"
         dur="22s"
         values="0.010 0.018;0.017 0.026;0.010 0.018"
         repeatCount="indefinite"
       />
+
     </feTurbulence>
 
     <feDisplacementMap
@@ -782,7 +844,9 @@ order: 1
       xChannelSelector="R"
       yChannelSelector="G"
     />
+
   </filter>
+
 
   <filter
     id="gooMerge"
@@ -791,6 +855,7 @@ order: 1
     width="220%"
     height="220%"
   >
+
     <feGaussianBlur
       in="SourceGraphic"
       stdDeviation="18"
@@ -800,10 +865,12 @@ order: 1
     <feColorMatrix
       in="blur"
       type="matrix"
-      values="1 0 0 0 0
-              0 1 0 0 0
-              0 0 1 0 0
-              0 0 0 26 -11"
+      values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 26 -11
+      "
       result="goo"
     />
 
@@ -814,12 +881,14 @@ order: 1
       seed="9"
       result="oilNoise"
     >
+
       <animate
         attributeName="baseFrequency"
         dur="30s"
         values="0.006 0.012;0.011 0.02;0.006 0.012"
         repeatCount="indefinite"
       />
+
     </feTurbulence>
 
     <feDisplacementMap
@@ -836,7 +905,9 @@ order: 1
       in2="oiled"
       operator="atop"
     />
+
   </filter>
+
 
   <filter
     id="liquidFilterSoft"
@@ -845,6 +916,7 @@ order: 1
     width="160%"
     height="160%"
   >
+
     <feTurbulence
       type="fractalNoise"
       baseFrequency="0.012 0.02"
@@ -860,9 +932,15 @@ order: 1
       xChannelSelector="R"
       yChannelSelector="G"
     />
+
   </filter>
 
 </svg>
+
+
+<!-- ======================================================
+     VISUAL BACKGROUND
+====================================================== -->
 
 <div class="grain"></div>
 <div class="scanlines"></div>
@@ -873,10 +951,25 @@ order: 1
 
     <div class="ferro-goo">
 
-      <div class="ferro-blob" id="ferro-1"></div>
-      <div class="ferro-blob" id="ferro-2"></div>
-      <div class="ferro-blob" id="ferro-3"></div>
-      <div class="ferro-blob" id="ferro-4"></div>
+      <div
+        class="ferro-blob"
+        id="ferro-1"
+      ></div>
+
+      <div
+        class="ferro-blob"
+        id="ferro-2"
+      ></div>
+
+      <div
+        class="ferro-blob"
+        id="ferro-3"
+      ></div>
+
+      <div
+        class="ferro-blob"
+        id="ferro-4"
+      ></div>
 
     </div>
 
@@ -890,9 +983,9 @@ order: 1
 </div>
 
 
-<!-- =====================================================
+<!-- ======================================================
      GATE
-===================================================== -->
+====================================================== -->
 
 <div id="gate">
 
@@ -908,7 +1001,12 @@ order: 1
     Enter
   </button>
 
-  <div style="margin-top:2rem;text-align:center;">
+  <div
+    style="
+      margin-top:2rem;
+      text-align:center;
+    "
+  >
 
     <div class="boot-bar-track">
 
@@ -929,10 +1027,11 @@ order: 1
         letter-spacing:0.15em;
       "
     >
-      Sound on · Touch screen to activate
+      Sound on · Touch the screen to activate
     </div>
 
   </div>
+
 
   <div
     style="
@@ -952,9 +1051,9 @@ order: 1
 </div>
 
 
-<!-- =====================================================
+<!-- ======================================================
      STAGE
-===================================================== -->
+====================================================== -->
 
 <div id="stage">
 
@@ -966,6 +1065,7 @@ order: 1
     >
       Hichmoki Birthday Party
     </div>
+
 
     <h1 class="name chrome-text">
 
@@ -982,6 +1082,7 @@ order: 1
 
     </h1>
 
+
     <p
       class="tagline"
       id="js-tagline"
@@ -989,6 +1090,7 @@ order: 1
       A night dissolves into dance.
       Come lose your shape with us.
     </p>
+
 
     <div
       class="countdown-row"
@@ -1000,63 +1102,79 @@ order: 1
     >
 
       <div class="countdown-cell">
+
         <div
           class="num chrome-text"
           id="cd-days"
         >
           00
         </div>
+
         <div class="lbl mono">
           Days
         </div>
+
       </div>
 
+
       <div class="countdown-cell">
+
         <div
           class="num chrome-text"
           id="cd-hours"
         >
           00
         </div>
+
         <div class="lbl mono">
           Hrs
         </div>
+
       </div>
 
+
       <div class="countdown-cell">
+
         <div
           class="num chrome-text"
           id="cd-mins"
         >
           00
         </div>
+
         <div class="lbl mono">
           Min
         </div>
+
       </div>
 
+
       <div class="countdown-cell">
+
         <div
           class="num chrome-text"
           id="cd-secs"
         >
           00
         </div>
+
         <div class="lbl mono">
           Sec
         </div>
+
       </div>
 
     </div>
+
 
     <div class="scroll-cue"></div>
 
   </header>
 
 
-  <!-- ===================================================
+  <!-- ====================================================
        DETAILS
-  ==================================================== -->
+  ===================================================== -->
 
   <section class="details wrap">
 
@@ -1182,9 +1300,9 @@ order: 1
   </section>
 
 
-  <!-- ===================================================
+  <!-- ====================================================
        RSVP
-  ==================================================== -->
+  ===================================================== -->
 
   <section class="rsvp wrap">
 
@@ -1195,6 +1313,7 @@ order: 1
     <p id="js-rsvp-note">
       If you are attending, join the WhatsApp group.
     </p>
+
 
     <div
       style="
@@ -1215,6 +1334,7 @@ order: 1
         Join WhatsApp
       </a>
 
+
       <a
         class="rsvp-btn"
         id="js-calendar-link"
@@ -1223,6 +1343,7 @@ order: 1
       >
         Add to Calendar
       </a>
+
 
       <a
         class="rsvp-btn"
@@ -1233,6 +1354,7 @@ order: 1
       </a>
 
     </div>
+
 
     <div
       style="
@@ -1254,6 +1376,7 @@ order: 1
           border:none;
           background:none;
           cursor:pointer;
+          transition:color 0.3s ease;
           font-family:'Space Mono',monospace;
           letter-spacing:0.1em;
           border-bottom:1px solid var(--chrome-3);
@@ -1267,6 +1390,10 @@ order: 1
 
   </section>
 
+
+  <!-- ====================================================
+       FOOTER MESSAGE
+  ===================================================== -->
 
   <section
     style="
@@ -1322,15 +1449,19 @@ order: 1
 </div>
 
 
-<!-- =====================================================
+<!-- ======================================================
      AUDIO
-===================================================== -->
+====================================================== -->
 
 <audio
   id="bgAudio"
   preload="auto"
 ></audio>
 
+
+<!-- ======================================================
+     NAVIGATION
+====================================================== -->
 
 <a
   id="menuBtn"
@@ -1407,6 +1538,10 @@ order: 1
 </div>
 
 
+<!-- ======================================================
+     JAVASCRIPT
+====================================================== -->
+
 <script>
 
 /* =========================================================
@@ -1416,11 +1551,10 @@ order: 1
 let bootActivated = false;
 let audioStarted = false;
 let ferroActive = false;
-let currentTrack = 0;
 
 
 /* =========================================================
-   HELPERS
+   SCROLL CONTROL
 ========================================================= */
 
 function preventScroll(e) {
@@ -1429,104 +1563,675 @@ function preventScroll(e) {
 
 
 /* =========================================================
-   CONFIG
+   AUDIO
 ========================================================= */
 
-const CONFIG = {
-  name: "The Ceremony",
-  age: "33",
-  eventTag: "An Evening Unfolds",
-  tagline: "Join the party - Good food, warm people, a night that moves.",
-  date: "18.09.2026",
-  time: "20:00 — till late",
-  location: "STRAATWEG 60B",
-  address: "",
-  dress: "QUEER FRIENDLY",
-  plusOne: "+1 welcome — just let us know who's coming"
-};
+const bgAudio =
+  document.getElementById('bgAudio');
 
 
-document.getElementById('js-eyebrow').textContent =
-  CONFIG.eventTag;
+/*
+ * PS1 STARTUP SOUND
+ *
+ * IMPORTANT:
+ * We create the Audio object once.
+ * We do NOT call play() while loading.
+ */
+const ps1Audio = new Audio(
+  '{{ site.baseurl }}/assets/music/FKA_TWIGS/PS1 Startup (Remastered) MP3.mp3'
+);
 
-document.getElementById('js-name').textContent =
-  CONFIG.name;
-
-document.getElementById('js-turns').textContent =
-  CONFIG.age;
-
-document.getElementById('js-tagline').textContent =
-  CONFIG.tagline;
-
-document.getElementById('js-date').textContent =
-  CONFIG.date;
-
-document.getElementById('js-time').textContent =
-  CONFIG.time;
-
-document.getElementById('js-location').textContent =
-  CONFIG.location;
-
-document.getElementById('js-address').textContent =
-  CONFIG.address;
-
-document.getElementById('js-dress').textContent =
-  CONFIG.dress;
-
-document.getElementById('js-plusone').textContent =
-  CONFIG.plusOne;
-
-document.getElementById('js-footer-name').textContent =
-  CONFIG.name;
-
-document.getElementById('js-footer-year').textContent =
-  new Date().getFullYear();
+ps1Audio.preload = 'auto';
+ps1Audio.volume = 1;
 
 
 /* =========================================================
-   CALENDAR
+   PLAYLIST
 ========================================================= */
 
-const calendarDate =
-  '20260918T200000';
+const trackNames = [
+  'Girl Feels Good',
+  'The Eleven Perfect Stranger',
+  'The Eleven Sticky PA'
+];
 
-const calendarEndDate =
-  '20260919T000000';
+const playlist = [
+  '{{ site.baseurl }}/assets/music/FKA_TWIGS/2_FKA_twigs_EUSEXUA_The_Eleven_Girl_Feels_Good.mp3',
+  '{{ site.baseurl }}/assets/music/FKA_TWIGS/3_FKA_twigs_EUSEXUA_The_Eleven_Perfect_Stranger.mp3',
+  '{{ site.baseurl }}/assets/music/FKA_TWIGS/6_FKA_twigs_EUSEXUA_The_Eleven_Sticky_PA.mp3'
+];
 
-const calendarTitle =
-  encodeURIComponent(
-    "Hichmoki's Party - The Ceremony 33"
-  );
+let currentTrack = 0;
 
-const calendarLocation =
-  encodeURIComponent(
-    'Straatweg 60B, 3051 BH Rotterdam'
-  );
+bgAudio.src = playlist[currentTrack];
+bgAudio.preload = 'auto';
+bgAudio.volume = 0;
 
-const calendarDesc =
-  encodeURIComponent(
-    "Join the party. Good food, warm people, a night that moves. WhatsApp: https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX"
-  );
+const targetVolume = 0.55;
+const fadeDuration = 2500;
 
-const calendarUrl =
-  `https://calendar.google.com/calendar/render?action=TEMPLATE` +
-  `&text=${calendarTitle}` +
-  `&dates=${calendarDate}/${calendarEndDate}` +
-  `&location=${calendarLocation}` +
-  `&details=${calendarDesc}`;
 
-document.getElementById('js-calendar-link').href =
-  calendarUrl;
+/* =========================================================
+   AUDIO UI
+========================================================= */
 
-const calendarDetail =
-  document.getElementById(
-    'js-calendar-link-detail'
-  );
+const audioToggle =
+  document.getElementById('audioToggle');
 
-if (calendarDetail) {
-  calendarDetail.href =
-    calendarUrl;
+const skipBtn =
+  document.getElementById('skipBtn');
+
+
+/* =========================================================
+   PLAY PS1 SOUND
+========================================================= */
+
+function playPS1Sound() {
+
+  try {
+
+    ps1Audio.pause();
+
+    ps1Audio.currentTime = 0;
+
+    /*
+     * play() happens here.
+     *
+     * This function is ONLY called from the user's
+     * pointerdown event.
+     */
+    const promise = ps1Audio.play();
+
+    if (promise !== undefined) {
+
+      promise.catch(
+        error => {
+          console.log(
+            'PS1 playback prevented:',
+            error
+          );
+        }
+      );
+
+    }
+
+  } catch(error) {
+
+    console.log(
+      'PS1 audio error:',
+      error
+    );
+
+  }
+
 }
+
+
+/* =========================================================
+   BOOT
+========================================================= */
+
+function activateBoot() {
+
+  if (bootActivated) {
+    return;
+  }
+
+  /*
+   * Set this FIRST so a touch + synthetic click
+   * cannot activate the boot twice.
+   */
+  bootActivated = true;
+
+
+  /*
+   * IMPORTANT:
+   *
+   * The PS1 sound is started directly from the
+   * user's pointer interaction.
+   *
+   * This is the fix for the direct /party/ URL.
+   */
+  playPS1Sound();
+
+
+  const bootBar =
+    document.getElementById('bootBarFill');
+
+  const bootText =
+    document.getElementById('bootText');
+
+  const enterBtn =
+    document.getElementById('enterBtn');
+
+
+  enterBtn.disabled = true;
+  enterBtn.style.opacity = '0.5';
+  enterBtn.style.cursor = 'not-allowed';
+
+
+  document.body.style.overflow = 'hidden';
+
+
+  document.addEventListener(
+    'wheel',
+    preventScroll,
+    {
+      passive:false
+    }
+  );
+
+
+  document.addEventListener(
+    'touchmove',
+    preventScroll,
+    {
+      passive:false
+    }
+  );
+
+
+  bootText.textContent =
+    'loading...';
+
+  bootText.style.color =
+    'var(--chrome-3)';
+
+
+  setTimeout(
+    () => {
+
+      bootBar.style.transition =
+        'width 14.4s linear';
+
+      bootBar.style.width =
+        '100%';
+
+    },
+    50
+  );
+
+
+  setTimeout(
+    () => {
+
+      bootText.textContent =
+        'Press join';
+
+      bootText.style.color =
+        'var(--ice)';
+
+
+      enterBtn.disabled = false;
+
+      enterBtn.style.opacity = '1';
+
+      enterBtn.style.cursor =
+        'pointer';
+
+
+      enterBtn.textContent =
+        'join';
+
+      enterBtn.style.color =
+        'var(--ice)';
+
+
+      setTimeout(
+        () => {
+
+          bootText.classList.add(
+            'fade-out'
+          );
+
+        },
+        1000
+      );
+
+    },
+    14400
+  );
+
+}
+
+
+/* =========================================================
+   FIRST USER INTERACTION
+========================================================= */
+
+/*
+ * DO NOT use separate touchstart + click events here.
+ *
+ * pointerdown works for:
+ *
+ * - touchscreen
+ * - mouse
+ * - stylus
+ *
+ * And, most importantly, the PS1 play() call happens
+ * directly inside this user gesture.
+ */
+
+document.addEventListener(
+  'pointerdown',
+  activateBoot,
+  {
+    once:true,
+    passive:true
+  }
+);
+
+
+/* =========================================================
+   TRACK NAME
+========================================================= */
+
+function showFloatingTrackName() {
+
+  const floatingEl =
+    document.getElementById(
+      'floatingTrackName'
+    );
+
+
+  floatingEl.textContent =
+    trackNames[currentTrack];
+
+
+  floatingEl.style.opacity =
+    '1';
+
+
+  floatingEl.style.animation =
+    'none';
+
+
+  setTimeout(
+    () => {
+
+      floatingEl.style.animation =
+        'floatUp 2s ease-out forwards';
+
+    },
+    10
+  );
+
+}
+
+
+/* =========================================================
+   START BACKGROUND MUSIC
+========================================================= */
+
+function startAudio() {
+
+  if (audioStarted) {
+    return;
+  }
+
+  audioStarted = true;
+
+
+  bgAudio.currentTime = 0;
+
+  bgAudio.volume = 0;
+
+
+  /*
+   * This play() happens because the user pressed
+   * the JOIN button.
+   */
+  const promise =
+    bgAudio.play();
+
+
+  if (promise !== undefined) {
+
+    promise.catch(
+      error => {
+
+        console.log(
+          'Background audio prevented:',
+          error
+        );
+
+      }
+    );
+
+  }
+
+
+  showFloatingTrackName();
+
+
+  const fadeStart =
+    performance.now();
+
+
+  function fade(t) {
+
+    const elapsed =
+      t - fadeStart;
+
+    const pct =
+      Math.min(
+        1,
+        elapsed / fadeDuration
+      );
+
+
+    bgAudio.volume =
+      pct * targetVolume;
+
+
+    if (pct < 1) {
+
+      requestAnimationFrame(
+        fade
+      );
+
+    }
+
+  }
+
+
+  requestAnimationFrame(
+    fade
+  );
+
+
+  audioToggle.classList.add(
+    'on'
+  );
+
+}
+
+
+/* =========================================================
+   NEXT TRACK
+========================================================= */
+
+function nextTrack() {
+
+  currentTrack =
+    (currentTrack + 1) %
+    playlist.length;
+
+
+  bgAudio.src =
+    playlist[currentTrack];
+
+  bgAudio.currentTime = 0;
+
+  bgAudio.volume =
+    targetVolume;
+
+
+  const promise =
+    bgAudio.play();
+
+
+  if (promise !== undefined) {
+
+    promise.catch(
+      error => {
+
+        console.log(
+          'Next track prevented:',
+          error
+        );
+
+      }
+    );
+
+  }
+
+
+  audioStarted = true;
+
+
+  audioToggle.classList.add(
+    'on'
+  );
+
+
+  showFloatingTrackName();
+
+}
+
+
+/* =========================================================
+   AUTOMATIC NEXT TRACK
+========================================================= */
+
+bgAudio.addEventListener(
+  'ended',
+  () => {
+
+    currentTrack =
+      (currentTrack + 1) %
+      playlist.length;
+
+
+    bgAudio.src =
+      playlist[currentTrack];
+
+    bgAudio.volume =
+      targetVolume;
+
+
+    const promise =
+      bgAudio.play();
+
+
+    if (promise !== undefined) {
+
+      promise.catch(
+        error => {
+
+          console.log(
+            'Autoplay prevented:',
+            error
+          );
+
+        }
+      );
+
+    }
+
+
+    audioToggle.classList.add(
+      'on'
+    );
+
+
+    showFloatingTrackName();
+
+  }
+);
+
+
+/* =========================================================
+   TOGGLE AUDIO
+========================================================= */
+
+function toggleAudio() {
+
+  if (!audioStarted) {
+
+    startAudio();
+
+    return;
+
+  }
+
+
+  if (bgAudio.paused) {
+
+    const promise =
+      bgAudio.play();
+
+
+    if (promise !== undefined) {
+
+      promise.catch(
+        error => {
+
+          console.log(
+            'Resume prevented:',
+            error
+          );
+
+        }
+      );
+
+    }
+
+
+    audioToggle.classList.add(
+      'on'
+    );
+
+  } else {
+
+    bgAudio.pause();
+
+    audioToggle.classList.remove(
+      'on'
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   SKIP BUTTON
+========================================================= */
+
+skipBtn.addEventListener(
+  'pointerdown',
+  e => {
+
+    e.stopPropagation();
+
+  },
+  {
+    passive:true
+  }
+);
+
+
+skipBtn.addEventListener(
+  'click',
+  e => {
+
+    e.stopPropagation();
+
+    nextTrack();
+
+  }
+);
+
+
+/* =========================================================
+   AUDIO TOGGLE BUTTON
+========================================================= */
+
+audioToggle.addEventListener(
+  'click',
+  e => {
+
+    e.stopPropagation();
+
+    toggleAudio();
+
+  }
+);
+
+
+/* =========================================================
+   ENTER / JOIN
+========================================================= */
+
+document
+  .getElementById('enterBtn')
+  .addEventListener(
+    'click',
+    function() {
+
+      if (
+        !bootActivated ||
+        this.disabled
+      ) {
+        return;
+      }
+
+
+      if (!audioStarted) {
+
+        startAudio();
+
+      } else if (
+        bgAudio.paused
+      ) {
+
+        const promise =
+          bgAudio.play();
+
+
+        if (promise !== undefined) {
+
+          promise.catch(
+            error => {
+
+              console.log(
+                'Audio resume prevented:',
+                error
+              );
+
+            }
+          );
+
+        }
+
+      }
+
+
+      audioToggle.classList.add(
+        'on'
+      );
+
+
+      ferroActive = true;
+
+
+      triggerFerroSpike();
+
+
+      document.body.style.overflow =
+        'auto';
+
+
+      document.removeEventListener(
+        'wheel',
+        preventScroll
+      );
+
+
+      document.removeEventListener(
+        'touchmove',
+        preventScroll
+      );
+
+
+      setTimeout(
+        smoothScrollToStage,
+        500
+      );
+
+    }
+  );
 
 
 /* =========================================================
@@ -1538,11 +2243,13 @@ const reduceMotion =
     '(prefers-reduced-motion: reduce)'
   ).matches;
 
+
 const centerX =
   window.innerWidth / 2;
 
 const centerY =
   window.innerHeight / 2;
+
 
 let mx = centerX;
 let my = centerY;
@@ -1550,11 +2257,13 @@ let my = centerY;
 
 window.addEventListener(
   'pointermove',
-  (e) => {
+  e => {
 
     if (ferroActive) {
+
       mx = e.clientX;
       my = e.clientY;
+
     }
 
   }
@@ -1563,20 +2272,25 @@ window.addEventListener(
 
 window.addEventListener(
   'touchmove',
-  (e) => {
+  e => {
 
     if (
       ferroActive &&
       e.touches[0]
     ) {
 
-      mx = e.touches[0].clientX;
-      my = e.touches[0].clientY;
+      mx =
+        e.touches[0].clientX;
+
+      my =
+        e.touches[0].clientY;
 
     }
 
   },
-  { passive:true }
+  {
+    passive:true
+  }
 );
 
 
@@ -1586,7 +2300,8 @@ const ferroEls = [
   'ferro-3',
   'ferro-4'
 ].map(
-  id => document.getElementById(id)
+  id =>
+    document.getElementById(id)
 );
 
 
@@ -1651,10 +2366,20 @@ function stepFerro() {
     (s,i) => {
 
       const ax =
-        (mx + s.ox - s.x) * s.k;
+        (
+          mx +
+          s.ox -
+          s.x
+        ) * s.k;
+
 
       const ay =
-        (my + s.oy - s.y) * s.k;
+        (
+          my +
+          s.oy -
+          s.y
+        ) * s.k;
+
 
       s.vx =
         (s.vx + ax) * s.d;
@@ -1662,15 +2387,16 @@ function stepFerro() {
       s.vy =
         (s.vy + ay) * s.d;
 
+
       s.x += s.vx;
+
       s.y += s.vy;
 
 
       if (!reduceMotion) {
 
         ferroEls[i].style.transform =
-          `translate3d(${s.x}px,${s.y}px,0)
-           translate3d(-50%,-50%,0)`;
+          `translate3d(${s.x}px, ${s.y}px, 0) translate3d(-50%, -50%, 0)`;
 
       }
 
@@ -1681,12 +2407,7 @@ function stepFerro() {
   if (!reduceMotion) {
 
     highlight.style.transform =
-      `translate3d(
-        ${ferroState[0].x - 26}px,
-        ${ferroState[0].y - 34}px,
-        0
-      )
-      translate3d(-50%,-50%,0)`;
+      `translate3d(${ferroState[0].x - 26}px, ${ferroState[0].y - 34}px, 0) translate3d(-50%, -50%, 0)`;
 
   }
 
@@ -1694,414 +2415,11 @@ function stepFerro() {
   requestAnimationFrame(
     stepFerro
   );
+
 }
+
 
 stepFerro();
-
-
-/* =========================================================
-   AUDIO
-========================================================= */
-
-const bgAudio =
-  document.getElementById(
-    'bgAudio'
-  );
-
-
-/*
-   PS1 startup is a separate audio element.
-*/
-const ps1Audio =
-  new Audio(
-    '{{ site.baseurl }}/assets/music/FKA_TWIGS/PS1 Startup (Remastered) MP3.mp3'
-  );
-
-ps1Audio.preload =
-  'auto';
-
-
-/* =========================================================
-   PLAYLIST
-========================================================= */
-
-const trackNames = [
-  'Girl Feels Good',
-  'The Eleven Perfect Stranger',
-  'The Eleven Sticky PA'
-];
-
-
-const playlist = [
-
-  '{{ site.baseurl }}/assets/music/FKA_TWIGS/2_FKA_twigs_EUSEXUA_The_Eleven_Girl_Feels_Good.mp3',
-
-  '{{ site.baseurl }}/assets/music/FKA_TWIGS/3_FKA_twigs_EUSEXUA_The_Eleven_Perfect_Stranger.mp3',
-
-  '{{ site.baseurl }}/assets/music/FKA_TWIGS/6_FKA_twigs_EUSEXUA_The_Eleven_Sticky_PA.mp3'
-
-];
-
-
-bgAudio.src =
-  playlist[currentTrack];
-
-bgAudio.volume =
-  0;
-
-
-const targetVolume =
-  0.55;
-
-const fadeDuration =
-  2500;
-
-
-const skipBtn =
-  document.getElementById(
-    'skipBtn'
-  );
-
-
-/* =========================================================
-   TRACK NAME
-========================================================= */
-
-function showFloatingTrackName() {
-
-  const floatingEl =
-    document.getElementById(
-      'floatingTrackName'
-    );
-
-  floatingEl.textContent =
-    trackNames[currentTrack];
-
-  floatingEl.style.opacity =
-    '1';
-
-  floatingEl.style.animation =
-    'none';
-
-
-  setTimeout(
-    () => {
-
-      floatingEl.style.animation =
-        'floatUp 2s ease-out forwards';
-
-    },
-    10
-  );
-
-}
-
-
-/* =========================================================
-   MAIN PLAYLIST
-========================================================= */
-
-function startMainPlaylist() {
-
-  if (audioStarted) {
-    return;
-  }
-
-
-  audioStarted =
-    true;
-
-  currentTrack =
-    0;
-
-
-  bgAudio.src =
-    playlist[currentTrack];
-
-  bgAudio.currentTime =
-    0;
-
-  bgAudio.volume =
-    0;
-
-
-  const promise =
-    bgAudio.play();
-
-
-  if (promise !== undefined) {
-
-    promise
-      .then(() => {
-
-        console.log(
-          'Main playlist started'
-        );
-
-
-        document
-          .getElementById(
-            'audioToggle'
-          )
-          .classList.add('on');
-
-
-        showFloatingTrackName();
-
-        fadeInMainAudio();
-
-      })
-      .catch(
-        err => {
-
-          console.log(
-            'Main playlist playback prevented:',
-            err
-          );
-
-          audioStarted =
-            false;
-
-        }
-      );
-
-  }
-
-}
-
-
-/* =========================================================
-   FADE IN
-========================================================= */
-
-function fadeInMainAudio() {
-
-  const fadeStart =
-    performance.now();
-
-
-  function fade(t) {
-
-    const elapsed =
-      t - fadeStart;
-
-    const pct =
-      Math.min(
-        1,
-        elapsed / fadeDuration
-      );
-
-
-    bgAudio.volume =
-      pct * targetVolume;
-
-
-    if (pct < 1) {
-
-      requestAnimationFrame(
-        fade
-      );
-
-    }
-
-  }
-
-
-  requestAnimationFrame(
-    fade
-  );
-
-}
-
-
-/* =========================================================
-   NEXT TRACK
-========================================================= */
-
-function nextTrack() {
-
-  currentTrack =
-    (currentTrack + 1) %
-    playlist.length;
-
-
-  bgAudio.src =
-    playlist[currentTrack];
-
-  bgAudio.currentTime =
-    0;
-
-  bgAudio.volume =
-    targetVolume;
-
-
-  bgAudio.play()
-    .then(() => {
-
-      audioStarted =
-        true;
-
-      document
-        .getElementById(
-          'audioToggle'
-        )
-        .classList.add('on');
-
-      showFloatingTrackName();
-
-    })
-    .catch(
-      err => {
-
-        console.log(
-          'Track playback prevented:',
-          err
-        );
-
-      }
-    );
-
-}
-
-
-/* =========================================================
-   TRACK ENDED
-========================================================= */
-
-bgAudio.addEventListener(
-  'ended',
-  nextTrack
-);
-
-
-/* =========================================================
-   SKIP BUTTON
-========================================================= */
-
-skipBtn.addEventListener(
-  'click',
-  (e) => {
-
-    e.stopPropagation();
-
-    nextTrack();
-
-  }
-);
-
-
-/* =========================================================
-   AUDIO TOGGLE
-========================================================= */
-
-function toggleAudio() {
-
-  const el =
-    document.getElementById(
-      'audioToggle'
-    );
-
-
-  if (!audioStarted) {
-
-    startMainPlaylist();
-
-    return;
-
-  }
-
-
-  if (bgAudio.paused) {
-
-    bgAudio.play()
-      .then(() => {
-
-        el.classList.add(
-          'on'
-        );
-
-      })
-      .catch(
-        err => {
-
-          console.log(
-            'Resume playback prevented:',
-            err
-          );
-
-        }
-      );
-
-  } else {
-
-    bgAudio.pause();
-
-    el.classList.remove(
-      'on'
-    );
-
-  }
-
-}
-
-
-document
-  .getElementById(
-    'audioToggle'
-  )
-  .addEventListener(
-    'click',
-    (e) => {
-
-      e.stopPropagation();
-
-      toggleAudio();
-
-    }
-  );
-
-
-/* =========================================================
-   PS1 INTRO
-========================================================= */
-
-function startPS1Intro() {
-
-  ps1Audio.currentTime =
-    0;
-
-  ps1Audio.volume =
-    1;
-
-
-  const promise =
-    ps1Audio.play();
-
-
-  if (promise !== undefined) {
-
-    promise
-      .then(() => {
-
-        console.log(
-          'PS1 intro started'
-        );
-
-      })
-      .catch(
-        err => {
-
-          console.log(
-            'PS1 intro playback prevented:',
-            err
-          );
-
-        }
-      );
-
-  }
-
-}
 
 
 /* =========================================================
@@ -2119,6 +2437,7 @@ function triggerFerroSpike() {
   const spikeStart =
     performance.now();
 
+
   const spikeDuration =
     2500;
 
@@ -2127,6 +2446,7 @@ function triggerFerroSpike() {
 
     const elapsed =
       t - spikeStart;
+
 
     const pct =
       Math.min(
@@ -2146,7 +2466,10 @@ function triggerFerroSpike() {
 
         s.k =
           originalK[i] *
-          (1 + intensity * 6);
+          (
+            1 +
+            intensity * 6
+          );
 
       }
     );
@@ -2228,7 +2551,8 @@ function smoothScrollToStage() {
 
 
     const easeOut =
-      1 - Math.pow(
+      1 -
+      Math.pow(
         1 - pct,
         3
       );
@@ -2237,8 +2561,7 @@ function smoothScrollToStage() {
     window.scrollTo(
       0,
       start +
-      distance *
-      easeOut
+      distance * easeOut
     );
 
 
@@ -2261,484 +2584,184 @@ function smoothScrollToStage() {
 
 
 /* =========================================================
-   BOOT
+   CONFIGURATION
 ========================================================= */
 
-function activateBoot(e) {
+const CONFIG = {
 
-  if (bootActivated) {
-    return;
-  }
+  name:
+    "The Ceremony",
 
+  age:
+    "33",
 
-  bootActivated =
-    true;
+  eventTag:
+    "An Evening Unfolds",
 
+  tagline:
+    "Join the party - Good food, warm people, a night that moves.",
 
-  /*
-     FIRST USER INTERACTION
+  date:
+    "18.09.2026",
 
-     PS1 starts directly from
-     the pointerdown event.
-  */
+  time:
+    "20:00 — till late",
 
-  startPS1Intro();
+  location:
+    "STRAATWEG 60B",
 
+  address:
+    "",
 
-  const bootBar =
-    document.getElementById(
-      'bootBarFill'
-    );
+  dress:
+    "QUEER FRIENDLY",
 
-  const bootText =
-    document.getElementById(
-      'bootText'
-    );
+  plusOne:
+    "+1 welcome — just let us know who's coming"
 
-  const enterBtn =
-    document.getElementById(
-      'enterBtn'
-    );
+};
 
 
-  enterBtn.disabled =
-    true;
+/* =========================================================
+   APPLY CONFIG
+========================================================= */
 
-  enterBtn.style.opacity =
-    '0.5';
-
-  enterBtn.style.cursor =
-    'not-allowed';
-
-
-  /*
-     Lock scrolling
-  */
-
-  document.body.style.overflow =
-    'hidden';
+document.getElementById(
+  'js-eyebrow'
+).textContent =
+  CONFIG.eventTag;
 
 
-  document.addEventListener(
-    'wheel',
-    preventScroll,
-    {
-      passive:false
-    }
+document.getElementById(
+  'js-name'
+).textContent =
+  CONFIG.name;
+
+
+document.getElementById(
+  'js-turns'
+).textContent =
+  CONFIG.age;
+
+
+document.getElementById(
+  'js-tagline'
+).textContent =
+  CONFIG.tagline;
+
+
+document.getElementById(
+  'js-date'
+).textContent =
+  CONFIG.date;
+
+
+document.getElementById(
+  'js-time'
+).textContent =
+  CONFIG.time;
+
+
+document.getElementById(
+  'js-location'
+).textContent =
+  CONFIG.location;
+
+
+document.getElementById(
+  'js-address'
+).textContent =
+  CONFIG.address;
+
+
+document.getElementById(
+  'js-dress'
+).textContent =
+  CONFIG.dress;
+
+
+document.getElementById(
+  'js-plusone'
+).textContent =
+  CONFIG.plusOne;
+
+
+document.getElementById(
+  'js-footer-name'
+).textContent =
+  CONFIG.name;
+
+
+document.getElementById(
+  'js-footer-year'
+).textContent =
+  new Date().getFullYear();
+
+
+/* =========================================================
+   CALENDAR
+========================================================= */
+
+const calendarDate =
+  '20260918T200000';
+
+const calendarEndDate =
+  '20260919T000000';
+
+
+const calendarTitle =
+  encodeURIComponent(
+    "Hichmoki's Party - The Ceremony 33"
   );
 
 
-  document.addEventListener(
-    'touchmove',
-    preventScroll,
-    {
-      passive:false
-    }
+const calendarLocation =
+  encodeURIComponent(
+    'Straatweg 60B, 3051 BH Rotterdam'
   );
 
 
-  /*
-     Loading
-  */
-
-  bootText.textContent =
-    'loading...';
-
-  bootText.style.color =
-    'var(--chrome-3)';
-
-
-  /*
-     Progress bar
-  */
-
-  requestAnimationFrame(
-    () => {
-
-      bootBar.style.transition =
-        'width 14.4s linear';
-
-      bootBar.style.width =
-        '100%';
-
-    }
+const calendarDesc =
+  encodeURIComponent(
+    'Join the party. Good food, warm people, a night that moves. WhatsApp: https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX'
   );
 
 
-  /*
-     Main playlist starts
-     exactly when the boot
-     sequence reaches the end.
-  */
-
-  setTimeout(
-    () => {
-
-      if (!ps1Audio.paused) {
-
-        ps1Audio.pause();
-
-        ps1Audio.currentTime =
-          0;
-
-      }
+const calendarUrl =
+  `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${calendarTitle}&dates=${calendarDate}/${calendarEndDate}&location=${calendarLocation}&details=${calendarDesc}`;
 
 
-      startMainPlaylist();
+document.getElementById(
+  'js-calendar-link'
+).href =
+  calendarUrl;
 
-    },
-    14400
+
+const detailCalendar =
+  document.getElementById(
+    'js-calendar-link-detail'
   );
 
 
-  /*
-     Boot finished
-  */
+if (detailCalendar) {
 
-  setTimeout(
-    () => {
-
-      bootText.textContent =
-        'Press join';
-
-      bootText.style.color =
-        'var(--ice)';
-
-
-      enterBtn.disabled =
-        false;
-
-      enterBtn.style.opacity =
-        '1';
-
-      enterBtn.style.cursor =
-        'pointer';
-
-      enterBtn.textContent =
-        'join';
-
-      enterBtn.style.color =
-        'var(--ice)';
-
-
-      setTimeout(
-        () => {
-
-          bootText.classList.add(
-            'fade-out'
-          );
-
-        },
-        1000
-      );
-
-    },
-    14400
-  );
+  detailCalendar.href =
+    calendarUrl;
 
 }
-
-
-/* =========================================================
-   FIRST TOUCH / CLICK
-========================================================= */
-
-document.addEventListener(
-  'pointerdown',
-  activateBoot,
-  {
-    once:true,
-    passive:true
-  }
-);
-
-
-/* =========================================================
-   ENTER / JOIN
-========================================================= */
-
-document
-  .getElementById(
-    'enterBtn'
-  )
-  .addEventListener(
-    'click',
-    () => {
-
-      if (
-        !bootActivated ||
-        document.getElementById(
-          'enterBtn'
-        ).disabled
-      ) {
-
-        return;
-
-      }
-
-
-      /*
-         Make sure music is playing.
-      */
-
-      if (bgAudio.paused) {
-
-        bgAudio.play()
-          .catch(
-            err => {
-
-              console.log(
-                'Audio resume prevented:',
-                err
-              );
-
-            }
-          );
-
-      }
-
-
-      document
-        .getElementById(
-          'audioToggle'
-        )
-        .classList.add('on');
-
-
-      /*
-         Ferrofluid
-      */
-
-      ferroActive =
-        true;
-
-      triggerFerroSpike();
-
-
-      /*
-         Enable scrolling
-      */
-
-      document.body.style.overflow =
-        'auto';
-
-
-      document.removeEventListener(
-        'wheel',
-        preventScroll
-      );
-
-      document.removeEventListener(
-        'touchmove',
-        preventScroll
-      );
-
-
-      /*
-         Scroll to party
-      */
-
-      setTimeout(
-        smoothScrollToStage,
-        500
-      );
-
-    }
-  );
-
-
-/* =========================================================
-   BACK BUTTON
-========================================================= */
-
-document
-  .getElementById(
-    'backBtn'
-  )
-  .addEventListener(
-    'click',
-    () => {
-
-      /*
-         Stop main audio
-      */
-
-      bgAudio.pause();
-
-      bgAudio.currentTime =
-        0;
-
-      audioStarted =
-        false;
-
-      currentTrack =
-        0;
-
-
-      /*
-         Stop PS1
-      */
-
-      ps1Audio.pause();
-
-      ps1Audio.currentTime =
-        0;
-
-
-      /*
-         Reset state
-      */
-
-      bootActivated =
-        false;
-
-      ferroActive =
-        false;
-
-
-      /*
-         Reset playlist
-      */
-
-      bgAudio.src =
-        playlist[0];
-
-      bgAudio.volume =
-        0;
-
-
-      /*
-         Reset boot bar
-      */
-
-      const bootBar =
-        document.getElementById(
-          'bootBarFill'
-        );
-
-      bootBar.style.width =
-        '0%';
-
-      bootBar.style.transition =
-        'none';
-
-
-      /*
-         Reset boot text
-      */
-
-      const bootText =
-        document.getElementById(
-          'bootText'
-        );
-
-      bootText.textContent =
-        'Sound on · Touch screen to activate';
-
-      bootText.style.color =
-        'var(--chrome-3)';
-
-      bootText.classList.remove(
-        'fade-out'
-      );
-
-
-      /*
-         Reset button
-      */
-
-      const enterBtn =
-        document.getElementById(
-          'enterBtn'
-        );
-
-      enterBtn.textContent =
-        'Enter';
-
-      enterBtn.style.color =
-        'var(--void)';
-
-      enterBtn.disabled =
-        true;
-
-      enterBtn.style.opacity =
-        '0.5';
-
-      enterBtn.style.cursor =
-        'not-allowed';
-
-
-      /*
-         Restore scrolling
-      */
-
-      document.body.style.overflow =
-        'auto';
-
-      document.removeEventListener(
-        'wheel',
-        preventScroll
-      );
-
-      document.removeEventListener(
-        'touchmove',
-        preventScroll
-      );
-
-
-      /*
-         Reset audio UI
-      */
-
-      document
-        .getElementById(
-          'audioToggle'
-        )
-        .classList.remove('on');
-
-
-      /*
-         Return to top
-      */
-
-      window.scrollTo({
-        top:0,
-        behavior:'smooth'
-      });
-
-
-      /*
-         Re-arm first interaction
-      */
-
-      setTimeout(
-        () => {
-
-          document.addEventListener(
-            'pointerdown',
-            activateBoot,
-            {
-              once:true,
-              passive:true
-            }
-          );
-
-        },
-        500
-      );
-
-    }
-  );
 
 
 /* =========================================================
    COUNTDOWN
 ========================================================= */
 
-(function initCountdown() {
+(function initCountdown(){
 
+  /*
+   * Amsterdam / Netherlands local time.
+   */
   const TARGET_DATE =
-    '2026-09-18T20:00:00';
+    '2026-09-18T20:00:00+02:00';
 
 
   const partyDate =
@@ -2752,15 +2775,18 @@ document
       'cd-days'
     );
 
+
   const elHours =
     document.getElementById(
       'cd-hours'
     );
 
+
   const elMins =
     document.getElementById(
       'cd-mins'
     );
+
 
   const elSecs =
     document.getElementById(
@@ -2789,19 +2815,28 @@ document
 
     const hours =
       Math.floor(
-        (diff / 3600000) % 24
+        (
+          diff /
+          3600000
+        ) % 24
       );
 
 
     const mins =
       Math.floor(
-        (diff / 60000) % 60
+        (
+          diff /
+          60000
+        ) % 60
       );
 
 
     const secs =
       Math.floor(
-        (diff / 1000) % 60
+        (
+          diff /
+          1000
+        ) % 60
       );
 
 
@@ -2836,6 +2871,155 @@ document
   );
 
 })();
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+document
+  .getElementById('backBtn')
+  .addEventListener(
+    'click',
+    () => {
+
+
+      /*
+       * Stop both audio elements.
+       */
+      bgAudio.pause();
+
+      ps1Audio.pause();
+
+
+      audioStarted =
+        false;
+
+      bootActivated =
+        false;
+
+
+      const bootBar =
+        document.getElementById(
+          'bootBarFill'
+        );
+
+
+      const bootText =
+        document.getElementById(
+          'bootText'
+        );
+
+
+      const enterBtn =
+        document.getElementById(
+          'enterBtn'
+        );
+
+
+      /*
+       * Reset boot bar.
+       */
+      bootBar.style.width =
+        '0%';
+
+      bootBar.style.transition =
+        'none';
+
+
+      /*
+       * Reset boot text.
+       */
+      bootText.textContent =
+        'Sound on · Touch the screen to activate';
+
+      bootText.style.color =
+        'var(--chrome-3)';
+
+      bootText.classList.remove(
+        'fade-out'
+      );
+
+
+      /*
+       * Reset button.
+       */
+      enterBtn.textContent =
+        'Enter';
+
+      enterBtn.style.color =
+        'var(--void)';
+
+      enterBtn.disabled =
+        true;
+
+      enterBtn.style.opacity =
+        '0.5';
+
+      enterBtn.style.cursor =
+        'not-allowed';
+
+
+      /*
+       * Re-enable scrolling.
+       */
+      document.body.style.overflow =
+        'auto';
+
+
+      document.removeEventListener(
+        'wheel',
+        preventScroll
+      );
+
+
+      document.removeEventListener(
+        'touchmove',
+        preventScroll
+      );
+
+
+      /*
+       * Reset audio UI.
+       */
+      audioToggle.classList.remove(
+        'on'
+      );
+
+
+      /*
+       * Reset ferrofluid.
+       */
+      ferroActive =
+        false;
+
+
+      /*
+       * Go back to top.
+       */
+      window.scrollTo({
+        top:0,
+        behavior:'smooth'
+      });
+
+
+      /*
+       * IMPORTANT:
+       *
+       * Reinstall the FIRST pointerdown
+       * listener.
+       */
+      document.addEventListener(
+        'pointerdown',
+        activateBoot,
+        {
+          once:true,
+          passive:true
+        }
+      );
+
+    }
+  );
 
 </script>
 
