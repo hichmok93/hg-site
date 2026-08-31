@@ -607,7 +607,7 @@ function activateBoot() {
   
   // Add transition and trigger animation
   setTimeout(() => {
-    bootBar.style.transition = 'width 14.4s linear';
+    bootBar.style.transition = 'width 8.4s linear';
     bootBar.style.width = '100%';
   }, 50);
   
@@ -872,8 +872,14 @@ function smoothScrollToStage() {
 }
 
 document.getElementById('enterBtn').addEventListener('click', () => {
-  // Only allow interaction after boot is complete
-  if (!bootActivated || document.getElementById('enterBtn').disabled) return;
+  // If boot not activated yet, trigger it (allows autoplay on first click)
+  if (!bootActivated) {
+    activateBoot();
+    return;
+  }
+  
+  // Boot complete, only allow action after bar is full
+  if (document.getElementById('enterBtn').disabled) return;
   
   if (!audioStarted) {
     startAudio();
