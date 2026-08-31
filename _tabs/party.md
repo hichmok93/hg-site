@@ -163,7 +163,7 @@ order: 1
   .boot-bar-fill{
     height:100%; width:0%;
     background:linear-gradient(90deg, var(--chrome-3), var(--ice), var(--chrome-1));
-    transition:width 15.4s linear;
+    transition:width 14.4s linear;
   }
   .boot-bar-fill.active{
     width:100%;
@@ -607,13 +607,13 @@ function activateBoot() {
   
   // Add transition and trigger animation
   setTimeout(() => {
-    bootBar.style.transition = 'width 15.4s linear';
+    bootBar.style.transition = 'width 14.4s linear';
     bootBar.style.width = '100%';
   }, 50);
   
-  // Re-enable after 16 seconds
+  // Re-enable after 14.4 seconds (when bar completes)
   setTimeout(() => {
-    bootText.textContent = ' Press join';
+    bootText.textContent = 'Press join';
     bootText.style.color = 'var(--ice)';
     enterBtn.disabled = false;
     enterBtn.style.opacity = '1';
@@ -627,7 +627,7 @@ function activateBoot() {
     setTimeout(() => {
       bootText.classList.add('fade-out');
     }, 1000);
-  }, 16000);
+  }, 14400);
 }
 
 // Back button: reset everything and go to top
