@@ -463,13 +463,12 @@ order: 1
   
   <div class="gate-mark chrome-text">Join the Party</div>
   <button class="enter-btn" id="enterBtn">Enter</button>
-  <div class="gate-hint mono">Sound on · tap to begin</div>
   
   <div style="margin-top:2rem; text-align:center;">
     <div class="boot-bar-track">
       <div class="boot-bar-fill" id="bootBarFill"></div>
     </div>
-    <div id="bootText" class="mono" style="margin-top:0.8rem; font-size:0.7rem; color:var(--chrome-3); letter-spacing:0.15em;">press enter to activate</div>
+    <div id="bootText" class="mono" style="margin-top:0.8rem; font-size:0.7rem; color:var(--chrome-3); letter-spacing:0.15em;">Sound on · Press enter to activate</div>
   </div>
   
   <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1rem, 3vw, 1.6rem); text-transform:uppercase; letter-spacing:0.08em; -webkit-text-stroke:1px var(--chrome-2); color:transparent; margin-top:2rem;">Hichmoki Bday 2026</div>
@@ -601,6 +600,10 @@ function activateBoot() {
   document.body.style.overflow = 'hidden';
   document.addEventListener('wheel', preventScroll, { passive: false });
   document.addEventListener('touchmove', preventScroll, { passive: false });
+  
+  // Change text to loading
+  bootText.textContent = 'loading...';
+  bootText.style.color = 'var(--chrome-3)';
   
   // Add transition and trigger animation
   setTimeout(() => {
