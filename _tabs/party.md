@@ -602,7 +602,11 @@ function activateBoot() {
   document.addEventListener('wheel', preventScroll, { passive: false });
   document.addEventListener('touchmove', preventScroll, { passive: false });
   
-  bootBar.classList.add('active');
+  // Add transition and trigger animation
+  setTimeout(() => {
+    bootBar.style.transition = 'width 15.4s linear';
+    bootBar.style.width = '100%';
+  }, 50);
   
   // Re-enable after 16 seconds
   setTimeout(() => {
@@ -633,9 +637,9 @@ document.getElementById('backBtn').addEventListener('click', () => {
   const bootText = document.getElementById('bootText');
   const enterBtn = document.getElementById('enterBtn');
   
-  // Reset boot bar
+  // Reset boot bar completely
   bootBar.classList.remove('active');
-  bootBar.style.width = '0%';
+  bootBar.style.cssText = 'width: 0%; transition: none; height: 100%; background: linear-gradient(90deg, var(--chrome-3), var(--ice), var(--chrome-1));';
   
   // Reset boot text
   bootText.textContent = 'press enter to activate';
