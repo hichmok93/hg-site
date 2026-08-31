@@ -616,7 +616,7 @@ function activateBoot() {
     bootText.textContent = 'Press join';
     bootText.style.color = 'var(--ice)';
     enterBtn.disabled = false;
-    enterBtn.style.opacity = '1';
+    enterBtn.style.opacity = '1.6';
     enterBtn.style.cursor = 'pointer';
     
     // Change button text to "join"
