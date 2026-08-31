@@ -606,7 +606,7 @@ function activateBoot() {
   
   // Re-enable after 16 seconds
   setTimeout(() => {
-    bootText.textContent = 'join';
+    bootText.textContent = ' Press join';
     bootText.style.color = 'var(--ice)';
     enterBtn.disabled = false;
     enterBtn.style.opacity = '1';
