@@ -468,7 +468,7 @@ order: 1
     <div class="boot-bar-track">
       <div class="boot-bar-fill" id="bootBarFill"></div>
     </div>
-    <div id="bootText" class="mono" style="margin-top:0.8rem; font-size:0.7rem; color:var(--chrome-3); letter-spacing:0.15em;">Sound on · Press enter to activate</div>
+    <div id="bootText" class="mono" style="margin-top:0.8rem; font-size:0.7rem; color:var(--chrome-3); letter-spacing:0.15em;">Press sound on · to activate</div>
   </div>
   
   <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1rem, 3vw, 1.6rem); text-transform:uppercase; letter-spacing:0.08em; -webkit-text-stroke:1px var(--chrome-2); color:transparent; margin-top:2rem;">Hichmoki Bday 2026</div>
@@ -607,7 +607,7 @@ function activateBoot() {
   
   // Add transition and trigger animation
   setTimeout(() => {
-    bootBar.style.transition = 'width 8.4s linear';
+    bootBar.style.transition = 'width 6.8s linear';
     bootBar.style.width = '100%';
   }, 50);
   
@@ -626,12 +626,19 @@ function activateBoot() {
     // Fade out the boot text after 1 second
     setTimeout(() => {
       bootText.classList.add('fade-out');
-    }, 1000);
-  }, 14400);
+    }, 2000);
+  }, 6400);
 }
 
 // Back button: reset everything and go to top
-document.getElementById('backBtn').addEventListener('click', () => {
+document.getElementById('backBtn').addEventListener('click', function() {
+  const backBtn = this;
+  
+  // Disable back button for 15 seconds
+  backBtn.disabled = true;
+  backBtn.style.opacity = '0.5';
+  backBtn.style.cursor = 'not-allowed';
+  
   bgAudio.pause();
   audioStarted = false;
   bootActivated = false;
@@ -674,6 +681,13 @@ document.getElementById('backBtn').addEventListener('click', () => {
   // Re-enable boot sequence for next tap
   document.addEventListener('click', activateBoot, { once: true });
   document.addEventListener('touchstart', activateBoot, { once: true });
+  
+  // Re-enable back button after 15 seconds
+  setTimeout(() => {
+    backBtn.disabled = false;
+    backBtn.style.opacity = '1';
+    backBtn.style.cursor = 'pointer';
+  }, 15000);
 });
 
 // Activate boot on first tap/click anywhere
