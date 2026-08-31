@@ -142,14 +142,14 @@ order: 1
   .enter-btn:hover{ transform:scale(1.06); box-shadow:0 0 42px var(--ice-dim); }
   .enter-btn:active{
     transform:scale(0.97);
-    box-shadow:0 0 0 0 rgba(168, 85, 247, 0.9);
+    box-shadow:0 0 0 0 rgba(0, 242, 255, 0.35);
     animation:purpleMetallicGlow 0.8s ease-out;
   }
 
   @keyframes purpleMetallicGlow{
-    0%{ box-shadow:0 0 20px 0 rgba(168, 85, 247, 1), inset 0 0 20px rgba(200, 150, 255, 0.6); text-shadow:0 0 10px rgba(168, 85, 247, 0.8); }
-    50%{ box-shadow:0 0 40px 10px rgba(168, 85, 247, 0.6), inset 0 0 10px rgba(200, 150, 255, 0.3); }
-    100%{ box-shadow:0 0 0 20px rgba(168, 85, 247, 0), inset 0 0 0 rgba(200, 150, 255, 0); }
+    0%{ box-shadow:0 0 20px 0 rgba(159, 232, 255, 1), inset 0 0 20px rgba(200, 240, 255, 0.6); text-shadow:0 0 10px rgba(159, 232, 255, 0.8); }
+    50%{ box-shadow:0 0 40px 10px rgba(159, 232, 255, 0.6), inset 0 0 10px rgba(200, 240, 255, 0.3); }
+    100%{ box-shadow:0 0 0 20px rgba(159, 232, 255, 0), inset 0 0 0 rgba(200, 240, 255, 0); }
   }
 
   .gate-hint{ color:var(--chrome-3); font-size:0.72rem; }
@@ -579,17 +579,36 @@ function preventScroll(e) {
 function playPS1Sound() {
   const ps1Audio = new Audio('{{ site.baseurl }}/assets/music/FKA_TWIGS/PS1 Startup (Remastered) MP3.mp3');
   ps1Audio.play().catch(err => console.log('PS1 playback prevented:', err));
+  return ps1Audio;
 }
 
 function activateBoot() {
   if (bootActivated) return;
   bootActivated = true;
   
-  playPS1Sound();
+  const ps1Audio = playPS1Sound();
+  const enterBtn = document.getElementById('enterBtn');
+  
+  // Trigger ice blue glow 0.8s before PS1 ends
+  ps1Audio.addEventListener('loadedmetadata', () => {
+    const glowTime = (ps1Audio.duration - 7.8) * 1000;
+    const animationDuration = 7100; // 0.9s animation
+    setTimeout(() => {
+      enterBtn.style.boxShadow = '0 0 20px 0 rgba(159, 232, 255, 1), inset 0 0 20px rgba(200, 240, 255, 0.6)';
+      enterBtn.style.textShadow = '0 0 10px rgba(159, 232, 255, 0.8)';
+      enterBtn.style.animation = 'purpleMetallicGlow 0.9s ease-out';
+      
+      // Revert to normal shadow after animation completes
+      setTimeout(() => {
+        enterBtn.style.boxShadow = '0 0 0 rgba(159, 232, 255, 0)';
+        enterBtn.style.textShadow = 'none';
+        enterBtn.style.animation = 'none';
+      }, animationDuration);
+    }, glowTime);
+  }, { once: true });
   
   const bootBar = document.getElementById('bootBarFill');
   const bootText = document.getElementById('bootText');
-  const enterBtn = document.getElementById('enterBtn');
   
   // Disable enter button
   enterBtn.disabled = true;
@@ -607,27 +626,27 @@ function activateBoot() {
   
   // Add transition and trigger animation
   setTimeout(() => {
-    bootBar.style.transition = 'width 6.8s linear';
+    bootBar.style.transition = 'width 4.9s linear';
     bootBar.style.width = '100%';
-  }, 50);
+  }, 150);
   
   // Re-enable after 14.4 seconds (when bar completes)
   setTimeout(() => {
     bootText.textContent = 'Press join';
     bootText.style.color = 'var(--ice)';
     enterBtn.disabled = false;
-    enterBtn.style.opacity = '1.6';
+    enterBtn.style.opacity = '4.0';
     enterBtn.style.cursor = 'pointer';
     
     // Change button text to "join"
     enterBtn.textContent = 'join';
-    enterBtn.style.color = 'var(--ice)';
+    enterBtn.style.color = 'var(--void)';
     
     // Fade out the boot text after 1 second
     setTimeout(() => {
       bootText.classList.add('fade-out');
-    }, 2000);
-  }, 6400);
+    }, 900);
+  }, 7200);
 }
 
 // Back button: reset everything and go to top
