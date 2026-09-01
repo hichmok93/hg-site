@@ -1,7 +1,7 @@
 ---
 layout: post
 permalink: /hichmok1/
-hidden: true
+hidden: false
 title: THE CEREMONY - 2026 - (Gender-Neutral Pronouns)
 date: 2026-08-31 17:00:00 +0000
 categories: [grafisch ontwerp, Coding, Art, Party]
