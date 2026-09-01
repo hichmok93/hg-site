@@ -4,6 +4,7 @@ title: Party
 icon: fa-solid fa-cake-candles
 permalink: /party/
 order: 1
+hidden: true
 ---
 
 <html lang="en">

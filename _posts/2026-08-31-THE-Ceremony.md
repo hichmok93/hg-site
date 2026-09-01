@@ -1,6 +1,8 @@
 ---
 title: THE CEREMONY - 2026 - (Binary Pronouns)
+hidden: true
 date: 2026-08-30 17:00:00 +0000
+permalink: /hichmok2/
 categories: [grafisch ontwerp, Coding, Art, Party]
 tags: [ metaal, project, abstract, code]
 description: All the information and details about the party. - He / Him / His / Himself She / Her / Hers / Herself
