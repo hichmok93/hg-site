@@ -4,7 +4,6 @@ title: Party
 icon: fa-solid fa-cake-candles
 permalink: /party/
 order: 1
-hidden: true
 ---
 
 <html lang="en">
@@ -44,6 +43,8 @@ hidden: true
     min-height:100vh;
     cursor:crosshair;
   }
+
+  body.gate-locked{ overflow:hidden; height:100vh; }
 
   ::selection{ background:var(--ice); color:var(--void); }
   a{ color:inherit; }
@@ -143,40 +144,130 @@ hidden: true
   .enter-btn:hover{ transform:scale(1.06); box-shadow:0 0 42px var(--ice-dim); }
   .enter-btn:active{
     transform:scale(0.97);
-    box-shadow:0 0 0 0 rgba(0, 242, 255, 0.35);
-    animation:purpleMetallicGlow 0.8s ease-out;
+    box-shadow:0 0 0 0 var(--ice-dim);
+    animation:iceMetallicGlow 0.8s ease-out;
   }
 
-  @keyframes purpleMetallicGlow{
-    0%{ box-shadow:0 0 20px 0 rgba(159, 232, 255, 1), inset 0 0 20px rgba(200, 240, 255, 0.6); text-shadow:0 0 10px rgba(159, 232, 255, 0.8); }
-    50%{ box-shadow:0 0 40px 10px rgba(159, 232, 255, 0.6), inset 0 0 10px rgba(200, 240, 255, 0.3); }
-    100%{ box-shadow:0 0 0 20px rgba(159, 232, 255, 0), inset 0 0 0 rgba(200, 240, 255, 0); }
+  @keyframes iceMetallicGlow{
+    0%{ box-shadow:0 0 20px 0 rgba(159, 232, 255, 1), inset 0 0 20px rgba(200, 245, 255, 0.6); text-shadow:0 0 10px rgba(159, 232, 255, 0.8); }
+    50%{ box-shadow:0 0 40px 10px rgba(159, 232, 255, 0.6), inset 0 0 10px rgba(200, 245, 255, 0.3); }
+    100%{ box-shadow:0 0 0 20px rgba(159, 232, 255, 0), inset 0 0 0 rgba(200, 245, 255, 0); }
   }
 
   .gate-hint{ color:var(--chrome-3); font-size:0.72rem; }
 
-  .boot-bar-track{
-    width:min(70vw, 220px); height:2px;
-    border-radius:2px; overflow:hidden;
-    background:rgba(255,255,255,0.08);
-    margin-top:1.5rem;
-  }
-  .boot-bar-fill{
-    height:100%; width:0%;
-    background:linear-gradient(90deg, var(--chrome-3), var(--ice), var(--chrome-1));
-    transition:width 14.4s linear;
-  }
-  .boot-bar-fill.active{
-    width:100%;
+  .countdown-row{
+    display:flex;
+    gap:clamp(1.2rem, 4vw, 2.6rem);
+    justify-content:center;
+    margin-top:0.6rem;
   }
 
-  @keyframes fadeOutBlue{
-    0%{ opacity:1; color:var(--ice); }
-    100%{ opacity:0; color:var(--ice); }
+  .countdown-cell{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.5rem;
   }
-  #bootText.fade-out{
-    animation:fadeOutBlue 1s ease-out forwards;
+
+  .countdown-cell .num{
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size:clamp(1.5rem, 4.4vw, 2.3rem);
+    font-variant-numeric:tabular-nums;
+    letter-spacing:0.02em;
   }
+
+  .countdown-cell .lbl{
+    font-family:'Space Mono', monospace;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    font-size:0.62rem;
+    color:var(--chrome-3);
+  }
+
+  /* --- full-screen flash triggered when Enter is pressed, synced to the 2.5s code-bar reveal --- */
+  #flashOverlay{
+    position:fixed;
+    inset:0;
+    z-index:65;
+    pointer-events:none;
+    background:var(--ice);
+    opacity:0;
+  }
+
+  #flashOverlay.flash-active{
+    animation:flashPulse 2.5s ease-out;
+  }
+
+  @keyframes flashPulse{
+    0%{ opacity:0.55; }
+    35%{ opacity:0.18; }
+    100%{ opacity:0; }
+  }
+
+  /* --- code entry bar, slides up out of the background over 2.5s --- */
+  .code-bar{
+    position:fixed;
+    left:0; right:0; bottom:0;
+    z-index:66;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.9rem;
+    padding:2.2rem 1.4rem 2.4rem;
+    background:linear-gradient(180deg, rgba(7,8,10,0) 0%, rgba(7,8,10,0.92) 35%, var(--void) 100%);
+    transform:translateY(100%);
+    opacity:0;
+    transition:transform 2.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 2.5s ease;
+    pointer-events:none;
+  }
+
+  .code-bar.show{
+    transform:translateY(0);
+    opacity:1;
+    pointer-events:auto;
+  }
+
+  .code-bar .code-label{ color:var(--ice); }
+
+  .code-input{
+    width:200px;
+    text-align:center;
+    letter-spacing:0.7em;
+    font-family:'Space Mono', monospace;
+    font-size:1.15rem;
+    color:var(--ice);
+    background:rgba(255,255,255,0.04);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:0.85em 0.4em 0.85em 0.9em;
+  }
+
+  .code-input:focus{ border-color:var(--ice); box-shadow:0 0 22px var(--ice-dim); }
+
+  .code-error{
+    font-family:'Space Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:#ff8a8a;
+    min-height:1em;
+    opacity:0;
+    transition:opacity 0.3s ease;
+  }
+
+  .code-error.show{ opacity:1; }
+
+  @keyframes shake{
+    0%,100%{ transform:translateX(0); }
+    20%{ transform:translateX(-8px); }
+    40%{ transform:translateX(8px); }
+    60%{ transform:translateX(-6px); }
+    80%{ transform:translateX(6px); }
+  }
+
+  .code-input.shake{ animation:shake 0.4s ease; border-color:#ff8a8a; }
 
   #stage{ position:relative; z-index:10; padding-top:2rem; }
   .wrap{ max-width:960px; margin:0 auto; padding:0 6vw; }
@@ -322,34 +413,6 @@ hidden: true
     100%{ transform:translateY(-50px); opacity:0; }
   }
 
-  .countdown-row{
-    display:flex;
-    gap:clamp(1.2rem, 4vw, 2.6rem);
-    justify-content:center;
-    margin-top:0.6rem;
-  }
-
-  .countdown-cell{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:0.5rem;
-  }
-
-  .countdown-cell .num{
-    font-weight:700;
-    font-size:clamp(1.5rem, 4.4vw, 2.3rem);
-    font-variant-numeric:tabular-nums;
-    letter-spacing:0.02em;
-  }
-
-  .countdown-cell .lbl{
-    letter-spacing:0.22em;
-    text-transform:uppercase;
-    font-size:0.62rem;
-    opacity:0.6;
-  }
-
   #menuBtn{
     position:fixed; top:1.4rem; right:1.4rem; z-index:55;
     padding:0.7em 1.1em;
@@ -395,29 +458,35 @@ hidden: true
       --fs-body:clamp(0.9rem, 1.8vw, 1rem);
       --fs-mono:clamp(0.6rem, 1.4vw, 0.7rem);
     }
-    
+
     body{ cursor:auto; }
     .wrap{ padding:0 4vw; }
-    
+
     header.hero{ gap:1.2rem; }
     h1.name .turns{ font-size:0.3em; margin-top:0.4em; }
-    
+
     .details-grid{ gap:2rem 3rem; }
     .detail-cell{ flex:1 1 180px; max-width:250px; }
-    
+
     section.rsvp{ padding:3rem 0 6rem; gap:1.2rem; }
-    
+
     .rsvp-btn{ padding:0.9em 2.2em; font-size:0.7rem; letter-spacing:0.25em; }
     .rsvp-btn:hover{ letter-spacing:0.32em; }
-    
+
     #audioToggle{ bottom:1rem; right:1rem; padding:0.6em 0.9em; font-size:0.6rem; }
     #menuBtn{ top:1rem; right:1rem; padding:0.6em 0.9em; font-size:0.6rem; }
-    
+
     .enter-btn{ padding:0.95em 2.2em; font-size:0.72rem; }
+
+    .countdown-row{ gap:1rem; }
+    .countdown-cell .num{ font-size:1.3rem; }
+    .countdown-cell .lbl{ font-size:0.56rem; }
   }
 
   @media (prefers-reduced-motion: reduce){
     .chrome-text, .enter-btn, .scroll-cue{ animation:none !important; }
+    #flashOverlay.flash-active{ animation:none !important; }
+    .code-bar{ transition:none !important; }
   }
 </style>
 </head>
@@ -445,6 +514,14 @@ hidden: true
   </filter>
 </svg>
 
+<div id="flashOverlay"></div>
+
+<div class="code-bar" id="codeBar">
+  <div class="mono code-label">Enter code to continue</div>
+  <input class="code-input" id="codeInput" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" />
+  <div class="code-error" id="codeError">Incorrect code — try again</div>
+</div>
+
 <div class="grain"></div>
 <div class="scanlines"></div>
 <div class="blob-wrap">
@@ -461,18 +538,30 @@ hidden: true
 
 <!-- GATE SECTION -->
 <div id="gate">
-  
   <div class="gate-mark chrome-text">Join the Party</div>
   <button class="enter-btn" id="enterBtn">Enter</button>
-  
-  <div style="margin-top:2rem; text-align:center;">
-    <div class="boot-bar-track">
-      <div class="boot-bar-fill" id="bootBarFill"></div>
-    </div>
-    <div id="bootText" class="mono" style="margin-top:0.8rem; font-size:0.7rem; color:var(--chrome-3); letter-spacing:0.15em;">Press sound on · to activate</div>
-  </div>
-  
+  <div class="gate-hint mono">Sound on · tap to begin</div>
   <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1rem, 3vw, 1.6rem); text-transform:uppercase; letter-spacing:0.08em; -webkit-text-stroke:1px var(--chrome-2); color:transparent; margin-top:2rem;">Hichmoki Bday 2026</div>
+
+  <!-- LIVE COUNTDOWN -->
+  <div class="countdown-row" id="js-countdown">
+    <div class="countdown-cell">
+      <div class="num chrome-text" id="cd-days">00</div>
+      <div class="lbl">Days</div>
+    </div>
+    <div class="countdown-cell">
+      <div class="num chrome-text" id="cd-hours">00</div>
+      <div class="lbl">Hrs</div>
+    </div>
+    <div class="countdown-cell">
+      <div class="num chrome-text" id="cd-mins">00</div>
+      <div class="lbl">Min</div>
+    </div>
+    <div class="countdown-cell">
+      <div class="num chrome-text" id="cd-secs">00</div>
+      <div class="lbl">Sec</div>
+    </div>
+  </div>
 </div>
 
 <!-- STAGE SECTION -->
@@ -484,26 +573,6 @@ hidden: true
       <span class="turns" id="js-turns"> AGE</span>
     </h1>
     <p class="tagline" id="js-tagline">A night dissolves into dance. Come lose your shape with us.</p>
-    
-    <div class="countdown-row" id="js-countdown" style="margin-top:2.4rem; gap:2rem;">
-      <div class="countdown-cell">
-        <div class="num chrome-text" id="cd-days">00</div>
-        <div class="lbl mono">Days</div>
-      </div>
-      <div class="countdown-cell">
-        <div class="num chrome-text" id="cd-hours">00</div>
-        <div class="lbl mono">Hrs</div>
-      </div>
-      <div class="countdown-cell">
-        <div class="num chrome-text" id="cd-mins">00</div>
-        <div class="lbl mono">Min</div>
-      </div>
-      <div class="countdown-cell">
-        <div class="num chrome-text" id="cd-secs">00</div>
-        <div class="lbl mono">Sec</div>
-      </div>
-    </div>
-    
     <div class="scroll-cue"></div>
   </header>
 
@@ -539,27 +608,25 @@ hidden: true
     <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem;">
       <a class="rsvp-btn" id="js-rsvp-link" href="https://chat.whatsapp.com/CzWo9BidWbLGTedkoEgUsX" target="_blank">Join WhatsApp</a>
       <a class="rsvp-btn" id="js-calendar-link" href="#" target="_blank">Add to Calendar</a>
-      <a class="rsvp-btn" href="https://open.spotify.com/playlist/6ptthqzOyKUF7rwsvEL8kp?si=5cdccd3d0d774a73" target="_blank"> Join Spotify</a>
+      <a class="rsvp-btn" href="https://open.spotify.com/playlist/6ptthqzOyKUF7rwsvEL8kp?si=5cdccd3d0d774a73" target="_blank"> Join Spotify Session</a>
     </div>
     <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
-      <a href="https://wa.me/31681348625" target="_blank" style="color:var(--chrome-3); font-size:0.8rem; text-decoration:none; border:none; background:none; cursor:pointer; transition:color 0.3s ease; font-family:'Space Mono', monospace; letter-spacing:0.1em; border-bottom:1px solid var(--chrome-3); padding-bottom:0.3em;">[Can't make it? Let us know]</a>
+      <a href="https://wa.me/31681348625" target="_blank" style="color:var(--chrome-3); font-size:0.8rem; text-decoration:none; border:none; background:none; cursor:pointer; transition:color 0.3s ease; font-family:'Space Mono', monospace; letter-spacing:0.1em; border-bottom:1px solid var(--chrome-3); padding-bottom:0.3em;">Can't make it? Let us know</a>
     </div>
   </section>
+
+  <footer>
+    <span id="js-footer-name">NAME</span> &nbsp;·&nbsp; <span>Hichmoki Bday</span> &nbsp;·&nbsp; <span id="js-footer-year"></span>
+  </footer>
 
   <section style="padding:6rem 0 4rem; text-align:center;">
     <div style="font-family:'Unbounded', sans-serif; font-weight:700; font-size:clamp(1.2rem, 3vw, 1.8rem); text-transform:uppercase; letter-spacing:0.05em; background:linear-gradient(112deg, #71787f 0%, #f2f4f6 14%, #b9c0c7 26%, #ffffff 38%, #26292d 50%, #b9c0c7 64%, #f2f4f6 78%, #71787f 100%); background-size:280% 280%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:chromeShift 6s ease-in-out infinite; filter:url(#liquidFilterSoft);">Hichmoki Bday 2026</div>
   </section>
-
-  <footer>
-    <span id="js-footer-name">NAME</span> &nbsp;·&nbsp; <span id="js-footer-year"></span>
-  </footer>
 </div>
 
 <audio id="bgAudio" preload="auto"></audio>
 
 <a id="menuBtn" href="https://hichmok93.github.io/hg-site/">Menu</a>
-
-<button id="backBtn" style="position:fixed; bottom:1.4rem; left:1.4rem; z-index:55; padding:0.7em 1.1em; border:1px solid rgba(255,255,255,0.14); border-radius:999px; background:rgba(13,15,18,0.7); backdrop-filter:blur(6px); font-family:'Space Mono', monospace; font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--chrome-2); cursor:pointer; transition:border-color 0.3s ease, color 0.3s ease;">← Back</button>
 
 <div id="floatingTrackName" style="position:fixed; bottom:6.5rem; right:1.4rem; z-index:54; opacity:0; pointer-events:none; font-family:'Space Mono', monospace; font-size:0.65rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--chrome-3);"></div>
 
@@ -571,154 +638,11 @@ hidden: true
 </div>
 
 <script>
-let bootActivated = false;
-
-function preventScroll(e) {
-  e.preventDefault();
-}
-
-function playPS1Sound() {
-  const ps1Audio = new Audio('{{ site.baseurl }}/assets/music/FKA_TWIGS/PS1 Startup (Remastered) MP3.mp3');
-  ps1Audio.play().catch(err => console.log('PS1 playback prevented:', err));
-  return ps1Audio;
-}
-
-function activateBoot() {
-  if (bootActivated) return;
-  bootActivated = true;
-  
-  const ps1Audio = playPS1Sound();
-  const enterBtn = document.getElementById('enterBtn');
-  
-  // Trigger ice blue glow 0.8s before PS1 ends
-  ps1Audio.addEventListener('loadedmetadata', () => {
-    const glowTime = (ps1Audio.duration - 7.8) * 1000;
-    const animationDuration = 7100; // 0.9s animation
-    setTimeout(() => {
-      enterBtn.style.boxShadow = '0 0 20px 0 rgba(159, 232, 255, 1), inset 0 0 20px rgba(200, 240, 255, 0.6)';
-      enterBtn.style.textShadow = '0 0 10px rgba(159, 232, 255, 0.8)';
-      enterBtn.style.animation = 'purpleMetallicGlow 0.9s ease-out';
-      
-      // Revert to normal shadow after animation completes
-      setTimeout(() => {
-        enterBtn.style.boxShadow = '0 0 0 rgba(159, 232, 255, 0)';
-        enterBtn.style.textShadow = 'none';
-        enterBtn.style.animation = 'none';
-      }, animationDuration);
-    }, glowTime);
-  }, { once: true });
-  
-  const bootBar = document.getElementById('bootBarFill');
-  const bootText = document.getElementById('bootText');
-  
-  // Disable enter button
-  enterBtn.disabled = true;
-  enterBtn.style.opacity = '0.5';
-  enterBtn.style.cursor = 'not-allowed';
-  
-  // Disable scrolling
-  document.body.style.overflow = 'hidden';
-  document.addEventListener('wheel', preventScroll, { passive: false });
-  document.addEventListener('touchmove', preventScroll, { passive: false });
-  
-  // Change text to loading
-  bootText.textContent = 'loading...';
-  bootText.style.color = 'var(--chrome-3)';
-  
-  // Add transition and trigger animation
-  setTimeout(() => {
-    bootBar.style.transition = 'width 4.9s linear';
-    bootBar.style.width = '100%';
-  }, 150);
-  
-  // Re-enable after 14.4 seconds (when bar completes)
-  setTimeout(() => {
-    bootText.textContent = 'Press join';
-    bootText.style.color = 'var(--ice)';
-    enterBtn.disabled = false;
-    enterBtn.style.opacity = '4.0';
-    enterBtn.style.cursor = 'pointer';
-    
-    // Change button text to "join"
-    enterBtn.textContent = 'join';
-    enterBtn.style.color = 'var(--void)';
-    
-    // Fade out the boot text after 1 second
-    setTimeout(() => {
-      bootText.classList.add('fade-out');
-    }, 900);
-  }, 7200);
-}
-
-// Back button: reset everything and go to top
-document.getElementById('backBtn').addEventListener('click', function() {
-  const backBtn = this;
-  
-  // Disable back button for 15 seconds
-  backBtn.disabled = true;
-  backBtn.style.opacity = '0.5';
-  backBtn.style.cursor = 'not-allowed';
-  
-  bgAudio.pause();
-  audioStarted = false;
-  bootActivated = false;
-  
-  const bootBar = document.getElementById('bootBarFill');
-  const bootText = document.getElementById('bootText');
-  const enterBtn = document.getElementById('enterBtn');
-  
-  // Reset boot bar completely
-  bootBar.classList.remove('active');
-  bootBar.style.cssText = 'width: 0%; transition: none; height: 100%; background: linear-gradient(90deg, var(--chrome-3), var(--ice), var(--chrome-1));';
-  
-  // Reset boot text
-  bootText.textContent = 'press enter to activate';
-  bootText.style.color = 'var(--chrome-3)';
-  bootText.classList.remove('fade-out');
-  
-  // Reset enter button
-  enterBtn.textContent = 'Enter';
-  enterBtn.style.color = 'var(--void)';
-  enterBtn.disabled = true;
-  enterBtn.style.opacity = '0.5';
-  enterBtn.style.cursor = 'not-allowed';
-  enterBtn.classList.remove('fade-out');
-  
-  // Remove scroll prevention
-  document.body.style.overflow = 'auto';
-  document.removeEventListener('wheel', preventScroll);
-  document.removeEventListener('touchmove', preventScroll);
-  
-  // Remove audio toggle 'on' state
-  document.getElementById('audioToggle').classList.remove('on');
-  
-  // Disable ferrofluid
-  ferroActive = false;
-  
-  // Scroll to top
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  
-  // Re-enable boot sequence for next tap
-  document.addEventListener('click', activateBoot, { once: true });
-  document.addEventListener('touchstart', activateBoot, { once: true });
-  
-  // Re-enable back button after 15 seconds
-  setTimeout(() => {
-    backBtn.disabled = false;
-    backBtn.style.opacity = '1';
-    backBtn.style.cursor = 'pointer';
-  }, 15000);
-});
-
-// Activate boot on first tap/click anywhere
-document.addEventListener('click', activateBoot, { once: true });
-document.addEventListener('touchstart', activateBoot, { once: true });
-
 const CONFIG = {
   name: "The Ceremony",
   age: "33",
   eventTag: "An Evening Unfolds",
-  tagline: "Join the party - Good food, warm people, a night that moves. ",
+  tagline: "Join the party. Good food, warm people, a night that moves. ",
   date: "18.09.2026",
   time: "20:00 — till late",
   location: "STRAATWEG 60B",
@@ -750,6 +674,38 @@ document.getElementById('js-calendar-link').href = calendarUrl;
 if (document.getElementById('js-calendar-link-detail')) {
   document.getElementById('js-calendar-link-detail').href = calendarUrl;
 }
+
+// --- LIVE COUNTDOWN --- reuses the same source-of-truth as the calendar link (calendarDate: '20260918T200000')
+(function initCountdown(){
+  const y = calendarDate.slice(0, 4);
+  const mo = calendarDate.slice(4, 6);
+  const d = calendarDate.slice(6, 8);
+  const h = calendarDate.slice(9, 11);
+  const mi = calendarDate.slice(11, 13);
+  const partyDate = new Date(`${y}-${mo}-${d}T${h}:${mi}:00`);
+
+  const elDays = document.getElementById('cd-days');
+  const elHours = document.getElementById('cd-hours');
+  const elMins = document.getElementById('cd-mins');
+  const elSecs = document.getElementById('cd-secs');
+
+  function tick(){
+    const now = new Date();
+    const diff = Math.max(0, partyDate - now);
+
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff / 3600000) % 24);
+    const mins = Math.floor((diff / 60000) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+
+    elDays.textContent = String(days).padStart(2, '0');
+    elHours.textContent = String(hours).padStart(2, '0');
+    elMins.textContent = String(mins).padStart(2, '0');
+    elSecs.textContent = String(secs).padStart(2, '0');
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const centerX = window.innerWidth / 2, centerY = window.innerHeight / 2;
@@ -866,16 +822,16 @@ function triggerFerroSpike() {
   const originalK = ferroState.map(s => s.k);
   const spikeStart = performance.now();
   const spikeDuration = 2500;
-  
+
   function spikeFrame(t) {
     const elapsed = t - spikeStart;
     const pct = Math.min(1, elapsed / spikeDuration);
     const intensity = Math.cos(pct * Math.PI) * 1.2;
-    
+
     ferroState.forEach((s, i) => {
       s.k = originalK[i] * (1 + intensity * 6);
     });
-    
+
     if (pct < 1) {
       requestAnimationFrame(spikeFrame);
     } else {
@@ -894,7 +850,7 @@ function smoothScrollToStage() {
   const distance = target - start;
   const duration = 3500;
   const startTime = performance.now();
-  
+
   function scroll(t) {
     const elapsed = t - startTime;
     const pct = Math.min(1, elapsed / duration);
@@ -905,16 +861,22 @@ function smoothScrollToStage() {
   requestAnimationFrame(scroll);
 }
 
-document.getElementById('enterBtn').addEventListener('click', () => {
-  // If boot not activated yet, trigger it (allows autoplay on first click)
-  if (!bootActivated) {
-    activateBoot();
-    return;
-  }
-  
-  // Boot complete, only allow action after bar is full
-  if (document.getElementById('enterBtn').disabled) return;
-  
+// --- light-blue flash + code-bar reveal on Enter press ---
+const SECRET_CODE = '1809';
+
+document.body.classList.add('gate-locked');
+
+function triggerFlash() {
+  const overlay = document.getElementById('flashOverlay');
+  overlay.classList.remove('flash-active');
+  void overlay.offsetWidth; // restart animation if triggered again
+  overlay.classList.add('flash-active');
+}
+
+function unlockGate() {
+  document.body.classList.remove('gate-locked');
+  document.getElementById('codeBar').classList.remove('show');
+
   if (!audioStarted) {
     startAudio();
   } else if (bgAudio.paused) {
@@ -923,201 +885,38 @@ document.getElementById('enterBtn').addEventListener('click', () => {
   document.getElementById('audioToggle').classList.add('on');
   ferroActive = true;
   triggerFerroSpike();
-  
-  // Enable scrolling
-  document.body.style.overflow = 'auto';
-  document.removeEventListener('wheel', preventScroll);
-  document.removeEventListener('touchmove', preventScroll);
-  
   setTimeout(smoothScrollToStage, 500);
+}
+
+const codeInput = document.getElementById('codeInput');
+const codeError = document.getElementById('codeError');
+
+codeInput.addEventListener('input', () => {
+  codeInput.value = codeInput.value.replace(/[^0-9]/g, '');
+
+  if (codeInput.value.length === 4) {
+    if (codeInput.value === SECRET_CODE) {
+      codeError.classList.remove('show');
+      unlockGate();
+    } else {
+      codeError.classList.add('show');
+      codeInput.classList.add('shake');
+      setTimeout(() => {
+        codeInput.classList.remove('shake');
+        codeInput.value = '';
+      }, 400);
+    }
+  }
+});
+
+document.getElementById('enterBtn').addEventListener('click', () => {
+  triggerFlash();
+  document.getElementById('codeBar').classList.add('show');
+  setTimeout(() => codeInput.focus(), 700);
 });
 
 document.getElementById('audioToggle').addEventListener('click', toggleAudio);
-
-(function initCountdown(){
-  const TARGET_DATE = '2026-09-18T20:00:00';
-
-  const partyDate = new Date(TARGET_DATE);
-
-  // Gate countdown
-  const elDays = document.getElementById('cd-days');
-  const elHours = document.getElementById('cd-hours');
-  const elMins = document.getElementById('cd-mins');
-  const elSecs = document.getElementById('cd-secs');
-
-  function tick(){
-    const now = new Date();
-    const diff = Math.max(0, partyDate - now);
-
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff / 3600000) % 24);
-    const mins = Math.floor((diff / 60000) % 60);
-    const secs = Math.floor((diff / 1000) % 60);
-
-    // Update gate countdown
-    elDays.textContent = String(days).padStart(2, '0');
-    elHours.textContent = String(hours).padStart(2, '0');
-    elMins.textContent = String(mins).padStart(2, '0');
-    elSecs.textContent = String(secs).padStart(2, '0');
-  }
-  tick();
-  setInterval(tick, 1000);
-})();
 </script>
-
-<div id="accessGate" class="access-gate">
-  <div class="access-box">
-    <div class="access-label">Enter code to continue</div>
-    <div class="access-tip">Tip: a day to remember</div>
-    <input id="accessInput" class="access-input" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" />
-    <div id="accessError" class="access-error"></div>
-  </div>
-</div>
-
-<style>
-.access-gate{
-  position:fixed;
-  inset:0;
-  z-index:100;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(7,8,10,0.96);
-  backdrop-filter:blur(6px);
-}
-
-.access-box{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:0.9rem;
-  padding:2.4rem 2rem;
-  text-align:center;
-}
-
-.access-label{
-  font-family:'Space Mono', monospace;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  font-size:0.8rem;
-  color:#f2f4f6;
-}
-
-.access-tip{
-  font-family:'Space Mono', monospace;
-  font-size:0.7rem;
-  letter-spacing:0.1em;
-  color:#71787f;
-}
-
-.access-input{
-  width:180px;
-  text-align:center;
-  letter-spacing:0.7em;
-  font-family:'Space Mono', monospace;
-  font-size:1.15rem;
-  color:#9fe8ff;
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.14);
-  border-radius:10px;
-  padding:0.85em 0.4em 0.85em 0.9em;
-}
-
-.access-input:focus{ border-color:#9fe8ff; box-shadow:0 0 22px rgba(159,232,255,0.35); }
-.access-input:disabled{ opacity:0.4; cursor:not-allowed; }
-
-.access-error{
-  font-family:'Space Mono', monospace;
-  font-size:0.66rem;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  color:#ff8a8a;
-  min-height:1em;
-}
-
-@keyframes accessShake{
-  0%,100%{ transform:translateX(0); }
-  20%{ transform:translateX(-8px); }
-  40%{ transform:translateX(8px); }
-  60%{ transform:translateX(-6px); }
-  80%{ transform:translateX(6px); }
-}
-.access-input.shake{ animation:accessShake 0.4s ease; border-color:#ff8a8a; }
-</style>
-
-<script>
-(function(){
-  const SECRET_CODE = '1809';
-  const MAX_ATTEMPTS = 3;
-  const LOCKOUT_MS = 5 * 60 * 1000; // 5 minutes
-
-  const gate = document.getElementById('accessGate');
-  const input = document.getElementById('accessInput');
-  const errorEl = document.getElementById('accessError');
-
-  function getAttempts(){ return parseInt(localStorage.getItem('accessAttempts') || '0', 10); }
-  function setAttempts(n){ localStorage.setItem('accessAttempts', n); }
-  function getLockUntil(){ return parseInt(localStorage.getItem('accessLockUntil') || '0', 10); }
-  function setLockUntil(ts){ localStorage.setItem('accessLockUntil', ts); }
-
-  let countdownTimer = null;
-
-  function startLockout(){
-    const until = Date.now() + LOCKOUT_MS;
-    setLockUntil(until);
-    lockInput(until);
-  }
-
-  function lockInput(until){
-    input.disabled = true;
-    clearInterval(countdownTimer);
-    countdownTimer = setInterval(() => {
-      const remaining = until - Date.now();
-      if (remaining <= 0) {
-        clearInterval(countdownTimer);
-        input.disabled = false;
-        errorEl.textContent = '';
-        setAttempts(0);
-        setLockUntil(0);
-        return;
-      }
-      const mins = Math.floor(remaining / 60000);
-      const secs = Math.floor((remaining % 60000) / 1000);
-      errorEl.textContent = `Locked — try again in ${mins}:${String(secs).padStart(2,'0')}`;
-    }, 250);
-  }
-
-  // resume an active lockout on page load
-  const lockUntil = getLockUntil();
-  if (lockUntil > Date.now()) lockInput(lockUntil);
-
-  input.addEventListener('input', () => {
-    input.value = input.value.replace(/[^0-9]/g, '');
-    if (input.value.length !== 4) return;
-
-    const typed = input.value;
-    input.value = ''; // code disappears right after entry
-
-    if (typed === SECRET_CODE) {
-      setAttempts(0);
-      setLockUntil(0);
-      gate.remove();
-      return;
-    }
-
-    const attempts = getAttempts() + 1;
-    setAttempts(attempts);
-    errorEl.textContent = `Incorrect code — ${MAX_ATTEMPTS - attempts} tries left`;
-    input.classList.add('shake');
-    setTimeout(() => input.classList.remove('shake'), 400);
-
-    if (attempts >= MAX_ATTEMPTS) startLockout();
-  });
-})();
-</script>
-
-</body>
-</html>
 
 </body>
 </html>
