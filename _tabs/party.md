@@ -963,6 +963,7 @@ document.getElementById('audioToggle').addEventListener('click', toggleAudio);
   tick();
   setInterval(tick, 1000);
 })();
+</script>
 
 <div id="accessGate" class="access-gate">
   <div class="access-box">
@@ -973,6 +974,7 @@ document.getElementById('audioToggle').addEventListener('click', toggleAudio);
   </div>
 </div>
 
+<style>
 .access-gate{
   position:fixed;
   inset:0;
@@ -1041,6 +1043,7 @@ document.getElementById('audioToggle').addEventListener('click', toggleAudio);
   80%{ transform:translateX(6px); }
 }
 .access-input.shake{ animation:accessShake 0.4s ease; border-color:#ff8a8a; }
+</style>
 
 <script>
 (function(){
@@ -1113,7 +1116,8 @@ document.getElementById('audioToggle').addEventListener('click', toggleAudio);
 })();
 </script>
 
-</script>
+</body>
+</html>
 
 </body>
 </html>
