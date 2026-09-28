@@ -963,6 +963,156 @@ document.getElementById('audioToggle').addEventListener('click', toggleAudio);
   tick();
   setInterval(tick, 1000);
 })();
+
+<div id="accessGate" class="access-gate">
+  <div class="access-box">
+    <div class="access-label">Enter code to continue</div>
+    <div class="access-tip">Tip: a day to remember</div>
+    <input id="accessInput" class="access-input" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" />
+    <div id="accessError" class="access-error"></div>
+  </div>
+</div>
+
+.access-gate{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(7,8,10,0.96);
+  backdrop-filter:blur(6px);
+}
+
+.access-box{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.9rem;
+  padding:2.4rem 2rem;
+  text-align:center;
+}
+
+.access-label{
+  font-family:'Space Mono', monospace;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  font-size:0.8rem;
+  color:#f2f4f6;
+}
+
+.access-tip{
+  font-family:'Space Mono', monospace;
+  font-size:0.7rem;
+  letter-spacing:0.1em;
+  color:#71787f;
+}
+
+.access-input{
+  width:180px;
+  text-align:center;
+  letter-spacing:0.7em;
+  font-family:'Space Mono', monospace;
+  font-size:1.15rem;
+  color:#9fe8ff;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.14);
+  border-radius:10px;
+  padding:0.85em 0.4em 0.85em 0.9em;
+}
+
+.access-input:focus{ border-color:#9fe8ff; box-shadow:0 0 22px rgba(159,232,255,0.35); }
+.access-input:disabled{ opacity:0.4; cursor:not-allowed; }
+
+.access-error{
+  font-family:'Space Mono', monospace;
+  font-size:0.66rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:#ff8a8a;
+  min-height:1em;
+}
+
+@keyframes accessShake{
+  0%,100%{ transform:translateX(0); }
+  20%{ transform:translateX(-8px); }
+  40%{ transform:translateX(8px); }
+  60%{ transform:translateX(-6px); }
+  80%{ transform:translateX(6px); }
+}
+.access-input.shake{ animation:accessShake 0.4s ease; border-color:#ff8a8a; }
+
+<script>
+(function(){
+  const SECRET_CODE = '1809';
+  const MAX_ATTEMPTS = 3;
+  const LOCKOUT_MS = 5 * 60 * 1000; // 5 minutes
+
+  const gate = document.getElementById('accessGate');
+  const input = document.getElementById('accessInput');
+  const errorEl = document.getElementById('accessError');
+
+  function getAttempts(){ return parseInt(localStorage.getItem('accessAttempts') || '0', 10); }
+  function setAttempts(n){ localStorage.setItem('accessAttempts', n); }
+  function getLockUntil(){ return parseInt(localStorage.getItem('accessLockUntil') || '0', 10); }
+  function setLockUntil(ts){ localStorage.setItem('accessLockUntil', ts); }
+
+  let countdownTimer = null;
+
+  function startLockout(){
+    const until = Date.now() + LOCKOUT_MS;
+    setLockUntil(until);
+    lockInput(until);
+  }
+
+  function lockInput(until){
+    input.disabled = true;
+    clearInterval(countdownTimer);
+    countdownTimer = setInterval(() => {
+      const remaining = until - Date.now();
+      if (remaining <= 0) {
+        clearInterval(countdownTimer);
+        input.disabled = false;
+        errorEl.textContent = '';
+        setAttempts(0);
+        setLockUntil(0);
+        return;
+      }
+      const mins = Math.floor(remaining / 60000);
+      const secs = Math.floor((remaining % 60000) / 1000);
+      errorEl.textContent = `Locked — try again in ${mins}:${String(secs).padStart(2,'0')}`;
+    }, 250);
+  }
+
+  // resume an active lockout on page load
+  const lockUntil = getLockUntil();
+  if (lockUntil > Date.now()) lockInput(lockUntil);
+
+  input.addEventListener('input', () => {
+    input.value = input.value.replace(/[^0-9]/g, '');
+    if (input.value.length !== 4) return;
+
+    const typed = input.value;
+    input.value = ''; // code disappears right after entry
+
+    if (typed === SECRET_CODE) {
+      setAttempts(0);
+      setLockUntil(0);
+      gate.remove();
+      return;
+    }
+
+    const attempts = getAttempts() + 1;
+    setAttempts(attempts);
+    errorEl.textContent = `Incorrect code — ${MAX_ATTEMPTS - attempts} tries left`;
+    input.classList.add('shake');
+    setTimeout(() => input.classList.remove('shake'), 400);
+
+    if (attempts >= MAX_ATTEMPTS) startLockout();
+  });
+})();
+</script>
+
 </script>
 
 </body>

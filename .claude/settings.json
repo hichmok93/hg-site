@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -v '^\\\\.git$')",
+      "Bash(ruby -v)",
+      "Bash(bundle -v)",
+      "Bash(bundle show *)",
+      "Bash(bundle list *)",
+      "Bash(ruby -C/c/MAMP/htdocs/hg-site -rbundler/setup -I/c/Users/himok/.local/share/gem/ruby/3.4.0/gems/jekyll-4.4.1/exe /c/Users/himok/.local/share/gem/ruby/3.4.0/gems/jekyll-4.4.1/exe/jekyll serve --livereload)",
+      "Bash(Get-Content C:\\\\Users\\\\himok\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--MAMP-htdocs-hg-site\\\\2b04384b-784d-4b63-b5fc-06c29563117b\\\\tasks\\\\bl26k2us5.output -Wait -Tail 5)",
+      "Bash(jekyll serve *)",
+      "Bash(powershell -NoProfile -Command ' *)"
+    ]
+  }
+}

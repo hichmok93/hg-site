@@ -1,7 +1,7 @@
 ---
 title: THE CEREMONY - 2026 - (Binary Pronouns)
 hidden: true
-toc: false
+toc: true
 date: 2026-08-30 17:00:00 +0000
 permalink: /hichmok2/
 categories: [grafisch ontwerp, Coding, Art, Party]
