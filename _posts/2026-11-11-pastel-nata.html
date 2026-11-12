@@ -153,11 +153,10 @@ image:
     #cart-items::before {
       content: "";
       position: absolute;
-      inset: 8% -10%;
+      inset: 8% 0;
       z-index: 0;
       background: url("{{ site.baseurl }}/assets/img/cart-box-background.jpg") center / 100% auto no-repeat;
       opacity: .2;
-      transform: rotate(-12deg);
       transition: opacity .3s ease;
       pointer-events: none;
     }
@@ -362,6 +361,11 @@ image:
         </button>
       </div>
     </div>
+    <nav class="lg:hidden max-w-6xl mx-auto grid grid-cols-3 gap-1 px-4 pb-3 text-xs sm:text-sm font-semibold">
+      <a href="#bestellen" class="rounded-lg px-1 py-2 text-center transition">Bestellen</a>
+      <a href="#kalender" class="rounded-lg px-1 py-2 text-center transition">Kalender</a>
+      <a href="#tiktok" class="rounded-lg px-1 py-2 text-center transition">TikTok</a>
+    </nav>
   </header>
   <div class="tile-band"></div>
 
