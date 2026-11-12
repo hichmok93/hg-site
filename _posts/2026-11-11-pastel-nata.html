@@ -173,11 +173,39 @@ permalink: /pastel-de-nata/
       --web: url("{{ site.baseurl }}/assets/img/pattern-dark.jpg");
     }
 
-    body {
-      background-image: var(--web);
-      background-size: 440px auto;
+
+    /* Achtergrondniveaus: 1 = spinnenweb, 2 = ornamenttegel, 3 = referentiepatroon, 4 = alles gelaagd */
+    :root {
+      --lvl1: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cstyle%3E.g{stroke:rgba(190,152,62,.55)}.s{stroke:rgba(150,150,155,.5)}.b{stroke:rgba(16,52,130,.07)}%3C/style%3E%3Cpath class='b' d='M80 0v160M0 80h160M0 0h160v160H0z' stroke-width='0.5' fill='none'/%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cpath class='g' stroke-width='0.7' d='M80 80 C 65 58, 45 62, 35 35 C 58 45, 62 65, 80 80 Z M80 80 C 95 58, 115 62, 125 35 C 102 45, 98 65, 80 80 Z M80 80 C 65 102, 45 98, 35 125 C 58 115, 62 95, 80 80 Z M80 80 C 95 102, 115 98, 125 125 C 102 115, 98 95, 80 80 Z'/%3E%3Cpath class='s' stroke-width='0.6' d='M80 80 Q 80 48 68 32 M80 80 Q 80 48 92 32 M80 80 Q 80 112 68 128 M80 80 Q 80 112 92 128 M80 80 Q 48 80 32 68 M80 80 Q 48 80 32 92 M80 80 Q 112 80 128 68 M80 80 Q 112 80 128 92'/%3E%3Ccircle class='s' stroke-width='0.5' cx='0' cy='0' r='18'/%3E%3Ccircle class='s' stroke-width='0.5' cx='160' cy='0' r='18'/%3E%3Ccircle class='s' stroke-width='0.5' cx='0' cy='160' r='18'/%3E%3Ccircle class='s' stroke-width='0.5' cx='160' cy='160' r='18'/%3E%3Cpath class='g' stroke-width='0.5' d='M 18 0 A 18 18 0 0 1 0 18 M 142 0 A 18 18 0 0 0 160 18 M 18 160 A 18 18 0 0 0 0 142 M 142 160 A 18 18 0 0 1 160 142'/%3E%3C/g%3E%3C/svg%3E");
+      --lvl2: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cstyle%3E.g{stroke:rgba(190,152,62,.7);stroke-width:.9}.s{stroke:rgba(186,160,98,.5);stroke-width:.8}.t{stroke:rgba(150,150,150,.4);stroke-width:.8;fill:none}%3C/style%3E%3Cdefs%3E%3Cg id='q'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath class='g' d='M100 100C88 90 87 72 100 54'/%3E%3Cpath class='g' d='M100 100C90 88 72 87 54 100'/%3E%3Cpath class='g' d='M100 90C94 84 94 74 100 66'/%3E%3Cpath class='g' d='M90 100C84 94 74 94 66 100'/%3E%3Cpath class='g' d='M100 54C95 60 95 66 100 70'/%3E%3Cpath class='s' d='M90 90C72 88 56 74 52 56C49 42 62 34 71 41C78 47 72 58 63 56'/%3E%3Cpath class='g' d='M80 76C68 72 60 62 64 52C68 44 78 46 78 54' stroke-dasharray='.1 3.2' stroke-width='2.2'/%3E%3Cpath class='g' d='M80 76C68 72 60 62 64 52C68 44 78 46 78 54'/%3E%3Cpath class='s' d='M100 40C92 32 80 30 70 22C84 20 96 26 100 40'/%3E%3Cpath class='s' d='M40 100C32 92 30 80 22 70C20 84 26 96 40 100'/%3E%3Cpath class='s' d='M100 28C96 20 98 10 100 0'/%3E%3Cpath class='s' d='M28 100C20 96 10 98 0 100'/%3E%3Cpath class='g' d='M0 0C14 6 23 18 21 34C14 26 10 14 0 0Z'/%3E%3Cpath class='s' d='M21 34C26 48 40 52 48 45C54 39 49 31 43 35'/%3E%3Cpath class='s' d='M34 12C44 14 52 22 52 32'/%3E%3Cpath class='s' d='M12 34C14 44 22 52 32 52'/%3E%3C/g%3E%3C/g%3E%3C/defs%3E%3Cuse href='%23q'/%3E%3Cuse href='%23q' transform='translate(200 0) scale(-1 1)'/%3E%3Cuse href='%23q' transform='translate(0 200) scale(1 -1)'/%3E%3Cuse href='%23q' transform='translate(200 200) scale(-1 -1)'/%3E%3Cpath class='t' d='M0 0H200V200H0Z'/%3E%3C/svg%3E");
+    }
+    html.dark {
+      --lvl1: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cstyle%3E.g{stroke:rgba(205,168,84,.5)}.s{stroke:rgba(165,175,196,.4)}.b{stroke:rgba(255,255,255,.07)}%3C/style%3E%3Cpath class='b' d='M80 0v160M0 80h160M0 0h160v160H0z' stroke-width='0.5' fill='none'/%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cpath class='g' stroke-width='0.7' d='M80 80 C 65 58, 45 62, 35 35 C 58 45, 62 65, 80 80 Z M80 80 C 95 58, 115 62, 125 35 C 102 45, 98 65, 80 80 Z M80 80 C 65 102, 45 98, 35 125 C 58 115, 62 95, 80 80 Z M80 80 C 95 102, 115 98, 125 125 C 102 115, 98 95, 80 80 Z'/%3E%3Cpath class='s' stroke-width='0.6' d='M80 80 Q 80 48 68 32 M80 80 Q 80 48 92 32 M80 80 Q 80 112 68 128 M80 80 Q 80 112 92 128 M80 80 Q 48 80 32 68 M80 80 Q 48 80 32 92 M80 80 Q 112 80 128 68 M80 80 Q 112 80 128 92'/%3E%3Ccircle class='s' stroke-width='0.5' cx='0' cy='0' r='18'/%3E%3Ccircle class='s' stroke-width='0.5' cx='160' cy='0' r='18'/%3E%3Ccircle class='s' stroke-width='0.5' cx='0' cy='160' r='18'/%3E%3Ccircle class='s' stroke-width='0.5' cx='160' cy='160' r='18'/%3E%3Cpath class='g' stroke-width='0.5' d='M 18 0 A 18 18 0 0 1 0 18 M 142 0 A 18 18 0 0 0 160 18 M 18 160 A 18 18 0 0 0 0 142 M 142 160 A 18 18 0 0 1 160 142'/%3E%3C/g%3E%3C/svg%3E");
+      --lvl2: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cstyle%3E.g{stroke:rgba(205,168,84,.7);stroke-width:.9}.s{stroke:rgba(165,175,196,.5);stroke-width:.8}.t{stroke:rgba(200,205,220,.3);stroke-width:.8;fill:none}%3C/style%3E%3Cdefs%3E%3Cg id='q'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath class='g' d='M100 100C88 90 87 72 100 54'/%3E%3Cpath class='g' d='M100 100C90 88 72 87 54 100'/%3E%3Cpath class='g' d='M100 90C94 84 94 74 100 66'/%3E%3Cpath class='g' d='M90 100C84 94 74 94 66 100'/%3E%3Cpath class='g' d='M100 54C95 60 95 66 100 70'/%3E%3Cpath class='s' d='M90 90C72 88 56 74 52 56C49 42 62 34 71 41C78 47 72 58 63 56'/%3E%3Cpath class='g' d='M80 76C68 72 60 62 64 52C68 44 78 46 78 54' stroke-dasharray='.1 3.2' stroke-width='2.2'/%3E%3Cpath class='g' d='M80 76C68 72 60 62 64 52C68 44 78 46 78 54'/%3E%3Cpath class='s' d='M100 40C92 32 80 30 70 22C84 20 96 26 100 40'/%3E%3Cpath class='s' d='M40 100C32 92 30 80 22 70C20 84 26 96 40 100'/%3E%3Cpath class='s' d='M100 28C96 20 98 10 100 0'/%3E%3Cpath class='s' d='M28 100C20 96 10 98 0 100'/%3E%3Cpath class='g' d='M0 0C14 6 23 18 21 34C14 26 10 14 0 0Z'/%3E%3Cpath class='s' d='M21 34C26 48 40 52 48 45C54 39 49 31 43 35'/%3E%3Cpath class='s' d='M34 12C44 14 52 22 52 32'/%3E%3Cpath class='s' d='M12 34C14 44 22 52 32 52'/%3E%3C/g%3E%3C/g%3E%3C/defs%3E%3Cuse href='%23q'/%3E%3Cuse href='%23q' transform='translate(200 0) scale(-1 1)'/%3E%3Cuse href='%23q' transform='translate(0 200) scale(1 -1)'/%3E%3Cuse href='%23q' transform='translate(200 200) scale(-1 -1)'/%3E%3Cpath class='t' d='M0 0H200V200H0Z'/%3E%3C/svg%3E");
+    }
+
+    /* Drie geometrische patronen, van eenvoudig naar complex, die geleidelijk in elkaar overlopen
+       (heel langzaam, zie hieronder): 1 spinnenweb -> 2 ornamenttegel -> 3 referentiepatroon */
+    .bg-stack { position: fixed; inset: 0; z-index: -2; pointer-events: none; }
+    .bg-stack i {
+      position: absolute; inset: 0; opacity: 0;
       background-repeat: repeat;
-      background-attachment: fixed;
+      animation-duration: 300s; animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite; animation-fill-mode: both;
+      animation-delay: -30s; /* start midden in patroon 1 */
+    }
+    .bg-l1 { background-image: var(--lvl1); background-size: 320px 320px; animation-name: lvl1; }
+    .bg-l2 { background-image: var(--lvl2); background-size: 400px 400px; animation-name: lvl2; }
+    .bg-l3 { background-image: var(--web); background-size: 440px auto; animation-name: lvl3; }
+    /* Eén ronde = 300s, vijf vloeiende "beurten": 1 -> 2 -> 3 -> 2 -> 1.
+       Elk patroon fadet continu in en weer uit (geen stilstand); tussen twee beurten
+       is er kort (± 0,1s) helemaal geen patroon zichtbaar. */
+    @keyframes lvl1 { 0%,0.017% { opacity: 0 } 10% { opacity: 1 } 19.983%,80.017% { opacity: 0 } 90% { opacity: 1 } 99.983%,100% { opacity: 0 } }
+    @keyframes lvl2 { 0%,20.017% { opacity: 0 } 30% { opacity: 1 } 39.983%,60.017% { opacity: 0 } 70% { opacity: 1 } 79.983%,100% { opacity: 0 } }
+    @keyframes lvl3 { 0%,40.017% { opacity: 0 } 50% { opacity: 1 } 59.983%,100% { opacity: 0 } }
+    @media (prefers-reduced-motion: reduce) {
+      .bg-stack i { animation: none; }
+      .bg-l3 { opacity: 1; }
     }
 
     .site-header {
@@ -231,35 +259,31 @@ permalink: /pastel-de-nata/
     .footer-panel a:hover { color: #E9A93B; }
     .footer-bottom { background: rgba(8, 28, 74, .85); color: rgba(255,255,255,.6); }  :root { --webmask: url("{{ site.baseurl }}/assets/img/pattern-mask.png"); }
 
-    /* ===== Subtiele goud/zilver glans die langzaam door het tegelpatroon stroomt ===== */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
+    /* ===== Goud/zilver glans per patroon: hij loopt alleen door de lijnen van het zichtbare patroon ===== */
+    :root { --mask1: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='round'%3E%3Cpath stroke-width='1.2' d='M80 80 C 65 58, 45 62, 35 35 C 58 45, 62 65, 80 80 Z M80 80 C 95 58, 115 62, 125 35 C 102 45, 98 65, 80 80 Z M80 80 C 65 102, 45 98, 35 125 C 58 115, 62 95, 80 80 Z M80 80 C 95 102, 115 98, 125 125 C 102 115, 98 95, 80 80 Z'/%3E%3Cpath stroke-width='1' d='M80 80 Q 80 48 68 32 M80 80 Q 80 48 92 32 M80 80 Q 80 112 68 128 M80 80 Q 80 112 92 128 M80 80 Q 48 80 32 68 M80 80 Q 48 80 32 92 M80 80 Q 112 80 128 68 M80 80 Q 112 80 128 92'/%3E%3Ccircle stroke-width='.9' cx='0' cy='0' r='18'/%3E%3Ccircle stroke-width='.9' cx='160' cy='0' r='18'/%3E%3Ccircle stroke-width='.9' cx='0' cy='160' r='18'/%3E%3Ccircle stroke-width='.9' cx='160' cy='160' r='18'/%3E%3Cpath stroke-width='.9' d='M80 0v160M0 80h160'/%3E%3C/g%3E%3C/svg%3E"); --mask2: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cg id='q'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M100 100C88 90 87 72 100 54'/%3E%3Cpath d='M100 100C90 88 72 87 54 100'/%3E%3Cpath d='M100 90C94 84 94 74 100 66'/%3E%3Cpath d='M90 100C84 94 74 94 66 100'/%3E%3Cpath d='M100 54C95 60 95 66 100 70'/%3E%3Cpath d='M90 90C72 88 56 74 52 56C49 42 62 34 71 41C78 47 72 58 63 56'/%3E%3Cpath d='M80 76C68 72 60 62 64 52C68 44 78 46 78 54'/%3E%3Cpath d='M100 40C92 32 80 30 70 22C84 20 96 26 100 40'/%3E%3Cpath d='M40 100C32 92 30 80 22 70C20 84 26 96 40 100'/%3E%3Cpath d='M100 28C96 20 98 10 100 0'/%3E%3Cpath d='M28 100C20 96 10 98 0 100'/%3E%3Cpath d='M0 0C14 6 23 18 21 34C14 26 10 14 0 0Z'/%3E%3Cpath d='M21 34C26 48 40 52 48 45C54 39 49 31 43 35'/%3E%3Cpath d='M34 12C44 14 52 22 52 32'/%3E%3Cpath d='M12 34C14 44 22 52 32 52'/%3E%3C/g%3E%3C/g%3E%3C/defs%3E%3Cuse href='%23q'/%3E%3Cuse href='%23q' transform='translate(200 0) scale(-1 1)'/%3E%3Cuse href='%23q' transform='translate(0 200) scale(1 -1)'/%3E%3Cuse href='%23q' transform='translate(200 200) scale(-1 -1)'/%3E%3Cpath d='M0 0H200V200H0Z' fill='none' stroke='%23000' stroke-width='1.2'/%3E%3C/svg%3E"); }
+    .bg-stack i b {
+      position: absolute; inset: 0; opacity: .55;
       background-image: linear-gradient(110deg,
         transparent 0%, transparent 38%,
         rgba(212,175,55,.85) 46%, rgba(240,240,248,.95) 50%, rgba(212,175,55,.85) 54%,
         transparent 62%, transparent 100%);
       background-size: 300% 100%;
       background-position: 100% 0;
-      -webkit-mask-image: var(--webmask);
-      mask-image: var(--webmask);
-      -webkit-mask-size: 440px auto;
-      mask-size: 440px auto;
-      opacity: .55;
       animation: nata-flow 22s ease-in-out infinite alternate;
     }
-    html.dark body::before { opacity: .8; }
+    html.dark .bg-stack i b { opacity: .8; }
+    .bg-l1 b { -webkit-mask-image: var(--mask1);   mask-image: var(--mask1);   -webkit-mask-size: 320px 320px; mask-size: 320px 320px; }
+    .bg-l2 b { -webkit-mask-image: var(--mask2);   mask-image: var(--mask2);   -webkit-mask-size: 400px 400px; mask-size: 400px 400px; }
+    .bg-l3 b { -webkit-mask-image: var(--webmask); mask-image: var(--webmask); -webkit-mask-size: 440px auto;  mask-size: 440px auto; }
     @keyframes nata-flow {
       from { background-position: 100% 0; }
       to   { background-position: 0% 0; }
     }
-    @media (prefers-reduced-motion: reduce) { body::before { animation: none; } }
+    @media (prefers-reduced-motion: reduce) { .bg-stack i b { animation: none; } }
   </style>
 </head>
 <body class="font-sans antialiased selection:bg-custard selection:text-black">
+  <div class="bg-stack" aria-hidden="true"><i class="bg-l1"><b></b></i><i class="bg-l2"><b></b></i><i class="bg-l3"><b></b></i></div>
 
   <!-- Header -->
   <header class="site-header sticky top-0 z-40">
@@ -278,7 +302,7 @@ permalink: /pastel-de-nata/
       <div class="flex items-center gap-2">
         <div class="flex rounded-full border border-espresso/20 overflow-hidden text-xs font-semibold">
           <button id="mode-customer" onclick="setMode('customer')" class="mode-btn on px-3 py-1.5 transition">Klant</button>
-          <button id="mode-investor" onclick="setMode('investor')" class="mode-btn px-3 py-1.5 transition">Investeerder</button>
+          <button id="mode-investor" onclick="requestInvestor()" class="mode-btn px-3 py-1.5 transition">Investeerder</button>
         </div>
 
         <button onclick="toggleTheme()" aria-label="Wissel tussen donker en licht thema" class="w-9 h-9 rounded-full border border-espresso/20 flex items-center justify-center hover:bg-custard/30 transition">
@@ -626,6 +650,21 @@ permalink: /pastel-de-nata/
     </div>
   </aside>
 
+  <!-- Toegangscode investeerder -->
+  <div id="code-modal" class="fixed inset-0 bg-black/60 z-[60] hidden items-center justify-center p-4">
+    <form onsubmit="submitCode(event)" class="bg-surface rounded-2xl max-w-xs w-full p-6 text-center shadow-2xl border border-espresso/10">
+      <h3 class="font-serif text-3xl">Investeerders-toegang</h3>
+      <p class="text-sm text-espresso/70 mt-1">Voer de toegangscode in om de marges te zien.</p>
+      <input id="code-input" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" placeholder="••••"
+        class="mt-4 w-full text-center tracking-[0.6em] text-2xl bg-cream border border-espresso/20 rounded-xl py-2.5 focus:outline-none focus:border-azulejo" />
+      <p id="code-error" class="hidden text-xs font-semibold text-terracota mt-2">Onjuiste code, probeer opnieuw.</p>
+      <div class="flex gap-2 mt-5">
+        <button type="button" onclick="closeCodeModal()" class="flex-1 border border-espresso/20 rounded-xl py-2.5 text-sm font-semibold hover:bg-custard/20 transition">Annuleren</button>
+        <button type="submit" class="flex-1 bg-azulejo text-white rounded-xl py-2.5 text-sm font-semibold border-b-[3px] border-custard hover:brightness-110 transition">Openen</button>
+      </div>
+    </form>
+  </div>
+
   <!-- Bevestigingsmodal -->
   <div id="order-modal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4">
     <div class="bg-surface rounded-2xl max-w-md w-full p-6 sm:p-8 text-center shadow-2xl border border-espresso/10">
@@ -655,6 +694,37 @@ permalink: /pastel-de-nata/
       const dark = document.documentElement.classList.toggle('dark');
       localStorage.setItem('nataTheme', dark ? 'dark' : 'light');
       applyThemeIcons();
+    }
+
+    // Toegangscode voor de investeerdersweergave (demo: de code staat in de pagina zelf)
+    const INVESTOR_CODE = '1993';
+
+    function requestInvestor() {
+      if (sessionStorage.getItem('nataInvestor') === 'ok') return setMode('investor');
+      const m = document.getElementById('code-modal');
+      document.getElementById('code-error').classList.add('hidden');
+      document.getElementById('code-input').value = '';
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+      setTimeout(() => document.getElementById('code-input').focus(), 50);
+    }
+
+    function closeCodeModal() {
+      const m = document.getElementById('code-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    function submitCode(e) {
+      e.preventDefault();
+      if (document.getElementById('code-input').value === INVESTOR_CODE) {
+        sessionStorage.setItem('nataInvestor', 'ok');
+        closeCodeModal();
+        setMode('investor');
+      } else {
+        document.getElementById('code-error').classList.remove('hidden');
+        document.getElementById('code-input').select();
+      }
     }
 
     function setMode(mode) {
