@@ -15,7 +15,8 @@ image:
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Altijd de desktopweergave: smartphones tonen de pagina op 1280px breed (uitzoomen/inzoomen blijft mogelijk) -->
+  <meta name="viewport" content="width=1280, user-scalable=yes" />
   <title>Pastelaria Nata — Ambachtelijke Pastéis de Nata in Rotterdam</title>
 
   <!-- Thema vóór het renderen instellen (geen flits) -->
@@ -197,16 +198,16 @@ image:
     .bg-stack i {
       position: absolute; inset: 0; opacity: 0;
       background-repeat: repeat;
-      animation-duration: 300s; animation-timing-function: ease-in-out;
+      animation-duration: 80s; animation-timing-function: ease-in-out;
       animation-iteration-count: infinite; animation-fill-mode: both;
       animation-delay: -30s; /* start midden in patroon 1 */
     }
     .bg-l1 { background-image: var(--lvl1); background-size: 320px 320px; animation-name: lvl1; }
     .bg-l2 { background-image: var(--lvl2); background-size: 400px 400px; animation-name: lvl2; }
     .bg-l3 { background-image: var(--web); background-size: 440px auto; animation-name: lvl3; }
-    /* Eén ronde = 300s, vijf vloeiende "beurten": 1 -> 2 -> 3 -> 2 -> 1.
+    /* Eén ronde = 100s, vijf vloeiende "beurten": 1 -> 2 -> 3 -> 2 -> 1.
        Elk patroon fadet continu in en weer uit (geen stilstand); tussen twee beurten
-       is er kort (± 0,1s) helemaal geen patroon zichtbaar. */
+       is er kort (± 0,025s) helemaal geen patroon zichtbaar. */
     @keyframes lvl1 { 0%,0.017% { opacity: 0 } 10% { opacity: 1 } 19.983%,80.017% { opacity: 0 } 90% { opacity: 1 } 99.983%,100% { opacity: 0 } }
     @keyframes lvl2 { 0%,20.017% { opacity: 0 } 30% { opacity: 1 } 39.983%,60.017% { opacity: 0 } 70% { opacity: 1 } 79.983%,100% { opacity: 0 } }
     @keyframes lvl3 { 0%,40.017% { opacity: 0 } 50% { opacity: 1 } 59.983%,100% { opacity: 0 } }
