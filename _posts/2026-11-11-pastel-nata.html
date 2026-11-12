@@ -19,9 +19,6 @@ permalink: /pastel-de-nata/
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Three.js & OrbitControls -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
   <script>
     tailwind.config = {
@@ -58,14 +55,6 @@ permalink: /pastel-de-nata/
         radial-gradient(circle at 0    150%, #1E4E79 24%, #2B6CB0 25%, #2B6CB0 28%, #1E4E79 29%, #1E4E79 36%, #2B6CB0 36%, #2B6CB0 40%, transparent 40%, transparent),
         radial-gradient(circle at 50%  100%, #2B6CB0 10%, #1E4E79 11%, #1E4E79 23%, #2B6CB0 24%, #2B6CB0 30%, #1E4E79 31%, #1E4E79 43%, #2B6CB0 44%, #2B6CB0 50%, #1E4E79 51%, #1E4E79 63%, #2B6CB0 64%, #2B6CB0 71%, transparent 71%, transparent);
       background-size: 40px 20px;
-    }
-
-    #nata-canvas {
-      cursor: grab;
-      touch-action: none;
-    }
-    #nata-canvas:active {
-      cursor: grabbing;
     }
 
     .ring-btn {
@@ -138,9 +127,9 @@ permalink: /pastel-de-nata/
         <div class="absolute inset-8 sm:inset-12 rounded-full border-2 border-dashed border-caramel/30 pointer-events-none"></div>
         <div class="absolute inset-16 sm:inset-24 rounded-full bg-gradient-to-b from-custard/20 to-transparent pointer-events-none"></div>
 
-        <!-- Three.js Canvas -->
+        <!-- Sketchfab 3D Pastel de Nata -->
         <div id="canvas-wrapper" class="w-full h-full relative z-10">
-          <canvas id="nata-canvas" class="w-full h-full"></canvas>
+          <iframe title="Pastel de Nata - Portuguese Custard Tart" class="w-full h-full rounded-full" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share loading="lazy" src="https://sketchfab.com/models/da3eafc408414fe6b194bd214e06470f/embed?autospin=1&autostart=1&preload=1&transparent=1&ui_theme=dark&ui_infos=0&ui_watermark=0"></iframe>
         </div>
 
         <!-- Interactieve Aantal-knoppen rondom de 3D Pastel de Nata -->
@@ -173,7 +162,7 @@ permalink: /pastel-de-nata/
 
         <!-- Hint -->
         <div class="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 bg-white/80 backdrop-blur px-3 py-1 rounded-full text-[11px] text-espresso/70 border border-espresso/10 pointer-events-none">
-          ↻ Sleep om 360° te bekijken
+          ↻ Sleep om 360° te bekijken • 3D model: <a href="https://sketchfab.com/3d-models/pastel-de-nata-portuguese-custard-tart-da3eafc408414fe6b194bd214e06470f" target="_blank" rel="nofollow" class="underline pointer-events-auto">joanacmarques</a> via Sketchfab
         </div>
       </div>
 
@@ -386,7 +375,7 @@ permalink: /pastel-de-nata/
             </li>
             <li class="flex items-start gap-2.5">
               <span class="text-caramel font-bold">✓</span>
-              <span><strong>Interactieve 3D productbeleving:</strong> Gebouwd met pure HTML, Tailwind en Three.js — laadt razendsnel zonder zware plugins.</span>
+              <span><strong>Interactieve 3D productbeleving:</strong> Sketchfab 3D-embed met pure HTML en Tailwind — laadt razendsnel zonder zware plugins.</span>
             </li>
             <li class="flex items-start gap-2.5">
               <span class="text-caramel font-bold">✓</span>
@@ -507,10 +496,6 @@ permalink: /pastel-de-nata/
         badge.classList.add('hidden');
       }
 
-      // Kleine bounce animatie op het 3D model bij wisselen van aantal
-      if (window.nataGroup) {
-        window.nataBounce = 0.25;
-      }
     }
 
     function addSelectedToCart() {
@@ -637,211 +622,7 @@ permalink: /pastel-de-nata/
       modal.classList.remove('flex');
     }
 
-    // ==========================================
-    // 2. THREE.JS 3D PASTEL DE NATA MODEL
-    // ==========================================
-    function init3DNata() {
-      const canvas = document.getElementById('nata-canvas');
-      const wrapper = document.getElementById('canvas-wrapper');
-
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(36, wrapper.clientWidth / wrapper.clientHeight, 0.1, 100);
-      camera.position.set(0, 3.6, 5.2);
-
-      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-      renderer.setSize(wrapper.clientWidth, wrapper.clientHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-      // Verlichting
-      const ambientLight = new THREE.AmbientLight(0xfff5e6, 0.75);
-      scene.add(ambientLight);
-
-      const keyLight = new THREE.DirectionalLight(0xfffaed, 1.15);
-      keyLight.position.set(4, 7, 5);
-      keyLight.castShadow = true;
-      keyLight.shadow.mapSize.width = 1024;
-      keyLight.shadow.mapSize.height = 1024;
-      scene.add(keyLight);
-
-      const rimLight = new THREE.DirectionalLight(0xf4b942, 0.55);
-      rimLight.position.set(-5, 3, -4);
-      scene.add(rimLight);
-
-      const nataGroup = new THREE.Group();
-      window.nataGroup = nataGroup;
-      window.nataBounce = 0;
-
-      // Portugees Azulejo Schoteltje
-      const plateGeo = new THREE.CylinderGeometry(2.05, 1.55, 0.16, 48);
-      const plateMat = new THREE.MeshStandardMaterial({
-        color: 0xffffff,
-        roughness: 0.18,
-        metalness: 0.05
-      });
-      const plate = new THREE.Mesh(plateGeo, plateMat);
-      plate.position.y = -0.68;
-      plate.receiveShadow = true;
-      nataGroup.add(plate);
-
-      // Blauwe Azulejo rand op het schoteltje
-      const ringGeo = new THREE.RingGeometry(1.62, 1.88, 48);
-      const ringMat = new THREE.MeshStandardMaterial({
-        color: 0x1E4E79,
-        roughness: 0.25,
-        side: THREE.DoubleSide
-      });
-      const ring = new THREE.Mesh(ringGeo, ringMat);
-      ring.rotation.x = -Math.PI / 2;
-      ring.position.y = -0.598;
-      nataGroup.add(ring);
-
-      // Bladerdeeg Kuipje (met gelamineerde ribbels)
-      const crustGroup = new THREE.Group();
-      const layers = 14;
-      for (let i = 0; i < layers; i++) {
-        const t = i / (layers - 1);
-        const radiusBottom = 0.92 + t * 0.42;
-        const radiusTop = 0.96 + t * 0.46;
-        const height = 0.09;
-        const geo = new THREE.CylinderGeometry(radiusTop, radiusBottom, height, 40, 1, false);
-        
-        // Lichte variatie in goudbruine tinten voor bladerdeeg-effect
-        const shade = new THREE.Color().setHSL(0.085, 0.65, 0.42 + (i % 3) * 0.05);
-        const mat = new THREE.MeshStandardMaterial({
-          color: shade,
-          roughness: 0.72,
-          metalness: 0.02
-        });
-        const layerMesh = new THREE.Mesh(geo, mat);
-        layerMesh.position.y = -0.55 + i * 0.075;
-        layerMesh.castShadow = true;
-        layerMesh.receiveShadow = true;
-        crustGroup.add(layerMesh);
-      }
-
-      // Gekartelde krokante bovenrand van het bladerdeeg
-      const rimCount = 36;
-      for (let i = 0; i < rimCount; i++) {
-        const angle = (i / rimCount) * Math.PI * 2;
-        const puffGeo = new THREE.DodecahedronGeometry(0.13, 1);
-        const puffMat = new THREE.MeshStandardMaterial({
-          color: i % 2 === 0 ? 0xC97A2B : 0xA85719,
-          roughness: 0.78
-        });
-        const puff = new THREE.Mesh(puffGeo, puffMat);
-        puff.position.set(
-          Math.cos(angle) * 1.38,
-          0.46 + Math.sin(i * 3) * 0.03,
-          Math.sin(angle) * 1.38
-        );
-        puff.scale.set(1.1, 0.85, 0.8);
-        puff.castShadow = true;
-        crustGroup.add(puff);
-      }
-      nataGroup.add(crustGroup);
-
-      // Custard Vulling met gekarameliseerde blaren (canvas texture)
-      const custardCanvas = document.createElement('canvas');
-      custardCanvas.width = 512;
-      custardCanvas.height = 512;
-      const ctx = custardCanvas.getContext('2d');
-
-      // Romige gele custard basis
-      const grad = ctx.createRadialGradient(256, 256, 30, 256, 256, 256);
-      grad.addColorStop(0, '#F7C948');
-      grad.addColorStop(0.75, '#E5A124');
-      grad.addColorStop(1, '#B85D19');
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, 512, 512);
-
-      // Karakteristieke donkere karamel-vlekken bovenop
-      const spots = [
-        { x: 210, y: 195, r: 58, a: 0.82 },
-        { x: 305, y: 230, r: 46, a: 0.78 },
-        { x: 245, y: 310, r: 52, a: 0.85 },
-        { x: 175, y: 280, r: 34, a: 0.72 },
-        { x: 315, y: 165, r: 28, a: 0.68 },
-        { x: 265, y: 145, r: 24, a: 0.65 }
-      ];
-
-      spots.forEach(s => {
-        const sGrad = ctx.createRadialGradient(s.x, s.y, 4, s.x, s.y, s.r);
-        sGrad.addColorStop(0, `rgba(38, 16, 4, ${s.a})`);
-        sGrad.addColorStop(0.65, `rgba(92, 38, 9, ${s.a * 0.75})`);
-        sGrad.addColorStop(1, 'rgba(229, 161, 36, 0)');
-        ctx.fillStyle = sGrad;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      // Subtiel kaneelpoeder
-      for (let i = 0; i < 450; i++) {
-        const rx = Math.random() * 512;
-        const ry = Math.random() * 512;
-        ctx.fillStyle = 'rgba(110, 48, 12, 0.35)';
-        ctx.fillRect(rx, ry, 2, 2);
-      }
-
-      const custardTexture = new THREE.CanvasTexture(custardCanvas);
-      const custardGeo = new THREE.CylinderGeometry(1.33, 1.25, 0.14, 48);
-      const custardMat = new THREE.MeshStandardMaterial({
-        map: custardTexture,
-        roughness: 0.22,
-        metalness: 0.04
-      });
-      const custard = new THREE.Mesh(custardGeo, custardMat);
-      custard.position.y = 0.42;
-      nataGroup.add(custard);
-
-      scene.add(nataGroup);
-
-      // OrbitControls voor 360° draaien
-      const controls = new THREE.OrbitControls(camera, renderer.domElement);
-      controls.enableDamping = true;
-      controls.dampingFactor = 0.06;
-      controls.enableZoom = false;
-      controls.enablePan = false;
-      controls.minPolarAngle = 0.25;
-      controls.maxPolarAngle = Math.PI / 2.05;
-
-      // Animatieloop
-      let clock = new THREE.Clock();
-      function animate() {
-        requestAnimationFrame(animate);
-        const dt = clock.getDelta();
-
-        nataGroup.rotation.y += dt * 0.35;
-
-        if (window.nataBounce > 0) {
-          nataGroup.position.y = Math.sin(window.nataBounce * Math.PI * 4) * 0.14;
-          window.nataBounce -= dt * 1.4;
-          if (window.nataBounce < 0) {
-            window.nataBounce = 0;
-            nataGroup.position.y = 0;
-          }
-        }
-
-        controls.update();
-        renderer.render(scene, camera);
-      }
-      animate();
-
-      // Responsief schalen bij vensterwijziging
-      window.addEventListener('resize', () => {
-        if (!wrapper.clientWidth) return;
-        camera.aspect = wrapper.clientWidth / wrapper.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(wrapper.clientWidth, wrapper.clientHeight);
-      });
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      init3DNata();
-      renderCart();
-    });
+    window.addEventListener('DOMContentLoaded', renderCart);
   </script>
 </body>
 </html>
