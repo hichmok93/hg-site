@@ -1,0 +1,1206 @@
+---
+layout: post
+title: "Een potje Yahtzee spelen"
+date: 2026-11-15 05:22:00 +0100
+permalink: /yahtzee-spelen/
+categories: [Spellen, Bordspellen]
+tags: [yahtzee, dobbelstenen, bordspel]
+description: Speel een potje Yahtzee. Gooi de dobbelstenen, kies je combinaties en behaal de hoogste score.
+media_subpath:
+image:
+  path: https://plus.unsplash.com/premium_vector-1752804917088-aedbcbeba2a2?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D
+  alt: "Illustratie van dobbelstenen voor een potje Yahtzee"
+---
+
+<div id="jz" class="jz">
+<style>
+/* ===== Thema's: hoog contrast & strakke scorekaart-esthetiek ===== */
+.jz {
+  /* Light mode (standaard: fris papieren scorekaart) */
+  --paper: #fffdf8;
+  --paper-alt: #f5f1e6;
+  --ink: #181512;
+  --muted: #5c5449;
+  --red: #d92b2b;
+  --red-dark: #b31d1d;
+  --border: #d6cebe;
+  --border-strong: #2c2620;
+  --field: #f2ede2;
+  --field-hover: #e8e1d3;
+  --pen1: #1d4ed8; /* Balpen blauw */
+  --pen2: #047857; /* Balpen groen */
+  --die-bg: #ffffff;
+  --die-border: #2c2620;
+  --shadow: 0 12px 32px -4px rgba(24, 21, 18, 0.14), 0 4px 12px -2px rgba(24, 21, 18, 0.08);
+  --ring: rgba(217, 43, 43, 0.25);
+
+  max-width: 560px;
+  margin: 1.75em auto;
+  color: var(--ink) !important;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color-scheme: light;
+}
+
+/* Automatische dark mode detectie (systeem én populaire Jekyll/blog theme-attributes) */
+@media (prefers-color-scheme: dark) {
+  .jz:not([data-theme="light"]) {
+    --paper: #161514;
+    --paper-alt: #1f1d1b;
+    --ink: #f5f2eb;
+    --muted: #a69e90;
+    --red: #e03e3e;
+    --red-dark: #b82828;
+    --border: #332f2a;
+    --border-strong: #575047;
+    --field: #24211e;
+    --field-hover: #2e2a26;
+    --pen1: #60a5fa; /* Helder blauw */
+    --pen2: #34d399; /* Helder mintgroen */
+    --die-bg: #262320;
+    --die-border: #787065;
+    --shadow: 0 16px 40px -4px rgba(0, 0, 0, 0.65), 0 4px 14px -2px rgba(0, 0, 0, 0.4);
+    --ring: rgba(224, 62, 62, 0.35);
+    color-scheme: dark;
+  }
+}
+
+html[data-mode="dark"] .jz:not([data-theme="light"]),
+html[data-theme="dark"] .jz:not([data-theme="light"]),
+body.dark .jz:not([data-theme="light"]),
+body.dark-mode .jz:not([data-theme="light"]),
+.jz[data-theme="dark"] {
+  --paper: #161514;
+  --paper-alt: #1f1d1b;
+  --ink: #f5f2eb;
+  --muted: #a69e90;
+  --red: #e03e3e;
+  --red-dark: #b82828;
+  --border: #332f2a;
+  --border-strong: #575047;
+  --field: #24211e;
+  --field-hover: #2e2a26;
+  --pen1: #60a5fa;
+  --pen2: #34d399;
+  --die-bg: #262320;
+  --die-border: #787065;
+  --shadow: 0 16px 40px -4px rgba(0, 0, 0, 0.65), 0 4px 14px -2px rgba(0, 0, 0, 0.4);
+  --ring: rgba(224, 62, 62, 0.35);
+  color-scheme: dark;
+}
+
+.jz *, .jz *::before, .jz *::after { box-sizing: border-box; }
+
+.jz-card {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1.5px solid var(--border-strong);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Kop */
+.jz-head {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 16px 16px;
+  background: linear-gradient(145deg, var(--red), var(--red-dark));
+  color: #ffffff;
+}
+.jz-title {
+  font: 900 2.35em/1 "Impact", "Arial Black", "Helvetica Neue", sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+}
+.jz-sub2 {
+  font-size: 0.72em;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.92);
+}
+.jz-dicerow { display: flex; gap: 7px; margin: 2px 0; }
+.jz-dicerow .jz-die { width: 26px; height: 26px; transform: rotate(var(--r, 0deg)); filter: drop-shadow(0 2px 3px rgba(0,0,0,0.25)); }
+
+/* Thema-knop met label voor extra duidelijkheid */
+.jz-theme {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 32px;
+  padding: 0 11px;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.76em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.jz-theme:hover { background: rgba(0, 0, 0, 0.32); }
+.jz-theme:active { transform: scale(0.96); }
+
+/* Dobbelsteen-icoon */
+.jz-die { width: 30px; height: 30px; flex: none; display: block; }
+.jz-die rect { fill: var(--die-bg); stroke: var(--die-border); stroke-width: 0.85; }
+.jz-die circle { fill: var(--ink); }
+.jz-die circle.one { fill: var(--red); }
+
+/* Statusbalk */
+.jz-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--paper-alt);
+  border-bottom: 1.5px solid var(--border);
+  font-size: 0.82em;
+  color: var(--muted);
+}
+.jz-bar #jz-status {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--ink);
+}
+.jz-bar .jz-btn {
+  margin: 0;
+  padding: 6px 12px;
+  font-size: 0.92em;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1.5px solid var(--border-strong);
+}
+.jz-bar .jz-btn.jz-main {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+/* Tabel (met reset tegen standaard blog-table styling) */
+.jz table {
+  width: 100%;
+  margin: 0 !important;
+  border-collapse: collapse;
+  background: transparent !important;
+  display: table !important;
+}
+.jz tr { background: transparent !important; border: 0 !important; }
+.jz th, .jz td {
+  padding: 6px 8px;
+  border: 1px solid var(--border) !important;
+  text-align: center;
+  color: var(--ink);
+  background: transparent;
+  vertical-align: middle;
+}
+.jz tr > :first-child { border-left: 0 !important; }
+.jz tr > :last-child { border-right: 0 !important; }
+.jz td:first-child, .jz th:first-child { text-align: left; padding-left: 14px; }
+
+.jz thead th {
+  border-top: 0 !important;
+  border-bottom: 2px solid var(--border-strong) !important;
+  padding: 12px 8px 10px;
+  background: var(--paper) !important;
+}
+.jz thead th:first-child {
+  font-size: 0.74em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.jz input.jz-name {
+  width: 100%;
+  padding: 6px 6px;
+  border: 0;
+  border-bottom: 2px solid var(--border-strong);
+  border-radius: 6px 6px 0 0;
+  background: var(--field);
+  text-align: center;
+  font: inherit;
+  font-weight: 800;
+  outline: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+.jz input.jz-name:focus { background: var(--field-hover); }
+.jz thead th:nth-child(2) input { color: var(--pen1); border-bottom-color: var(--pen1); }
+.jz thead th:nth-child(3) input { color: var(--pen2); border-bottom-color: var(--pen2); }
+.jz input.jz-name::placeholder { color: var(--muted); font-weight: 600; opacity: 0.85; }
+
+.jz-l { display: flex; align-items: center; gap: 10px; }
+.jz-l b { display: block; font-size: 0.9em; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink); font-weight: 800; }
+.jz-l small { display: block; color: var(--muted); font-size: 0.74em; line-height: 1.3; margin-top: 1px; font-weight: 500; }
+
+/* Sectiekoppen */
+.jz tr.jz-sub td {
+  background: var(--red) !important;
+  color: #ffffff !important;
+  border-color: var(--red) !important;
+  font-size: 0.75em;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 8px 14px;
+}
+
+/* Subtotaal & totaalrijen */
+.jz tr.jz-sum td {
+  background: var(--paper-alt) !important;
+  font-variant-numeric: tabular-nums;
+}
+.jz tr.jz-sum td:first-child b { color: var(--ink); }
+.jz tr.jz-sum td:not(:first-child) { font-weight: 800; font-size: 1.08em; }
+.jz td:nth-child(2) .jz-n { color: var(--pen1); }
+.jz td:nth-child(3) .jz-n { color: var(--pen2); }
+
+.jz tr.jz-total td {
+  border-top: 2px solid var(--border-strong) !important;
+  border-bottom: 0 !important;
+  padding: 13px 8px;
+  background: var(--paper-alt) !important;
+}
+.jz tr.jz-total td:first-child b {
+  color: var(--red);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  font-size: 1.02em;
+}
+.jz tr.jz-total td:not(:first-child) {
+  font-size: 1.65em;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Invoervelden */
+.jz input.jz-s, .jz select.jz-s {
+  width: 100%;
+  height: 38px;
+  padding: 0 6px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--field);
+  text-align: center;
+  font: inherit;
+  font-weight: 800;
+  outline: 0;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+.jz input.jz-s:hover, .jz select.jz-s:hover {
+  background: var(--field-hover);
+  border-color: var(--border-strong);
+}
+.jz input.jz-s { max-width: 78px; -moz-appearance: textfield; }
+.jz input.jz-s::-webkit-outer-spin-button, .jz input.jz-s::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.jz select.jz-s {
+  max-width: 94px;
+  font-size: 0.92em;
+  text-align-last: center;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.jz td:nth-child(2) .jz-s { color: var(--pen1); }
+.jz td:nth-child(3) .jz-s { color: var(--pen2); }
+.jz td:nth-child(2) .jz-s:focus { border-color: var(--pen1); background: var(--paper); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); }
+.jz td:nth-child(3) .jz-s:focus { border-color: var(--pen2); background: var(--paper); box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25); }
+.jz select.jz-s option { color: var(--ink); background: var(--paper); font-weight: 700; }
+
+/* Winnaar + knoppen */
+.jz-foot {
+  padding: 14px 14px 18px;
+  text-align: center;
+  background: var(--paper);
+  border-top: 1.5px solid var(--border-strong);
+}
+.jz-win {
+  min-height: 1.5em;
+  margin-bottom: 10px;
+  font-weight: 800;
+  font-size: 1.02em;
+  color: var(--ink);
+}
+.jz-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.92em;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.15s, background 0.15s;
+}
+.jz-btn:hover { opacity: 0.9; }
+.jz-btn:active { transform: scale(0.97); }
+.jz-btn.jz-red { background: var(--red); color: #ffffff; }
+
+/* Camera-venster */
+.jz-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+}
+.jz-modal[hidden] { display: none; }
+.jz-sheet {
+  width: 100%;
+  max-width: 560px;
+  max-height: 96vh;
+  overflow: auto;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1.5px solid var(--border-strong);
+  border-bottom: 0;
+  border-radius: 18px 18px 0 0;
+  padding: 16px 16px 22px;
+  box-shadow: var(--shadow);
+}
+@media (min-width: 600px) {
+  .jz-modal { align-items: center; }
+  .jz-sheet { border-bottom: 1.5px solid var(--border-strong); border-radius: 18px; }
+}
+.jz-sheet-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 1.08em;
+  color: var(--ink);
+}
+.jz-x {
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 50%;
+  background: var(--field);
+  color: var(--ink);
+  font-size: 1em;
+  font-weight: 700;
+  cursor: pointer;
+}
+.jz-view {
+  position: relative;
+  background: #0a0a0a;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 150px;
+  border: 1px solid var(--border);
+}
+.jz-view video, .jz-view canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 46vh;
+  object-fit: contain;
+  margin: 0 auto;
+}
+.jz-view video[hidden], .jz-view canvas[hidden] { display: none; }
+.jz-cammsg {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 8px 12px;
+  font-size: 0.82em;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.75);
+}
+.jz-cammsg:empty { display: none; }
+.jz-tips {
+  margin: 10px 0;
+  font-size: 0.82em;
+  line-height: 1.4;
+  color: var(--muted);
+}
+.jz-camctl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 12px 0;
+}
+.jz-camctl .jz-btn { padding: 10px 16px; }
+.jz-camctl .jz-btn[hidden] { display: none; }
+.jz-camctl .jz-btn.jz-ghost {
+  background: var(--field);
+  color: var(--ink);
+  border: 1.5px solid var(--border-strong);
+}
+.jz-dicelist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 12px 0 8px;
+}
+.jz-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 8px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--field);
+}
+.jz-chip .jz-die { width: 26px; height: 26px; }
+.jz-chip select {
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 800;
+  padding: 2px;
+  -webkit-appearance: none;
+  appearance: none;
+  text-align: center;
+  width: 26px;
+  cursor: pointer;
+}
+.jz-chip button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.15em;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 3px;
+}
+.jz-chip.jz-add button { color: var(--ink); font-weight: 800; padding: 2px 6px; font-size: 0.92em; }
+.jz-sumtxt { text-align: center; font-weight: 700; font-size: 0.92em; margin-bottom: 12px; color: var(--ink); }
+.jz-seg { display: flex; gap: 8px; margin: 8px 0 12px; }
+.jz-seg button {
+  flex: 1;
+  padding: 10px 8px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--field);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.jz-seg button.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.jz-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.jz-opt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: var(--field);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.88em;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+}
+.jz-opt b { font-size: 1.12em; font-weight: 900; }
+.jz-opt:hover { border-color: var(--border-strong); background: var(--field-hover); }
+.jz-opt.jz-zero b { color: var(--muted); font-weight: 700; }
+.jz-hint { grid-column: 1 / -1; text-align: center; font-size: 0.84em; color: var(--muted); padding: 8px; }
+
+@media (max-width: 480px) {
+  .jz th, .jz td { padding: 5px 4px; }
+  .jz td:first-child, .jz th:first-child { padding-left: 8px; }
+  .jz-die { width: 24px; height: 24px; }
+  .jz-l { gap: 7px; }
+  .jz-l b { font-size: 0.8em; }
+  .jz input.jz-s { max-width: 58px; }
+  .jz select.jz-s { max-width: 72px; font-size: 0.8em; }
+  .jz-title { font-size: 1.95em; }
+  .jz-theme { padding: 0 9px; font-size: 0.72em; }
+}
+</style>
+
+<div class="jz-card">
+  <div class="jz-head">
+    <button type="button" class="jz-theme" id="jz-theme" title="Wissel tussen licht en donker thema">🌙 Donker</button>
+    <div class="jz-title">Jatzee</div>
+    <div class="jz-dicerow" id="jz-dicerow"></div>
+    <div class="jz-sub2">Scorekaart</div>
+  </div>
+
+  <div class="jz-bar">
+    <span id="jz-status">Verbinden…</span>
+    <button type="button" class="jz-btn jz-main" id="jz-open-cam">📷 Stenen tellen</button>
+    <button type="button" class="jz-btn" id="jz-share">Link</button>
+  </div>
+
+  <table>
+    <thead><tr><th>Speler</th><th><input class="jz-name" id="jz-n1" placeholder="Speler 1"></th><th><input class="jz-name" id="jz-n2" placeholder="Speler 2"></th></tr></thead>
+    <tbody id="jz-body"></tbody>
+  </table>
+
+  <div class="jz-foot">
+    <div class="jz-win" id="jz-win"></div>
+    <button type="button" class="jz-btn jz-red" id="jz-reset">Nieuw spel</button>
+  </div>
+</div>
+
+<!-- camera: stenen tellen -->
+<div class="jz-modal" id="jz-modal" hidden>
+  <div class="jz-sheet">
+    <div class="jz-sheet-head"><strong>📷 Stenen tellen</strong><button type="button" class="jz-x" id="jz-cam-close" aria-label="Sluiten">✕</button></div>
+    <div class="jz-view">
+      <video id="jz-video" playsinline muted autoplay></video>
+      <canvas id="jz-canvas" hidden></canvas>
+      <div class="jz-cammsg" id="jz-cammsg"></div>
+    </div>
+    <div class="jz-tips">Leg de 5 stenen los van elkaar op een effen ondergrond met veel contrast (witte stenen op donker, of andersom) en goed licht.</div>
+    <div class="jz-camctl">
+      <button type="button" class="jz-btn jz-red" id="jz-snap">📸 Tel stenen</button>
+      <button type="button" class="jz-btn jz-ghost" id="jz-again" hidden>↻ Opnieuw</button>
+      <label class="jz-btn jz-ghost" for="jz-file">🖼 Foto maken/kiezen</label>
+      <input type="file" accept="image/*" capture="environment" id="jz-file" hidden>
+    </div>
+    <div id="jz-result" hidden>
+      <div class="jz-dicelist" id="jz-dicelist"></div>
+      <div class="jz-sumtxt" id="jz-sumtxt"></div>
+      <div class="jz-seg" id="jz-seg"><button type="button" data-p="1">Speler 1</button><button type="button" data-p="2">Speler 2</button></div>
+      <div class="jz-opts" id="jz-opts"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+var DB_URL="";
+var NTFY="https://ntfy.sh";
+
+var $=function(id){return document.getElementById(id);};
+var upper=[["Enen","Tel alleen de 1-en"],["Tweeën","Tel alleen de 2-en"],["Drieën","Tel alleen de 3-en"],["Vieren","Tel alleen de 4-en"],["Vijven","Tel alleen de 5-en"],["Zessen","Tel alleen de 6-en"]];
+var lower=[["Three of a kind","Som van alle stenen"],["Carré","Som van alle stenen"],["Full house","Score 25"],["Kleine straat","Score 30"],["Grote straat","Score 40"],["Jatzee","Score 50"],["Kans","Som van alle stenen"]];
+var body=$("jz-body");
+var statusEl=$("jz-status");
+var root=$("jz");
+var DB=DB_URL.replace(/\/+$/,"");
+
+/* ===== dobbelsteen-icoontjes ===== */
+var PIPS={1:[[5,5]],2:[[2.7,2.7],[7.3,7.3]],3:[[2.7,2.7],[5,5],[7.3,7.3]],4:[[2.7,2.7],[7.3,2.7],[2.7,7.3],[7.3,7.3]],5:[[2.7,2.7],[7.3,2.7],[5,5],[2.7,7.3],[7.3,7.3]],6:[[2.7,2.7],[2.7,5],[2.7,7.3],[7.3,2.7],[7.3,5],[7.3,7.3]]};
+function dieSvg(n){
+  var s='<svg class="jz-die" viewBox="0 0 10 10" aria-hidden="true"><rect x=".5" y=".5" width="9" height="9" rx="1.8"/>';
+  PIPS[n].forEach(function(p){s+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+(n===1?1.3:0.9)+'"'+(n===1?' class="one"':'')+'/>';});
+  return s+'</svg>';
+}
+(function(){
+  var h="",rot=[-8,6,-4,9,-6],val=[5,3,6,1,4];
+  for(var i=0;i<5;i++)h+='<span style="display:inline-block;--r:'+rot[i]+'deg">'+dieSvg(val[i])+'</span>';
+  $("jz-dicerow").innerHTML=h;
+})();
+
+/* ===== licht / donker (inclusief detectie van website-thema) ===== */
+var themeBtn=$("jz-theme");
+function siteDark(){
+  var html=document.documentElement,b=document.body;
+  var attr=(html.getAttribute("data-mode")||html.getAttribute("data-theme")||(b&&b.getAttribute("data-theme"))||"").toLowerCase();
+  if(attr==="dark")return true;
+  if(attr==="light")return false;
+  if(html.classList.contains("dark")||(b&&(b.classList.contains("dark")||b.classList.contains("dark-mode"))))return true;
+  return !!(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches);
+}
+function effectiveDark(){
+  var t=root.getAttribute("data-theme");
+  if(t)return t==="dark";
+  return siteDark();
+}
+function paintTheme(){
+  var isDark=effectiveDark();
+  themeBtn.textContent=isDark?"☀️ Licht":"🌙 Donker";
+}
+try{
+  var savedTheme=localStorage.getItem("jatzee-theme");
+  if(savedTheme==="dark"||savedTheme==="light")root.setAttribute("data-theme",savedTheme);
+}catch(e){}
+themeBtn.addEventListener("click",function(){
+  var next=effectiveDark()?"light":"dark";
+  root.setAttribute("data-theme",next);
+  try{localStorage.setItem("jatzee-theme",next);}catch(e){}
+  paintTheme();
+});
+paintTheme();
+
+/* Luister mee als de gebruiker het thema van de website zelf wisselt */
+if(typeof MutationObserver!=="undefined"){
+  var obs=new MutationObserver(function(){if(!root.getAttribute("data-theme"))paintTheme();});
+  obs.observe(document.documentElement,{attributes:true,attributeFilter:["data-mode","data-theme","class"]});
+  if(document.body)obs.observe(document.body,{attributes:true,attributeFilter:["data-theme","class"]});
+}
+if(window.matchMedia){
+  var mq=window.matchMedia("(prefers-color-scheme: dark)");
+  if(mq.addEventListener)mq.addEventListener("change",function(){if(!root.getAttribute("data-theme"))paintTheme();});
+}
+
+/* een nieuwe, moeilijk te raden kamercode */
+function newRoomId(){
+  var s="",c="abcdefghijklmnopqrstuvwxyz0123456789";
+  try{
+    var a=new Uint8Array(10);crypto.getRandomValues(a);
+    for(var i=0;i<10;i++)s+=c.charAt(a[i]%36);
+  }catch(e){
+    s=(Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2)).slice(0,10);
+  }
+  return s;
+}
+
+var room=(location.hash||"").replace(/[^a-z0-9]/gi,"").toLowerCase();
+if(!room){
+  room=newRoomId();
+  try{history.replaceState(null,"","#"+room);}catch(e){}
+}
+var KEY="jatzee-scores-"+room;
+
+/* ===== tabel opbouwen ===== */
+function inp(id){return '<input class="jz-s" type="number" inputmode="numeric" min="0" id="'+id+'">';}
+function sel(id,opts){
+  var s='<select class="jz-s" id="'+id+'">';
+  opts.forEach(function(o){s+='<option value="'+o[0]+'">'+o[1]+'</option>';});
+  return s+'</select>';
+}
+function upperOpts(n){
+  var o=[["","—"],["0","0"]];
+  for(var k=1;k<=5;k++)o.push([String(k*n),k+"×"+n+"="+(k*n)]);
+  return o;
+}
+function fixedOpts(pts){return [["","—"],[String(pts),"✓ "+pts],["0","✗ 0"]];}
+function lab(icon,name,hint){return '<div class="jz-l">'+(icon||'')+'<div><b>'+name+'</b>'+(hint?'<small>'+hint+'</small>':'')+'</div></div>';}
+function row(lbl,pre,opts){
+  var tr='<tr><td>'+lbl+'</td>';
+  for(var p=1;p<=2;p++)tr+='<td>'+(opts?sel(pre+p,opts):inp(pre+p))+'</td>';
+  return tr+'</tr>';
+}
+function crow(lbl,key,cls){
+  var tr='<tr class="'+cls+'"><td>'+lbl+'</td>';
+  for(var p=1;p<=2;p++)tr+='<td><span class="jz-n" id="c_'+key+p+'">0</span></td>';
+  return tr+'</tr>';
+}
+var cats=[];
+var h='<tr class="jz-sub"><td colspan="3">Bovenste blok</td></tr>';
+upper.forEach(function(u,i){
+  cats.push({key:"u"+i+"_",label:u[0]});
+  h+=row(lab(dieSvg(i+1),u[0],u[1]),"u"+i+"_",upperOpts(i+1));
+});
+h+=crow(lab("","Subtotaal","Bovenste blok"),"st","jz-sum");
+h+=crow(lab("","Bonus","63 of meer = score 35"),"bo","jz-sum");
+h+=crow(lab("","Totaal","Bovenste blok"),"tu","jz-sum");
+h+='<tr class="jz-sub"><td colspan="3">Onderste blok</td></tr>';
+lower.forEach(function(u,i){
+  cats.push({key:"l"+i+"_",label:u[0]});
+  h+=row(lab("",u[0],u[1]),"l"+i+"_",(i>=2&&i<=5)?fixedOpts([25,30,40,50][i-2]):null);
+});
+h+=row(lab("","Jatzee-bonus","Aantal extra jatzees × 100"),"b_");
+h+=crow(lab("","Totaal","Onderste blok"),"tl","jz-sum");
+h+=crow(lab("","Eindtotaal",""),"gt","jz-total");
+body.innerHTML=h;
+
+function v(id){var e=$(id);var n=parseInt(e.value,10);return isNaN(n)?0:n;}
+function set(id,x){$(id).textContent=x;}
+function allInputs(){
+  return Array.prototype.filter.call(document.querySelectorAll("#jz input,#jz select"),function(e){
+    return e.id&&(e.id.indexOf("jz-")!==0||e.id==="jz-n1"||e.id==="jz-n2");
+  });
+}
+
+function calc(){
+  var tot=[0,0];
+  for(var p=1;p<=2;p++){
+    var up=0,lo=0,i;
+    for(i=0;i<6;i++)up+=v("u"+i+"_"+p);
+    var bonus=up>=63?35:0;
+    for(i=0;i<7;i++)lo+=v("l"+i+"_"+p);
+    lo+=v("b_"+p)*100;
+    set("c_st"+p,up);set("c_bo"+p,bonus);set("c_tu"+p,up+bonus);
+    set("c_tl"+p,lo);
+    tot[p-1]=up+bonus+lo;
+    set("c_gt"+p,tot[p-1]);
+  }
+  var n1=$("jz-n1").value||"Speler 1",n2=$("jz-n2").value||"Speler 2";
+  var w=$("jz-win");
+  if(tot[0]===0&&tot[1]===0)w.textContent="";
+  else if(tot[0]>tot[1])w.textContent="🏆 "+n1+" staat voor ("+(tot[0]-tot[1])+")";
+  else if(tot[1]>tot[0])w.textContent="🏆 "+n2+" staat voor ("+(tot[1]-tot[0])+")";
+  else w.textContent="Gelijk spel";
+  saveLocal();
+}
+
+function saveLocal(){
+  try{
+    var d={};
+    allInputs().forEach(function(e){if(e.id&&e.id.indexOf("jz-")!==0||e.id==="jz-n1"||e.id==="jz-n2")d[e.id]=e.value;});
+    localStorage.setItem(KEY,JSON.stringify(d));
+  }catch(e){}
+}
+function loadLocal(){
+  try{
+    var d=JSON.parse(localStorage.getItem(KEY)||"{}");
+    Object.keys(d).forEach(function(k){var e=$(k);if(e)e.value=d[k];});
+  }catch(e){}
+}
+
+/* ===== delen met andere toestellen ===== */
+var pending={},timer=null,lastLocal={},gotMsg=false,synced=false;
+
+function postTo(r,obj){
+  var bodyTxt=JSON.stringify(obj);
+  if(DB)return fetch(DB+"/jatzee/"+r+".json",{method:"PATCH",body:bodyTxt});
+  return fetch(NTFY+"/jatzee-sc-"+r,{method:"POST",body:bodyTxt});
+}
+function send(obj){
+  var retry=function(msg){
+    statusEl.textContent=msg;
+    Object.keys(obj).forEach(function(k){if(!(k in pending))pending[k]=obj[k];});
+    if(!timer)timer=setTimeout(flush,5000);
+  };
+  try{
+    postTo(room,obj).then(function(r){
+      if(!r.ok)retry("🔴 Delen mislukt, nieuwe poging…");
+      else if(statusEl.textContent.indexOf("🔴")===0)statusEl.textContent="🟢 Live · kamer "+room;
+    }).catch(function(){retry("🔴 Geen verbinding, nieuwe poging…");});
+  }catch(e){retry("🔴 Delen mislukt, nieuwe poging…");}
+}
+function flush(){
+  timer=null;
+  var obj=pending;pending={};
+  if(!Object.keys(obj).length)return;
+  send(obj);
+}
+function queuePush(id,val){
+  lastLocal[id]=Date.now();
+  pending[id]=String(val);
+  clearTimeout(timer);
+  timer=setTimeout(flush,500);
+}
+function pushAll(){
+  var o={},any=false;
+  allInputs().forEach(function(e){if(e.value!==""&&(e.id.indexOf("jz-")!==0||e.id==="jz-n1"||e.id==="jz-n2")){o[e.id]=e.value;any=true;}});
+  if(any)send(o);
+}
+
+function setField(k,data){
+  var e=$(k);
+  if(!e||(e.tagName!=="INPUT"&&e.tagName!=="SELECT"))return;
+  if((k in pending)||Date.now()-(lastLocal[k]||0)<1500)return;
+  var s=(data===null||data===undefined)?"":String(data);
+  if(e.value!==s)e.value=s;
+}
+function applyObj(o){
+  if(!o||typeof o!=="object")return;
+  if(o.next){goRoom(o.next);return;}
+  Object.keys(o).forEach(function(k){setField(k,o[k]);});
+  calc();
+}
+function handle(path,data,isPut){
+  if(path==="/"){
+    if(data===null){
+      if(isPut&&!synced)pushAll();
+    }else if(typeof data==="object"){
+      if(data.next){goRoom(data.next);return;}
+      if(isPut){allInputs().forEach(function(e){if(!(e.id in data)&&e!==document.activeElement&&!(e.id in pending))e.value="";});}
+      Object.keys(data).forEach(function(k){setField(k,data[k]);});
+    }
+    synced=true;calc();return;
+  }
+  var k=path.replace(/^\//,"");
+  if(k==="next"&&data){goRoom(String(data));return;}
+  if(k.indexOf("/")<0){setField(k,data);calc();}
+}
+function connect(){
+  if(typeof EventSource==="undefined"){statusEl.textContent="⚪ Deze browser ondersteunt geen live delen";return;}
+  var es;
+  if(DB){
+    es=new EventSource(DB+"/jatzee/"+room+".json");
+    es.addEventListener("put",function(ev){try{var m=JSON.parse(ev.data);handle(m.path,m.data,true);}catch(e){}});
+    es.addEventListener("patch",function(ev){try{var m=JSON.parse(ev.data);handle(m.path,m.data,false);}catch(e){}});
+  }else{
+    es=new EventSource(NTFY+"/jatzee-sc-"+room+"/sse?since=all");
+    es.onmessage=function(ev){
+      try{
+        var m=JSON.parse(ev.data);
+        if(m.event!=="message")return;
+        gotMsg=true;
+        applyObj(JSON.parse(m.message));
+      }catch(e){}
+    };
+  }
+  es.onopen=function(){
+    statusEl.textContent="🟢 Live · kamer "+room;
+    if(!DB&&!gotMsg){setTimeout(function(){if(!gotMsg)pushAll();},1500);}
+  };
+  es.onerror=function(){statusEl.textContent="🔴 Verbinding weg, opnieuw proberen…";};
+}
+
+function goRoom(r){
+  r=String(r).replace(/[^a-z0-9]/gi,"").toLowerCase();
+  if(!r||r===room)return;
+  try{
+    var k="jatzee-scores-"+r;
+    if(!localStorage.getItem(k)){
+      localStorage.setItem(k,JSON.stringify({"jz-n1":$("jz-n1").value,"jz-n2":$("jz-n2").value}));
+    }
+  }catch(e){}
+  location.hash=r;
+}
+
+/* ===== stenen herkennen in een foto ===== */
+function otsuT(hist,total){
+  var sum=0,i;
+  for(i=0;i<256;i++)sum+=i*hist[i];
+  var sumB=0,wB=0,best=-1,thr=127;
+  for(i=0;i<256;i++){
+    wB+=hist[i];
+    if(!wB)continue;
+    var wF=total-wB;
+    if(!wF)break;
+    sumB+=i*hist[i];
+    var mB=sumB/wB,mF=(sum-sumB)/wF;
+    var between=wB*wF*(mB-mF)*(mB-mF);
+    if(between>best){best=between;thr=i;}
+  }
+  return thr;
+}
+function blur3(g,W,H){
+  var o=new Uint8Array(g.length),x,y;
+  for(y=0;y<H;y++)for(x=0;x<W;x++){
+    if(x===0||y===0||x===W-1||y===H-1){o[y*W+x]=g[y*W+x];continue;}
+    var p=y*W+x;
+    o[p]=(g[p-W-1]+g[p-W]+g[p-W+1]+g[p-1]+g[p]+g[p+1]+g[p+W-1]+g[p+W]+g[p+W+1])/9;
+  }
+  return o;
+}
+function labelMask(mask,W,H){
+  var N=W*H,labels=new Int32Array(N),comps=[],stack=new Int32Array(N),id=0;
+  for(var s=0;s<N;s++){
+    if(!mask[s]||labels[s])continue;
+    id++;
+    var sp=0,area=0,minx=W,maxx=0,miny=H,maxy=0;
+    stack[sp++]=s;labels[s]=id;
+    while(sp){
+      var p=stack[--sp],x=p%W,y=(p-x)/W;
+      area++;
+      if(x<minx)minx=x;if(x>maxx)maxx=x;if(y<miny)miny=y;if(y>maxy)maxy=y;
+      if(x>0&&mask[p-1]&&!labels[p-1]){labels[p-1]=id;stack[sp++]=p-1;}
+      if(x<W-1&&mask[p+1]&&!labels[p+1]){labels[p+1]=id;stack[sp++]=p+1;}
+      if(y>0&&mask[p-W]&&!labels[p-W]){labels[p-W]=id;stack[sp++]=p-W;}
+      if(y<H-1&&mask[p+W]&&!labels[p+W]){labels[p+W]=id;stack[sp++]=p+W;}
+    }
+    comps.push({id:id,area:area,x:minx,y:miny,w:maxx-minx+1,h:maxy-miny+1});
+  }
+  return {labels:labels,comps:comps};
+}
+function countPips(labels,c,W){
+  var bw=c.w,bh=c.h,n=bw*bh,st=new Uint8Array(n),x,y,p,px,py;
+  for(y=0;y<bh;y++)for(x=0;x<bw;x++)st[y*bw+x]=labels[(c.y+y)*W+c.x+x]===c.id?1:0;
+  var stack=new Int32Array(n),sp=0;
+  function seed(i){if(st[i]===0){st[i]=2;stack[sp++]=i;}}
+  for(x=0;x<bw;x++){seed(x);seed((bh-1)*bw+x);}
+  for(y=0;y<bh;y++){seed(y*bw);seed(y*bw+bw-1);}
+  while(sp){
+    p=stack[--sp];px=p%bw;py=(p-px)/bw;
+    if(px>0)seed(p-1);
+    if(px<bw-1)seed(p+1);
+    if(py>0)seed(p-bw);
+    if(py<bh-1)seed(p+bw);
+  }
+  var cnt=0,side=(bw+bh)/2,minA=0.006*side*side,maxA=0.09*side*side;
+  for(var s=0;s<n;s++){
+    if(st[s]!==0)continue;
+    var a=0,mnx=bw,mxx=0,mny=bh,mxy=0;
+    sp=0;stack[sp++]=s;st[s]=3;
+    while(sp){
+      p=stack[--sp];px=p%bw;py=(p-px)/bw;
+      a++;
+      if(px<mnx)mnx=px;if(px>mxx)mxx=px;if(py<mny)mny=py;if(py>mxy)mxy=py;
+      if(px>0&&st[p-1]===0){st[p-1]=3;stack[sp++]=p-1;}
+      if(px<bw-1&&st[p+1]===0){st[p+1]=3;stack[sp++]=p+1;}
+      if(py>0&&st[p-bw]===0){st[p-bw]=3;stack[sp++]=p-bw;}
+      if(py<bh-1&&st[p+bw]===0){st[p+bw]=3;stack[sp++]=p+bw;}
+    }
+    var hw=mxx-mnx+1,hh=mxy-mny+1,ratio=hw/hh;
+    if(a>=minA&&a<=maxA&&ratio>0.5&&ratio<2&&a/(hw*hh)>0.5)cnt++;
+  }
+  return cnt;
+}
+function detectMode(gray,W,H,T,invert){
+  var N=W*H,mask=new Uint8Array(N),i;
+  for(i=0;i<N;i++)mask[i]=invert?(gray[i]<=T?1:0):(gray[i]>T?1:0);
+  var L=labelMask(mask,W,H),found=[];
+  var minS=W*0.035,maxS=W*0.4;
+  L.comps.forEach(function(c){
+    if(c.w<minS||c.h<minS||c.w>maxS||c.h>maxS)return;
+    var r=c.w/c.h;
+    if(r<0.55||r>1.8)return;
+    if(c.area/(c.w*c.h)<0.3)return;
+    var n=countPips(L.labels,c,W);
+    if(n<1||n>6)return;
+    found.push({x:c.x,y:c.y,w:c.w,h:c.h,value:n});
+  });
+  return found;
+}
+function detectDice(img){
+  var W=img.width,H=img.height,d=img.data,N=W*H,g=new Uint8Array(N),i,j;
+  for(i=0,j=0;i<N;i++,j+=4)g[i]=(d[j]*299+d[j+1]*587+d[j+2]*114)/1000;
+  g=blur3(g,W,H);
+  var hist=new Int32Array(256);
+  for(i=0;i<N;i++)hist[g[i]]++;
+  var T=otsuT(hist,N);
+  var sumLo=0,nLo=0,sumHi=0,nHi=0;
+  for(i=0;i<256;i++){if(i<=T){sumLo+=i*hist[i];nLo+=hist[i];}else{sumHi+=i*hist[i];nHi+=hist[i];}}
+  if(!nLo||!nHi||(sumHi/nHi-sumLo/nLo)<45)return [];
+  var a=detectMode(g,W,H,T,false),b=detectMode(g,W,H,T,true);
+  var best=b.length>a.length?b:a;
+  if(!best.length)return best;
+  var avgH=0;best.forEach(function(x){avgH+=x.h;});avgH/=best.length;
+  best.sort(function(p,q){
+    var rp=Math.round(p.y/(avgH*0.8)),rq=Math.round(q.y/(avgH*0.8));
+    return rp!==rq?rp-rq:p.x-q.x;
+  });
+  return best;
+}
+
+/* ===== camera-venster ===== */
+var cam={stream:null,dice:[],player:1,found:false};
+var modal=$("jz-modal"),video=$("jz-video"),canvas=$("jz-canvas"),camMsg=$("jz-cammsg");
+
+function pname(p){return $("jz-n"+p).value||"Speler "+p;}
+function paintSeg(){
+  var bs=$("jz-seg").querySelectorAll("button");
+  for(var i=0;i<bs.length;i++){
+    var p=parseInt(bs[i].getAttribute("data-p"),10);
+    bs[i].textContent=pname(p);
+    bs[i].className=(p===cam.player)?"on":"";
+  }
+}
+function msg(t){camMsg.textContent=t||"";}
+function showLive(){
+  canvas.hidden=true;
+  video.hidden=false;
+  $("jz-snap").hidden=false;
+  $("jz-again").hidden=true;
+  $("jz-result").hidden=true;
+  if(cam.stream){try{video.play();}catch(e){}}
+}
+function stopStream(){
+  if(cam.stream){cam.stream.getTracks().forEach(function(t){t.stop();});cam.stream=null;}
+  video.srcObject=null;
+}
+function startStream(){
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
+    msg("Live camera niet beschikbaar. Gebruik 'Foto maken/kiezen'.");return;
+  }
+  msg("");
+  navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"},width:{ideal:1280},height:{ideal:960}},audio:false}).then(function(s){
+    cam.stream=s;video.srcObject=s;
+    var pr=video.play();if(pr&&pr.catch)pr.catch(function(){});
+  }).catch(function(){
+    msg("Geen toegang tot de camera (is de site https? is toestemming gegeven?). Gebruik 'Foto maken/kiezen'.");
+  });
+}
+function openCam(){
+  modal.hidden=false;
+  cam.dice=[];cam.found=false;
+  paintSeg();
+  showLive();
+  startStream();
+}
+function closeCam(){stopStream();modal.hidden=true;}
+
+function drawAndDetect(src,sw,sh){
+  if(!sw||!sh){msg("Geen beeld ontvangen, probeer opnieuw.");return;}
+  var maxW=720,sc=Math.min(1,maxW/sw),cw=Math.round(sw*sc),ch=Math.round(sh*sc);
+  canvas.width=cw;canvas.height=ch;
+  var ctx=canvas.getContext("2d");
+  ctx.drawImage(src,0,0,cw,ch);
+  var found=[];
+  try{found=detectDice(ctx.getImageData(0,0,cw,ch));}catch(e){msg("Analyseren mislukt: "+e.message);}
+  ctx.lineWidth=Math.max(2,cw/220);
+  found.forEach(function(d){
+    ctx.strokeStyle="#22c55e";
+    ctx.strokeRect(d.x,d.y,d.w,d.h);
+    var fs=Math.max(14,Math.round(d.h*0.55));
+    ctx.font="900 "+fs+"px system-ui,sans-serif";
+    ctx.textAlign="center";ctx.textBaseline="middle";
+    ctx.lineWidth=Math.max(3,fs/6);
+    ctx.strokeStyle="rgba(0,0,0,.8)";
+    ctx.strokeText(String(d.value),d.x+d.w/2,d.y+d.h/2);
+    ctx.fillStyle="#fde047";
+    ctx.fillText(String(d.value),d.x+d.w/2,d.y+d.h/2);
+    ctx.lineWidth=Math.max(2,cw/220);
+  });
+  video.hidden=true;canvas.hidden=false;
+  $("jz-snap").hidden=true;$("jz-again").hidden=false;
+  cam.dice=found.map(function(d){return d.value;});
+  cam.found=true;
+  msg(found.length?"":"Geen stenen herkend. Probeer meer licht of meer contrast, of voeg ze hieronder zelf toe.");
+  if(video.pause&&cam.stream)video.pause();
+  $("jz-result").hidden=false;
+  renderDice();
+}
+function snap(){
+  if(!cam.stream||!video.videoWidth){msg("De camera is nog niet klaar. Wacht even of gebruik 'Foto maken/kiezen'.");return;}
+  drawAndDetect(video,video.videoWidth,video.videoHeight);
+}
+
+function renderDice(){
+  var list=$("jz-dicelist"),s="",k;
+  cam.dice.forEach(function(val,idx){
+    var o="";
+    for(k=1;k<=6;k++)o+='<option value="'+k+'"'+(k===val?" selected":"")+'>'+k+'</option>';
+    s+='<div class="jz-chip">'+dieSvg(val)+'<select data-i="'+idx+'" aria-label="Steen '+(idx+1)+'">'+o+'</select><button type="button" data-rm="'+idx+'" aria-label="Verwijder steen">×</button></div>';
+  });
+  if(cam.dice.length<5)s+='<div class="jz-chip jz-add"><button type="button" data-add="1">+ steen</button></div>';
+  list.innerHTML=s;
+  var sum=0;cam.dice.forEach(function(x){sum+=x;});
+  $("jz-sumtxt").textContent=cam.dice.length+(cam.dice.length===1?" steen":" stenen")+" · som "+sum+(cam.dice.length!==5?" (er zijn 5 stenen nodig)":"");
+  paintSeg();
+  renderOptions();
+}
+
+function renderOptions(){
+  var box=$("jz-opts"),d=cam.dice,p=cam.player;
+  if(d.length!==5){
+    box.innerHTML='<div class="jz-hint">'+(d.length<5?"Voeg de ontbrekende stenen toe":"Verwijder de te veel getelde stenen")+' om punten voor te stellen.</div>';
+    return;
+  }
+  var cnt=[0,0,0,0,0,0,0],sum=0,i;
+  d.forEach(function(x){cnt[x]++;sum+=x;});
+  var mx=Math.max.apply(null,cnt.slice(1)),three=false,two=false;
+  for(i=1;i<=6;i++){if(cnt[i]===3)three=true;if(cnt[i]===2)two=true;}
+  function has(a){return a.every(function(n){return cnt[n]>0;});}
+  var pts={};
+  for(i=0;i<6;i++)pts["u"+i+"_"]=cnt[i+1]*(i+1);
+  pts["l0_"]=mx>=3?sum:0;
+  pts["l1_"]=mx>=4?sum:0;
+  pts["l2_"]=(three&&two)?25:0;
+  pts["l3_"]=(has([1,2,3,4])||has([2,3,4,5])||has([3,4,5,6]))?30:0;
+  pts["l4_"]=(has([1,2,3,4,5])||has([2,3,4,5,6]))?40:0;
+  pts["l5_"]=mx===5?50:0;
+  pts["l6_"]=sum;
+  var items=[];
+  cats.forEach(function(c){
+    var el=$(c.key+p);
+    if(!el||el.value!=="")return;
+    items.push({key:c.key,label:c.label,pts:pts[c.key],bonus:false});
+  });
+  items.sort(function(a,b){return b.pts-a.pts;});
+  if(mx===5&&$("l5_"+p).value==="50")items.unshift({key:"b_",label:"Jatzee-bonus",pts:100,bonus:true});
+  if(!items.length){box.innerHTML='<div class="jz-hint">Alle vakjes van '+pname(p)+' zijn al gevuld.</div>';return;}
+  var s="";
+  items.forEach(function(it){
+    s+='<button type="button" class="jz-opt'+(it.pts===0?" jz-zero":"")+'" data-key="'+it.key+'" data-pts="'+it.pts+'"><span>'+it.label+'</span><b>'+(it.bonus?"+":"")+it.pts+'</b></button>';
+  });
+  box.innerHTML=s;
+}
+function applyOption(key,pts){
+  var el=$(key+cam.player);
+  if(!el)return;
+  if(key==="b_")el.value=String((parseInt(el.value,10)||0)+1);
+  else el.value=String(pts);
+  el.dispatchEvent(new Event("input",{bubbles:true}));
+  closeCam();
+}
+
+/* ===== events ===== */
+root.addEventListener("input",function(ev){
+  var t=ev.target;
+  if(t&&(t.tagName==="INPUT"||t.tagName==="SELECT")&&t.id&&t.id.indexOf("jz-")!==0||(t&&(t.id==="jz-n1"||t.id==="jz-n2"))){
+    queuePush(t.id,t.value);
+    calc();
+    if(t.id==="jz-n1"||t.id==="jz-n2")paintSeg();
+  }
+});
+$("jz-reset").addEventListener("click",function(){
+  if(!confirm("Nieuw spel starten? Er wordt een nieuwe online database aangemaakt. Je tegenspeler gaat automatisch mee."))return;
+  var nr=newRoomId();
+  var names={"jz-n1":$("jz-n1").value,"jz-n2":$("jz-n2").value};
+  var go=function(){goRoom(nr);};
+  try{
+    Promise.all([postTo(nr,names),postTo(room,{next:nr})]).then(go,go);
+  }catch(e){go();}
+});
+$("jz-share").addEventListener("click",function(){
+  var url=location.href;
+  try{
+    navigator.clipboard.writeText(url).then(function(){statusEl.textContent="Link gekopieerd ✔";});
+  }catch(e){window.prompt("Kopieer deze link:",url);}
+});
+$("jz-open-cam").addEventListener("click",openCam);
+$("jz-cam-close").addEventListener("click",closeCam);
+modal.addEventListener("click",function(ev){if(ev.target===modal)closeCam();});
+$("jz-snap").addEventListener("click",snap);
+$("jz-again").addEventListener("click",function(){showLive();msg("");});
+$("jz-file").addEventListener("change",function(){
+  var f=this.files&&this.files[0];
+  if(!f)return;
+  var url=URL.createObjectURL(f),im=new Image(),input=this;
+  im.onload=function(){drawAndDetect(im,im.naturalWidth,im.naturalHeight);URL.revokeObjectURL(url);};
+  im.onerror=function(){msg("Deze foto kon niet gelezen worden.");URL.revokeObjectURL(url);};
+  im.src=url;
+  input.value="";
+});
+$("jz-seg").addEventListener("click",function(ev){
+  var b=ev.target.closest?ev.target.closest("button"):null;
+  if(!b)return;
+  cam.player=parseInt(b.getAttribute("data-p"),10)||1;
+  paintSeg();renderOptions();
+});
+$("jz-dicelist").addEventListener("change",function(ev){
+  var t=ev.target;
+  if(t&&t.getAttribute("data-i")!==null){
+    cam.dice[parseInt(t.getAttribute("data-i"),10)]=parseInt(t.value,10);
+    renderDice();
+  }
+});
+$("jz-dicelist").addEventListener("click",function(ev){
+  var b=ev.target.closest?ev.target.closest("button"):null;
+  if(!b)return;
+  if(b.getAttribute("data-rm")!==null){cam.dice.splice(parseInt(b.getAttribute("data-rm"),10),1);renderDice();}
+  else if(b.getAttribute("data-add")!==null){cam.dice.push(1);renderDice();}
+});
+$("jz-opts").addEventListener("click",function(ev){
+  var b=ev.target.closest?ev.target.closest(".jz-opt"):null;
+  if(!b)return;
+  applyOption(b.getAttribute("data-key"),parseInt(b.getAttribute("data-pts"),10));
+});
+window.addEventListener("hashchange",function(){location.reload();});
+document.addEventListener("keydown",function(ev){if(ev.key==="Escape"&&!modal.hidden)closeCam();});
+
+if(!DB)loadLocal();
+calc();connect();
+})();
+</script>
+</div>
