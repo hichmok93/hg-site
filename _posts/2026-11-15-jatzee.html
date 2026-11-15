@@ -1,0 +1,220 @@
+<div id="jz" class="jz">
+<style>
+.jz{
+  --card:#ffffff;--text:#1b1f2a;--muted:#8b91a1;--line:#eef0f5;--field:#f5f6fa;--tint:#fafbfe;
+  --p1:#6366f1;--p1s:rgba(99,102,241,.08);--p2:#ec4899;--p2s:rgba(236,72,153,.08);
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 12px 32px rgba(16,24,40,.08);
+  max-width:540px;margin:1.5em auto;padding:0 4px;color:var(--text);
+  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased
+}
+@media (prefers-color-scheme:dark){
+  .jz{--card:#171a23;--text:#e8eaf1;--muted:#8b91a1;--line:#242836;--field:#1f2330;--tint:#1a1d28;
+    --p1:#818cf8;--p1s:rgba(129,140,248,.10);--p2:#f472b6;--p2s:rgba(244,114,182,.10);
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.35)}
+}
+.jz *{box-sizing:border-box}
+.jz table{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+.jz th,.jz td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:center}
+.jz td:first-child,.jz th:first-child{text-align:left;padding-left:18px;font-size:.93em;font-weight:500}
+.jz td:nth-child(2){background:var(--p1s)}
+.jz td:nth-child(3){background:var(--p2s)}
+.jz td small{display:block;color:var(--muted);font-size:.74em;font-weight:400;margin-top:1px}
+.jz thead th{background:var(--card);padding:16px 10px 12px;border-bottom:0}
+.jz thead th:first-child{font-size:1.15em;font-weight:800;letter-spacing:-.01em}
+.jz thead th:first-child::before{content:"🎲 "}
+.jz input.jz-name{width:100%;padding:9px 8px;border:0;border-bottom:3px solid;border-radius:10px 10px 0 0;background:var(--field);color:var(--text);text-align:center;font:inherit;font-weight:700;outline:0;transition:background .15s}
+.jz input.jz-name:focus{background:var(--line)}
+.jz thead th:nth-child(2) input{border-color:var(--p1)}
+.jz thead th:nth-child(3) input{border-color:var(--p2)}
+.jz input.jz-name::placeholder{color:var(--muted);font-weight:500}
+.jz input.jz-s{width:100%;max-width:76px;height:38px;padding:0 6px;border:1.5px solid transparent;border-radius:11px;background:var(--field);color:var(--text);text-align:center;font:inherit;font-weight:600;outline:0;transition:border-color .15s,box-shadow .15s,background .15s;-moz-appearance:textfield}
+.jz input.jz-s::-webkit-outer-spin-button,.jz input.jz-s::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.jz td:nth-child(2) input.jz-s:focus{border-color:var(--p1);box-shadow:0 0 0 4px var(--p1s);background:var(--card)}
+.jz td:nth-child(3) input.jz-s:focus{border-color:var(--p2);box-shadow:0 0 0 4px var(--p2s);background:var(--card)}
+.jz tr.jz-sub td{background:var(--tint);color:var(--muted);font-size:.7em;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:14px 18px 8px}
+.jz tr.jz-sum td{font-weight:700;font-variant-numeric:tabular-nums}
+.jz tr.jz-sum td:first-child{color:var(--muted);font-weight:600}
+.jz tr.jz-total td{border-bottom:0;padding:16px 10px;font-size:1.3em;font-weight:800;color:#fff;font-variant-numeric:tabular-nums}
+.jz tr.jz-total td:first-child{background:#111827;font-size:.85em;letter-spacing:.06em;text-transform:uppercase}
+.jz tr.jz-total td:nth-child(2){background:var(--p1)}
+.jz tr.jz-total td:nth-child(3){background:var(--p2)}
+.jz-win{margin:16px auto 4px;width:fit-content;max-width:100%;min-height:1.4em;padding:0;font-weight:700;text-align:center}
+.jz-win:not(:empty){padding:8px 16px;border-radius:999px;background:var(--card);box-shadow:var(--shadow);font-size:.95em}
+.jz button{display:block;margin:12px auto 0;padding:11px 24px;border:0;border-radius:999px;background:#111827;color:#fff;font:inherit;font-weight:600;font-size:.92em;cursor:pointer;transition:transform .1s,opacity .15s}
+.jz button:hover{opacity:.88}
+.jz button:active{transform:scale(.97)}
+@media (prefers-color-scheme:dark){.jz button{background:#e8eaf1;color:#111827}}
+.jz-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;color:var(--muted);font-size:.82em}
+.jz-bar #jz-status{padding:6px 12px;border-radius:999px;background:var(--card);box-shadow:var(--shadow)}
+.jz-bar button{margin:0;padding:7px 14px;background:transparent;color:var(--text);border:1.5px solid var(--line);font-size:.82em}
+@media (max-width:480px){
+  .jz th,.jz td{padding:7px 6px}
+  .jz td:first-child,.jz th:first-child{padding-left:12px}
+  .jz input.jz-s{max-width:60px}
+}
+</style>
+
+<div class="jz-bar">
+  <span id="jz-status">Verbinden…</span>
+  <button type="button" id="jz-share">Kopieer link</button>
+</div>
+
+<table>
+<thead><tr><th>Jatzee</th><th><input class="jz-name" id="jz-n1" placeholder="Speler 1"></th><th><input class="jz-name" id="jz-n2" placeholder="Speler 2"></th></tr></thead>
+<tbody id="jz-body"></tbody>
+</table>
+<div class="jz-win" id="jz-win"></div>
+<button type="button" id="jz-reset">Nieuw spel</button>
+
+<script>
+(function(){
+/* ====== INSTELLING ======
+   Plak hier de URL van je Firebase Realtime Database (zonder slash aan het eind),
+   bijv. "https://mijn-project-default-rtdb.europe-west1.firebasedatabase.app"
+   Leeg laten = alleen lokaal op dit toestel. */
+var DB_URL="";
+/* ======================== */
+
+var upper=[["Enen","alleen 1-en tellen"],["Tweeën","alleen 2-en tellen"],["Drieën","alleen 3-en tellen"],["Vieren","alleen 4-en tellen"],["Vijven","alleen 5-en tellen"],["Zessen","alleen 6-en tellen"]];
+var lower=[["Three of a kind","3 gelijk: som ogen"],["Carré","4 gelijk: som ogen"],["Full house","25 punten"],["Kleine straat","30 punten"],["Grote straat","40 punten"],["Jatzee","50 punten"],["Kans","som ogen"]];
+var body=document.getElementById("jz-body");
+var statusEl=document.getElementById("jz-status");
+
+/* kamercode uit de URL (#abc123), anders nieuwe maken */
+var room=(location.hash||"").replace(/[^a-z0-9]/gi,"").toLowerCase();
+if(!room){
+  room=Math.random().toString(36).slice(2,8);
+  try{history.replaceState(null,"","#"+room);}catch(e){}
+}
+var KEY="jatzee-scores-"+room;
+var DB=DB_URL.replace(/\/+$/,"");
+var base=DB?DB+"/jatzee/"+room:"";
+
+function inp(id){return '<input class="jz-s" type="number" inputmode="numeric" min="0" id="'+id+'">';}
+function row(label,hint,pre,cls){
+  var tr='<tr'+(cls?' class="'+cls+'"':'')+'><td>'+label+(hint?'<small>'+hint+'</small>':'')+'</td>';
+  for(var p=1;p<=2;p++){tr+='<td>'+(pre?inp(pre+p):'<span id="'+label.replace(/\W/g,"")+p+'">0</span>')+'</td>';}
+  return tr+'</tr>';
+}
+var h='<tr class="jz-sub"><td colspan="3">Bovenste blok</td></tr>';
+upper.forEach(function(u,i){h+=row(u[0],u[1],"u"+i+"_");});
+h+=row("Subtotaal","","","jz-sum");
+h+=row("Bonus","63+ = 35 punten","","jz-sum");
+h+='<tr class="jz-sub"><td colspan="3">Onderste blok</td></tr>';
+lower.forEach(function(u,i){h+=row(u[0],u[1],"l"+i+"_");});
+h+=row("Jatzee-bonus","aantal extra jatzees × 100","b_");
+h+=row("Totaal","","","jz-total");
+body.innerHTML=h;
+
+function v(id){var e=document.getElementById(id);var n=parseInt(e.value,10);return isNaN(n)?0:n;}
+function set(id,x){document.getElementById(id).textContent=x;}
+function allInputs(){return document.querySelectorAll("#jz input");}
+
+function calc(){
+  var tot=[0,0];
+  for(var p=1;p<=2;p++){
+    var up=0,lo=0,i;
+    for(i=0;i<6;i++)up+=v("u"+i+"_"+p);
+    var bonus=up>=63?35:0;
+    for(i=0;i<7;i++)lo+=v("l"+i+"_"+p);
+    var yb=v("b_"+p)*100;
+    set("Subtotaal"+p,up);set("Bonus"+p,bonus);
+    tot[p-1]=up+bonus+lo+yb;
+    set("Totaal"+p,tot[p-1]);
+  }
+  var n1=document.getElementById("jz-n1").value||"Speler 1",n2=document.getElementById("jz-n2").value||"Speler 2";
+  var w=document.getElementById("jz-win");
+  if(tot[0]===0&&tot[1]===0)w.textContent="";
+  else if(tot[0]>tot[1])w.textContent="🏆 "+n1+" staat voor ("+(tot[0]-tot[1])+")";
+  else if(tot[1]>tot[0])w.textContent="🏆 "+n2+" staat voor ("+(tot[1]-tot[0])+")";
+  else w.textContent="Gelijk spel";
+  saveLocal();
+}
+
+function saveLocal(){
+  try{
+    var d={};
+    allInputs().forEach(function(e){d[e.id]=e.value;});
+    localStorage.setItem(KEY,JSON.stringify(d));
+  }catch(e){}
+}
+function loadLocal(){
+  try{
+    var d=JSON.parse(localStorage.getItem(KEY)||"{}");
+    Object.keys(d).forEach(function(k){var e=document.getElementById(k);if(e)e.value=d[k];});
+  }catch(e){}
+}
+
+/* ===== live sync via Firebase Realtime Database (REST + EventSource) ===== */
+var timers={},synced=false;
+function push(id,val){
+  if(!base)return;
+  try{fetch(base+"/"+id+".json",{method:"PUT",body:JSON.stringify(String(val))}).catch(function(){});}catch(e){}
+}
+function queuePush(id,val){
+  if(!base)return;
+  clearTimeout(timers[id]);
+  timers[id]=setTimeout(function(){push(id,val);},250);
+}
+function patchMany(obj){
+  if(!base)return;
+  try{fetch(base+".json",{method:"PATCH",body:JSON.stringify(obj)}).catch(function(){});}catch(e){}
+}
+function pushAll(){
+  var o={},any=false;
+  allInputs().forEach(function(e){if(e.value!==""){o[e.id]=e.value;any=true;}});
+  if(any)patchMany(o);
+}
+function setField(k,data){
+  var e=document.getElementById(k);
+  if(!e||e.tagName!=="INPUT")return;
+  var s=(data===null||data===undefined)?"":String(data);
+  if(e.value!==s)e.value=s;
+}
+function handle(path,data,isPut){
+  if(path==="/"){
+    if(data===null){
+      if(isPut&&!synced)pushAll();
+    }else if(typeof data==="object"){
+      Object.keys(data).forEach(function(k){setField(k,data[k]);});
+    }
+    synced=true;calc();return;
+  }
+  var k=path.replace(/^\//,"");
+  if(k.indexOf("/")<0){setField(k,data);calc();}
+}
+function connect(){
+  if(!base){statusEl.textContent="⚪ Alleen lokaal (geen database ingesteld)";return;}
+  if(typeof EventSource==="undefined"){statusEl.textContent="⚪ Browser ondersteunt geen live sync";return;}
+  var es=new EventSource(base+".json");
+  es.onopen=function(){statusEl.textContent="🟢 Live · kamer "+room;};
+  es.onerror=function(){statusEl.textContent="🔴 Verbinding weg, opnieuw proberen…";};
+  es.addEventListener("put",function(ev){try{var m=JSON.parse(ev.data);handle(m.path,m.data,true);}catch(e){}});
+  es.addEventListener("patch",function(ev){try{var m=JSON.parse(ev.data);handle(m.path,m.data,false);}catch(e){}});
+}
+
+/* ===== events ===== */
+document.getElementById("jz").addEventListener("input",function(ev){
+  var t=ev.target;
+  if(t&&t.tagName==="INPUT"&&t.id)queuePush(t.id,t.value);
+  calc();
+});
+document.getElementById("jz-reset").addEventListener("click",function(){
+  if(!confirm("Nieuw spel starten? Alle scores worden gewist (bij beide spelers)."))return;
+  var o={};
+  allInputs().forEach(function(e){if(e.classList.contains("jz-s")){e.value="";o[e.id]="";}});
+  patchMany(o);
+  calc();
+});
+document.getElementById("jz-share").addEventListener("click",function(){
+  var url=location.href;
+  try{
+    navigator.clipboard.writeText(url).then(function(){statusEl.textContent="Link gekopieerd ✔";});
+  }catch(e){window.prompt("Kopieer deze link:",url);}
+});
+window.addEventListener("hashchange",function(){location.reload();});
+
+loadLocal();calc();connect();
+})();
+</script>
+</div>
