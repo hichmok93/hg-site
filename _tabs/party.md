@@ -3,7 +3,7 @@ layout: html-only
 title: Party
 icon: fa-solid fa-cake-candles
 permalink: /party/
-order: 1
+order: 6
 ---
 
 <html lang="en">

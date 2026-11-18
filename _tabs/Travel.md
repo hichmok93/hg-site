@@ -3,7 +3,7 @@ layout: page
 title: menu
 icon: fas fa-utensils
 permalink: /menu/
-order: 1
+order: 7
 ---
 
 <html lang="nl">
