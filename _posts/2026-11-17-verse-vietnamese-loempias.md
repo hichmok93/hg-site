@@ -5,11 +5,9 @@ date: 2026-11-17 18:00:00 +0100
 categories: [recepten, aziatisch]
 tags: [vietnamees, loempia, rijstpapier, gezond, zomerrollen]
 description: "Zelf verse Vietnamese rijstpapier-loempia's (Gỏi Cuốn) maken met garnalen, knapperige groenten, verse munt en een snelle pinda-hoisinsaus. Inclusief handige portiecalculator."
-image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1200&q=80"
+image: "https://miljuschka.nl/wp-content/uploads/2021/02/Summerrolls.jpg"
 image_alt: "Verse Vietnamese loempia's in rijstpapier geserveerd met dipsaus en verse kruiden"
 ---
-
-![{{ page.image_alt }}]({{ page.image }})
 
 Verse Vietnamese loempia's (*Gỏi Cuốn*), ook wel summer rolls genoemd, zijn fris, knapperig en verrassend makkelijk zelf te rollen. In tegenstelling tot gefrituurde loempia's worden deze gemaakt met zacht geweekt rijstpapier en gevuld met rijstvermicelli, knapperige groenten, verse kruiden en garnalen.
 
@@ -17,14 +15,53 @@ Verse Vietnamese loempia's (*Gỏi Cuốn*), ook wel summer rolls genoemd, zijn 
 
 ## Ingrediënten
 
-<div class="recipe-scaler" style="margin: 1.5rem 0; padding: 1rem 1.25rem; border: 1px solid #8e0419; border-radius: 8px; background-color: #3a0b05; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-  <label for="roll-count" style="font-weight: 600; margin: 0;">Aantal loempia's:</label>
-  <div style="display: flex; align-items: center; gap: 0.5rem;">
-    <button type="button" id="btn-decrease" aria-label="Minder loempia's" style="width: 32px; height: 32px; border: 1px solid #1c0505; border-radius: 6px; background: #351616; font-weight: bold; cursor: pointer;">−</button>
-    <input type="number" id="roll-count" value="6" min="1" max="50" style="width: 60px; text-align: center; padding: 0.25rem; border: 1px solid #1c0505; border-radius: 6px; font-weight: 600;">
-    <button type="button" id="btn-increase" aria-label="Meer loempia's" style="width: 32px; height: 32px; border: 1px solid #1c0505; border-radius: 6px; background: #302525; font-weight: bold; cursor: pointer;">+</button>
+<style>
+.recipe-scaler {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: 8px;
+  background-color: var(--bs-secondary-bg, #f8f9fa);
+  color: var(--bs-body-color, #212529);
+}
+.recipe-scaler__label { margin: 0; font-weight: 600; }
+.recipe-scaler__controls { display: flex; align-items: center; gap: .5rem; }
+.recipe-scaler__button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: 6px;
+  background: var(--bs-tertiary-bg, #e9ecef);
+  color: var(--bs-body-color, #212529);
+  font-weight: 700;
+  cursor: pointer;
+}
+.recipe-scaler__button:disabled { cursor: not-allowed; opacity: .5; }
+.recipe-scaler__input {
+  width: 60px;
+  padding: .25rem;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: 6px;
+  background: var(--bs-body-bg, #fff);
+  color: var(--bs-body-color, #212529);
+  font-weight: 600;
+  text-align: center;
+}
+.recipe-scaler__note { color: var(--bs-secondary-color, #6c757d); font-size: .875rem; }
+</style>
+
+<div class="recipe-scaler">
+  <label for="roll-count" class="recipe-scaler__label">Aantal loempia's:</label>
+  <div class="recipe-scaler__controls">
+    <button type="button" id="btn-decrease" class="recipe-scaler__button" aria-label="Minder loempia's">−</button>
+    <input type="number" id="roll-count" class="recipe-scaler__input" value="6" min="1" max="50" step="1">
+    <button type="button" id="btn-increase" class="recipe-scaler__button" aria-label="Meer loempia's">+</button>
   </div>
-  <span style="font-size: 0.875rem; color: #6e089d;">(Standaardbasis: 6 stuks)</span>
+  <span class="recipe-scaler__note">(Standaardbasis: 6 stuks)</span>
 </div>
 
 ### Voor de loempia's
@@ -72,10 +109,23 @@ Verse Vietnamese loempia's (*Gỏi Cuốn*), ook wel summer rolls genoemd, zijn 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   const BASE_PORTIONS = 6;
+  const MIN_PORTIONS = 1;
+  const MAX_PORTIONS = 50;
   const input = document.getElementById('roll-count');
   const btnDecrease = document.getElementById('btn-decrease');
   const btnIncrease = document.getElementById('btn-increase');
   const amounts = document.querySelectorAll('.ingredient-amount');
+
+  function getPortions() {
+    const value = parseInt(input.value, 10);
+    if (isNaN(value)) return BASE_PORTIONS;
+    return Math.min(MAX_PORTIONS, Math.max(MIN_PORTIONS, value));
+  }
+
+  function setPortions(value) {
+    input.value = Math.min(MAX_PORTIONS, Math.max(MIN_PORTIONS, value));
+    updateIngredients();
+  }
 
   function formatFraction(val) {
     const whole = Math.floor(val);
@@ -95,8 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function updateIngredients() {
-    let portions = parseInt(input.value, 10);
-    if (isNaN(portions) || portions < 1) portions = 1;
+    const portions = getPortions();
     const multiplier = portions / BASE_PORTIONS;
 
     amounts.forEach(el => {
@@ -114,24 +163,21 @@ document.addEventListener('DOMContentLoaded', function () {
         el.textContent = Number(rounded.toFixed(2)).toString().replace('.', ',');
       }
     });
+
+    btnDecrease.disabled = portions <= MIN_PORTIONS;
+    btnIncrease.disabled = portions >= MAX_PORTIONS;
   }
 
   btnDecrease.addEventListener('click', () => {
-    const current = parseInt(input.value, 10) || BASE_PORTIONS;
-    if (current > 1) {
-      input.value = current - 1;
-      updateIngredients();
-    }
+    setPortions(getPortions() - 1);
   });
 
   btnIncrease.addEventListener('click', () => {
-    const current = parseInt(input.value, 10) || BASE_PORTIONS;
-    if (current < 50) {
-      input.value = current + 1;
-      updateIngredients();
-    }
+    setPortions(getPortions() + 1);
   });
 
   input.addEventListener('input', updateIngredients);
+  input.addEventListener('change', () => setPortions(getPortions()));
+  updateIngredients();
 });
 </script>
