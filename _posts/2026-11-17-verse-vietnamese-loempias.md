@@ -5,7 +5,7 @@ date: 2026-11-17 18:00:00 +0100
 categories: [recepten, aziatisch]
 tags: [vietnamees, loempia, rijstpapier, gezond, zomerrollen]
 description: "Zelf verse Vietnamese rijstpapier-loempia's (Gỏi Cuốn) maken met garnalen, knapperige groenten, verse munt en een snelle pinda-hoisinsaus. Inclusief handige portiecalculator."
-image: "https://miljuschka.nl/wp-content/uploads/2021/02/Summerrolls.jpg"
+image: "https://irenematys.com/wp-content/uploads/2021/08/Fresh-Rolls-with-Peach-Chili-Sauce-1.jpg"
 image_alt: "Verse Vietnamese loempia's in rijstpapier geserveerd met dipsaus en verse kruiden"
 ---
 
