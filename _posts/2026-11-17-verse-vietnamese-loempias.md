@@ -17,14 +17,14 @@ Verse Vietnamese loempia's (*Gỏi Cuốn*), ook wel summer rolls genoemd, zijn 
 
 ## Ingrediënten
 
-<div class="recipe-scaler" style="margin: 1.5rem 0; padding: 1rem 1.25rem; border: 1px solid #e2e8f0; border-radius: 8px; background-color: #f8fafc; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+<div class="recipe-scaler" style="margin: 1.5rem 0; padding: 1rem 1.25rem; border: 1px solid #8e0419; border-radius: 8px; background-color: #3a0b05; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
   <label for="roll-count" style="font-weight: 600; margin: 0;">Aantal loempia's:</label>
   <div style="display: flex; align-items: center; gap: 0.5rem;">
-    <button type="button" id="btn-decrease" aria-label="Minder loempia's" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; font-weight: bold; cursor: pointer;">−</button>
-    <input type="number" id="roll-count" value="6" min="1" max="50" style="width: 60px; text-align: center; padding: 0.25rem; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600;">
-    <button type="button" id="btn-increase" aria-label="Meer loempia's" style="width: 32px; height: 32px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; font-weight: bold; cursor: pointer;">+</button>
+    <button type="button" id="btn-decrease" aria-label="Minder loempia's" style="width: 32px; height: 32px; border: 1px solid #1c0505; border-radius: 6px; background: #351616; font-weight: bold; cursor: pointer;">−</button>
+    <input type="number" id="roll-count" value="6" min="1" max="50" style="width: 60px; text-align: center; padding: 0.25rem; border: 1px solid #1c0505; border-radius: 6px; font-weight: 600;">
+    <button type="button" id="btn-increase" aria-label="Meer loempia's" style="width: 32px; height: 32px; border: 1px solid #1c0505; border-radius: 6px; background: #302525; font-weight: bold; cursor: pointer;">+</button>
   </div>
-  <span style="font-size: 0.875rem; color: #64748b;">(Standaardbasis: 6 stuks)</span>
+  <span style="font-size: 0.875rem; color: #6e089d;">(Standaardbasis: 6 stuks)</span>
 </div>
 
 ### Voor de loempia's
