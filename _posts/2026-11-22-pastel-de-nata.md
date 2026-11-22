@@ -1,5 +1,3 @@
-
-
 ---
 layout: post
 title: "Originele Pastel de Nata: Het ultieme recept"
@@ -7,11 +5,13 @@ subtitle: "Knapperig spiraalbladerdeeg met gekaramelliseerde custardvulling"
 date: 2026-11-22 01:30:00 +0100
 categories: [recepten, bakken, portugees]
 tags: [pastel de nata, custard, bladerdeeg, portugal, gebak]
-image: "https://plus.unsplash.com/premium_photo-1691664005940-be81f9ffd18a?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
-image_alt: "Versgebakken Portugese Pastéis de Nata met goudbruine custardvulling"
 description: "Authentieke Portugese Pastéis de Nata maken met knapperig spiraalbladerdeeg en zijdezachte gekaramelliseerde custard."
+media_subpath:
+image:
+  path: "https://plus.unsplash.com/premium_photo-1691664005940-be81f9ffd18a?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
+  alt: "Versgebakken Portugese Pastéis de Nata met goudbruine custardvulling"
 ---
-
+ 
 prep_time: "45 minuten"
 cook_time: "12 minuten"
 rest_time: "3,5 uur"
