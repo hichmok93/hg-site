@@ -5,7 +5,6 @@ icon: fa-solid fa-wind
 permalink: /breathe/
 order: 7
 ---
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -13,6 +12,12 @@ order: 7
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jamila Mokhtari · Breathwork & Meditatie</title>
 <meta name="description" content="Ademwerk- en meditatiesessies met breathing coach Jamila Mokhtari. Kom tot rust, adem bewust en keer terug naar jezelf.">
+<meta name="color-scheme" content="light dark">
+<script>
+(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}
+if(t!=="dark"&&t!=="light"){t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light"}
+document.documentElement.setAttribute("data-theme",t)})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -34,7 +39,57 @@ order: 7
     --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
     --radius:22px;
     --shadow:0 20px 50px -28px rgba(47,58,74,.35);
+    --head-bg:rgba(246,241,234,.88);
+    --hero-a:rgba(231,217,198,.55);
+    --hero-b:rgba(223,232,225,.6);
+    --sec-a:rgba(239,231,220,.6);
+    --sec-b:rgba(223,232,225,.65);
+    --ben-bg:rgba(255,255,255,.55);
+    --btn-bg:#2f3a4a;
+    --btn-ink:#fff;
+    --btn-hover:#3d4c63;
+    --foot-bg:#2f3a4a;
+    --tool-a:#2f3a4a;
+    --tool-b:#252f3d;
+    --portrait-ink:rgba(47,58,74,.55);
+    color-scheme:light;
   }
+  :root[data-theme="dark"]{
+    --bg:#141922;
+    --bg-soft:#1a202b;
+    --ink:#e7e2d9;
+    --muted:#a9a49c;
+    --deep:#ece6db;
+    --deep-2:#ffffff;
+    --sage:#8fa595;
+    --sage-soft:#26322b;
+    --gold:#c9a56b;
+    --rose:#d9b8a8;
+    --card:#1d2430;
+    --line:rgba(255,255,255,.1);
+    --shadow:0 20px 50px -28px rgba(0,0,0,.7);
+    --head-bg:rgba(20,25,34,.85);
+    --hero-a:rgba(120,98,62,.22);
+    --hero-b:rgba(70,95,80,.25);
+    --sec-a:rgba(26,32,43,.6);
+    --sec-b:rgba(38,50,43,.55);
+    --ben-bg:rgba(255,255,255,.05);
+    --btn-bg:#ece6db;
+    --btn-ink:#141922;
+    --btn-hover:#ffffff;
+    --foot-bg:#0e1218;
+    --tool-a:#1c2533;
+    --tool-b:#10141b;
+    --portrait-ink:rgba(236,230,219,.5);
+    color-scheme:dark;
+  }
+  body{transition:background-color .5s ease,color .5s ease}
+  .theme{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--deep);cursor:pointer;display:grid;place-items:center;transition:background .3s,border-color .3s}
+  .theme:hover{border-color:var(--gold)}
+  .theme svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .theme .i-sun{display:none}
+  :root[data-theme="dark"] .theme .i-sun{display:block}
+  :root[data-theme="dark"] .theme .i-moon{display:none}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:var(--sans);font-weight:300;background:var(--bg);color:var(--ink);line-height:1.7;font-size:17px;-webkit-font-smoothing:antialiased}
@@ -53,7 +108,7 @@ order: 7
 
   /* NAV */
   header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .4s,box-shadow .4s,padding .4s;padding:1.2rem 0}
-  header.scrolled{background:rgba(246,241,234,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:.7rem 0}
+  header.scrolled{background:var(--head-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:.7rem 0}
   .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
   .brand{font-family:var(--serif);font-size:1.5rem;font-weight:600;text-decoration:none;color:var(--deep);letter-spacing:.5px}
   .brand span{color:var(--gold)}
@@ -68,15 +123,15 @@ order: 7
   .burger[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
   .burger[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
 
-  .btn{display:inline-block;padding:.95rem 2rem;border-radius:999px;background:var(--deep);color:#fff;text-decoration:none;font-size:.92rem;letter-spacing:.06em;border:1px solid var(--deep);cursor:pointer;font-family:var(--sans);font-weight:400;transition:transform .3s,background .3s,box-shadow .3s}
-  .btn:hover{background:var(--deep-2);transform:translateY(-2px);box-shadow:0 14px 26px -14px rgba(47,58,74,.7)}
+  .btn{display:inline-block;padding:.95rem 2rem;border-radius:999px;background:var(--btn-bg);color:var(--btn-ink);text-decoration:none;font-size:.92rem;letter-spacing:.06em;border:1px solid var(--btn-bg);cursor:pointer;font-family:var(--sans);font-weight:400;transition:transform .3s,background .3s,box-shadow .3s}
+  .btn:hover{background:var(--btn-hover);transform:translateY(-2px);box-shadow:0 14px 26px -14px rgba(47,58,74,.7)}
   .btn.ghost{background:transparent;color:var(--deep)}
-  .btn.ghost:hover{background:var(--deep);color:#fff}
+  .btn.ghost:hover{background:var(--btn-bg);color:var(--btn-ink)}
   .btn.small{padding:.6rem 1.4rem}
 
   /* HERO */
   .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;
-    background:radial-gradient(1200px 700px at 80% 20%,rgba(231,217,198,.55) 0%,transparent 60%),radial-gradient(900px 600px at 10% 90%,rgba(223,232,225,.6) 0%,transparent 60%);padding-top:6rem}
+    background:radial-gradient(1200px 700px at 80% 20%,var(--hero-a) 0%,transparent 60%),radial-gradient(900px 600px at 10% 90%,var(--hero-b) 0%,transparent 60%);padding-top:6rem}
   .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center}
   .hero h1 em{font-style:italic;color:var(--gold);font-weight:400}
   .hero p.lead{margin:1.6rem 0 2.2rem}
@@ -94,7 +149,7 @@ order: 7
   .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:4rem;align-items:center}
   .portrait{aspect-ratio:4/5;border-radius:var(--radius) var(--radius) 220px 220px;background:linear-gradient(160deg,var(--sage-soft),var(--rose));position:relative;overflow:hidden;box-shadow:var(--shadow);display:grid;place-items:center}
   .portrait::before{content:"";position:absolute;inset:14px;border:1px solid rgba(255,255,255,.7);border-radius:inherit}
-  .portrait span{font-family:var(--serif);font-size:7rem;color:rgba(47,58,74,.55);font-style:italic}
+  .portrait span{font-family:var(--serif);font-size:7rem;color:var(--portrait-ink);font-style:italic}
   .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .about p+p{margin-top:1rem}
   .values{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.8rem}
@@ -103,7 +158,7 @@ order: 7
   /* OFFER */
   #flow{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
   main,footer{position:relative;z-index:1}
-  .offer{background:rgba(239,231,220,.6)}
+  .offer{background:var(--sec-a)}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:3.2rem}
   .card{background:var(--card);border-radius:var(--radius);padding:2.2rem 2rem;box-shadow:var(--shadow);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .4s}
   .card:hover{transform:translateY(-6px)}
@@ -114,7 +169,7 @@ order: 7
   .card .btn{margin-top:1.4rem;text-align:center}
 
   /* BREATH TOOL */
-  .tool{background:linear-gradient(180deg,var(--deep) 0%,#252f3d 100%);color:#e9e4dc;position:relative;overflow:hidden}
+  .tool{background:linear-gradient(180deg,var(--tool-a) 0%,var(--tool-b) 100%);color:#e9e4dc;position:relative;overflow:hidden}
   .tool h2{color:#fff}
   .tool .lead{color:#bdb8b0}
   .tool .eyebrow{color:var(--rose)}
@@ -132,9 +187,9 @@ order: 7
   .seg{display:flex;flex-wrap:wrap;gap:.5rem}
   .seg button{background:transparent;border:1px solid rgba(255,255,255,.25);color:#e9e4dc;padding:.6rem 1.15rem;border-radius:999px;cursor:pointer;font-family:var(--sans);font-size:.88rem;font-weight:300;transition:.3s}
   .seg button:hover{border-color:#fff}
-  .seg button[aria-pressed="true"]{background:#fff;color:var(--deep);border-color:#fff}
+  .seg button[aria-pressed="true"]{background:#fff;color:#2f3a4a;border-color:#fff}
   .pattern-desc{font-size:.95rem;color:#bdb8b0;min-height:3.4em}
-  .tool .btn{background:#fff;color:var(--deep);border-color:#fff}
+  .tool .btn{background:#fff;color:#2f3a4a;border-color:#fff}
   .tool .btn:hover{background:var(--rose);border-color:var(--rose)}
   .progress{height:2px;background:rgba(255,255,255,.15);border-radius:2px;overflow:hidden}
   .progress i{display:block;height:100%;width:0;background:var(--rose)}
@@ -149,9 +204,9 @@ order: 7
   .step p{color:var(--muted);font-size:.97rem;max-width:34ch;margin:0 auto}
 
   /* BENEFITS */
-  .benefits{background:rgba(223,232,225,.65)}
+  .benefits{background:var(--sec-b)}
   .ben-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:3rem}
-  .ben{background:rgba(255,255,255,.55);border-radius:18px;padding:1.6rem 1.3rem;text-align:center;font-family:var(--serif);font-size:1.3rem;color:var(--deep);line-height:1.3}
+  .ben{background:var(--ben-bg);border-radius:18px;padding:1.6rem 1.3rem;text-align:center;font-family:var(--serif);font-size:1.3rem;color:var(--deep);line-height:1.3}
   .ben small{display:block;font-family:var(--sans);font-size:.82rem;color:var(--muted);margin-top:.5rem;line-height:1.5}
 
   /* SCHEDULE */
@@ -173,7 +228,7 @@ order: 7
   details p{margin-top:.8rem;color:var(--muted);font-size:.97rem}
 
   /* CONTACT */
-  .contact{background:rgba(239,231,220,.6)}
+  .contact{background:var(--sec-a)}
   .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:4rem;align-items:start}
   .contact-info p{margin-top:1rem;color:var(--muted)}
   .contact-info ul{list-style:none;margin-top:1.8rem;display:grid;gap:.5rem;color:var(--deep)}
@@ -187,7 +242,7 @@ order: 7
   .check input{width:auto;margin-top:.35rem}
   .form-msg{font-size:.92rem;color:var(--deep);min-height:1.3em}
 
-  footer{background:var(--deep);color:#c9c4bb;padding:3.5rem 0 2rem;text-align:center}
+  footer{background:var(--foot-bg);color:#c9c4bb;padding:3.5rem 0 2rem;text-align:center}
   footer .brand{color:#fff;font-size:1.8rem}
   footer p{font-size:.85rem;margin-top:.8rem}
   footer .quote{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:#e9e4dc;margin:1.2rem 0}
@@ -234,6 +289,10 @@ order: 7
         <li><a href="#adem">Adem mee</a></li>
         <li><a href="#agenda">Agenda</a></li>
         <li><a href="#faq">Vragen</a></li>
+        <li><button type="button" class="theme" id="theme" aria-label="Donkere modus aanzetten">
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>
+        </button></li>
         <li><a href="#contact" class="btn small">Boek een sessie</a></li>
       </ul>
     </nav>
@@ -409,7 +468,7 @@ order: 7
 </section>
 
 <!-- FAQ -->
-<section id="faq" style="background:rgba(239,231,220,.6)">
+<section id="faq" style="background:var(--sec-a)">
   <div class="wrap">
     <div class="center reveal">
       <span class="eyebrow">Veelgestelde vragen</span>
@@ -492,6 +551,26 @@ order: 7
   $("#yr").textContent = new Date().getFullYear();
   $("#mailShow").textContent = CONFIG.email;
 
+  /* ===== thema: licht / donker ===== */
+  var root = document.documentElement, tbtn = $("#theme");
+  function curTheme(){ return root.getAttribute("data-theme") === "dark" ? "dark" : "light"; }
+  function applyTheme(t, save){
+    root.setAttribute("data-theme", t);
+    if(save){ try{ localStorage.setItem("theme", t); }catch(e){} }
+    tbtn.setAttribute("aria-label", t === "dark" ? "Lichte modus aanzetten" : "Donkere modus aanzetten");
+    window.dispatchEvent(new Event("themechange"));
+  }
+  applyTheme(curTheme(), false);
+  tbtn.addEventListener("click", function(){ applyTheme(curTheme() === "dark" ? "light" : "dark", true); });
+  if(window.matchMedia){
+    var mq = window.matchMedia("(prefers-color-scheme: dark)");
+    var onMq = function(e){
+      var s = null; try{ s = localStorage.getItem("theme"); }catch(x){}
+      if(!s) applyTheme(e.matches ? "dark" : "light", false);
+    };
+    if(mq.addEventListener) mq.addEventListener("change", onMq);
+  }
+
   /* ===== achtergrond: ademende flow (golven + ringen) ===== */
   (function(){
     var cv = $("#flow"), cx = cv && cv.getContext("2d");
@@ -514,6 +593,8 @@ order: 7
     }
     function draw(ms){
       var t = ms/1000, b = breath(t), sy = window.scrollY || 0;
+      var dk = document.documentElement.getAttribute("data-theme") === "dark";
+      var G = dk ? "201,165,107" : "184,147,90", S = dk ? "143,175,155" : "143,165,149", m = dk ? 1.3 : 1;
       cx.clearRect(0,0,W,H);
 
       /* 1. concentrische ringen: ademen mee, in het midden */
@@ -523,7 +604,7 @@ order: 7
         a = .13 - i*.011;
         cx.beginPath();
         cx.arc(ox, oy, r, 0, Math.PI*2);
-        cx.strokeStyle = (i % 3 === 0) ? "rgba(184,147,90,"+(a+.03)+")" : "rgba(143,165,149,"+(a+.05)+")";
+        cx.strokeStyle = (i % 3 === 0) ? "rgba("+G+","+((a+.03)*m)+")" : "rgba("+S+","+((a+.05)*m)+")";
         cx.lineWidth = 1;
         cx.stroke();
       }
@@ -533,7 +614,7 @@ order: 7
         var rr = base*5*(.82 + .3*b) + 25;
         cx.beginPath();
         cx.arc(ox + Math.cos(ang)*rr, oy + Math.sin(ang)*rr, 1.6 + b*1.2, 0, Math.PI*2);
-        cx.fillStyle = "rgba(184,147,90,.28)";
+        cx.fillStyle = "rgba("+G+","+(.28*m)+")";
         cx.fill();
       }
 
@@ -548,7 +629,7 @@ order: 7
             + Math.sin(x*.0091 - t*.19 + k*1.3)*amp*.42;
           if(x === -10) cx.moveTo(x,y); else cx.lineTo(x,y);
         }
-        cx.strokeStyle = (k % 2) ? "rgba(143,165,149,.2)" : "rgba(184,147,90,.15)";
+        cx.strokeStyle = (k % 2) ? "rgba("+S+","+(.2*m)+")" : "rgba("+G+","+(.15*m)+")";
         cx.lineWidth = 1;
         cx.stroke();
       }
@@ -557,6 +638,7 @@ order: 7
     function loop(ms){ if(run) draw(ms); requestAnimationFrame(loop); }
     document.addEventListener("visibilitychange", function(){ run = !document.hidden; });
     window.addEventListener("resize", size);
+    window.addEventListener("themechange", function(){ if(reduce) draw(3000); });
     size();
     if(!reduce) requestAnimationFrame(loop);
   })();
