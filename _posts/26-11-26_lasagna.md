@@ -4,13 +4,9 @@ title: "Lasagne met krokante eend"
 date: 2026-11-26 20:30:00 +0100
 categories: [koken, recepten]
 tags: [lasagne, eend, pasta, spinazie, oven]
-image: "VERVANG-MET-UNSPLASH-FOTO-URL"
+image: "https://plus.unsplash.com/premium_photo-1723770033472-0b0452d98225?q=80&w=1594&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
 excerpt: "Een lasagne waarbij je alles zelf doet: pasta maken, eend roosteren en het vlees plukken voor de ragout."
 ---
-
-![Lasagne met krokante eend](VERVANG-MET-UNSPLASH-FOTO-URL)
-
-*Foto: [Unsplash](https://unsplash.com/s/photos/lasagna) – vul de directe link + naam van de fotograaf in.*
 
 Bijna iedereen houdt van lasagne, maar deze versie is echt een project. Het maken van de pasta, het roosteren van de eend en het plukken van het vlees voor de ragout zijn stuk voor stuk leuke klusjes. Perfect voor een lang weekend of een etentje met veel mensen.
 
