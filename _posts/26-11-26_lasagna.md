@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Lasagne met krokante eend"
-date: 2026-11-26 20:30:00 +0100
+date: 2026-11-25 20:30:00 +0100
 categories: [koken, recepten]
 tags: [lasagne, eend, pasta, spinazie, oven]
 image: "https://plus.unsplash.com/premium_photo-1723770033472-0b0452d98225?q=80&w=1594&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
